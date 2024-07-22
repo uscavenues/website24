@@ -111,19 +111,20 @@
 
   <div class="shortline"></div>
 
-  <h1 class="subheader">CONTACT US</h1>
-  <p class="justtext">Get in touch to collaborate with us.</p>
-  <div class="contact-container">
-    <form action="" class="contact-left">
-      <input type="text" name="name" placeholder="Your Name" class="contact-inputs" required>
-      <input type="text" name="email" placeholder="Your Email" class="contact-inputs" required>
-      <input type="text" name="company" placeholder="Company Name" class="contact-inputs" required>
-      <button type="submit" class="subbut">Submit</button>
-    </form>
-    <div class="contact-right">
-      <textarea name="message" placeholder="Your Message" class="contact-inputs" required></textarea>
-    </div>
-  </div>
+  <div class="contactform">
+    <h1 class="centered">CONTACT US</h1>
+    <p class="centered">Get in touch to collaborate with us.</p>
+    <!-- <div class="contact-container"> -->
+      <form action="https://api.web3forms.com/submit" method="POST" class="contact-left">
+        <input type="hidden" name="access_key" value="112ef749-545a-4476-9b70-3fccfea07740">
+        <input type="text" name="name" placeholder="Your Name" class="contact-inputs" required>
+        <input type="text" name="email" placeholder="Your Email" class="contact-inputs" required>
+        <input type="text" name="company" placeholder="Company Name" class="contact-inputs" required>
+        <textarea name="message" placeholder="Your Message" class="contact-inputs" required></textarea>
+        <button type="submit" class="subbut">Submit</button>
+      </form>
+    <!-- </div> -->
+</div>
   <p class="center">Should the form not work, please contact us directly at uscavenues@gmail.com</p> <br><br><br>
 
 
