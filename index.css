@@ -901,7 +901,8 @@ html{
 /* pie chart stuff */
 
 .pie{
-  width: 40%;
+  max-width: 40%;
+  object-fit: contain;
 }
 
 .majormakeup{
