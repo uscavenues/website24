@@ -606,6 +606,7 @@ h9{
 
 .frontpagetextholder{
   position: absolute;
+  z-index: 2;
   left: 7vw;
   width: 100vw;
   top: 15vw;
