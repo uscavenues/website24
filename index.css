@@ -804,8 +804,20 @@ html{
 
 
 /* FAQ ****************************/
-.timeline p{
-  margin: 0.3em;
+
+.timelinegrid{
+  margin-top: 4%;
+  margin-bottom: 4%;
+  display: grid;
+  grid-template-columns: repeat(2, 40vw);
+}
+
+.timelinegrid h11{
+  /* line-height: 20%; */
+  font-size: 2vw;
+}
+
+.timelinegrid p{
   font-size: 3vw;
 }
 
@@ -813,51 +825,32 @@ h11{
   font-size: 1.5vw;
 }
 
-.faqsection{
-  font-size:3vw; 
-  color:#FB5E59;
-}
-
-.timeline{
-  margin: 5em auto;
-  max-width: 34.15em;
-}
 
 .checkpoint{
-  max-width: 34em;
-  padding-top: 2em;
-  padding-bottom: 2em;
-  position: relative;
-
+  padding-bottom: 3vw;
+  display: flex;
+  flex-direction: column;
+  
 }
 
-.checkpoint div{
-  border: 2px solid #888;
-  border-radius: 2px;
-  padding: 1.5em;
-}
 
 .checkpoint:nth-child(odd){
-  border-left: 3px solid black;
-  padding-left: 3em;
-  transform: translateX(17em)
+  text-align: right;
+  border-right: 1px solid black;
+  padding-right: 3vw;
+  align-items: end;
 }
 
 .checkpoint:nth-child(even){
-  border-right: 3px solid black;
-  padding-right: 3em;
-  transform: translateX(-16.94em);
+  border-left: 1px solid black;
+  padding-left: 3vw;
 }
 
-.checkpoint:nth-child(odd)::before,
-.checkpoint:nth-child(even)::before{
-  content: '';
-  background: #888;
-  width: 3em;
-  height: 3px;
-  position: absolute;
-  top:50%;
-  transform: translateY(-50%);
+
+
+.faqsection{
+  font-size:3vw; 
+  color:#FB5E59;
 }
 
 .checkpoint:nth-child(odd)::before{
