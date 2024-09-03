@@ -523,6 +523,8 @@ h6{ /* services title */
   transition: 0.5s ease;
 }
 
+.
+
 .packet:hover{
   color: black;
 }
@@ -804,6 +806,21 @@ html{
 
 
 /* FAQ ****************************/
+
+.application{
+  background: none;
+  font-size: 2vw;
+  color: black;
+  font-weight: 150;
+  border: solid 1px black;
+  border-radius: 10px;
+  padding: 1vw 1.5vw;
+  transition: 0.5s ease;
+}
+
+.application:hover{
+  color: #FB5E59;
+}
 
 .timelinegrid{
   margin-top: 4%;
