@@ -10,15 +10,15 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
 </head>
-<body>
+<body style="  overflow-x: hidden;">
   <nav class="navibar">
     <a href="index.html"><img class="logo" src="icons/bluelogo.png" alt="Avenues Logo"></a>
     <nav class="pages">
-      <a href="index.html"><button class="page">HOME</button></a>
-      <a href="about.html"><button class="page" >ABOUT US</button></a>
-      <a href="community.html"><button class="page" >OUR COMMUNITY</button></a>
-      <a href="apply.html"><button class="page">APPLY</button></a>
-      <a href="contact.html"><button class="page current">SERVICES | CONTACT US</button></a>
+      <a href="index.html"><button class="page">Home</button></a>
+      <a href="about.html"><button class="page" >About Us</button></a>
+      <a href="community.html"><button class="page" >Our Community</button></a>
+      <a href="apply.html"><button class="page">Apply</button></a>
+      <a href="contact.html"><button class="page current">Services | Contact Us</button></a>
     </nav> 
   </nav>
 
@@ -28,7 +28,9 @@
       <p class="bigblurb">Avenues is dedicated to finding solutions for your organization through a multidisciplinary approach.
       </p>
     </div>
-    <img class="pagephoto" src="photos/service.JPG">
+    <div style="  display: flex; align-items: center; justify-content: center;">
+      <img class="gallphoto" style="border-radius: 10px; border: 3px solid #395073;" src="photos/service.JPG">
+    </div>
   </div>
 
   <div class="shortline"></div>
@@ -112,7 +114,7 @@
   <div class="shortline"></div>
 
   <div class="contactform">
-    <h1 class="centered">CONTACT US</h1>
+    <h1 class="centered" style="font-weight: 200;">CONTACT US</h1>
     <p class="centered">Get in touch to collaborate with us.</p>
     <!-- <div class="contact-container"> -->
       <form action="https://api.web3forms.com/submit" method="POST" class="contact-left">
@@ -125,7 +127,7 @@
       </form>
     <!-- </div> -->
 </div>
-  <p class="center">Should the form not work, please contact us directly at uscavenues@gmail.com</p> <br><br><br>
+  <p class="centered">Should the form not work, please contact us directly at uscavenues@gmail.com</p> <br><br><br>
 
 
   <div class="footer">

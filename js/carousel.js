@@ -8,17 +8,6 @@ const indNav = document.querySelector('.carousel-nav');
 const slideWidth = slides[0].getBoundingClientRect().width;
 
 
-                // ARRANGE SLIDES NEXT TO EACH OTHER (as opposed to on top of each other)
-
-// this goes in a changes style manually
-// slides[0].style.left = 0;
-// slides[1].style.left = slideWidth + 'px';
-// slides[2].style.left = slideWidth*2 + 'px';
-// slides[3].style.left = slideWidth*3 + 'px';
-// slides[4].style.left = slideWidth*4 + 'px';
-// slides[5].style.left = slideWidth*5 + 'px';
-// slides[6].style.left = slideWidth*6 + 'px';
-// slides[7].style.left = slideWidth*7 + 'px';
 
 // this is a function that makes for loop readable without knowing exactly what it does
 const setSlidePosition = (slide, index) => {
@@ -31,9 +20,12 @@ console.log(nextButton);
 
             // ********** RIGHT BUTTON ************ //
 nextButton.addEventListener('click', e => {
+  console.log("clicked right button")
       // find current and next slide
   // only looks through track element, faster than going through whole doc
   const currentSlide = track.querySelector('.current-slide'); 
+  console.log(currentSlide)
+  console.log(currentSlide.nextElementSibling)
   const nextSlide = currentSlide.nextElementSibling;
   // finds where next slide is, and by how much to move it over to get to corrent position
   const amtToMove = nextSlide.style.left; 
