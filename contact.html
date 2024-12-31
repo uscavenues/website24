@@ -11,7 +11,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Readex+Pro:wght@160..700&display=swap" rel="stylesheet">
 
 </head>
-<body class="pagebody">
+<body class="pagebody" onload="checkLoggedIn()">
     <nav class="navibar">
         <a href="index.html" ><img class="logo" src="assets/icons/whitelogo.png" alt="Avenues Logo"></a>
         <nav class="pages">
@@ -21,6 +21,15 @@
           <a href="apply.html"><button class="page">APPLY</button></a>
           <!-- <a href="portfolio.html"><button class="page">OUR PORTFOLIO</button></a> -->
           <a href="contact.html"><button class="page currentpage">WORK WITH US</button></a>
+          <div class="dropdown" id="dropdown" style="display: none;" >
+            <button class="page dropdown-btn" onclick="showMenu()">MEMBERS</button>
+            <div id="options" class="dropdown-options">
+                <a href="resources.html">Resources</a>
+                <a href="curriculum.html">Curriculum</a>
+                <a href="leaderboard.html">Leaderboard</a>
+            </div>
+          </div>
+          <a><button class="page login" id="loginbutton" onclick="login()">MEMBER LOGIN</button></a>
         </nav> 
     </nav>
 
@@ -69,26 +78,6 @@
         </div>
     </div>
 
-    
-
-    <script type="text/javascript">
-        window.addEventListener('scroll', reveal);
-        function reveal(){
-            var reveals = document.querySelectorAll('.reveal');
-
-            for(var i = 0; i < reveals.length; i++){
-                var windowheight = window.innerHeight;
-                var revealtop = reveals[i].getBoundingClientRect().top;
-                var revealpoint = 50;
-
-                if(revealtop < windowheight - revealpoint){
-                    reveals[i].classList.add('active');
-                }
-                else{
-                    reveals[i].classList.remove('active');
-                }
-            }
-        }
-    </script>
+    <script src="script.js" defer></script>
 </body>
 </html>

@@ -11,7 +11,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Readex+Pro:wght@160..700&display=swap" rel="stylesheet">
 
 </head>
-<body class="pagebody">
+<body class="pagebody" onload="checkLoggedIn()">
     <nav class="navibar">
         <a href="index.html" ><img class="logo" src="assets/icons/whitelogo.png" alt="Avenues Logo"></a>
         <nav class="pages">
@@ -21,6 +21,15 @@
           <a href="apply.html"><button class="page">APPLY</button></a>
           <!-- <a href="portfolio.html"><button class="page">OUR PORTFOLIO</button></a> -->
           <a href="contact.html"><button class="page">WORK WITH US</button></a>
+          <div class="dropdown" id="dropdown" style="display: none;" >
+            <button class="page dropdown-btn" onclick="showMenu()">MEMBERS</button>
+            <div id="options" class="dropdown-options">
+                <a href="resources.html">Resources</a>
+                <a href="curriculum.html">Curriculum</a>
+                <a href="leaderboard.html">Leaderboard</a>
+            </div>
+          </div>
+          <a><button class="page login" id="loginbutton" onclick="login()">MEMBER LOGIN</button></a>
         </nav> 
     </nav>
 
@@ -55,12 +64,21 @@
         <div class="col profile"></div>
         <div class="col profile"></div>
         <div class="col profile">
-            <img src="assets/photos/profiles/maxk.JPG" alt="Max Krech">
+            <img src="assets/photos/profiles/anna.JPG" alt="Max Krech">
             <p class="caption">
-                Max K.
+                Anna C.
             </p>
             <p class="captionb" style="margin-top: 0;">
-                President
+                Co-President
+            </p>
+        </div>
+        <div class="col profile">
+            <img src="assets/photos/profiles/darius.JPG" alt="Debra Erdenemandakh">
+            <p class="caption">
+                Darius M.
+            </p>
+            <p class="captionb" style="margin-top: 0;">
+                Co-President
             </p>
         </div>
         <div class="col profile">
@@ -69,7 +87,7 @@
                 Debra E.
             </p>
             <p class="captionb" style="margin-top: 0;">
-                VP, Founder
+                Founder
             </p>
         </div>
         <div class="col profile"></div>
@@ -79,15 +97,6 @@
     <p class="blurb reveal" style="color: #eb4c60; margin-top: 3%;">DIRECTORS</p>
     <div class="row eightyfive reveal" style=" justify-content: space-around;">
         <div class="col profile">
-            <img src="assets/photos/profiles/christian.JPG" alt="Christian">
-            <p class="caption">
-                Christian Y.
-            </p>
-            <p class="captionb" style="margin-top: 0;">
-                Finance
-            </p>
-        </div>
-        <div class="col profile">
             <img src="assets/photos/profiles/eric.JPG" alt="Eric">
             <p class="caption">
                 Eric P.
@@ -96,26 +105,9 @@
                 Finance
             </p>
         </div>
+        
         <div class="col profile">
-            <img src="assets/photos/profiles/grace.jpeg" alt="GRace">
-            <p class="caption">
-                Grace L.
-            </p>
-            <p class="captionb" style="margin-top: 0;">
-                Technology
-            </p>
-        </div>
-        <div class="col profile">
-            <img src="assets/photos/profiles/darius.JPG" alt="Darius">
-            <p class="caption">
-                Darius M.
-            </p>
-            <p class="captionb" style="margin-top: 0;">
-                Pre-Prof.
-            </p>
-        </div>
-        <div class="col profile">
-            <img src="assets/photos/profiles/thomas.JPG" alt="Eric">
+            <img src="assets/photos/profiles/thomas.JPG" alt="Thomas">
             <p class="caption">
                 Thomas B.
             </p>
@@ -123,15 +115,13 @@
                 Pre-Prof.
             </p>
         </div>
-    </div>
-    <div class="row eightyfive reveal" style="justify-content: space-around;">
         <div class="col profile">
-            <img src="assets/photos/profiles/margaret.JPG" alt="Margaret">
+            <img src="assets/photos/profiles/emma.JPG" alt="Emma">
             <p class="caption">
-                Margaret L.
+                Emma C.
             </p>
             <p class="captionb" style="margin-top: 0;">
-                Design
+                Human Resources
             </p>
         </div>
         <div class="col profile">
@@ -144,72 +134,24 @@
             </p>
         </div>
         <div class="col profile">
-            <img src="assets/photos/profiles/anna.JPG" alt="Anna">
+            <img src="assets/photos/profiles/grace.jpeg" alt="GRace">
             <p class="caption">
-                Anna C.
-            </p>
-            <p class="captionb" style="margin-top: 0;">
-                Recruitment
-            </p>
-        </div>
-        <div class="col profile">
-            <img src="assets/photos/profiles/jenny.JPG" alt="Jenny">
-            <p class="caption">
-                Jenny L.
-            </p>
-            <p class="captionb" style="margin-top: 0;">
-                Affairs
-            </p>
-        </div>
-        <div class="col profile">
-            <img src="assets/photos/profiles/jeff.JPG" alt="Jeffrey">
-            <p class="caption">
-                Jeffrey Y.
-            </p>
-            <p class="captionb" style="margin-top: 0;">
-                Affaris
-            </p>
-        </div>
-    </div>
-
-    <p class="blurb reveal" style="color: #eb4c60; margin-top: 3%;">ASSOCIATES</p>
-    <div class="row eightyfive reveal" style=" justify-content: space-around; margin-bottom: 5%;">
-        <div class="col profile">
-            <img src="assets/photos/profiles/reagan.JPG" alt="Reagan">
-            <p class="caption">
-                Reagan S.
-            </p>
-            <p class="captionb" style="margin-top: 0;">
-                HR
-            </p>
-        </div>
-        <div class="col profile">
-            <img src="assets/photos/profiles/matt.JPG" alt="Matt">
-            <p class="caption">
-                Matt H.
-            </p>
-            <p class="captionb" style="margin-top: 0;">
-                Finance
-            </p>
-        </div>
-        <div class="col profile">
-            <img src="assets/photos/profiles/ahanna.JPG" alt="Ahaana">
-            <p class="caption">
-                Ahaana N.
-            </p>
-            <p class="captionb" style="margin-top: 0;">
-                Pre-Prof.
-            </p>
-        </div>
-        <div class="col profile">
-            <img src="assets/photos/profiles/maxw.JPG" alt="Max W.">
-            <p class="caption">
-                Max W.
+                Grace L.
             </p>
             <p class="captionb" style="margin-top: 0;">
                 Technology
             </p>
         </div>
+        <div class="col profile">
+            <img src="assets/photos/profiles/margaret.JPG" alt="Margaret">
+            <p class="caption">
+                Margaret L.
+            </p>
+            <p class="captionb" style="margin-top: 0;">
+                Design
+            </p>
+        </div>
+        
         <div class="col profile">
             <img src="assets/photos/profiles/ryan.JPG" alt="Ryan">
             <p class="caption">
@@ -220,23 +162,83 @@
             </p>
         </div>
         <div class="col profile">
-            <img src="assets/photos/profiles/valen.JPG" alt="Valen">
+            <img src="assets/photos/profiles/matt.JPG" alt="Matt">
             <p class="caption">
-                Valen L.
+                Matt H.
+            </p>
+            <p class="captionb" style="margin-top: 0;">
+                Affaris
+            </p>
+        </div>
+    </div>
+    
+
+    <p class="blurb reveal" style="color: #eb4c60; margin-top: 3%;">ASSOCIATES</p>
+    <div class="row eightyfive reveal" style=" justify-content: space-around; margin-bottom: 5%;">
+        <div class="col profile">
+            <img src="assets/photos/profiles/ethan.jpeg" alt="Ethan">
+            <p class="caption">
+                Ethan L.
+            </p>
+            <p class="captionb" style="margin-top: 0;">
+                Finance
+            </p>
+        </div>
+        <div class="col profile">
+            <img src="assets/photos/profiles/rafa.JPG" alt="Rafael">
+            <p class="caption">
+                Rafael W.
+            </p>
+            <p class="captionb" style="margin-top: 0;">
+                Pre-Prof.
+            </p>
+        </div>
+        <div class="col profile">
+            <img src="assets/photos/profiles/alex.jpg" alt="Alex">
+            <p class="caption">
+                Alex H.
+            </p>
+            <p class="captionb" style="margin-top: 0;">
+                Pre-Prof.
+            </p>
+        </div>
+        <div class="col profile">
+            <img src="assets/photos/profiles/luke.jpg" alt="Luke">
+            <p class="caption">
+                Luke S.
             </p>
             <p class="captionb" style="margin-top: 0;">
                 Recruitment
             </p>
         </div>
         <div class="col profile">
-            <img src="assets/photos/profiles/emma.JPG" alt="Emma">
+            <img src="assets/photos/profiles/ariana.JPEG" alt="Ariana">
             <p class="caption">
-                Emma C.
+                Ariana A.
+            </p>
+            <p class="captionb" style="margin-top: 0;">
+                Technology
+            </p>
+        </div>
+        <div class="col profile">
+            <img src="assets/photos/profiles/jessica.JPG" alt="Jessica">
+            <p class="caption">
+                Jessica N.
             </p>
             <p class="captionb" style="margin-top: 0;">
                 Design
             </p>
         </div>
+        <div class="col profile">
+            <img src="assets/photos/profiles/vicky.jpg" alt="Vicky">
+            <p class="caption">
+                Vicky Z.
+            </p>
+            <p class="captionb" style="margin-top: 0;">
+                Affairs
+            </p>
+        </div>
+        
     </div>
     
 
@@ -258,24 +260,7 @@
 
     
 
-    <script type="text/javascript">
-        window.addEventListener('scroll', reveal);
-        function reveal(){
-            var reveals = document.querySelectorAll('.reveal');
-
-            for(var i = 0; i < reveals.length; i++){
-                var windowheight = window.innerHeight;
-                var revealtop = reveals[i].getBoundingClientRect().top;
-                var revealpoint = 50;
-
-                if(revealtop < windowheight - revealpoint){
-                    reveals[i].classList.add('active');
-                }
-                else{
-                    reveals[i].classList.remove('active');
-                }
-            }
-        }
-    </script>
+    <script src="script.js" defer></script>
+    
 </body>
 </html>
