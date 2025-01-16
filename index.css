@@ -38,6 +38,10 @@ body{
     align-items: center;
 }
 
+a{
+    color: #eb4c60;
+}
+
 .pagebody{
     background-color: #fffcf9;
 }
