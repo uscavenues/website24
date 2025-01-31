@@ -685,46 +685,74 @@ border-radius: 50%;
 /****** LEADERBOARD *******/
 
 .leaderboard-container {
-    max-width: 600px;
+    max-width: 900px;
+    width: 80%;
     margin: 20px auto;
     background: #fff;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     border-radius: 15px;
-    padding: 20px;
+    padding: 40px;
     text-align: center;
 }
 
 .leaderboard {
     list-style: none;
     padding: 0;
+    width: 100%
 }
 
 .leaderboard li {
     background: linear-gradient(135deg, #eb4c60, #fad0c4);
     margin: 10px 0;
-    padding: 15px;
+    padding: 20px;
     border-radius: 10px;
-    font-size: 20px;
+    font-size: 24px;
     font-weight: bold;
     display: flex;
     align-items: center;
     justify-content: space-between;
     color: #fff;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    position: relative;
+    min-height: 50px;
 }
 
 .leaderboard-bar {
-    height: 30px;
+    height: 40px;
     background-color: #eb4c60;
     border-radius: 10px;
-    transition: width 0.5s ease-in-out;
+    transition: width 1.5s ease-in-out;
     margin-left: 10px;
+    position: relative;
+    overflow: hidden;
+    flex-grow: 1;
+}
+
+/****** CAR ANIMATION *******/
+.car {
+    position: absolute;
+    top: 50%; /* Ensures car is centered vertically */
+    transform: translate(-100%, -50%); /* Moves the car slightly off-screen to start smoothly */
+    width: 100px; /* Adjusted car size */
+    height: 70px; /* Adjusted for better visibility */
+    background-image: url('assets/icons/leaderboard_car.png'); 
+    background-size: contain;
+    background-repeat: no-repeat;
+    transition: transform 2s ease-in-out, opacity 1s ease-in-out;
+}
+
+.lunch-count {
+    font-weight: bold;
+    margin-left: 10px;
+    color: #fff;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
 }
 
 /****** IMAGE ALIGNMENT *******/
 
 .profile img {
-    max-width: 100%;
+    max-width: 250%;
     height: auto;
     display: block;
     margin: 0 auto;

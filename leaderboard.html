@@ -38,7 +38,6 @@
 
     <p class="header">LUNCH BUDDIES LEADERBOARD</p>
     <p class="blurb centered eightyfive" style="margin-top: 3%;">The member with the most lunch buddy outings for the semester will win a prize, so make sure you're keeping up! </p>
-    <p class="caption centered eightyfive" style="margin-top: 3%;">Updated: MM/DD</p>
 
     <div class="row eightyfive">
         <div class="col" style="justify-content: center; align-items: center; width: 100%; text-align: center;">
@@ -93,9 +92,9 @@
                 const csvText = await response.text();
                 const rows = csvText.trim().split("\n").map(row => row.split(",").map(cell => cell.trim()));
 
-                const data = rows.slice(1).filter(row => row.length > 1 && row[0] && row[1]);
+                const data = rows.slice(1).filter(row => row.length > 1 && row[0] && !isNaN(row[1]));
 
-                data.sort((a, b) => Number(b[1]) - Number(a[1]));
+                data.sort((a, b) => Number(b[1]) - Number(a[1])); // Sort leaderboard in descending order
 
                 leaderboard.innerHTML = '';
 
@@ -106,17 +105,46 @@
 
                 const maxLunches = Number(data[0][1]);
 
-                data.forEach(([name, count]) => {
+                data.forEach(([name, count], index) => {
                     const percentage = (Number(count) / maxLunches) * 100;
                     
                     const li = document.createElement('li');
                     li.innerHTML = `
                         <span style="min-width: 120px;">${name}</span>
-                        <div class="leaderboard-bar" style="width: ${percentage}%; background: linear-gradient(135deg, #eb4c60, #fad0c4);">
-                            ${count} lunches
+                        <div class="leaderboard-bar" style="width: 0%; background: linear-gradient(135deg, #eb4c60, #fad0c4); position: relative;">
+                            <div class="car"></div> 
+                            <span class="lunch-count" style="opacity: 0;">${count} lunches</span>
                         </div>
                     `;
                     leaderboard.appendChild(li);
+
+                    // Animate the bar and the car after a delay
+                    setTimeout(() => {
+                        const bar = li.querySelector('.leaderboard-bar');
+                        const car = li.querySelector('.car');
+                        const countText = li.querySelector('.lunch-count');
+                
+                        bar.style.width = `${percentage}%`;
+
+                        car.style.width = "100px";  // Adjusted car size
+                        car.style.height = "70px";
+
+                        car.style.left = "-120px";
+
+                // Move the car to the end of the bar
+                        setTimeout(() => {
+                            car.style.transform = `translate(${bar.clientWidth - 110}px, -50%)`;
+
+                            setTimeout(() => {
+                                car.style.opacity = "0";
+
+                        // Show lunch count after the car fades out
+                                setTimeout(() => {
+                                    countText.style.opacity = "1";
+                                }, 500);
+                            }, 1000);
+                        }, 1500);
+                    }, index * 800); // Delay each entry animation
                 });
 
             } catch (error) {
