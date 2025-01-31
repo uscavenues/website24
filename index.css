@@ -731,10 +731,10 @@ border-radius: 50%;
 /****** CAR ANIMATION *******/
 .car {
     position: absolute;
-    top: 50%; /* Ensures car is centered vertically */
-    transform: translate(-100%, -50%); /* Moves the car slightly off-screen to start smoothly */
-    width: 100px; /* Adjusted car size */
-    height: 70px; /* Adjusted for better visibility */
+    top: 50%; 
+    transform: translate(-100%, -50%); 
+    width: 100px; 
+    height: 70px; 
     background-image: url('assets/icons/leaderboard_car.png'); 
     background-size: contain;
     background-repeat: no-repeat;
@@ -752,7 +752,7 @@ border-radius: 50%;
 /****** IMAGE ALIGNMENT *******/
 
 .profile img {
-    max-width: 250%;
+    max-width: 100%;
     height: auto;
     display: block;
     margin: 0 auto;

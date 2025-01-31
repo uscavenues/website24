@@ -94,7 +94,7 @@
 
                 const data = rows.slice(1).filter(row => row.length > 1 && row[0] && !isNaN(row[1]));
 
-                data.sort((a, b) => Number(b[1]) - Number(a[1])); // Sort leaderboard in descending order
+                data.sort((a, b) => Number(b[1]) - Number(a[1])); 
 
                 leaderboard.innerHTML = '';
 
@@ -118,7 +118,6 @@
                     `;
                     leaderboard.appendChild(li);
 
-                    // Animate the bar and the car after a delay
                     setTimeout(() => {
                         const bar = li.querySelector('.leaderboard-bar');
                         const car = li.querySelector('.car');
@@ -126,25 +125,23 @@
                 
                         bar.style.width = `${percentage}%`;
 
-                        car.style.width = "100px";  // Adjusted car size
+                        car.style.width = "100px";  
                         car.style.height = "70px";
 
                         car.style.left = "-120px";
 
-                // Move the car to the end of the bar
                         setTimeout(() => {
                             car.style.transform = `translate(${bar.clientWidth - 110}px, -50%)`;
 
                             setTimeout(() => {
                                 car.style.opacity = "0";
 
-                        // Show lunch count after the car fades out
                                 setTimeout(() => {
                                     countText.style.opacity = "1";
                                 }, 500);
                             }, 1000);
                         }, 1500);
-                    }, index * 800); // Delay each entry animation
+                    }, index * 800); 
                 });
 
             } catch (error) {
