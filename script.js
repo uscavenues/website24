@@ -57,3 +57,14 @@ window.onclick = function(event) {
     }
 }
 
+function submitEmail() {
+    const emailInput = document.getElementById("email-input");
+    const emailSuccess = document.getElementById("email-success");
+
+    if (emailInput.value.includes("@")) {
+        emailSuccess.style.display = "block";
+        emailInput.value = ""; 
+    } else {
+        alert("Please enter a valid email address.");
+    }
+}
