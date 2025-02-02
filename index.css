@@ -749,6 +749,27 @@ border-radius: 50%;
     transition: opacity 0.5s ease-in-out;
 }
 
+/****** FIRST PLACE IMAGE *******/
+
+.first-place-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;  /* Ensures perfect horizontal centering */
+    justify-content: center;
+    text-align: center;
+    width: 100%; /* Full width to prevent clipping */
+    margin: 0 auto; /* Centers the container */
+}
+
+.firstplace-img {
+    width: 40vw; /* Quadrupled size */
+    max-width: none !important; /* Ensures it can scale */
+    height: auto;
+    display: block;
+    margin: 0 auto; /* Centers the image itself */
+}
+
+
 /****** IMAGE ALIGNMENT *******/
 
 .profile img {

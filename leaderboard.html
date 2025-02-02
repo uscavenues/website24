@@ -39,16 +39,10 @@
     <p class="header">LUNCH BUDDIES LEADERBOARD</p>
     <p class="blurb centered eightyfive" style="margin-top: 3%;">The member with the most lunch buddy outings for the semester will win a prize, so make sure you're keeping up! </p>
 
-    <div class="row eightyfive">
-        <div class="col" style="justify-content: center; align-items: center; width: 100%; text-align: center;">
-            <div class="row" style="margin-top: 1vw; justify-content: center;">
-                <div class="col profile" style="width: 15vw;">
-                    <img src="assets/icons/thomas_lunch.png" alt="First Place" style="max-width: 100%; height: auto; display: block; margin: 0 auto;">
-                    <p class="caption" style="margin-top: 0.5vw;">First Place</p>
-                </div>
-            </div>
-        </div>
-    </div>
+    <!-- First Place Image Section -->
+<div class="first-place-container">
+    <img src="assets/icons/firstplace.png" class="firstplace-img">
+</div>
 
 
 
@@ -109,11 +103,12 @@
                     const percentage = (Number(count) / maxLunches) * 100;
                     
                     const li = document.createElement('li');
+                    const lunchText = Number(count) === 1 ? "1 lunch" : `${count} lunches`;
                     li.innerHTML = `
                         <span style="min-width: 120px;">${name}</span>
-                        <div class="leaderboard-bar" style="width: 0%; background: linear-gradient(135deg, #eb4c60, #fad0c4); position: relative;">
+                        <div class="leaderboard-bar" style="width: 0%; position: relative;">
                             <div class="car"></div> 
-                            <span class="lunch-count" style="opacity: 0;">${count} lunches</span>
+                            <span class="lunch-count" style="opacity: 0;">${lunchText}</span>
                         </div>
                     `;
                     leaderboard.appendChild(li);
