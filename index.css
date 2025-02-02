@@ -762,7 +762,7 @@ border-radius: 50%;
 }
 
 .firstplace-img {
-    width: 30vw; /* Quadrupled size */
+    width: 20vw; /* Quadrupled size */
     max-width: none !important; /* Ensures it can scale */
     height: auto;
     display: block;
