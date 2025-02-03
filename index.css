@@ -786,11 +786,13 @@ border-radius: 50%;
 /****** EMAIL POPUP *******/
 
 .email-popup {
-    margin-top: 20px;
-    padding: 15px;
-    background: #f8f9fa;
+    background: #f8f9fa; /* Light grayish background */
     border-radius: 10px;
+    padding: 20px;
     text-align: center;
+    width: 100%;
+    max-width: 400px;
+    margin: auto;
 }
 
 .email-popup input {
@@ -800,6 +802,7 @@ border-radius: 50%;
     border-radius: 5px;
     font-size: 16px;
     margin-bottom: 10px;
+    text-align: center;
 }
 
 .email-popup button {
@@ -814,4 +817,9 @@ border-radius: 50%;
 
 .email-popup button:hover {
     background-color: #273a63;
+}
+
+#email-success {
+    font-size: 14px;
+    margin-top: 10px;
 }
