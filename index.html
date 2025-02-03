@@ -41,15 +41,39 @@
 
         <div class="email-popup">
             <p style="color: #345075; font-size: 20px;">Join our mailing list for updates!</p>
-            <form action="https://gmail.us12.list-manage.com/subscribe/post?u=aede6a7fd2d9f81fc5d22c4dc&amp;id=23b6116543&amp;f_id=004161e9f0" 
-                  method="post" 
-                  target="_blank">
-                <input type="email" name="EMAIL" id="email-input" placeholder="Enter your email" required>
-                <button type="submit">Subscribe</button>
-            </form>
-            <p id="email-success" style="color: #345075; display: none;">Thank you for subscribing!</p>
+        
+            <div id="mc_embed_shell">
+                <link href="//cdn-images.mailchimp.com/embedcode/classic-061523.css" rel="stylesheet" type="text/css">
+                
+                <div id="mc_embed_signup">
+                    <form action="https://gmail.us12.list-manage.com/subscribe/post?u=aede6a7fd2d9f81fc5d22c4dc&amp;id=23b6116543&amp;f_id=004161e9f0" 
+                          method="post" 
+                          id="mc-embedded-subscribe-form" 
+                          name="mc-embedded-subscribe-form" 
+                          class="validate" 
+                          target="_blank">
+                        
+                        <div class="mc-field-group">
+                            <input type="email" name="EMAIL" id="mce-EMAIL" placeholder="Enter your email" required>
+                        </div>
+        
+                        <div class="clear">
+                            <input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="button">
+                        </div>
+                    </form>
+                </div>
+        
+                <script type="text/javascript" src="//s3.amazonaws.com/downloads.mailchimp.com/js/mc-validate.js"></script>
+                <script type="text/javascript">
+                    (function($) {
+                        window.fnames = new Array(); 
+                        window.ftypes = new Array();
+                        fnames[0]='EMAIL';ftypes[0]='email';
+                    }(jQuery));
+                    var $mcj = jQuery.noConflict(true);
+                </script>
+            </div>
         </div>
-    </div>
 
         <!-- <br>
         <p style="color: #345075;">Join our next info session on 1/27 @ 8PM! <a href="https://usc.zoom.us/j/92402683411" target="_blank">Link to Zoom</a> </p>
