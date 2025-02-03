@@ -782,3 +782,35 @@ border-radius: 50%;
 .profile p {
     margin-top: 0.5vw;
 }
+
+
+.email-popup {
+    margin-top: 20px;
+    padding: 15px;
+    background: #f8f9fa;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.email-popup input {
+    width: 80%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+.email-popup button {
+    background-color: #345075;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.email-popup button:hover {
+    background-color: #273a63;
+}
