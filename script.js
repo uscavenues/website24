@@ -57,7 +57,9 @@ window.onclick = function(event) {
     }
 }
 
-async function submitEmail() {
+async function submitEmail(event) {
+    event.preventDefault(); 
+
     const emailInput = document.getElementById("email-input");
     const emailSuccess = document.getElementById("email-success");
 
@@ -67,12 +69,11 @@ async function submitEmail() {
         return;
     }
 
-    const apiKey = "709c1f1f0be23af672efec7e2376d57f-us12";
+    
     const audienceId = "23b6116543";
     const serverPrefix = "us12"; 
 
     const url = `https://${serverPrefix}.api.mailchimp.com/3.0/lists/${audienceId}/members/`;
-
     const data = {
         email_address: email,
         status: "subscribed",
@@ -82,7 +83,7 @@ async function submitEmail() {
         const response = await fetch(url, {
             method: "POST",
             headers: {
-                "Authorization": `apikey ${apiKey}`,
+                "Authorization": "709c1f1f0be23af672efec7e2376d57f-us12", 
                 "Content-Type": "application/json"
             },
             body: JSON.stringify(data)
@@ -91,7 +92,7 @@ async function submitEmail() {
         const result = await response.json();
 
         if (response.ok) {
-            emailSuccess.style.display = "block";
+            emailSuccess.style.display = "block"; 
             emailInput.value = ""; 
         } else if (result.title === "Member Exists") {
             alert("This email is already subscribed.");
@@ -103,3 +104,5 @@ async function submitEmail() {
         alert("An error occurred. Please try again.");
     }
 }
+
+document.getElementById("mailchimp-form").addEventListener("submit", submitEmail);
