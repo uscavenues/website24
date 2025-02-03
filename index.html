@@ -38,16 +38,70 @@
         <p style="color: #345075;">Submit application <a href="https://docs.google.com/forms/d/e/1FAIpQLSe6YX4MX-zZwNYA2XzMEGSXeXcnBtUjvadThp0ksXsrR3UvWg/viewform" target="_blank">here</a>, and check out the <a href="apply.html">Apply page</a> to learn more.</p>
         <p style="color: #345075;">All apps due this Friday, 1/31 @ 11:59pm!</p>
         <!--opt in email form-->
-        <div class="email-popup">
-            <h2 style="color: #345075;">Join Our Mailing List</h2>
+        <!-- Opt-in Email List Form -->
+    <div id="mc_embed_shell">
+        <link href="//cdn-images.mailchimp.com/embedcode/classic-061523.css" rel="stylesheet" type="text/css">
+        <style type="text/css">
+            #mc_embed_signup {
+                background:#f8f9fa; 
+                clear:left; 
+                font:14px Helvetica, Arial, sans-serif; 
+                width: 100%; 
+                text-align: center;
+                padding: 15px;
+                border-radius: 10px;
+            }
+            .mc-field-group input {
+                width: 80%;
+                padding: 10px;
+                border: 1px solid #ccc;
+                border-radius: 5px;
+                font-size: 16px;
+                margin-bottom: 10px;
+            }
+            .button {
+                background-color: #345075;
+                color: white;
+                padding: 10px 15px;
+                border: none;
+                border-radius: 5px;
+                cursor: pointer;
+                font-size: 16px;
+            }
+            .button:hover {
+                background-color: #273a63;
+            }
+        </style>
+
+        <div id="mc_embed_signup">
             <form action="https://gmail.us12.list-manage.com/subscribe/post?u=aede6a7fd2d9f81fc5d22c4dc&amp;id=23b6116543&amp;f_id=004161e9f0" 
                   method="post" 
+                  id="mc-embedded-subscribe-form" 
+                  name="mc-embedded-subscribe-form" 
+                  class="validate" 
                   target="_blank">
-                <input type="email" name="EMAIL" placeholder="Enter your email" required>
-                <button type="submit">Subscribe</button>
+                <h2>Join Our Mailing List</h2>
+                <div class="mc-field-group">
+                    <label for="mce-EMAIL">Email Address:</label>
+                    <input type="email" name="EMAIL" id="mce-EMAIL" required>
+                </div>
+                <div class="clear">
+                    <input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="button">
+                </div>
             </form>
         </div>
+
+        <script type="text/javascript" src="//s3.amazonaws.com/downloads.mailchimp.com/js/mc-validate.js"></script>
+        <script type="text/javascript">
+            (function($) {
+                window.fnames = new Array(); 
+                window.ftypes = new Array();
+                fnames[0]='EMAIL';ftypes[0]='email';
+            }(jQuery));
+            var $mcj = jQuery.noConflict(true);
+        </script>
     </div>
+</div>
         <!-- <br>
         <p style="color: #345075;">Join our next info session on 1/27 @ 8PM! <a href="https://usc.zoom.us/j/92402683411" target="_blank">Link to Zoom</a> </p>
          info session <a href="https://usc.zoom.us/j/97728767373?pwd=QuHkS8AWtNQWPDMxSTwwzyZH56Wq5Z.1" target="_blank">here</a>! -->
