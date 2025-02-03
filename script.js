@@ -57,14 +57,49 @@ window.onclick = function(event) {
     }
 }
 
-function submitEmail() {
+async function submitEmail() {
     const emailInput = document.getElementById("email-input");
     const emailSuccess = document.getElementById("email-success");
 
-    if (emailInput.value.includes("@")) {
-        emailSuccess.style.display = "block";
-        emailInput.value = ""; 
-    } else {
+    const email = emailInput.value.trim();
+    if (!email.includes("@")) {
         alert("Please enter a valid email address.");
+        return;
+    }
+
+    const apiKey = "709c1f1f0be23af672efec7e2376d57f-us12";
+    const audienceId = "23b6116543";
+    const serverPrefix = "us12"; 
+
+    const url = `https://${serverPrefix}.api.mailchimp.com/3.0/lists/${audienceId}/members/`;
+
+    const data = {
+        email_address: email,
+        status: "subscribed",
+    };
+
+    try {
+        const response = await fetch(url, {
+            method: "POST",
+            headers: {
+                "Authorization": `apikey ${apiKey}`,
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(data)
+        });
+
+        const result = await response.json();
+
+        if (response.ok) {
+            emailSuccess.style.display = "block";
+            emailInput.value = ""; 
+        } else if (result.title === "Member Exists") {
+            alert("This email is already subscribed.");
+        } else {
+            alert("Subscription failed. Please try again.");
+        }
+    } catch (error) {
+        console.error("Error:", error);
+        alert("An error occurred. Please try again.");
     }
 }
