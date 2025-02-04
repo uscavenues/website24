@@ -41,11 +41,14 @@
 
         <div class="popup email-popup">
             <p style="color: #345075; font-size: 20px; margin-bottom: 15px;">Join our mailing list for updates!</p>
-            <form id="mailchimp-form">
+            <form id="mailchimp-form" action="https://gmail.us12.list-manage.com/subscribe/post?u=aede6a7fd2d9f81fc5d22c4dc&amp;id=23b6116543" method="POST" target="hidden_iframe">
                 <input type="email" id="email-input" name="EMAIL" placeholder="Enter your email" required>
                 <button type="submit">Subscribe</button>
             </form>
+        
             <p id="email-success" style="color: #345075; display: none;">Thank you for subscribing!</p>
+            
+            <iframe name="hidden_iframe" style="display:none;"></iframe>
         </div>
     <!-- </div> -->
 
