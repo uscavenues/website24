@@ -39,17 +39,14 @@
         <p style="color: #345075;">All apps due this Friday, 1/31 @ 11:59pm!</p> -->
         <!--opt in email form-->
 
-        <div class="email-popup" id="popup">
-            <span class="close-btn" onclick="closePopup()">×</span>
-            <p style="color: #345075; font-size: 16px; margin-bottom: 10px;">Join our mailing list for updates!</p>
-            <form id="mailchimp-form" action="https://gmail.us12.list-manage.com/subscribe/post?u=aede6a7fd2d9f81fc5d22c4dc&amp;id=23b6116543" method="POST" target="hidden_iframe">
+        <div class="popup email-popup">
+            <p style="color: #345075; font-size: 20px; margin-bottom: 15px;">Join our mailing list for updates!</p>
+            <form id="mailchimp-form">
                 <input type="email" id="email-input" name="EMAIL" placeholder="Enter your email" required>
                 <button type="submit">Subscribe</button>
             </form>
             <p id="email-success" style="color: #345075; display: none;">Thank you for subscribing!</p>
-            <iframe name="hidden_iframe" style="display:none;"></iframe>
         </div>
-        
     <!-- </div> -->
 
         <!-- <br>
