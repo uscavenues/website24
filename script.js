@@ -57,52 +57,41 @@ window.onclick = function(event) {
     }
 }
 
-async function submitEmail(event) {
+document.getElementById("mailchimp-form").addEventListener("submit", function(event) {
     event.preventDefault(); 
 
     const emailInput = document.getElementById("email-input");
     const emailSuccess = document.getElementById("email-success");
 
-    const email = emailInput.value.trim();
-    if (!email.includes("@")) {
+    if (!emailInput.value.includes("@")) {
         alert("Please enter a valid email address.");
         return;
     }
 
-    
-    const audienceId = "23b6116543";
-    const serverPrefix = "us12"; 
+    this.submit();
 
-    const url = `https://${serverPrefix}.api.mailchimp.com/3.0/lists/${audienceId}/members/`;
-    const data = {
-        email_address: email,
-        status: "subscribed",
-    };
+    setTimeout(() => {
+        emailSuccess.style.display = "block";
+        emailInput.value = "";
+    }, 1000);
+});
 
-    try {
-        const response = await fetch(url, {
-            method: "POST",
-            headers: {
-                "Authorization": "709c1f1f0be23af672efec7e2376d57f-us12", 
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify(data)
-        });
-
-        const result = await response.json();
-
-        if (response.ok) {
-            emailSuccess.style.display = "block"; 
-            emailInput.value = ""; 
-        } else if (result.title === "Member Exists") {
-            alert("This email is already subscribed.");
-        } else {
-            alert("Subscription failed. Please try again.");
-        }
-    } catch (error) {
-        console.error("Error:", error);
-        alert("An error occurred. Please try again.");
+function closePopup() {
+    let popup = document.getElementById("popup");
+    if (popup) {
+        popup.style.display = "none";
     }
 }
 
-document.getElementById("mailchimp-form").addEventListener("submit", submitEmail);
+// Optional: Show popup when needed
+function showPopup() {
+    let popup = document.getElementById("popup");
+    if (popup) {
+        popup.style.display = "block";
+    }
+}
+
+// Ensure popup shows on page load (Optional)
+window.onload = function () {
+    showPopup();
+};
