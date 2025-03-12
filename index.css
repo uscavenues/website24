@@ -681,3 +681,168 @@ border-radius: 50%;
         transform: scale(1);
     }
 }
+
+/****** LEADERBOARD *******/
+
+.leaderboard-container {
+    max-width: 900px;
+    width: 80%;
+    margin: 20px auto;
+    background: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 15px;
+    padding: 40px;
+    text-align: center;
+}
+
+.leaderboard {
+    list-style: none;
+    padding: 0;
+    width: 100%
+}
+
+.leaderboard li {
+    background: linear-gradient(135deg, #eb4c60, #fad0c4);
+    margin: 10px 0;
+    padding: 20px;
+    border-radius: 10px;
+    font-size: 24px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    position: relative;
+    min-height: 50px;
+}
+
+.leaderboard-bar {
+    height: 40px;
+    background-color: #eb4c60;
+    border-radius: 10px;
+    transition: width 1.5s ease-in-out;
+    margin-left: 10px;
+    position: relative;
+    overflow: hidden;
+    flex-grow: 1;
+}
+
+/****** CAR ANIMATION *******/
+.car {
+    position: absolute;
+    top: 50%; 
+    transform: translate(-100%, -50%); 
+    width: 100px; 
+    height: 70px; 
+    background-image: url('assets/icons/leaderboard_car.png'); 
+    background-size: contain;
+    background-repeat: no-repeat;
+    transition: transform 2s ease-in-out, opacity 1s ease-in-out;
+}
+
+.lunch-count {
+    font-weight: bold;
+    margin-left: 10px;
+    color: #fff;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+}
+
+/****** FIRST PLACE IMAGE *******/
+
+.first-place-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;  /* Ensures perfect horizontal centering */
+    justify-content: center;
+    text-align: center;
+    width: 100%; /* Full width to prevent clipping */
+    margin: 0 auto; /* Centers the container */
+}
+
+.firstplace-img {
+    width: 20vw; /* Quadrupled size */
+    max-width: none !important; /* Ensures it can scale */
+    height: auto;
+    display: block;
+    margin: 0 auto; /* Centers the image itself */
+}
+
+
+/****** IMAGE ALIGNMENT *******/
+
+.profile img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+}
+
+.profile p {
+    margin-top: 0.5vw;
+}
+
+/****** EMAIL POPUP *******/
+
+.email-popup {
+    background: #f8f9fa;
+    border-radius: 10px;
+    padding: 15px 15px 20px;
+    text-align: center;
+    width: 90%;
+    max-width: 280px;
+    max-height: 180px;
+    overflow: hidden;
+    position: fixed;
+    bottom: 20px;
+    right: 20px; 
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+    display: block;
+}
+
+.close-btn {
+    position: absolute;
+    top: 8px;
+    right: 10px;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    color: #345075;
+    background: none;
+    border: none;
+}
+
+.close-btn:hover {
+    color: red;
+}
+
+.email-popup input {
+    width: 85%;
+    padding: 6px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
+    margin-bottom: 8px;
+    text-align: center;
+}
+
+.email-popup button {
+    background-color: #345075;
+    color: white;
+    padding: 6px 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.email-popup button:hover {
+    background-color: #273a63;
+}
+
+#email-success {
+    font-size: 12px;
+    margin-top: 5px;
+}

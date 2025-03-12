@@ -56,3 +56,42 @@ window.onclick = function(event) {
         document.getElementById("options").style.display = "none";
     }
 }
+
+document.getElementById("mailchimp-form").addEventListener("submit", function(event) {
+    event.preventDefault(); 
+
+    const emailInput = document.getElementById("email-input");
+    const emailSuccess = document.getElementById("email-success");
+
+    if (!emailInput.value.includes("@")) {
+        alert("Please enter a valid email address.");
+        return;
+    }
+
+    this.submit();
+
+    setTimeout(() => {
+        emailSuccess.style.display = "block";
+        emailInput.value = "";
+    }, 1000);
+});
+
+function closePopup() {
+    let popup = document.getElementById("popup");
+    if (popup) {
+        popup.style.display = "none";
+    }
+}
+
+// Optional: Show popup when needed
+function showPopup() {
+    let popup = document.getElementById("popup");
+    if (popup) {
+        popup.style.display = "block";
+    }
+}
+
+// Ensure popup shows on page load (Optional)
+window.onload = function () {
+    showPopup();
+};
