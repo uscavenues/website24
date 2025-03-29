@@ -278,7 +278,7 @@ p{
     font-family: 'Readex Pro';
     font-size: 10vw;
     color: #FFFCF9;
-    margin-top: 15vh;
+    margin-top: 10vw;
     margin-bottom: 30vh;
     margin-right: 3vw;
     padding: 0;
@@ -344,7 +344,7 @@ p{
 .home-background-photo{
     position: absolute;
     z-index: -1;
-    height: 700px;
+    height: 50vw;
     opacity: .60;
     filter: brightness(80%);
 }
