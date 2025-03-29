@@ -268,19 +268,24 @@ p{
 
                 /**** HOME PAGE *****/
 .col.home{
-    margin-left: 7vw;
+    margin-right: 11vw;
+    width: 75%;
+    /* background-color: blue;; */
 }
  
 .title{
+    /* background-color: pink; */
     font-family: 'Readex Pro';
     font-size: 10vw;
     color: #FFFCF9;
     margin-top: 15vh;
     margin-bottom: 30vh;
+    margin-right: 3vw;
     padding: 0;
     font-style: bold;
     line-height: 90%;
     background-color: none;
+    text-align: center;
 }
 
 .homebody{
@@ -334,6 +339,13 @@ p{
     color: #FFB9C2;
     font-size: 4vw;
     width: 84%
+}
+
+.home-background-photo{
+    position: absolute;
+    z-index: -1;
+    height: 700px;
+    opacity: .60;
 }
 
 .homephoto{
