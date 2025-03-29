@@ -346,6 +346,7 @@ p{
     z-index: -1;
     height: 700px;
     opacity: .60;
+    filter: brightness(80%);
 }
 
 .homephoto{
