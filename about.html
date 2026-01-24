@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Avenues Consulting Group</title>
+    <link rel="icon" href="assets/icons/favicon.png">
+    <link rel="stylesheet" href="index.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Readex+Pro:wght@160..700&display=swap" rel="stylesheet">
+
+</head>
+<body class="pagebody" onload="checkLoggedIn()">
+    <nav class="navibar">
+        <a href="index.html" ><img class="logo" src="assets/icons/whitelogo.png" alt="Avenues Logo"></a>
+        <nav class="pages">
+          <a href="index.html"><button class="page">HOME</button></a>
+          <a href="about.html"><button class="page currentpage">ABOUT</button></a>
+          <a href="community.html"><button class="page">COMMUNITY</button></a>
+          <a href="apply.html"><button class="page">APPLY</button></a>
+          <a href="portfolio.html"><button class="page">OUR PORTFOLIO</button></a>
+          <a href="contact.html"><button class="page">WORK WITH US</button></a>
+          <div class="dropdown" id="dropdown" style="display: none;" >
+            <button class="page dropdown-btn" onclick="showMenu()">MEMBERS</button>
+            <div id="options" class="dropdown-options">
+                <a href="resources.html">Resources</a>
+                <a href="curriculum.html">Curriculum</a>
+                <a href="leaderboard.html">Leaderboard</a>
+            </div>
+          </div>
+          <a><button class="page login" id="loginbutton" onclick="login()">MEMBER LOGIN</button></a>
+        </nav> 
+    </nav>
+
+    <p class="header">ABOUT US</p>
+    <p class="subheader">Our Beginnings</div>
+    <div class="row" style="width: 75vw;">
+        <div class="col" style="width: 50%">
+            <p class="blurb" style="text-align: right;font-weight: 100;">Avenues Consulting Group was started in 2023 by a team of students that wanted to address the lack of project-building opportunities available in the consulting space at USC.</p>
+            <img src="assets/photos/fundraising.JPG" alt="">
+            <p class="caption ">Fundraising to support our humble beginnings</p>
+        </div>
+        <div class="col" style="width: 43%">
+            <img src="assets/photos/founders.JPG" alt="">
+            <p class="caption ">Our founding members</p>
+            <p class="blurb " style="font-weight: 100;">Since then, Avenues' membership has grown threefold and acquired a client portfolio of 20+ Fortune 500, non-profit, and startup businesses within 2 years.</p>
+        </div>
+    </div>
+
+    <!-- <div class="spacer"></div> -->
+
+    <p class="subheader reveal">Our Mission</p>
+    <p class="blurb reveal">Avenues Consulting Group's mission is twofold.</p>
+    <div class="row reveal" style="width: 85vw; font-weight: 100;">
+        <p class="blurb" style="border-right: solid 1px #eb4c60; width:50%; padding-right: 2%; margin-top: 1%;">For our clients, Avenues aims to provide <span style="color: #eb4c60">pro bono project-building</span> services for organizations ranging from non-profits, to start-ups, to established corporations. We pursue our clients' needs in a multidisciplinary manner, combining our skills in <span style="color: #eb4c60"> strategy, technology, and design</span> to create complete solutions.</p>
+        <p class="blurb" style="width: 50%; padding-left: 2%; margin-top: 1%; text-align: right;">For our consultants, Avenues strives to give strategists, engineers, and designers a space to <span style="color: #eb4c60">collaborate</span> and <span style="color: #eb4c60">build projects</span> that positively impact others. We are <span style="color: #eb4c60">constantly learning</span> new skills and improving the ones we already have. <span style="color: #eb4c60">No matter your professional goals</span>, Avenues works to create a space for you.</p>
+    </div>
+
+    <p class="subheader reveal">Our Team</p>
+    <p class="blurb reveal" style="text-align: center;">We carefully select a team of devoted leaders each year to <br>spearhead the growth of our organization and its members.</p>
+    <p class="blurb reveal" style="color: #eb4c60">EXECUTIVE</p>
+    <div class="row reveal" style="width: 85vw; justify-content: space-around;">
+        <div class="col profile"></div>
+        <div class="col profile"></div>
+        <div class="col profile">
+            <img src="assets/photos/profiles/anna.JPG" alt="Anna Chi">
+            <p class="caption">
+                Anna C.
+            </p>
+            <p class="captionb" style="margin-top: 0;">
+                Co-President
+            </p>
+        </div>
+        <div class="col profile">
+            <img src="assets/photos/profiles/darius.JPG" alt="Darius Mahjoob">
+            <p class="caption">
+                Darius M.
+            </p>
+            <p class="captionb" style="margin-top: 0;">
+                Co-President
+            </p>
+        </div>
+        
+        <div class="col profile"></div>
+        <div class="col profile"></div>
+    </div>
+
+    <p class="blurb reveal" style="color: #eb4c60; margin-top: 3%;">DIRECTORS</p>
+    <div class="row eightyfive reveal" style=" justify-content: space-around;">
+        
+        <div class="col profile">
+            <img src="assets/photos/profiles/thomas.JPG" alt="Thomas">
+            <p class="caption">
+                Thomas B.
+            </p>
+            <p class="captionb" style="margin-top: 0; margin-bottom: 1vw;">
+                Pre-Prof.
+            </p>
+        </div>
+        <div class="col profile">
+            <img src="assets/photos/profiles/emma.JPG" alt="Emma">
+            <p class="caption">
+                Emma C.
+            </p>
+            <p class="captionb" style="margin-top: 0;">
+                Human Resources
+            </p>
+        </div>
+        <div class="col profile">
+            <img src="assets/photos/profiles/ben.JPG" alt="Ben">
+            <p class="caption">
+                Ben R.
+            </p>
+            <p class="captionb" style="margin-top: 0;">
+                Recruitment
+            </p>
+        </div>
+        <div class="col profile">
+            <img src="assets/photos/profiles/grace.jpeg" alt="GRace">
+            <p class="caption">
+                Grace L.
+            </p>
+            <p class="captionb" style="margin-top: 0;">
+                Technology
+            </p>
+        </div>
+        <div class="col profile">
+            <img src="assets/photos/profiles/margaret.JPG" alt="Margaret">
+            <p class="caption">
+                Margaret L.
+            </p>
+            <p class="captionb" style="margin-top: 0;">
+                Design
+            </p>
+        </div>
+        
+        <div class="col profile">
+            <img src="assets/photos/profiles/ryan.JPG" alt="Ryan">
+            <p class="caption">
+                Ryan B.
+            </p>
+            <p class="captionb" style="margin-top: 0;">
+                Affairs-Finance
+            </p>
+        </div>
+        <div class="col profile">
+            <img src="assets/photos/profiles/matt.JPG" alt="Matt">
+            <p class="caption">
+                Matt H.
+            </p>
+            <p class="captionb" style="margin-top: 0;">
+                Affairs-Finance
+            </p>
+        </div>
+    </div>
+    
+
+    <p class="blurb reveal" style="color: #eb4c60; margin-top: 3%;">ASSOCIATES</p>
+    <div class="row eightyfive reveal" style=" justify-content: space-around; margin-bottom: 5%;">
+    
+        <div class="col profile">
+            <img src="assets/photos/profiles/rafa.JPG" alt="Rafael">
+            <p class="caption">
+                Rafael W.
+            </p>
+            <p class="captionb" style="margin-top: 0;">
+                Pre-Prof.
+            </p>
+        </div>
+        <div class="col profile">
+            <img src="assets/photos/profiles/alex.jpg" alt="Alex">
+            <p class="caption">
+                Alex H.
+            </p>
+            <p class="captionb" style="margin-top: 0;">
+                Pre-Prof.
+            </p>
+        </div>
+        <div class="col profile">
+            <img src="assets/photos/profiles/luke.jpg" alt="Luke">
+            <p class="caption">
+                Luke S.
+            </p>
+            <p class="captionb" style="margin-top: 0;">
+                Recruitment
+            </p>
+        </div>
+        <div class="col profile">
+            <img src="assets/photos/profiles/ariana.JPEG" alt="Ariana">
+            <p class="caption">
+                Ariana A.
+            </p>
+            <p class="captionb" style="margin-top: 0;">
+                Technology
+            </p>
+        </div>
+        <div class="col profile">
+            <img src="assets/photos/profiles/jessica.JPG" alt="Jessica">
+            <p class="caption">
+                Jessica N.
+            </p>
+            <p class="captionb" style="margin-top: 0;">
+                Design
+            </p>
+        </div>
+        <div class="col profile">
+            <img src="assets/photos/profiles/vicky.jpeg" alt="Vicky">
+            <p class="caption">
+                Vicky Z.
+            </p>
+            <p class="captionb" style="margin-top: 0;">
+                Affairs
+            </p>
+        </div>
+        <div class="col profile">
+            <img src="assets/photos/profiles/noah.jpg" alt="Noah">
+            <p class="caption">
+                Noah N.
+            </p>
+            <p class="captionb" style="margin-top: 0;">
+                Finance
+            </p>
+        </div>
+        <div class="col profile">
+            <img src="assets/photos/profiles/ethan.jpeg" alt="Ethan">
+            <p class="caption">
+                Ethan L.
+            </p>
+            <p class="captionb" style="margin-top: 0;">
+                Finance
+            </p>
+        </div>
+        
+    </div>
+    
+
+
+    <div class="col" style="width: 100%; padding-bottom: 2%;">
+        <div class="footerrow">
+            <p class="footertext" style="margin-bottom: 2%;">AVENUES CONSULTING GROUP</p>
+            <div >
+                <a href="https://www.instagram.com/uscavenues/" target="_blank"><img src="assets/icons/colorig.png" alt="Instagram" style="width: 3vw; margin-top: 40%;"></a>
+                <a href="https://www.linkedin.com/company/avenues-consulting-group-usc/posts/?feedView=all" target="_blank"><img src="assets/icons/colorlinked.png" alt="LinkedIn" style="width: 3vw;"></a>
+            </div>
+        </div>
+        <div class="footerline"></div>
+        <div class="footerrow">
+            <img class="footericon" style="margin-top: 2%;" src="assets/icons/bluelogo.png" alt="Avenues Logo">
+            <p class="footertext">Copyright ©2025 Avenues Consulting Group</p>
+        </div>
+    </div>
+
+
+    <script src="script.js" defer></script>
+
+
+    
+</body>
+</html>

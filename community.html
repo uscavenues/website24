@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Avenues Consulting Group</title>
+    <link rel="icon" href="assets/icons/favicon.png">
+    <link rel="stylesheet" href="index.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Readex+Pro:wght@160..700&display=swap" rel="stylesheet">
+
+</head>
+<body class="pagebody" onload="checkLoggedIn()">
+    <nav class="navibar">
+        <a href="index.html" ><img class="logo" src="assets/icons/whitelogo.png" alt="Avenues Logo"></a>
+        <nav class="pages">
+          <a href="index.html"><button class="page">HOME</button></a>
+          <a href="about.html"><button class="page ">ABOUT</button></a>
+          <a href="community.html"><button class="page currentpage">COMMUNITY</button></a>
+          <a href="apply.html"><button class="page">APPLY</button></a>
+          <a href="portfolio.html"><button class="page">OUR PORTFOLIO</button></a>
+          <a href="contact.html"><button class="page">WORK WITH US</button></a>
+          <div class="dropdown" id="dropdown" style="display: none;" >
+            <button class="page dropdown-btn" onclick="showMenu()">MEMBERS</button>
+            <div id="options" class="dropdown-options">
+                <a href="resources.html">Resources</a>
+                <a href="curriculum.html">Curriculum</a>
+                <a href="leaderboard.html">Leaderboard</a>
+            </div>
+          </div>
+          <a><button class="page login" id="loginbutton" onclick="login()">MEMBER LOGIN</button></a>
+        </nav> 
+    </nav>
+
+    <p class="header">OUR COMMUNITY</p>
+    <p class="blurb centered eightyfive" style="margin-top: 3%;">We cherish the <span class="pink">unique blend of majors, industries, and bright futures</span> that make up Avenues' team. No matter where your interests lie, we invite you to join us.</div>
+    
+    <div class="slider" style="margin-top: 0;">
+        <div class="slide-track">
+            <div class="slide">
+                <img src="assets/photos/backtoschool.jpeg" alt="">
+            </div>
+            <div class="slide">
+                <img src="assets/photos/carter.JPEG" alt="">
+            </div>
+            <div class="slide">
+                <img src="assets/photos/kbbqar.jpeg" alt="">
+            </div>
+            <div class="slide">
+                <img src="assets/photos/potluck.jpg" alt="">
+            </div>
+            <div class="slide">
+                <img src="assets/photos/speeddating.jpeg" alt="">
+            </div>
+            <div class="slide">
+                <img src="assets/photos/kbbqgroup.jpeg" alt="">
+            </div>
+            <div class="slide">
+                <img src="assets/photos/trio.JPEG" alt="">
+            </div>
+            <div class="slide">
+                <img src="assets/photos/tabling.jpeg" alt="">
+            </div>
+
+            <!-- doubled  -->
+
+            <div class="slide">
+                <img src="assets/photos/backtoschool.jpeg" alt="">
+            </div>
+            <div class="slide">
+                <img src="assets/photos/carter.JPEG" alt="">
+            </div>
+            <div class="slide">
+                <img src="assets/photos/kbbqar.jpeg" alt="">
+            </div>
+            <div class="slide">
+                <img src="assets/photos/potluck.jpg" alt="">
+            </div>
+            <div class="slide">
+                <img src="assets/photos/speeddating.jpeg" alt="">
+            </div>
+            <div class="slide">
+                <img src="assets/photos/kbbqgroup.jpeg" alt="">
+            </div>
+            <div class="slide">
+                <img src="assets/photos/trio.JPEG" alt="">
+            </div>
+            <div class="slide">
+                <img src="assets/photos/tabling.jpeg" alt="">
+            </div>
+        </div>
+    </div>
+
+    <p class="subheader reveal">Our Members At A Glance</p>
+    <div class="row eightyfive reveal">
+        <img style="width: 40%; object-fit: contain;" src="assets/icons/pie.jpeg" alt="">
+        <div class="col lastrow" style="align-items: center; max-width: 60%;">
+            <p class="blurb centered" style="color: #eb4c60">Most Represented Fields of Study</p>
+            <div class="row"><p class="blurb">
+                <p class="major">Business Admin</p>
+                <p class="major">Computer Science</p>
+                <p class="major">Economics</p>
+            </div>
+
+            <p class="blurb centered" style="color: #eb4c60">All Represented Fields of Study</p>
+            <div class="row">
+                <p class="major">Art History</p>
+                <p class="major">Intelligence and Cyber Ops</p>
+                <p class="major">Public Policy</p>
+            </div>
+            <div class="row">
+                <p class="major">Jazz Studies</p>
+                <p class="major">Real Estate</p>
+                <p class="major">Design</p>
+                <p class="major">BioPharm Marketing</p>
+            </div>
+            <div class="row">
+                <p class="major">Financial Math</p>
+                <p class="major">Health Promotion & Disease Prevention</p>
+            </div>
+            <div class="row">
+                <p class="major">Architecture</p>
+                <p class="major">Data Science</p>
+                <p class="major">Quant Bio</p>
+            </div>
+            <div class="row">
+                <p class="major">Philosophy, Politics, Economics</p>
+                <p class="major">Global Health</p>
+            </div>
+            <div class="row">
+                <p class="major">Sociology</p>
+                <p class="major">Environmental Engineering</p>
+            </div>
+            <div class="row">
+                <p class="major">International Relations</p>
+                <p class="major">Political Science</p>
+            </div>
+            <div class="row">
+                <p class="major">Political Economy</p>
+                <p class="major">BioPharm Science</p>
+                <p class="major">Tech, Design, Business</p>
+            </div>
+        </div>
+    </div>
+
+    <p class="subheader reveal">What We Do</p>
+    <div class="whatdocontainer reveal lastrow">
+        <div class="dorow">
+          <div class="do">
+            <img class="doimg" src="assets/icons/do/briefcase.jpeg">
+            <p class="blurbp">Client Reveal</p>
+            <p class="captionb">Each semester, members are carefully grouped into client teams based on professional interests and skills. 
+            </h11>
+          </div>
+          <div class="do">
+            <img class="doimg" src="assets/icons/do/grad.png">
+            <p class="blurbp">Curriculum Night</p>
+            <p class="captionb">Especially helpful for those first breaking into consulting, these nights are 
+              designed to introduce key concepts to members.
+            </h11>
+          </div>
+          <div class="do">
+            <img class="doimg" src="assets/icons/do/laptop-icon.jpeg">
+            <p class="blurbp">Mini-Hackathons</p>
+            <p class="captionb">Our project-builders get the chance to compete in an intra-organizational hackathon
+              to practice their skills and win prizes.
+            </h11>
+          </div>
+          <div class="do">
+            <img class="doimg" src="assets/icons/do/handshake.png">
+            <p class="blurbp">Industry Events</p>
+            <p class="captionb">With many thanks to our mentors, we hold exclusive panels, recruiting nights, 
+              office tours, and coffee chats throughout the semester.</h11>
+          </div>
+          <div class="do">
+            <img class="doimg" src="assets/icons/do/eefoc.jpeg">
+            <p class="blurbp">Coffee Chats</p>
+            <p class="captionb">Find a mentor or a new friend with our coffee chat program, where members are algorithmically
+              paired with each other weekly.
+            </h11>
+          </div>
+          <div class="do">
+            <img class="doimg" src="assets/icons/do/pencil.jpeg">
+            <p class="blurbp">Workshops</p>
+            <p class="captionb">To boost our members' skills and chances for recruitment, we hold workshops for resumes, 
+              case interviews, and other relevant concepts.
+            </h11>
+          </div>
+          <div class="do">
+            <img class="doimg" src="assets/icons/do/medal.jpeg">
+            <p class="blurbp">Case Competitions</p>
+            <p class="captionb">For our Strategy Consultants, semesterly case competitions give members a chance to practice
+              planning, pitching, and presenting proposals in 1 hour.
+            </h11>
+          </div>
+          <div class="do">
+            <img class="doimg" src="assets/icons/do/party.jpg">
+            <p class="blurbp">Social Events</p>
+            <p class="captionb">From beach hangouts and semesterly retreats, to finals study sessions and team dinners,
+              we make sure to balance the work with the play!
+            </h11>
+          </div>
+        </div>
+    </div>
+
+    <p class="subheader reveal">Our Mentors</p>
+    <p class="blurb centered eightyfive reveal">At Avenues, our <span class="pink">pre-professional and affairs teams </span> work to create and strengthen <span class="pink">industry relationships</span> to offer both general and cohort members <span class="pink">exclusive opportunities</span> to network, learn from, and foster <span class="pink">real connections</span> with the following firms.</p>
+    <div class="row eightyfive reveal" style="justify-content: space-between;">
+        <img class="companylogo" src="assets/logos/accenture.png" alt="Accenture">
+        <img class="companylogo" src="assets/logos/bain.jpg" alt="Bain">
+        <img class="companylogo" src="assets/logos/bcg.png" alt="BCG">
+        <img class="companylogo" src="assets/logos/kpmg.png" alt="KPMG">
+    </div>
+    <div class="row eightyfive reveal" style="justify-content: space-around;">
+        <img class="companylogo" src="assets/logos/grata.png" alt="Grata">
+        <img class="companylogo" src="assets/logos/ey.png" alt="EY">
+        <img class="companylogo" src="assets/logos/deloitte.png" alt="Deloitte">
+    </div>
+
+    <p class="subheader reveal">Our Alumni</p>
+    <p class="blurb eightyfive centered reveal">Since its start in Fall 2023, Avenues' members have received full-time and internship offers at these companies. <span class="pink">Hover over the logos</span> to see which positions they've filled.</p>
+    <div class="row eightyfive reveal" style="justify-content: space-around;">
+        <div class="alumni">
+            <img src="assets/logos/Bank-of-America-Emblem.png" alt="BofA">
+            <div class="content">
+                <p class="caption centered">• (FT) PM</p>
+            </div>
+        </div>
+        <div class="alumni">
+            <img src="assets/logos/ey.png" style="width: 50%" alt="EY">
+            <div class="content">
+                <p class="caption centered">• (I) Process and Controls</p>
+            </div>
+        </div>
+        
+        <div class="alumni">
+            <img src="assets/logos/jp.png" alt="JP Morgan">
+            <div class="content">
+                <p class="caption centered">• (I) IB</p>
+                <p class="caption centered">• (I) Analyst</p>
+            </div>
+        </div>
+        <div class="alumni">
+            <img src="assets/logos/pwc.png" style="width: 60%" alt="PwC">
+            <div class="content">
+                <p class="caption centered">• (I) Cyber Defense and Eng.</p>
+                <p class="caption centered">• (I) Cyber, Risk & Reg. Consultant</p>
+                <p class="caption centered">• (I) Tech Consultant</p>
+            </div>
+        </div>
+    </div>
+    <div class="row eightyfive reveal" style="justify-content: space-between;">
+        <div class="alumni">
+            <img src="assets/logos/northrop.png" alt="Northrop Grumman">
+            <div class="content">
+                <p class="caption centered">• (I) Cyber Info Assurance</p>
+            </div>
+        </div>
+        <div class="alumni">
+            <img src="assets/logos/deloitte.png" alt="Deloitte">
+            <div class="content">
+                <p class="caption centered">• (I) Management Consulting</p>
+            </div>
+        </div>
+        <div class="alumni">
+            <img src="assets/logos/disney.jpg" alt="Disney">
+            <div class="content">
+                <p class="caption centered">• (I) Corporate, Enterprise Risk Mgmt.</p>
+            </div>
+        </div>
+        <div class="alumni">
+            <img src="assets/logos/kpmg.png" alt="KPMG">
+            <div class="content">
+                <p class="caption centered">• (I) Consultant</p>
+            </div>
+        </div>
+    </div>
+    <div class="row eightyfive reveal" style="justify-content: space-around;">
+        <div class="alumni">
+            <img src="assets/logos/General_Dynamics.jpg" alt="General Dynamics">
+            <div class="content">
+                <p class="caption centered">• (I) Software Eng.</p>
+            </div>
+        </div>
+        <div class="alumni">
+            <img src="assets/logos/drfirst.png" alt="Dr. First">
+            <div class="content">
+                <p class="caption centered">• (I) Software Eng.</p>
+            </div>
+        </div>
+        <div class="alumni">
+            <img src="assets/logos/usbank.png" alt="US Bank">
+            <div class="content">
+                <p class="caption centered">• (I) PM</p>
+            </div>
+        </div>
+        <div class="alumni">
+            <img src="assets/logos/accenture.png" alt="Accenture">
+            <div class="content">
+                <p class="caption centered">• (I) Consulting Analyst</p>
+            </div>
+        </div>
+    </div>
+    <div class="row eightyfive reveal" style="justify-content: space-around; margin-bottom: 5vw;">
+        <div class="alumni">
+            <img src="assets/logos/ms.jpg" alt="Morgan Stanley">
+            <div class="content">
+                <p class="caption centered">• (I) IB Summer Analyst</p>
+            </div>
+        </div>
+        <div class="alumni">
+            <img src="assets/logos/genentech.png" alt="Genentech">
+            <div class="content">
+                <p class="caption centered">• (I) Strategy Intern</p>
+            </div>
+        </div>
+        <div class="alumni">
+            <img src="assets/logos/gs.png" alt="Goldman Sachs">
+            <div class="content">
+                <p class="caption centered">• (I) Private Wealth Management Summer Analyst</p>
+            </div>
+        </div>
+    </div>
+    
+
+    <div class="col" style="width: 100%; padding-bottom: 2%;">
+        <div class="footerrow">
+            <p class="footertext" style="margin-bottom: 2%;">AVENUES CONSULTING GROUP</p>
+            <div >
+                <a href="https://www.instagram.com/uscavenues/" target="_blank"><img src="assets/icons/colorig.png" alt="Instagram" style="width: 3vw; margin-top: 40%;"></a>
+                <a href="https://www.linkedin.com/company/avenues-consulting-group-usc/posts/?feedView=all" target="_blank"><img src="assets/icons/colorlinked.png" alt="LinkedIn" style="width: 3vw;"></a>
+            </div>
+        </div>
+        <div class="footerline"></div>
+        <div class="footerrow">
+            <img class="footericon" style="margin-top: 2%;" src="assets/icons/bluelogo.png" alt="Avenues Logo">
+            <p class="footertext">Copyright ©2025 Avenues Consulting Group</p>
+        </div>
+    </div>
+
+    
+
+    <script src="script.js" defer></script>
+</body>
+</html>

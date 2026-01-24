@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="script.js" defer></script>
+    <title>Avenues Consulting Group</title>
+    <link rel="icon" href="assets/icons/favicon.png">
+    <link rel="stylesheet" href="index.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Readex+Pro:wght@160..700&display=swap" rel="stylesheet">
+
+</head>
+<body class="pagebody" onload="checkLoggedIn()">
+    <nav class="navibar">
+        <a href="index.html" ><img class="logo" src="assets/icons/whitelogo.png" alt="Avenues Logo"></a>
+        <nav class="pages">
+          <a href="index.html"><button class="page">HOME</button></a>
+          <a href="about.html"><button class="page ">ABOUT</button></a>
+          <a href="community.html"><button class="page ">COMMUNITY</button></a>
+          <a href="apply.html"><button class="page">APPLY</button></a>
+          <a href="portfolio.html"><button class="page currentpage">OUR PORTFOLIO</button></a>
+          <a href="contact.html"><button class="page">WORK WITH US</button></a>
+          <div class="dropdown" id="dropdown" style="display: none;" >
+            <button class="page dropdown-btn" onclick="showMenu()">MEMBERS</button>
+            <div id="options" class="dropdown-options">
+                <a href="resources.html">Resources</a>
+                <a href="curriculum.html">Curriculum</a>
+                <a href="leaderboard.html">Leaderboard</a>
+            </div>
+          </div>
+          <a><button class="page login" id="loginbutton" onclick="login()">MEMBER LOGIN</button></a>
+        </nav> 
+    </nav>
+
+    <p class="header">OUR PORTFOLIO</p>
+    <p class="blurb centered eightyfive" style="margin-top: 3%;">As an organization rooted in <span class="pink"> multidisciplinary project-building</span>, we are always eager to work with all kinds of companies in all kinds of industries, including technology, non-profits, pre-med, governmental orgs, small businesses, and more. Take a look at our past projects and clientele to get a better idea of how we can collaborate.</div>
+    <p class="subheader">Our Clients</p>
+    <p class="blurb centered eightyfive">Hover over the logos to see the types of projects we've helped them with.</p>
+    
+    <div class="row eightyfive " style="justify-content: space-around;">
+        <div class="alumni">
+            <img src="assets/logos/linked.svg" alt="LinkedIn">
+            <div class="content">
+                <p class="caption centered">• Business Strategy</p>
+            </div>
+        </div>
+        <div class="alumni">
+            <img src="assets/logos/aanc.png" alt="AANC">
+            <div class="content">
+                <p class="caption centered">• Design</p>
+                <p class="caption centered">• Technology</p> 
+            </div>
+        </div>
+        <div class="alumni">
+            <img src="assets/logos/DoorDash-logo.png" alt="DoorDash">
+            <div class="content">
+                <p class="caption centered">• Business Strategy</p>
+            </div>
+        </div>
+    </div>
+    <div class="row eightyfive" style="justify-content: space-between;">
+        <div class="alumni">
+            <img src="assets/logos/galla.jpeg" alt="GALLA Beauty">
+            <div class="content">
+                <p class="caption centered">• Business Strategy</p>
+            </div>
+        </div>
+        <div class="alumni">
+            <img src="assets/logos/Mountain_Dew_logo.svg.png" alt="Mountain Dew">
+            <div class="content">
+                <p class="caption centered">• Business Strategy</p>
+                <p class="caption centered">• Design</p>
+            </div>
+        </div>
+        <div class="alumni">
+            <img src="assets/logos/wtc.jpeg" alt="Wheel and Tire Connection">
+            <div class="content">
+                <p class="caption centered">• Business Strategy</p>
+                <p class="caption centered">• Technology</p>
+            </div>
+        </div>
+        
+        <div class="alumni">
+            <img src="assets/logos/xp.jpg" alt="XP League">
+            <div class="content">
+                <p class="caption centered">• Business Strategy</p>
+            </div>
+        </div>
+    </div>
+    <div class="row eightyfive" style="justify-content: space-around; margin-bottom: 5vw;">
+        <div class="alumni">
+            <img src="assets/logos/maryland.jpg" alt="Maryland STEM Festival">
+            <div class="content">
+                <p class="caption centered">• Marketing</p>
+            </div>
+        </div>
+        <div class="alumni">
+            <img src="assets/logos/noc.png" alt="The Network of Care">
+            <div class="content">
+                <p class="caption centered">• Marketing</p>
+                <p class="caption centered">• Design</p>
+                <p class="caption centered">• Technology</p>
+            </div>
+        </div>
+        <div class="alumni">
+            <img src="assets/logos/captis.jpeg" alt="Captis Intelligence">
+            <div class="content">
+                <p class="caption centered">• Marketing</p>
+                <p class="caption centered">• Design</p>
+                <p class="caption centered">• Technology</p>
+            </div>
+        </div>
+    </div>
+
+
+    <p class="subheader reveal" style="margin-top: 3%;">Past Projects</p>
+    <p class="blurb reveal eightyfive centered">Click through the tabs to see our previous work in our 3 major lines of service. <br>Please <a href="contact.html">contact us</a> directly for specific numbers, results, and more.</p>
+    <ul class="tabs" style="margin-top: 2%;">
+        <li data-tab-target="#strattab" class="activetab tab reveal ">Strategy</li>
+        <li data-tab-target="#techtab" class="tab reveal">Technology</li>
+        <li data-tab-target="#designtab" class="tab reveal">Design</li>
+      </ul> 
+  
+      <div class="tab-content reveal" style="width: 70%;">
+
+        <div id="strattab" data-tab-content class="activetab">
+            <p class="blurbbl" style="font-size: 1.5vw;" >&#9830; General Business Strategy</p>
+            <p class="blurbbl" style="font-size: 1vw;">Whatever your organization.</p>
+            <p class="blurbbl" style="font-size: 1vw;"><span class="pink">Past Clients: LinkedIn, Doordash, Mountain Dew, Network of Care, GALLA Beauty</span></p>
+
+            <p class="blurbbl" style="font-size: 1.5vw;" >&#9830; Long-Term, Short-Term Marketing Strategy and Planning</p>
+            <p class="blurbbl" style="font-size: 1vw;">We have generated marketing plans that cater to clients' specific needs, industry, and any budget or time constraints. 
+                Marketing mediums include social media, in-person events, email, third-party companies like Yelp, and ideal influencer partnership identification. Thus far, we have had the opportunity to help businesses and non-profits in 
+            the beauty, education, and tech industries.</p>
+            <p class="blurbbl" style="font-size: 1vw;"><span class="pink">Past Clients: Network of Care, GALLA Beauty</span></p>
+
+            <p class="blurbbl" style="font-size: 1.5vw;" >&#9830; Subscription Model Creation</p>
+            <p class="blurbbl" style="font-size: 1vw;">We have developed subscription-based product models, including pricing models, tiers, and more. Stats, current and predicted customer bases
+                and product research is thoroughly conducted prior to creating models specific to your product or brand.
+            </p>
+            <p class="blurbbl" style="font-size: 1vw;"><span class="pink">Past Clients: Red Frog</span></p>
+
+            <p class="blurbbl" style="font-size: 1.5vw;" >&#9830; Customer Base Growth and Retention</p>
+            <p class="blurbbl" style="font-size: 1vw;">Our strategy have experience devising and implementing a wide range of methods to increase customer growth and
+                retention for multiple clients.
+            </p>
+            <p class="blurbbl" style="font-size: 1vw;"><span class="pink">Past Clients: LinkedIn, Doordash, Wheel and Tire Connection</span></p>
+
+            <p class="blurbbl" style="font-size: 1.5vw;" >&#9830; Event Strategizing and Planning</p>
+            <p class="blurbbl" style="font-size: 1vw;">Whether you are planning for a large event months in advance, or a series of smaller ones, we can help prepare on all fronts. In the past, 
+                this has included progressive marketing plans, partnership acquisitions, and planning the event itself.
+            </p>
+            <p class="blurbbl" style="font-size: 1vw;"><span class="pink">Past Clients: Network of Care, XP League, Maryland Stem Festival</span></p>
+               
+        </div>
+
+        <div id="techtab" data-tab-content>
+          
+            <p class="blurbbl" style="font-size: 1.5vw;" >&#9830; Website Creation (From scratch)</p>
+            <p class="blurbbl" style="font-size: 1vw;">If you have very specific desires for your website, we can build your website from scratch. This website was built from 
+                scratch as well! It uses HTML, CSS, and JavaScript, but we are certainly open to using other langauges and frameworks as necessary or appropriate for your needs. We 
+                can also help with server, domain setup.
+            </p>
+            <p class="blurbbl" style="font-size: 1vw;"><span class="pink">Past Clients: Avenues, Cirrus</span></p>
+
+            <p class="blurbbl" style="font-size: 1.5vw;" >&#9830; Website Creation (Using third-party services)</p>
+            <p class="blurbbl" style="font-size: 1vw;">On the other hand, if your main need is to have a website that is easily maintainable by you or your team directly, we can also create a website using
+                many of the popular third-party sites for doing so. In collaboration with our design consultants, we can create a website catered to your brand.
+            </p>
+            <p class="blurbbl" style="font-size: 1vw;"><span class="pink">Past Clients: Ichioka and Nakao, Asian American National Committee</span></p>
+
+            <p class="blurbbl" style="font-size: 1.5vw;" >&#9830; Data Analysis</p>
+            <p class="blurbbl" style="font-size: 1vw;">We can also analyze and extrapolate from any data you have to identify patterns and key parts of your product or business, and 
+                present it in a manner that is easy to understand. Additionally, we can provide suggestions based on the findings.
+            </p>
+            <p class="blurbbl" style="font-size: 1vw;"><span class="pink">Past Clients: Wheel and Tire Connection</span></p>
+  
+        </div>
+
+        <div id="designtab" data-tab-content>
+          
+            <p class="blurbbl" style="font-size: 1.5vw;" >&#9830; Complete Brand Creation</p>
+            <p class="blurbbl" style="font-size: 1vw;">If you are an emerging business or organization in need of a beautiful branding package, our design consultants
+                can create personalized logos, color schemes, and any other parts of your brand idenity as needed.
+            </p>
+            <p class="blurbbl" style="font-size: 1vw;"><span class="pink">Past Clients: Ichioka and Nakao</span></p>
+
+            <p class="blurbbl" style="font-size: 1.5vw;" >&#9830; Brand, Logo Modernization</p>
+            <p class="blurbbl" style="font-size: 1vw;">If you are just looking to update your brand identity, we can also help you do this.</p>
+            <p class="blurbbl" style="font-size: 1vw;"><span class="pink">Past Clients: Network of Care, Mountain Dew, Cirrus, Captis Intelligence </span></p>
+
+            <p class="blurbbl" style="font-size: 1.5vw;" >&#9830; Web, Mobile UI/UX Design</p>
+            <p class="blurbbl" style="font-size: 1vw;">Our design consultants have designed many websites in the past. We take into account your branding, ADA requirements, and 
+                can write text as needed. All these can be presented and demo'd on Figma.
+            </p>
+            <p class="blurbbl" style="font-size: 1vw;"><span class="pink">Past Clients: Asian American National Committee, Captis Intelligence</span></p>
+    
+          </div>
+      </div>
+  
+
+
+    <div class="col" style="width: 100%; padding-bottom: 2%;">
+        <div class="footerrow">
+            <p class="footertext" style="margin-bottom: 2%;">AVENUES CONSULTING GROUP</p>
+            <div >
+                <a href="https://www.instagram.com/uscavenues/" target="_blank"><img src="assets/icons/colorig.png" alt="Instagram" style="width: 3vw; margin-top: 40%;"></a>
+                <a href="https://www.linkedin.com/company/avenues-consulting-group-usc/posts/?feedView=all" target="_blank"><img src="assets/icons/colorlinked.png" alt="LinkedIn" style="width: 3vw;"></a>
+            </div>
+        </div>
+        <div class="footerline"></div>
+        <div class="footerrow">
+            <img class="footericon" style="margin-top: 2%;" src="assets/icons/bluelogo.png" alt="Avenues Logo">
+            <p class="footertext">Copyright ©2025 Avenues Consulting Group</p>
+        </div>
+    </div>
+    
+
+    
+    <script src="tabs.js" defer></script>
+    <script type="text/javascript">
+        window.addEventListener('scroll', reveal);
+        function reveal(){
+            var reveals = document.querySelectorAll('.reveal');
+
+            for(var i = 0; i < reveals.length; i++){
+                var windowheight = window.innerHeight;
+                var revealtop = reveals[i].getBoundingClientRect().top;
+                var revealpoint = 50;
+
+                if(revealtop < windowheight - revealpoint){
+                    reveals[i].classList.add('active');
+                }
+                else{
+                    reveals[i].classList.remove('active');
+                }
+            }
+        }
+    </script>
+</body>
+</html>

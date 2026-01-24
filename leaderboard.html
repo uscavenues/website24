@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Avenues Consulting Group</title>
+    <link rel="icon" href="assets/icons/favicon.png">
+    <link rel="stylesheet" href="index.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Readex+Pro:wght@160..700&display=swap" rel="stylesheet">
+
+
+
+</head>
+<body class="pagebody" onload="checkLoggedIn()">
+<body class="pagebody" onload="fetchLeaderboard()">
+    <nav class="navibar">
+        <a href="index.html" ><img class="logo" src="assets/icons/whitelogo.png" alt="Avenues Logo"></a>
+        <nav class="pages">
+          <a href="index.html"><button class="page">HOME</button></a>
+          <a href="about.html"><button class="page ">ABOUT</button></a>
+          <a href="community.html"><button class="page ">COMMUNITY</button></a>
+          <a href="apply.html"><button class="page">APPLY</button></a>
+          <!-- <a href="portfolio.html"><button class="page">OUR PORTFOLIO</button></a> -->
+          <a href="contact.html"><button class="page">WORK WITH US</button></a>
+          <div class="dropdown" id="dropdown" style="display: none;" >
+            <button class="page dropdown-btn currentpage" onclick="showMenu()">MEMBERS</button>
+            <div id="options" class="dropdown-options">
+                <a href="resources.html">Resources</a>
+                <a href="curriculum.html">Curriculum</a>
+                <a href="leaderboard.html">Leaderboard</a>
+            </div>
+          </div>
+          <a><button class="page login" id="loginbutton" onclick="login()">MEMBER LOGIN</button></a>
+        </nav> 
+    </nav>
+
+    <p class="header">LUNCH BUDDIES LEADERBOARD</p>
+    <p class="blurb centered eightyfive" style="margin-top: 3%;">The member with the most lunch buddy outings for the semester will win a prize, so make sure you're keeping up! </p>
+
+    <!-- First Place Image Section -->
+<div class="first-place-container">
+    <img src="assets/icons/firstplace.png" class="firstplace-img">
+</div>
+
+
+
+    <div class="leaderboard-container">
+        <h1>Lunch Leaderboard</h1>
+        <ul id="leaderboard" class="leaderboard">
+            <li>Loading...</li>
+        </ul>
+        <button class="refresh-btn" onclick="fetchLeaderboard()">Refresh</button>
+    </div>
+
+   
+    <div class="spacer"></div>
+
+    <div class="col" style="width: 100%; padding-bottom: 2%;">
+        <div class="footerrow">
+            <p class="footertext" style="margin-bottom: 2%;">AVENUES CONSULTING GROUP</p>
+            <div>
+                <a href="https://www.instagram.com/uscavenues/" target="_blank"><img src="assets/icons/colorig.png" alt="Instagram" style="width: 3vw; margin-top: 40%;"></a>
+                <a href="https://www.linkedin.com/company/avenues-consulting-group-usc/posts/?feedView=all" target="_blank"><img src="assets/icons/colorlinked.png" alt="LinkedIn" style="width: 3vw;"></a>
+            </div>
+        </div>
+        <div class="footerline"></div>
+        <div class="footerrow">
+            <img class="footericon" style="margin-top: 2%;" src="assets/icons/bluelogo.png" alt="Avenues Logo">
+            <p class="footertext">Copyright ©2025 Avenues Consulting Group</p>
+        </div>
+    </div>
+
+    <script>
+        const csvUrl = "https://docs.google.com/spreadsheets/d/e/2PACX-1vTOnz4xhhtst0KpRloW61GP-ZwsKQ6mqebww3snSrJMGL7HXcyHK6v2Um7aGsQsStzLrmmd4igFcM7d/pub?output=csv";
+
+        async function fetchLeaderboard() {
+            const leaderboard = document.getElementById("leaderboard");
+            leaderboard.innerHTML = '<li>Loading...</li>';  
+
+            try {
+                const response = await fetch(csvUrl);
+                if (!response.ok) throw new Error("Failed to fetch CSV data.");
+
+                const csvText = await response.text();
+                const rows = csvText.trim().split("\n").map(row => row.split(",").map(cell => cell.trim()));
+
+                const data = rows.slice(1).filter(row => row.length > 1 && row[0] && !isNaN(row[1]));
+
+                data.sort((a, b) => Number(b[1]) - Number(a[1])); 
+
+                leaderboard.innerHTML = '';
+
+                if (data.length === 0) {
+                    leaderboard.innerHTML = '<li>No lunch records found.</li>';
+                    return;
+                }
+
+                const maxLunches = Number(data[0][1]);
+
+                data.forEach(([name, count], index) => {
+                    const percentage = (Number(count) / maxLunches) * 100;
+                    
+                    const li = document.createElement('li');
+                    const lunchText = Number(count) === 1 ? "1 lunch" : `${count} lunches`;
+                    li.innerHTML = `
+                        <span style="min-width: 120px;">${name}</span>
+                        <div class="leaderboard-bar" style="width: 0%; position: relative;">
+                            <div class="car"></div> 
+                            <span class="lunch-count" style="opacity: 0;">${lunchText}</span>
+                        </div>
+                    `;
+                    leaderboard.appendChild(li);
+
+                    setTimeout(() => {
+                        const bar = li.querySelector('.leaderboard-bar');
+                        const car = li.querySelector('.car');
+                        const countText = li.querySelector('.lunch-count');
+                
+                        bar.style.width = `${percentage}%`;
+
+                        car.style.width = "100px";  
+                        car.style.height = "70px";
+
+                        car.style.left = "-120px";
+
+                        setTimeout(() => {
+                            car.style.transform = `translate(${bar.clientWidth - 110}px, -50%)`;
+
+                            setTimeout(() => {
+                                car.style.opacity = "0";
+
+                                setTimeout(() => {
+                                    countText.style.opacity = "1";
+                                }, 500);
+                            }, 1000);
+                        }, 1500);
+                    }, index * 800); 
+                });
+
+            } catch (error) {
+                console.error("Error fetching leaderboard:", error);
+                leaderboard.innerHTML = '<li class="error-message">Error loading data.</li>';
+            }
+        }
+    </script>
+
+    <script src="script.js" defer></script>
+</body>
+</html>

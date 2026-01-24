@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Avenues Consulting Group</title>
+    <link rel="icon" href="assets/icons/favicon.png">
+    <link rel="stylesheet" href="index.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Readex+Pro:wght@160..700&display=swap" rel="stylesheet">
+
+</head>
+<body class="pagebody" onload="checkLoggedIn()">
+    <nav class="navibar">
+        <a href="index.html" ><img class="logo" src="assets/icons/whitelogo.png" alt="Avenues Logo"></a>
+        <nav class="pages">
+          <a href="index.html"><button class="page">HOME</button></a>
+          <a href="about.html"><button class="page ">ABOUT</button></a>
+          <a href="community.html"><button class="page ">COMMUNITY</button></a>
+          <a href="apply.html"><button class="page">APPLY</button></a>
+          <a href="portfolio.html"><button class="page">OUR PORTFOLIO</button></a>
+          <a href="contact.html"><button class="page currentpage">WORK WITH US</button></a>
+          <div class="dropdown" id="dropdown" style="display: none;" >
+            <button class="page dropdown-btn" onclick="showMenu()">MEMBERS</button>
+            <div id="options" class="dropdown-options">
+                <a href="resources.html">Resources</a>
+                <a href="curriculum.html">Curriculum</a>
+                <a href="leaderboard.html">Leaderboard</a>
+            </div>
+          </div>
+          <a><button class="page login" id="loginbutton" onclick="login()">MEMBER LOGIN</button></a>
+        </nav> 
+    </nav> 
+
+    <p class="header">WORK WITH US</p>
+
+    <div class="row">
+        <div class="col" style="width:35%; padding: 4%;">
+            <p class="blurb">Avenues is dedicated to finding solutions for your organization through a multidisciplinary approach. </p>
+            <p class="blurb">We can help you draft up a plan, and build it, too. Contact us at uscavenues@gmail.com or use the form below to get the conversation started.</p>
+        </div>
+        <img style="width: 60%; object-fit: contain;" src="assets/photos/service.JPG" alt="">
+    </div>
+    <div class="spacer"> </div>
+
+    <p class="blurb">For more information, check out our client packet</p>
+    <a href="Avenues Client Packet.pdf" target="_blank"><button class="application">here</button></a>
+    <p class="blurb" style="margin-top: 2%;">Or, check out our <a href="portfolio.html">Portfolio Page</a></p>
+
+    <div class="spacer"></div>
+
+    <p class="subheader">Contact Us</p>
+
+    <form action="https://api.web3forms.com/submit" method="POST" class="contactform">
+        <input type="hidden" name="access_key" value="112ef749-545a-4476-9b70-3fccfea07740">
+        <input type="text" name="name" placeholder="Your Name" class="contact-inputs" required>
+        <input type="text" name="email" placeholder="Your Email" class="contact-inputs" required>
+        <input type="text" name="company" placeholder="Company Name" class="contact-inputs" required>
+        <textarea name="message" placeholder="Your Message" class="contact-inputs" required></textarea>
+        <button type="submit" class="application">Submit</button>
+    </form>
+    
+    <div class="spacer"></div>
+    <div class="spacer"></div>
+
+    <div class="col" style="width: 100%; padding-bottom: 2%;">
+        <div class="footerrow">
+            <p class="footertext" style="margin-bottom: 2%;">AVENUES CONSULTING GROUP</p>
+            <div >
+                <a href="https://www.instagram.com/uscavenues/" target="_blank"><img src="assets/icons/colorig.png" alt="Instagram" style="width: 3vw; margin-top: 40%;"></a>
+                <a href="https://www.linkedin.com/company/avenues-consulting-group-usc/posts/?feedView=all" target="_blank"><img src="assets/icons/colorlinked.png" alt="LinkedIn" style="width: 3vw;"></a>
+            </div>
+        </div>
+        <div class="footerline"></div>
+        <div class="footerrow">
+            <img class="footericon" style="margin-top: 2%;" src="assets/icons/bluelogo.png" alt="Avenues Logo">
+            <p class="footertext">Copyright ©2025 Avenues Consulting Group</p>
+        </div>
+    </div>
+
+    <script src="script.js" defer></script>
+</body>
+</html>

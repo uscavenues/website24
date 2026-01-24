@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Avenues Consulting Group</title>
+    <link rel="icon" href="assets/icons/favicon.png">
+    <link rel="stylesheet" href="index.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Readex+Pro:wght@160..700&display=swap" rel="stylesheet">
+
+</head>
+<body class="homebody" onload="checkLoggedIn()">
+    <nav class="navibar homenav">
+        <a href="index.html" ><img class="logo" src="assets/icons/whitelogo.png" alt="Avenues Logo"></a>
+        <nav class="pages">
+          <button class="page currentpage">HOME</button>
+          <a href="about.html"><button class="page">ABOUT</button></a>
+          <a href="community.html"><button class="page">COMMUNITY</button></a>
+          <a href="apply.html"><button class="page">APPLY</button></a>
+          <a href="portfolio.html"><button class="page">OUR PORTFOLIO</button></a>
+          <a href="contact.html"><button class="page">WORK WITH US</button></a>
+          <div class="dropdown" id="dropdown" style="display: none;" >
+            <button class="page dropdown-btn" onclick="showMenu()">MEMBERS</button>
+            <div id="options" class="dropdown-options">
+                <a href="resources.html">Resources</a>
+                <a href="curriculum.html">Curriculum</a>
+                <a href="leaderboard.html">Leaderboard</a>
+            </div>
+          </div>
+          <a><button class="page login" id="loginbutton" onclick="login()">MEMBER LOGIN</button></a>
+        </nav> 
+      </nav>
+
+    <!-- <div class="popup">
+        <p style="color: #345075; margin: 0; font-size: 30px;">Applications for Spring '25 are open!</p>
+        <p style="color: #345075;">Submit application <a href="https://docs.google.com/forms/d/e/1FAIpQLSe6YX4MX-zZwNYA2XzMEGSXeXcnBtUjvadThp0ksXsrR3UvWg/viewform" target="_blank">here</a>, and check out the <a href="apply.html">Apply page</a> to learn more.</p>
+        <p style="color: #345075;">All apps due this Friday, 1/31 @ 11:59pm!</p> -->
+        <!--opt in email form-->
+
+        <div class="popup email-popup">
+            <p style="color: #345075; font-size: 20px; margin-bottom: 15px;">Join our mailing list for updates!</p>
+            <form id="mailchimp-form">
+                <input type="email" id="email-input" name="EMAIL" placeholder="Enter your email" required>
+                <button type="submit">Subscribe</button>
+            </form>
+            <p id="email-success" style="color: #345075; display: none;">Thank you for subscribing!</p>
+        </div>
+    <!-- </div> -->
+
+        <!-- <br>
+        <p style="color: #345075;">Join our next info session on 1/27 @ 8PM! <a href="https://usc.zoom.us/j/92402683411" target="_blank">Link to Zoom</a> </p>
+         info session <a href="https://usc.zoom.us/j/97728767373?pwd=QuHkS8AWtNQWPDMxSTwwzyZH56Wq5Z.1" target="_blank">here</a>! -->
+
+    </div>
+
+    <div class="row">
+        <div class="col"> 
+            <div class="dash "></div>
+            <div class="dash "></div>
+            <div class="dash "></div>
+            <div class="dash "></div>
+            <div class="dash "></div>
+            <div class="dash "></div>
+            <div class="dash "></div>
+            <div class="dash reveal"></div>
+            <div class="dash reveal"></div>
+            <div class="dash reveal"></div>
+            <div class="dash reveal"></div>
+            <div class="dash reveal"></div>
+            <div class="dash reveal"></div>
+            <div class="dash reveal"></div>
+            <div class="dash reveal"></div>
+            <div class="dash reveal"></div>
+            <div class="dash reveal"></div>
+            <div class="dash reveal"></div>
+            <div class="dash reveal"></div>
+
+        </div>
+        <div class="col home">
+            <img class="home-background-photo" src="assets/photos/avenues-159.jpg" alt="Avenues Spring '25 cohort group photo">
+            <p class="title">AVENUES<br>CONSULTING<br>GROUP</p>
+            <p class="titleblurb reveal">USC's premiere consulting group with an emphasis on pre-professional industries and project-building.</p>
+            <img class="homephoto reveal" src="assets/photos/home.JPG" alt="Avenues group photo at Mudd Hall">
+            <div class="row" style="justify-content: flex-start;">
+                <a href="contact.html" class="ahb"><button class="homebuttons reveal">
+                    Work with us
+                </button></a>
+                <a href="apply.html" class="ahb"><button class="homebuttons reveal">
+                    Apply to join
+                </button></a>
+            </div>
+        </div>
+    </div>
+
+    <div class="col" style="width: 100%; padding-bottom: 2%;" >
+        <div class="footerrow">
+            <p class="footertext" style="margin-bottom: 2%; color: #fffcf9;">AVENUES CONSULTING GROUP</p>
+            <div >
+                <a href="https://www.instagram.com/uscavenues/" target="_blank"><img src="assets/icons/ig.png" alt="Instagram" style="width: 5vw;"></a>
+                <a href="https://www.linkedin.com/company/avenues-consulting-group-usc/posts/?feedView=all" target="_blank"><img src="assets/icons/linkedin.png" alt="LinkedIn" style="width: 5vw;"></a>
+            </div>
+        </div>
+        <div class="footerline homeline"></div>
+        <div class="footerrow" >
+            <img class="footericon" style="margin-top: 2%;" src="assets/icons/whitelogo.png" alt="Avenues Logo">
+            <p class="footertext" style="color: #fffcf9;">Copyright ©2025 Avenues Consulting Group</p>
+        </div>
+    </div>
+
+    <script src="script.js" defer></script>
+</body>
+</html>
