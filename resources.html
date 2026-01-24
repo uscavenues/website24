@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Avenues Consulting Group</title>
+    <link rel="icon" href="assets/icons/favicon.png">
+    <link rel="stylesheet" href="index.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Readex+Pro:wght@160..700&display=swap" rel="stylesheet">
+
+</head>
+<body class="pagebody" onload="checkLoggedIn()">
+    <nav class="navibar">
+        <a href="index.html" ><img class="logo" src="assets/icons/whitelogo.png" alt="Avenues Logo"></a>
+        <nav class="pages">
+          <a href="index.html"><button class="page">HOME</button></a>
+          <a href="about.html"><button class="page ">ABOUT</button></a>
+          <a href="community.html"><button class="page">COMMUNITY</button></a>
+          <a href="apply.html"><button class="page">APPLY</button></a>
+          <a href="portfolio.html"><button class="page">OUR PORTFOLIO</button></a>
+          <a href="contact.html"><button class="page">WORK WITH US</button></a>
+          <div class="dropdown" id="dropdown" style="display: none;" >
+            <button class="page dropdown-btn" onclick="showMenu()">MEMBERS</button>
+            <div id="options" class="dropdown-options">
+                <a href="resources.html">Resources</a>
+                <a href="curriculum.html">Curriculum</a>
+                <a href="leaderboard.html">Leaderboard</a>
+            </div>
+          </div>
+          <a><button class="page login" id="loginbutton" onclick="login()">MEMBER LOGIN</button></a>
+        </nav> 
+    </nav>
+
+    <p class="header">MEMBER RESOURCES</p>
+    <p class="blurb centered eightyfive" style="margin-top: 3%;">Here you will find everything you need to keep up with Avenues.<br>Should you need access to any of these, let us know! </p> 
+
+    <div class="row" style="margin-top: 3vw;">
+        <a href="https://drive.google.com/drive/folders/14FUFLDOyhgxLAmQ5TP0eH_yiguIFcl8b?usp=drive_link__;!!LIr3w8kk_Xxm!qwvH1kLdBiNWHenyyM9WRKN_5vfhs-sy6rGBYHkiXJVfkvsUD5H5edvTAbPNoXUK9B8tz3s76UVwi0fE$" target="_blank"><div class="col profile" style="width: 5vw">
+            <img src="assets/icons/drive.png" alt="Google Drive">
+            <p class="caption">
+                Google Drive
+            </p>
+        </div></a>
+
+        <div class="col profile" style="width: 5vw"></div>
+
+        <a href="https://avenuesconsul-6ua5012.slack.com/ssb/redirect" target="_blank"><div class="col profile" style="width: 5vw">
+            <img src="assets/icons/slack.webp" alt="Slack">
+            <p class="caption">
+                Slack
+            </p>
+        </div></a>
+
+        <div class="col profile" style="width: 5vw"></div>
+
+        <a href="https://www.notion.so/Avenues-Consulting-Group-2024-2025-E-Board-Page-290ea4a0dfc644ffb7c9492991719fd0?pvs=4" target="_blank"><div class="col profile" style="width: 5vw">
+            <img src="assets/logos/notion.png" alt="Slack">
+            <p class="caption">
+                Notion
+            </p>
+        </div></a>
+
+        <div class="col profile" style="width: 5vw"></div>
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLSeY1tUd9sKKFMj1ctshE5A-TaDOEkxr6tOIanCRHHSjOQHNPw/viewform"><div class="col profile" style="width: 5vw">
+            <img src="assets/icons/shake.png" alt="Client Connection">
+            <p class="caption">
+                Client Connection Form
+            </p>
+        </div></a>
+
+        <div class="col profile" style="width: 5vw"></div>
+
+        <a href="https://docs.google.com/spreadsheets/d/14XKC5JkCzLIdbpfqb3MA03rIgbgNr1DFuPBtHHBo2XE/edit?gid=0#gid=0" target="_blank"><div class="col profile" style="width: 5vw">
+            <img src="assets/icons/phone.png" alt="Contact Roster">
+            <p class="caption">
+                Roster Contacts
+            </p>
+        </div></a>
+
+        <div class="col profile" style="width: 5vw"></div>
+
+        <a href="https://venmo.com/u/uscavenues"><div class="col profile" style="width: 5vw">
+            <img src="assets/logos/venmo.png" alt="venmo @uscavenues">
+            <p class="caption centered">
+                Venmo
+            </p>
+        </div></a>
+        
+    </div>
+
+    <div class="row" style="margin-top: 4vw; width: 84%;">
+        <div style="height: 750px; width:55vw; margin-right: 5vw;">
+            <p class="subheader centered" style="width: 100%; padding-bottom: 1vw;">Event Calendar</p>
+            <iframe src="https://calendar.google.com/calendar/embed?src=c079d9f366715eb62d127ce5966573d4a80512a7cfce2b9d4d4af0c451267f8f%40group.calendar.google.com&ctz=America%2FLos_Angeles" style="border: 0" width="800" height="550" frameborder="0" scrolling="no"></iframe>
+        </div>
+        <div class="col" style="width: 45%">
+            <p class="subheader" style="width:100%; padding-bottom: 1vw;">Announcements</p>
+            <p class="captionb" style="text-align: left;">• New members: check out our resources and familiarize yourself with the Drive, Slack, and Notion</p>
+            <p class="captionb" style="text-align: left;">• Everyone: Pay yours dues!!!! Venmo @uscavenues</p>
+        </div>
+    </div>
+    
+   <!-- maybe log in to see the tab available? a drop down menu for each thing -->
+
+    <div class="col" style="width: 100%; padding-bottom: 2%;">
+        <div class="footerrow">
+            <p class="footertext" style="margin-bottom: 2%;">AVENUES CONSULTING GROUP</p>
+            <div >
+                <a href="https://www.instagram.com/uscavenues/" target="_blank"><img src="assets/icons/colorig.png" alt="Instagram" style="width: 3vw; margin-top: 40%;"></a>
+                <a href="https://www.linkedin.com/company/avenues-consulting-group-usc/posts/?feedView=all" target="_blank"><img src="assets/icons/colorlinked.png" alt="LinkedIn" style="width: 3vw;"></a>
+            </div>
+        </div>
+        <div class="footerline"></div>
+        <div class="footerrow">
+            <img class="footericon" style="margin-top: 2%;" src="assets/icons/bluelogo.png" alt="Avenues Logo">
+            <p class="footertext">Copyright ©2025 Avenues Consulting Group</p>
+        </div>
+    </div>
+
+    
+
+    <script src="script.js" defer></script>
+</body>
+</html>

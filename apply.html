@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="tabs.js" defer></script>
+    <title>Avenues Consulting Group</title>
+    <link rel="icon" href="assets/icons/favicon.png">
+    <link rel="stylesheet" href="index.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Readex+Pro:wght@160..700&display=swap" rel="stylesheet">
+
+</head>
+<body class="pagebody" onload="checkLoggedIn()">
+    <nav class="navibar">
+        <a href="index.html" ><img class="logo" src="assets/icons/whitelogo.png" alt="Avenues Logo"></a>
+        <nav class="pages">
+          <a href="index.html"><button class="page">HOME</button></a>
+          <a href="about.html"><button class="page ">ABOUT</button></a>
+          <a href="community.html"><button class="page ">COMMUNITY</button></a>
+          <a href="apply.html"><button class="page currentpage">APPLY</button></a>
+          <a href="portfolio.html"><button class="page">OUR PORTFOLIO</button></a>
+          <a href="contact.html"><button class="page">WORK WITH US</button></a>
+          <div class="dropdown" id="dropdown" style="display: none;" >
+            <button class="page dropdown-btn" onclick="showMenu()">MEMBERS</button>
+            <div id="options" class="dropdown-options">
+                <a href="resources.html">Resources</a>
+                <a href="curriculum.html">Curriculum</a>
+                <a href="leaderboard.html">Leaderboard</a>
+            </div>
+          </div>
+          <a><button class="page login" id="loginbutton" onclick="login()">MEMBER LOGIN</button></a>
+        </nav> 
+    </nav>
+
+    <p class="header">APPLY</p>
+    <p class="blurb centered eightyfive" style="margin-top: 3%;">We are not currently accepting applications. Check back next semester for more info.</div>
+    <p class="blurb centered eightyfive" style="margin-top: 3%;">In the meantime, follow us <span class="pink"> @uscavenues</span> on Instagram, and feel free to email <span class="pink">uscavenues@gmail.com</span> with any questions you may have.</div>
+    
+     <div class="spacer"></div>
+
+    <!-- <p class="blurb eightyfive centered" >Thank you for your interest in Avenues. All recruitment related info can be found here.</p>
+    <p class="blurb eightyfive centered">If you have any questions, feel free to reach out via email (uscavenues@gmail.com) or through our Instagram (@uscavenues).</p>
+  
+  <a href="https://docs.google.com/forms/d/e/1FAIpQLSe6YX4MX-zZwNYA2XzMEGSXeXcnBtUjvadThp0ksXsrR3UvWg/viewform" target="_blank"><button class="application">Application Form</button></a>
+
+
+  <p class="subheader ">Recruiting Timeline Spring 2025</h1>
+
+  <div class="timelinegrid">
+    <div class="checkpoint ">
+      <p class="blurb">Applications Open: 1/14</p>
+      <p class="blurbbl"> 
+        Access the application <a href="https://docs.google.com/forms/d/e/1FAIpQLSe6YX4MX-zZwNYA2XzMEGSXeXcnBtUjvadThp0ksXsrR3UvWg/viewform" target="_blank" style="color: #eb4c60; text-decoration: underline;" >here</a>.
+
+          Submit by <span class="red">1/31 @ 11:59</span>. Late submissions will not be considered. If there are any issues, contact us at uscavenues@gmail.com
+      </p>
+    </div>
+    <div class="checkpoint ">
+    </div>
+    <div class="checkpoint reveal">
+    </div>
+    <div class="checkpoint reveal">
+      <p class="blurb">Involvement Fair: 1/16 @ 11AM - 2PM</p>
+      <p class="blurbbl left ">Come to our table to ask questions to ask any questions you may have and get to know us!</h11>
+    </div>
+    <div class="checkpoint reveal">
+      <p class="blurb">Info Session #1: 1/21 @ 8PM (Virtual)</p>
+      <p class="blurbbl left">During these optional info sessions, we will give a more in-depth overview of Avenues and what you can expect as an applicant and possible member of Avenues.  </h11>
+      <p class="blurbbl left" style="width: 100%"> <a href="https://usc.zoom.us/j/97728767373?pwd=QuHkS8AWtNQWPDMxSTwwzyZH56Wq5Z.1"> Zoom Link </a></p>  
+        
+    </div>
+    <div class="checkpoint ">
+    </div>
+    <div class="checkpoint reveal">
+    </div>
+    <div class="checkpoint reveal">
+      <p class="blurb">Info Session #2: 1/27 @ 8PM (Virtual)</p>
+      <p class="blurbbl left ">During these optional info sessions, we will give a more in-depth overview of Avenues and what you can expect as an applicant and possible member of Avenues.  </h11>
+    </div>
+    <div class="checkpoint reveal">
+      <p class="blurb">Application Results Released: 2/3</p>
+      <p class="blurbbl ">If you pass the initial application screening, you will be invited to interview with us. 
+        More details will be included in an email.
+      </p>
+    </div>
+    <div class="checkpoint reveal">
+    </div>
+    <div class="checkpoint reveal">
+    </div>
+    <div class="checkpoint reveal">
+      <p class="blurb">Interview Round #1: 2/5, 2/6</p>
+      <p class="blurbbl left">These will be individual interviews. Interviewees will be notified of their status via email on <span class="pink">2/7</span>. Those who pass will
+        also be invited to attend a mixer with the other applicants and current Avenues E-Board members. They'll move on to the second interview round as well.
+        <br><br>Dress code: Business Professional
+      </p>
+    </div>
+    <div class="checkpoint reveal">
+      <p class="blurb">Mixer: 2/12</p>
+      <p class="blurbbl">Another optional event, the mixer is a great opportunity to get to know current Avenues members, as well as other applicants.
+        <br><br>Dress code: N/A
+      </p>
+    </div>
+    <div class="checkpoint reveal">
+    </div>
+    <div class="checkpoint reveal">
+    </div>
+    <div class="checkpoint reveal">
+      <p class="blurb">Interview Round #2: 2/13, 2/14</p>
+      <p class="blurbbl left">This round will be in group format, interviewed by a panel of E-Board members. It will be the final round.
+        <br><br>Dress code: Business Professional
+      </p>
+    </div>
+
+    <div class="checkpoint reveal">
+      <p class="blurb">Final decisions released: 2/16</p>
+      <p class="blurbbl">Congratulations! Those who are offered a position will have 24 hours to accept or decline.</p>
+    </div>
+    <div class="checkpoint reveal">
+    </div>
+    <div class="checkpoint reveal">
+    </div>
+    <div class="checkpoint reveal">
+      <p class="blurb">First org-wide meeting: 2/18</p>
+      <p class="blurbbl left">Meet your fellow cohort members and get onboarded. Welcome!</p>
+    </div>
+  </div>
+  -->
+ 
+  <p class="subheader ">Frequently Asked Questions</h1>
+    <ul class="tabs">
+      <li data-tab-target="#apptab" class="activetab tab  ">Application</li>
+      <li data-tab-target="#orgtab" class="tab ">Organization</li>
+    </ul> 
+
+    <div class="tab-content " style="width: 65%;">
+      <div id="apptab" data-tab-content class="activetab">
+        <p class="blurbbl" style="font-size: 1.5vw;">&#9998; Do I need previous experience to be accepted?</p>
+        <p class="blurbbl" style="font-size: 1vw;">No! Many of our past cohort members have 
+          had <span class="red">little to no experience</span> for their specific role, and have been successful within our 
+          organization. In fact, we especially <span class="pink">strongly encourage project-builders (design and tech) to apply 
+          no matter your current skill level.</p>
+          
+        <p class="blurbbl" style="margin-top: 3vw; font-size: 1.5vw;">&#9998; For the portfolio section, what kind of work is best to submit?</p>
+        <p class="blurbbl" style="font-size: 1vw;">We know that our applicants have varying levels of experience based on grade level and other factors,
+          so we don't necessarily have a preferred submission type. However, we encourage you to submit work that
+          fully reflects your <span class="pink">current skillset</span>, and maybe even your personality, too.</p>
+
+        <p class="blurbbl" style="margin-top: 3vw; font-size: 1.5vw;" >&#9998; What can I expect during the interview rounds?</p>
+        <p class="blurbbl" style="font-size: 1vw;">In the first round, individual candidates will be interviewed by 1 or 2 E-Board members. It will consist
+          of a behavioral and technical component, and should last no longer than 30 minutes. The second round will
+          be a panel-style case interview completed in groups rather than individually. </p>
+
+        <p class="blurbbl" style="margin-top: 3vw; font-size: 1.5vw;" >&#9998; Am I allowed to use tools like ChatGPT to help me write my application?</p>
+        <p class="blurbbl" style="font-size: 1vw;">Yes, you may. However, you should make it clear that you used ChatGPT if you choose to. If you do not make note
+          of your usage, but we find that you did use it, it will be reflected on your application review.
+          Further, <span class="pink">we recommend not using ChatGPT</span> to write your answers at all.</p>
+
+        <p class="blurbbl" style="margin-top: 3vw; font-size: 1.5vw;" >&#9998; Is it easier to get an offer if I have connections within Avenues already?</p>
+        <p class="blurbbl" style="font-size: 1vw;">No, Avenues cares about fairness, which is why our application <span class="pink">screening is conducted anonymously</span>. We are more 
+          interested in your abilities, goals, and experiences, which should be reflected in your application.</p>
+
+        <p class="blurbbl" style="margin-top: 3vw; font-size: 1.5vw;" >&#9998; Is there anything I can do to increase my chances of being accepted?</p>
+        <p class="blurbbl" style="font-size: 1vw;">Avenues keeps track of <span class="pink">demonstrated interest</span>. Attending info sessions, following our social media, and asking questions 
+          directly to us will all be taken note of and considered when reviewing your application.</p>
+             
+      </div>
+      <div id="orgtab" data-tab-content>
+        
+        <p class="blurbbl" style="font-size: 1.5vw;" >&#9998; When are club meetings?</p>
+        <p class="blurbbl" style="font-size: 1vw;">Avenues meets weekly on Tuesdays at 8:00pm, and will last on an as needed basis, but will usually end around 9:30-10pm. Times are subject to change when we have events!</p>
+
+        <p class="blurbbl" style="margin-top: 3vw; font-size: 1.5vw;" >&#9998; What kind of committment should I expect?</p>
+        <p class="blurbbl" style="font-size: 1vw;">Members are expected to attend every GM (general meeting) barring exceptional circumstances. Also, members should 
+          uphold their responsilities in terms of meeting client expectations and needs, without exception.</p>
+            
+        <p class="blurbbl" style="margin-top: 3vw; font-size: 1.5vw;" >&#9998; How much flexibilty can I expect when it comes to committments within the club? </p>
+        <p class="blurbbl" style="font-size: 1vw;">As fellow students, we believe school comes first. So, any extenuating circumstances, whether academic or personal,
+            can excuse members from a meeting if it was communicated beforehand.</p>
+
+        <p class="blurbbl" style="margin-top: 3vw; font-size: 1.5vw;" >&#9998; What kinds of projects can I expect to work on?</p>
+        <p class="blurbbl" style="font-size: 1vw;">No matter your role (Strategy, Tech, Design), you will likely have the chance to contribute in a strategic, design, 
+          or tech capacity. For examples of projects, <span class="pink">go to our portfolio page</span> and click through the different cards to get an idea.</p>
+
+        <p class="blurbbl" style="margin-top: 3vw; font-size: 1.5vw;" >&#9998;  What is Avenues' culture like?</p>
+        <p class="blurbbl" style="font-size: 1vw;">Avenues strives to be a collaborative and fun group of people. While our work is our main priority, <span class="pink"> maintaining a good social
+          atmosphere is just as important</span>, and we hope that everyone enjoys their time with us..</p>
+
+        <p class="blurbbl" style="margin-top: 3vw; font-size: 1.5vw;" >&#9998; What kind of opportunities for leadership does Avenues offer?</p>
+        <p class="blurbbl" style="font-size: 1vw;">Avenues has executives, a board of directors, and associates, with executive being at the top in terms of 
+          administrative priority. Execs and directors make up the primary leadership team that oversees Avenues. 
+          Execs and directors are chosen from a pool of applicants from the Associate level, which consists of members
+          who shadow and aid execs and directors in their duties. Cohort members can apply to be an associate <span class="pink">after as
+          little as one semester with Avenues</span>.</p>
+      </div>
+    </div> 
+
+    <div class="spacer"></div>
+    <div class="spacer"></div>
+
+    
+
+    <div class="col" style="width: 100%; padding-bottom: 2%;">
+        <div class="footerrow">
+            <p class="footertext" style="margin-bottom: 2%;">AVENUES CONSULTING GROUP</p>
+            <div >
+                <a href="https://www.instagram.com/uscavenues/" target="_blank"><img src="assets/icons/colorig.png" alt="Instagram" style="width: 3vw; margin-top: 40%;"></a>
+                <a href="https://www.linkedin.com/company/avenues-consulting-group-usc/posts/?feedView=all" target="_blank"><img src="assets/icons/colorlinked.png" alt="LinkedIn" style="width: 3vw;"></a>
+            </div>
+        </div>
+        <div class="footerline"></div>
+        <div class="footerrow">
+            <img class="footericon" style="margin-top: 2%;" src="assets/icons/bluelogo.png" alt="Avenues Logo">
+            <p class="footertext">Copyright ©2025 Avenues Consulting Group</p>
+        </div>
+    </div>
+
+    <script src="script.js" defer></script>
+</body>
+</html>
