@@ -5,16 +5,16 @@ export default function Footer() {
   return (
     <footer className="border-t border-white/[0.06] bg-[#06060c] overflow-hidden">
       {/* Main footer content */}
-      <div className="mx-auto max-w-7xl px-6 md:px-10 py-14 grid grid-cols-1 md:grid-cols-[1fr_auto_auto] gap-10 md:gap-16">
+      <div className="mx-auto max-w-7xl px-6 md:px-10 py-8 grid grid-cols-1 md:grid-cols-[1fr_auto_auto] gap-8 md:gap-16">
         {/* Brand column */}
         <div>
-          <Link href="/" className="flex items-center mb-4">
+          <Link href="/" className="flex items-center mb-3">
             <span className="relative inline-block shrink-0 w-[26px] h-[26px]">
               <Image src="/assets/icons/avenues-logo.png" alt="A" fill className="object-contain invert opacity-60" />
             </span>
             <span className="font-bold tracking-[0.22em] uppercase text-zinc-500 text-[11px]" style={{ marginLeft: "-2px" }}>VENUES · USC</span>
           </Link>
-          <p className="text-[11px] text-zinc-600 leading-relaxed max-w-[220px] mb-5">
+          <p className="text-[11px] text-zinc-600 leading-relaxed max-w-[220px] mb-4">
             USC's premier student-run consulting group. Pro bono strategy, technology, and design.
           </p>
           <div className="flex items-center gap-3">
@@ -29,8 +29,8 @@ export default function Footer() {
 
         {/* Pages column */}
         <div>
-          <p className="text-[10px] uppercase tracking-[0.2em] text-zinc-700 mb-4 font-semibold">Pages</p>
-          <nav className="flex flex-col gap-2.5">
+          <p className="text-[10px] uppercase tracking-[0.2em] text-zinc-700 mb-3 font-semibold">Pages</p>
+          <nav className="flex flex-col gap-2">
             {[
               { href: "/", label: "Home" },
               { href: "/about", label: "About" },
@@ -46,13 +46,13 @@ export default function Footer() {
 
         {/* Contact column */}
         <div>
-          <p className="text-[10px] uppercase tracking-[0.2em] text-zinc-700 mb-4 font-semibold">Contact</p>
-          <div className="flex flex-col gap-2.5">
+          <p className="text-[10px] uppercase tracking-[0.2em] text-zinc-700 mb-3 font-semibold">Contact</p>
+          <div className="flex flex-col gap-2">
             <a href="mailto:uscavenues@gmail.com" className="text-[11px] text-zinc-600 hover:text-zinc-300 transition-colors duration-200">uscavenues@gmail.com</a>
             <p className="text-[11px] text-zinc-700">University of Southern California</p>
             <p className="text-[11px] text-zinc-700">Los Angeles, CA</p>
           </div>
-          <div className="mt-6">
+          <div className="mt-4">
             <Link href="/apply" className="inline-flex items-center gap-1.5 border border-[#eb4c60]/40 text-[#eb4c60] hover:bg-[#eb4c60]/[0.08] px-4 py-2 text-[10px] font-bold uppercase tracking-[0.15em] rounded-sm transition-colors duration-200">
               Apply Now →
             </Link>
