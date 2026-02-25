@@ -107,7 +107,7 @@ export default function AboutPage() {
                 <p>
                   Founded in 2023 by students who recognized a gap: USC&apos;s consulting
                   landscape lacked meaningful opportunities for hands-on project work.
-                  Most orgs were case-prep focused. Avenues was built to be different.
+                  Most clubs prep you to talk about consulting. Avenues puts you in the consulting room.
                 </p>
                 <p>
                   Avenues has grown to <span className="text-white font-semibold">30+ members</span> and delivered work for{" "}

@@ -26,7 +26,7 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://avenues-ten.vercel.app"),
   title: "Avenues Consulting Group | USC",
   description:
-    "USC's premier student-run consulting group specializing in strategy, technology, and design. Pro-bono project building for non-profits, startups, and corporations.",
+    "A student-run consulting group at USC delivering pro bono strategy, technology, and design work for nonprofits, startups, and established companies. No fees. Real projects.",
   openGraph: {
     type: "website",
     images: [

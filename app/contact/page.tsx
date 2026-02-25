@@ -45,29 +45,29 @@ export default function ContactPage() {
             <div className="w-8 h-px bg-[#eb4c60] mb-8" />
 
             <h2 className="text-xl font-bold font-display italic text-white tracking-tight mb-5 leading-snug">
-              A multidisciplinary approach
+              Strategy, technology, and design —
               <br />
               <span className="text-zinc-500 font-normal">
-                to real-world problems.
+                combined to solve real problems.
               </span>
             </h2>
 
             <p className="text-sm text-zinc-500 leading-relaxed mb-6">
-              Avenues is dedicated to finding solutions through the combined
-              lens of strategy, technology, and design. We can help you plan,
-              build, and communicate — entirely pro bono. No invoices. No
-              catch.
+              Avenues brings together students across strategy, technology, and
+              design to tackle real organizational challenges. We can help you
+              research, plan, build, and ship — entirely pro bono. No invoices.
+              No strings.
             </p>
 
             <p className="text-sm text-zinc-500 leading-relaxed mb-10">
-              Contact us directly at{" "}
+              Reach us directly at{" "}
               <a
                 href="mailto:uscavenues@gmail.com"
                 className="text-zinc-300 underline underline-offset-2 decoration-white/15 hover:text-[#eb4c60] hover:decoration-[#eb4c60]/40 transition-colors duration-200"
               >
                 uscavenues@gmail.com
               </a>{" "}
-              or use the form — we typically respond within 48 hours.
+              or use the form. We reply within 48 hours.
             </p>
 
             {/* Client packet download */}

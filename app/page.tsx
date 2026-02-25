@@ -76,6 +76,12 @@ export default function HomePage() {
 
   const { scrollYProgress } = useScroll({ target: heroRef, offset: ["start start", "end end"] });
 
+  const skipHero = () => {
+    if (heroRef.current) {
+      window.scrollTo({ top: heroRef.current.offsetHeight, behavior: "smooth" });
+    }
+  };
+
   // ── SEQUENCE (scroll-driven, 320vh hero) ──────────────────────────────
   //  0.00–0.05  black screen, big logo centred
   //  0.05–0.32  logo flies centre → A slot              (against black bg)
@@ -132,6 +138,19 @@ export default function HomePage() {
 
           {/* Black overlay — fades first */}
           <motion.div className="absolute inset-0 bg-black pointer-events-none" style={{ opacity: blackOp, zIndex: 5 }} />
+
+          {/* Skip intro button — visible during overlay, fades with it */}
+          <motion.button
+            onClick={skipHero}
+            style={{ opacity: blackOp, zIndex: 25 }}
+            className="absolute bottom-8 right-8 flex items-center gap-1.5 text-[10px] uppercase tracking-[0.2em] text-zinc-500 hover:text-zinc-300 transition-colors duration-200 cursor-pointer"
+            aria-label="Skip intro animation"
+          >
+            Skip intro
+            <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+            </svg>
+          </motion.button>
 
           {/* Logo — zIndex 20, always on top */}
           <motion.div
@@ -286,7 +305,7 @@ export default function HomePage() {
       <ScrollReveal className="mx-auto max-w-7xl px-6 md:px-10 pb-24">
         <div className="relative">
           <div className="relative rounded-sm overflow-hidden aspect-[16/7]">
-            <Image src="/assets/photos/home.jpg" alt="Avenues Consulting Group cohort, USC" fill className="object-cover" sizes="100vw" />
+            <Image src="/assets/photos/home.jpg" alt="Avenues Consulting Group cohort, USC" fill className="object-cover" sizes="(max-width: 768px) calc(100vw - 3rem), (max-width: 1280px) calc(100vw - 5rem), 1240px" />
             <div className="absolute inset-0 bg-gradient-to-t from-[#08080f] via-[#08080f]/20 to-transparent" />
             <div className="absolute bottom-8 left-8">
               <p className="text-[10px] uppercase tracking-[0.2em] text-zinc-500 mb-1">Spring &apos;26 Cohort</p>

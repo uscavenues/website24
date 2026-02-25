@@ -374,10 +374,10 @@ export default function ApplyClient() {
           <div>
             <p className="text-[10px] uppercase tracking-[0.3em] text-white/60 mb-2">Stay in the loop</p>
             <h2 className="text-2xl md:text-3xl font-black text-white tracking-tight">
-              Fall and spring applications open in the first two weeks of each semester.
+              Spots open twice a year.
             </h2>
             <p className="text-sm text-white/70 mt-2 max-w-sm">
-              Follow us on Instagram for announcement dates and open-info-session schedules.
+              Fall and spring applications open in the first two weeks of each semester. Follow us on Instagram for exact announcement dates.
             </p>
           </div>
           <a
