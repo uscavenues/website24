@@ -6,14 +6,14 @@ import { whatWeDo, majors, mentors, alumni } from "@/lib/data";
 
 // ─── Photo strip data (actual filenames on disk) ───────────────────────────────
 const photos = [
-  { src: "/assets/photos/backtoschool.jpeg", alt: "Back to school event" },
-  { src: "/assets/photos/carter.JPEG",       alt: "Carter event" },
-  { src: "/assets/photos/kbbqar.jpeg",        alt: "KBBQ alumni relations" },
-  { src: "/assets/photos/potluck.jpg",        alt: "Potluck gathering" },
-  { src: "/assets/photos/speeddating.jpeg",   alt: "Speed networking" },
-  { src: "/assets/photos/kbbqgroup.jpeg",     alt: "KBBQ group photo" },
-  { src: "/assets/photos/trio.JPEG",          alt: "Three members" },
-  { src: "/assets/photos/tabling.jpeg",       alt: "Tabling at USC" },
+  { src: "/assets/photos/backtoschool.jpg", alt: "Back to school event" },
+  { src: "/assets/photos/carter.jpg",       alt: "Carter event" },
+  { src: "/assets/photos/kbbqar.jpg",       alt: "KBBQ alumni relations" },
+  { src: "/assets/photos/potluck.jpg",      alt: "Potluck gathering" },
+  { src: "/assets/photos/speeddating.jpg",  alt: "Speed networking" },
+  { src: "/assets/photos/kbbqgroup.jpg",    alt: "KBBQ group photo" },
+  { src: "/assets/photos/trio.jpg",         alt: "Three members" },
+  { src: "/assets/photos/tabling.jpg",      alt: "Tabling at USC" },
 ];
 
 export default function CommunityPage() {

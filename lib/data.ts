@@ -124,13 +124,13 @@ export const team: Team = {
     {
       name: "Darius M.",
       role: "Alumni Engagement",
-      photo: "/assets/photos/profiles/darius.JPG",
+      photo: "/assets/photos/profiles/darius.jpg",
       linkedin: "https://www.linkedin.com/in/darius-mahjoob",
     },
     {
       name: "Anna C.",
       role: "Alumni Engagement",
-      photo: "/assets/photos/profiles/anna.JPG",
+      photo: "/assets/photos/profiles/anna.jpg",
       linkedin: "https://www.linkedin.com/in/annachi-usc",
     },
   ],
