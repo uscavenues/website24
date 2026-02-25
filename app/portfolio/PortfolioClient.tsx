@@ -77,8 +77,7 @@ export default function PortfolioClient() {
             </span>
           </div>
           <h1 className="text-[clamp(4rem,14vw,12rem)] font-black leading-[0.82] tracking-tighter text-white">
-            <span className="md:hidden">PORTFOLIO</span>
-            <span className="hidden md:block">PORT<br />FOLIO</span>
+            PORTFOLIO
           </h1>
           <p className="mt-8 max-w-lg text-zinc-400 text-sm leading-relaxed">
             Real work for real organizations. Delivered with the rigor of a
@@ -90,7 +89,7 @@ export default function PortfolioClient() {
       {/* ── OUR CLIENTS ──────────────────────────────────────────────────── */}
       <section id="clients" className="pb-24 bg-[#f4f4f0]">
         {/* Gradient transition from dark to light */}
-        <div className="h-8 bg-gradient-to-b from-[#08080f] to-[#f4f4f0]" />
+        <div className="h-32 bg-gradient-to-b from-[#08080f] to-[#f4f4f0]" />
         <div className="mx-auto max-w-7xl px-6 md:px-10 mb-12">
           <div className="mb-6 flex items-center gap-4">
             <span className="text-[10px] font-bold uppercase tracking-[0.25em] text-zinc-500">
@@ -160,7 +159,7 @@ export default function PortfolioClient() {
           </div>
         </div>
         {/* Gradient transition from light back to dark */}
-        <div className="h-8 bg-gradient-to-b from-[#f4f4f0] to-[#08080f]" />
+        <div className="h-32 bg-gradient-to-b from-[#f4f4f0] to-[#08080f]" />
       </section>
 
       {/* ── PAST PROJECTS ────────────────────────────────────────────────── */}

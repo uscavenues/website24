@@ -341,7 +341,7 @@ export default function CommunityClient() {
       ══════════════════════════════════════════════════ */}
       <section id="alumni" className="relative bg-[#f4f4f0] border-t border-zinc-200">
         {/* Gradient transition from dark to light */}
-        <div className="h-8 bg-gradient-to-b from-[#08080f] to-[#f4f4f0]" />
+        <div className="h-32 bg-gradient-to-b from-[#08080f] to-[#f4f4f0]" />
         <div className="mx-auto max-w-7xl px-6 md:px-10 py-20">
           <div className="mb-6 flex items-center gap-4">
             <span className="text-[10px] font-bold uppercase tracking-[0.25em] text-zinc-500">
@@ -400,7 +400,7 @@ export default function CommunityClient() {
           </div>
         </div>
         {/* Gradient transition from light back to dark */}
-        <div className="h-8 bg-gradient-to-b from-[#f4f4f0] to-[#08080f]" />
+        <div className="h-32 bg-gradient-to-b from-[#f4f4f0] to-[#08080f]" />
       </section>
 
       {/* ══════════════════════════════════════════════════
