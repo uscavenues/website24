@@ -98,9 +98,7 @@ export default function CommunityClient() {
           </h1>
 
           <p className="max-w-2xl text-zinc-400 text-base md:text-lg leading-relaxed">
-            We cherish the unique blend of majors, industries, and bright futures
-            that make up Avenues. No matter where your interests lie, we invite
-            you to join us.
+            We celebrate the diversity of majors, perspectives, and paths that make up Avenues. No matter where your interests lie, there&apos;s a place here for you.
           </p>
         </div>
       </section>
@@ -214,7 +212,7 @@ export default function CommunityClient() {
 
         <div className="relative mx-auto max-w-7xl px-6 md:px-10 py-24">
           <div className="mb-14 flex items-center gap-4">
-            <span className="text-[10px] font-bold uppercase tracking-[0.25em] text-zinc-500">
+            <span className="text-[10px] font-bold uppercase tracking-[0.25em] text-zinc-400">
               How We Work Together
             </span>
             <div className="h-px flex-1 bg-white/[0.05]" />
@@ -421,7 +419,8 @@ export default function CommunityClient() {
           rel="noopener noreferrer"
           className="inline-flex items-center gap-2 border border-[#eb4c60]/30 text-[#eb4c60] px-5 py-2.5 text-xs font-semibold uppercase tracking-[0.15em] rounded-sm hover:bg-[#eb4c60]/[0.06] transition-colors duration-200"
         >
-          Follow @uscavenues →
+          Follow @uscavenues
+          <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
         </a>
       </div>
 
@@ -435,9 +434,9 @@ export default function CommunityClient() {
               Join Us
             </p>
             <h2 className="text-3xl md:text-4xl font-black text-white tracking-tight leading-tight">
-              Be part of something
+              Find your people
               <br />
-              <span className="text-[#eb4c60]">bigger than a resume.</span>
+              <span className="text-[#eb4c60]">at Avenues.</span>
             </h2>
           </div>
           <div className="flex flex-wrap gap-3 shrink-0">

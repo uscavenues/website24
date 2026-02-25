@@ -23,7 +23,7 @@ interface MentorCompany {
 interface AlumniPlacement {
   company: string;
   logo: string;
-  positions: string[]; // prefix: "(Full-Time)" or "(Intern)"
+  positions: string[]; // prefix: "Full-Time ·" or "Intern ·"
 }
 
 interface ClientEngagement {
@@ -221,73 +221,73 @@ export const mentors: MentorCompany[] = [
 
 // ─────────────────────────────────────────────────────────────────────────────
 //  Alumni Placements
-//  (Full-Time) or (Intern) prefix
+//  Full-Time · or Intern · prefix
 // ─────────────────────────────────────────────────────────────────────────────
 
 export const alumni: AlumniPlacement[] = [
   {
     company: "Bank of America",
     logo: "/assets/logos/bank-of-america-emblem.png",
-    positions: ["(Full-Time) PM"],
+    positions: ["Full-Time · PM"],
   },
   {
     company: "EY",
     logo: "/assets/logos/ey.png",
-    positions: ["(Intern) Process & Controls"],
+    positions: ["Intern · Process & Controls"],
   },
   {
     company: "JP Morgan",
     logo: "/assets/logos/jp.png",
-    positions: ["(Intern) IB", "(Intern) Analyst"],
+    positions: ["Intern · IB", "Intern · Analyst"],
   },
   {
     company: "PwC",
     logo: "/assets/logos/pwc.png",
     positions: [
-      "(Intern) Cyber Defense & Eng.",
-      "(Intern) Cyber Risk & Reg.",
-      "(Intern) Tech Consultant",
+      "Intern · Cyber Defense & Eng.",
+      "Intern · Cyber Risk & Reg.",
+      "Intern · Tech Consultant",
     ],
   },
   {
     company: "Northrop Grumman",
     logo: "/assets/logos/northrop.png",
-    positions: ["(Intern) Cyber Info Assurance"],
+    positions: ["Intern · Cyber Info Assurance"],
   },
   {
     company: "Deloitte",
     logo: "/assets/logos/deloitte.png",
-    positions: ["(Intern) Management Consulting"],
+    positions: ["Intern · Management Consulting"],
   },
   {
     company: "Disney",
     logo: "/assets/logos/disney.jpg",
-    positions: ["(Intern) Corp. Enterprise Risk Mgmt."],
+    positions: ["Intern · Corp. Enterprise Risk Mgmt."],
   },
   {
     company: "KPMG",
     logo: "/assets/logos/kpmg.png",
-    positions: ["(Intern) Consultant"],
+    positions: ["Intern · Consultant"],
   },
   {
     company: "General Dynamics",
     logo: "/assets/logos/general_dynamics.jpg",
-    positions: ["(Intern) Software Eng."],
+    positions: ["Intern · Software Eng."],
   },
   {
     company: "DrFirst",
     logo: "/assets/logos/drfirst.png",
-    positions: ["(Intern) Software Eng."],
+    positions: ["Intern · Software Eng."],
   },
   {
     company: "US Bank",
     logo: "/assets/logos/usbank.png",
-    positions: ["(Intern) PM"],
+    positions: ["Intern · PM"],
   },
   {
     company: "Accenture",
     logo: "/assets/logos/accenture.png",
-    positions: ["(Intern) Consulting Analyst"],
+    positions: ["Intern · Consulting Analyst"],
   },
 ];
 
@@ -378,7 +378,7 @@ export const whatWeDo: WhatWeDoItem[] = [
   },
   {
     title: "Coffee Chats",
-    desc: "Algorithmically-paired weekly chats to build meaningful mentorships and friendships across the organization.",
+    desc: "Interest-matched weekly one-on-one coffee chats to build meaningful mentorships and friendships across the organization.",
     icon: "05",
   },
   {

@@ -272,3 +272,22 @@ body {
 .light-section .section-label {
   color: #9a9a9a;
 }
+
+/* ── Accessibility: reduce motion ──────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  .marquee-track,
+  .marquee-track-reverse {
+    animation-play-state: paused;
+  }
+  .animate-ping {
+    animation: none;
+  }
+}
+
+/* ── Focus rings ──────────────────────────────────────────── */
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid #eb4c60;
+  outline-offset: 3px;
+  border-radius: 2px;
+}

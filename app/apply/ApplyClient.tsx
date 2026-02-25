@@ -70,6 +70,7 @@ function FAQAccordion({ items }: { items: FAQItem[] }) {
 
 export default function ApplyClient() {
   const [notified, setNotified] = useState(false);
+  const [email, setEmail] = useState("");
 
   return (
     <>
@@ -93,7 +94,7 @@ export default function ApplyClient() {
           </h1>
           <p className="mt-6 max-w-lg text-zinc-500 text-sm leading-relaxed">
             We recruit the most driven students at USC — regardless of major or
-            background. One application. Three tracks. Unlimited impact.
+            background. One application. Three tracks — Strategy, Technology, or Design. Unlimited impact.
           </p>
         </div>
       </section>
@@ -108,6 +109,7 @@ export default function ApplyClient() {
             {/* Status indicator */}
             <div className="flex items-center gap-3 shrink-0">
               <span className="relative flex h-3 w-3">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-amber-400 opacity-75" />
                 <span className="relative inline-flex rounded-full h-3 w-3 bg-amber-400" />
               </span>
               <span className="text-[10px] font-bold uppercase tracking-[0.25em] text-amber-400">
@@ -151,13 +153,14 @@ export default function ApplyClient() {
                 <div className="mt-6 flex flex-col sm:flex-row gap-2 max-w-sm">
                   <input
                     type="email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
                     placeholder="your@email.com"
                     className="flex-1 bg-transparent border-b border-white/[0.12] focus:border-[#eb4c60] outline-none text-white placeholder:text-zinc-600 py-2 text-xs transition-colors duration-200"
                     onKeyDown={(e) => {
                       if (e.key === 'Enter') {
-                        const input = e.currentTarget;
-                        const email = input.value.trim();
-                        if (email && email.includes('@')) {
+                        const val = email.trim();
+                        if (val && val.includes('@')) {
                           setNotified(true);
                         }
                       }
@@ -166,10 +169,8 @@ export default function ApplyClient() {
                   <button
                     type="button"
                     className="shrink-0 text-[10px] uppercase tracking-[0.15em] font-semibold border border-[#eb4c60]/40 text-[#eb4c60] hover:bg-[#eb4c60] hover:text-white px-3 py-1.5 rounded-sm transition-all duration-200"
-                    onClick={(e) => {
-                      const input = (e.currentTarget.previousElementSibling as HTMLInputElement);
-                      const email = input?.value.trim();
-                      if (email && email.includes('@')) {
+                    onClick={() => {
+                      if (email.trim() && email.includes('@')) {
                         setNotified(true);
                       }
                     }}
@@ -251,7 +252,7 @@ export default function ApplyClient() {
             {
               n: "05",
               title: "No Experience Required",
-              desc: "We'll teach you everything you need. You just have to show up.",
+              desc: "We'll train you from day one. You bring the drive; we handle the rest.",
               icon: <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>,
               hoverClass: "group-hover:text-[#eb4c60]",
               barOrigin: "origin-left",
@@ -290,7 +291,7 @@ export default function ApplyClient() {
                 </h3>
 
                 {/* Description — right aligned, desktop only */}
-                <p className="flex-1 text-sm text-zinc-500 leading-relaxed group-hover:text-zinc-300 transition-colors duration-300">
+                <p className="hidden md:block flex-1 text-sm text-zinc-500 leading-relaxed group-hover:text-zinc-300 transition-colors duration-300">
                   {desc}
                 </p>
               </div>
@@ -373,7 +374,7 @@ export default function ApplyClient() {
           <div>
             <p className="text-[10px] uppercase tracking-[0.3em] text-white/60 mb-2">Stay in the loop</p>
             <h2 className="text-2xl md:text-3xl font-black text-white tracking-tight">
-              Applications open every semester.
+              Fall and spring applications open in the first two weeks of each semester.
             </h2>
             <p className="text-sm text-white/70 mt-2 max-w-sm">
               Follow us on Instagram for announcement dates and open-info-session schedules.

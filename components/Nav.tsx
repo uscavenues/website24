@@ -26,7 +26,7 @@ export default function Nav() {
       const windowHeight = window.innerHeight;
       const footerThreshold = docHeight - windowHeight - 180;
       // On home page, wait until "What We Do" is near the top (after the full 320vh hero)
-      const topThreshold = pathname === "/" ? Math.round(windowHeight * 3.4) : 60;
+      const topThreshold = pathname === "/" ? Math.round(windowHeight * 3.4) : 40;
       if (scrollY < topThreshold) {
         setIsHidden(true);
       } else if (scrollY > footerThreshold) {

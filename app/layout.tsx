@@ -9,6 +9,7 @@ import ScrollToTop from "@/components/ScrollToTop";
 
 const dmSerif = DM_Serif_Display({
   weight: "400",
+  display: "swap",
   style: ["normal", "italic"],
   subsets: ["latin"],
   variable: "--font-display",
@@ -30,16 +31,17 @@ export const metadata: Metadata = {
     type: "website",
     images: [
       {
-        url: "/assets/icons/avenues-logo.png",
-        width: 1200,
-        height: 630,
-        alt: "Avenues Consulting Group",
+        url: "/assets/photos/home.jpg",
+        width: 1920,
+        height: 1080,
+        alt: "Avenues Consulting Group — Spring '26 Cohort",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    images: ["/assets/icons/avenues-logo.png"],
+    title: "Avenues Consulting Group | USC",
+    images: ["/assets/photos/home.jpg"],
   },
 };
 
@@ -64,6 +66,34 @@ export default function RootLayout({
         </main>
         <Footer />
         <ScrollToTop />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Organization",
+              "name": "Avenues Consulting Group",
+              "url": "https://avenues-ten.vercel.app",
+              "logo": "https://avenues-ten.vercel.app/assets/icons/avenues-logo.png",
+              "description": "USC's student-run consulting group spanning strategy, technology, and design — pro bono.",
+              "foundingDate": "2023",
+              "areaServed": "United States",
+              "memberOf": {
+                "@type": "CollegeOrUniversity",
+                "name": "University of Southern California"
+              },
+              "contactPoint": {
+                "@type": "ContactPoint",
+                "email": "uscavenues@gmail.com",
+                "contactType": "general inquiry"
+              },
+              "sameAs": [
+                "https://www.instagram.com/uscavenues/",
+                "https://www.linkedin.com/company/avenues-consulting-group-usc/"
+              ]
+            })
+          }}
+        />
       </body>
     </html>
   );

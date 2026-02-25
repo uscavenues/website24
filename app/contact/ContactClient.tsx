@@ -43,12 +43,18 @@ export default function ContactClient() {
         <div className="w-8 h-px bg-[#eb4c60] mb-4" />
         <h3 className="text-2xl font-black text-white tracking-tight">We&apos;ll be in touch.</h3>
         <p className="text-sm text-zinc-400 leading-relaxed max-w-sm">
-          We&apos;ll be in touch within 48 hours. In the meantime, check out our{" "}
+          Expect a response within 48 hours. In the meantime, check out our{" "}
           <a href="/portfolio" className="text-[#eb4c60] hover:underline">
             portfolio
           </a>{" "}
           to see examples of our work.
         </p>
+        <button
+          onClick={() => { setSubmitted(false); setError(""); }}
+          className="mt-2 text-xs text-zinc-500 hover:text-zinc-300 transition-colors duration-200 underline underline-offset-2"
+        >
+          Submit another request
+        </button>
       </div>
     );
   }
@@ -123,6 +129,7 @@ export default function ContactClient() {
           <select
             id="engagement_type"
             name="engagement_type"
+            required
             className="bg-transparent border-b border-white/[0.12] hover:border-[#eb4c60]/50 focus:border-[#eb4c60] outline-none text-white py-3 text-sm w-full transition-colors duration-200 appearance-none cursor-pointer pr-8"
             defaultValue=""
           >
@@ -152,6 +159,7 @@ export default function ContactClient() {
           name="message"
           required
           rows={4}
+          maxLength={2000}
           placeholder="What are you working on, and how can Avenues help?"
           className="bg-transparent border-b border-white/[0.12] hover:border-[#eb4c60]/50 focus:border-[#eb4c60] outline-none text-white placeholder:text-zinc-600 py-3 text-sm w-full transition-colors duration-200 resize-y"
         />

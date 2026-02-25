@@ -110,10 +110,9 @@ export default function AboutPage() {
                   Most orgs were case-prep focused. Avenues was built to be different.
                 </p>
                 <p>
-                  Since then, Avenues has grown threefold and acquired{" "}
-                  <span className="text-white font-semibold">20+ clients</span> — from
-                  Fortune 500 companies and non-profits to early-stage startups — within
-                  two years of founding.
+                  Avenues has grown to <span className="text-white font-semibold">30+ members</span> and delivered work for{" "}
+                  <Link href="/portfolio" className="text-white font-semibold hover:text-[#eb4c60] transition-colors duration-200">20+ clients</Link> — from
+                  Fortune 500 companies and non-profits to early-stage startups — in just two years.
                 </p>
                 <p>
                   Every engagement is pro bono. Every project is real.
@@ -167,7 +166,7 @@ export default function AboutPage() {
             <p className="font-display italic text-[clamp(1.4rem,3.5vw,2.5rem)] text-white/80 leading-snug tracking-tight max-w-3xl">
               &ldquo;Pro bono doesn&rsquo;t mean second-rate. It means no barriers between great work and the organizations that need it.&rdquo;
             </p>
-            <footer className="mt-4 text-[10px] uppercase tracking-[0.25em] text-zinc-600">&mdash; Avenues Consulting Group</footer>
+            <footer className="mt-4 text-[10px] uppercase tracking-[0.25em] text-zinc-600">&mdash; Avenues Leadership</footer>
           </blockquote>
 
           <div className="grid grid-cols-1 md:grid-cols-[1fr_1px_1fr] gap-10 md:gap-0">
@@ -220,7 +219,7 @@ export default function AboutPage() {
         <dl className="grid grid-cols-2 md:grid-cols-4 divide-x divide-white/[0.05]">
           {[
             { value: "20+", label: "Clients served", sub: "Nonprofits, startups & corps" },
-            { value: "4+", label: "Semesters", sub: "Fall '23 — present" },
+            { value: "5+", label: "Semesters", sub: "Fall '23 — present" },
             { value: "3", label: "Practice areas", sub: "Strategy, Tech & Design" },
             { value: "100%", label: "Pro bono", sub: "Zero cost to clients" },
           ].map(({ value, label, sub }) => (
@@ -272,7 +271,10 @@ export default function AboutPage() {
                 <div className="absolute bottom-0 left-0 right-0 p-5">
                   <p className="text-white font-black text-xl leading-tight tracking-tight">{member.name}</p>
                   <p className="text-[#eb4c60] text-[10px] font-bold uppercase tracking-[0.25em] mt-1">{member.role}</p>
-
+                  <p className="text-[9px] text-zinc-500 mt-2 flex items-center gap-1 group-hover:text-zinc-300 transition-colors duration-200">
+                    <svg width="8" height="8" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" /></svg>
+                    View on LinkedIn ↗
+                  </p>
                 </div>
               </a>
             ))}
@@ -303,7 +305,7 @@ export default function AboutPage() {
                     src={member.photo}
                     alt={member.name}
                     fill
-                    className="object-cover object-top grayscale group-hover:grayscale-0 transition-all duration-500"
+                    className="object-cover object-top transition-all duration-500"
                     sizes="40px"
                   />
                 </div>
@@ -338,7 +340,7 @@ export default function AboutPage() {
           <div className="h-px bg-white/[0.04] mb-12" />
           <div className="border-l-2 border-white/[0.05] pl-4">
           <p className="text-[11px] font-black uppercase tracking-[0.35em] text-zinc-400 mb-10">
-            Associates
+            Associates ({team.associates.length})
           </p>
           </div>
 
@@ -355,7 +357,7 @@ export default function AboutPage() {
                     src={member.photo}
                     alt={member.name}
                     fill
-                    className="object-cover object-top grayscale group-hover:grayscale-0 transition-all duration-500"
+                    className="object-cover object-top transition-all duration-500"
                     sizes="32px"
                   />
                 </div>

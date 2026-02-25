@@ -38,7 +38,6 @@ export default function Footer() {
               { href: "/portfolio", label: "Portfolio" },
               { href: "/apply", label: "Apply" },
               { href: "/contact", label: "Contact" },
-              { href: "/members", label: "Members" },
             ].map(({ href, label }) => (
               <Link key={href} href={href} className="text-[11px] text-zinc-600 hover:text-zinc-300 transition-colors duration-200 uppercase tracking-[0.1em]">{label}</Link>
             ))}
@@ -54,7 +53,7 @@ export default function Footer() {
             <p className="text-[11px] text-zinc-700">Los Angeles, CA</p>
           </div>
           <div className="mt-6">
-            <Link href="/apply" className="inline-flex items-center gap-1.5 bg-[#eb4c60] text-white px-4 py-2 text-[10px] font-bold uppercase tracking-[0.15em] rounded-sm hover:bg-[#d43d50] transition-colors duration-200">
+            <Link href="/apply" className="inline-flex items-center gap-1.5 border border-[#eb4c60]/40 text-[#eb4c60] hover:bg-[#eb4c60]/[0.08] px-4 py-2 text-[10px] font-bold uppercase tracking-[0.15em] rounded-sm transition-colors duration-200">
               Apply Now →
             </Link>
           </div>

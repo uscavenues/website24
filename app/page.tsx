@@ -145,7 +145,7 @@ export default function HomePage() {
           <div className="absolute inset-0 flex flex-col" style={{ zIndex: 10 }}>
             <div className="relative mx-auto max-w-7xl px-6 md:px-10 w-full flex-1 flex flex-col justify-center pt-16">
 
-              <h1 className="text-[clamp(4rem,12vw,10rem)] font-black leading-[0.88] tracking-tighter text-white">
+              <h1 className="text-[clamp(4rem,12vw,10rem)] font-black leading-[0.88] tracking-tighter text-white" aria-label="Avenues Consulting Group">
 
                 {/* Invisible A-placeholder: logo lands here */}
                 <span className="inline-flex items-end" style={{ gap: 0 }}>
@@ -176,8 +176,8 @@ export default function HomePage() {
               {/* Tagline + CTAs — appear right after GROUP */}
               <motion.div style={{ opacity: contentOp, y: contentY }}>
                 <p className="mt-8 max-w-lg text-zinc-400 text-base md:text-xl leading-relaxed font-display italic">
-                  USC&apos;s premier student-run consulting group — pro bono,
-                  multidisciplinary, and built for impact.
+                  USC&apos;s student-run consulting group spanning strategy, technology, and design — pro bono,
+                  and built for impact.
                 </p>
                 <div className="flex flex-wrap gap-3 mt-8">
                   <Link href="/contact" className="inline-flex items-center gap-2 bg-[#eb4c60] text-white px-7 py-3.5 text-xs font-bold tracking-[0.15em] uppercase rounded-sm hover:bg-[#d43d50] transition-colors duration-200">
@@ -286,7 +286,7 @@ export default function HomePage() {
       <ScrollReveal className="mx-auto max-w-7xl px-6 md:px-10 pb-24">
         <div className="relative">
           <div className="relative rounded-sm overflow-hidden aspect-[16/7]">
-            <Image src="/assets/photos/home.jpg" alt="Avenues cohort" fill className="object-cover" sizes="100vw" />
+            <Image src="/assets/photos/home.jpg" alt="Avenues Consulting Group cohort, USC" fill className="object-cover" sizes="100vw" />
             <div className="absolute inset-0 bg-gradient-to-t from-[#08080f] via-[#08080f]/20 to-transparent" />
             <div className="absolute bottom-8 left-8">
               <p className="text-[10px] uppercase tracking-[0.2em] text-zinc-500 mb-1">Spring &apos;26 Cohort</p>
@@ -360,7 +360,7 @@ export default function HomePage() {
           </ScrollReveal>
           <ScrollReveal className="flex flex-wrap gap-4" delay="delay-2">
             <Link href="/contact" className="inline-flex items-center gap-2 bg-[#eb4c60] text-white px-8 py-4 text-xs font-bold uppercase tracking-[0.15em] rounded-sm hover:bg-[#d43d50] transition-colors">
-              Partner with us
+              Work with us
               <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M17 8l4 4m0 0l-4 4m4-4H3" />
               </svg>

@@ -1,5 +1,4 @@
 User-agent: *
 Allow: /
-Disallow: /members
 
 Sitemap: https://avenues-ten.vercel.app/sitemap.xml

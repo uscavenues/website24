@@ -64,12 +64,11 @@ export default function PortfolioClient() {
   return (
     <>
       {/* ── PAGE HEADER ──────────────────────────────────────────────────── */}
-      <section className="relative overflow-hidden pt-24 pb-16 bg-[#09090f]">
+      <section className="relative overflow-hidden pt-24 pb-16">
         <div className="absolute -bottom-20 -left-20 w-[600px] h-[500px] rounded-full bg-[#eb4c60]/8 blur-[130px] pointer-events-none" aria-hidden="true" />
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-[#08080f] pointer-events-none" aria-hidden="true" />
 
         <div className="relative z-10 mx-auto max-w-7xl px-6 md:px-10">
-          <span className="absolute right-4 md:right-10 top-20 text-[clamp(8rem,20vw,18rem)] font-black text-white/[0.02] leading-none pointer-events-none select-none">05</span>
           <div className="mb-6">
             <span className="inline-block text-[10px] font-bold uppercase tracking-[0.3em] text-[#eb4c60]">
               Our Work
@@ -97,7 +96,7 @@ export default function PortfolioClient() {
             </span>
             <div className="h-px flex-1 bg-zinc-300/60" />
             <span className="text-[10px] text-zinc-500">
-              20+ engagements
+              20+ projects delivered
             </span>
           </div>
         </div>
@@ -172,9 +171,9 @@ export default function PortfolioClient() {
             {/* Left: heading + tab switcher */}
             <div className="lg:sticky lg:top-28 lg:self-start">
               <h2 className="text-3xl font-black font-display text-white tracking-tight leading-tight mb-2">
-                Delivered
+                Selected
                 <br />
-                <span className="text-[#eb4c60]">Work</span>
+                <span className="text-[#eb4c60]">Projects</span>
               </h2>
               <p className="text-xs text-zinc-400 leading-relaxed mb-10">
                 A selection of projects across all three practice areas from
@@ -217,6 +216,8 @@ export default function PortfolioClient() {
 
             {/* Right: project rows */}
             <div>
+              {/* Mobile: section label */}
+              <p className="lg:hidden text-[10px] font-bold uppercase tracking-[0.25em] text-zinc-400 mb-4">Past Projects</p>
               {/* Mobile: tab pill switcher */}
               <div className="lg:hidden mb-6 flex items-center gap-2 flex-wrap">
                 {PROJECT_TABS.map(({ key, label }) => (
