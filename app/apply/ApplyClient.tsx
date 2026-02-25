@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 import { faqApplication, type FAQItem } from "@/lib/data";
 import ScrollReveal from "@/components/ScrollReveal";
 
@@ -76,10 +77,14 @@ export default function ApplyClient() {
     <>
       {/* ── PAGE HEADER ──────────────────────────────────────────────────── */}
       <section className="relative min-h-screen flex items-end overflow-hidden">
+        {/* Full-bleed cinematic photo */}
+        <div className="absolute inset-0">
+          <Image src="/assets/photos/tabling.jpg" alt="" fill className="object-cover opacity-35" priority sizes="100vw" />
+        </div>
+        {/* Dark overlay gradient */}
+        <div className="absolute inset-0 bg-gradient-to-t from-[#08080f] via-[#08080f]/55 to-[#08080f]/25 pointer-events-none" />
         {/* Dot texture */}
-        <div className="absolute inset-0 dot-texture opacity-40 pointer-events-none" />
-        {/* Pink glow */}
-        <div className="absolute -top-32 left-1/2 -translate-x-1/2 w-[700px] h-[400px] rounded-full bg-[#eb4c60]/12 blur-[120px] pointer-events-none" />
+        <div className="absolute inset-0 dot-texture opacity-20 pointer-events-none" />
         {/* Bottom fade */}
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-[#08080f] pointer-events-none" />
 

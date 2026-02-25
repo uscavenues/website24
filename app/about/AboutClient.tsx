@@ -38,10 +38,14 @@ export default function AboutPage() {
           1. PAGE HEADER  -  dark hero with dot-texture
       ───────────────────────────────────────────── */}
       <section ref={headerRef} className="relative min-h-[85vh] flex items-end overflow-hidden">
+        {/* Full-bleed cinematic photo */}
+        <div className="absolute inset-0">
+          <Image src="/assets/photos/service.jpg" alt="" fill className="object-cover opacity-40" priority sizes="100vw" />
+        </div>
+        {/* Dark overlay gradient */}
+        <div className="absolute inset-0 bg-gradient-to-t from-[#08080f] via-[#08080f]/60 to-[#08080f]/30 pointer-events-none" />
         {/* Halftone dot texture */}
-        <div className="absolute inset-0 dot-texture opacity-40 pointer-events-none" />
-        {/* Top-left glow */}
-        <div className="absolute -top-32 -left-32 w-[600px] h-[400px] rounded-full bg-[#eb4c60]/8 blur-[120px] pointer-events-none" />
+        <div className="absolute inset-0 dot-texture opacity-20 pointer-events-none" />
         {/* Bottom fade into page */}
         <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-b from-transparent to-[#08080f] pointer-events-none" />
 
@@ -191,7 +195,7 @@ export default function AboutPage() {
                 <p className="text-[10px] font-bold uppercase tracking-[0.25em] text-zinc-500 mb-5">
                   For our clients
                 </p>
-                <h3 className="text-[clamp(1.75rem,3vw,2.75rem)] font-black text-white leading-[1.0] tracking-tight mb-6">
+                <h3 className="text-xl md:text-2xl font-black text-white leading-snug tracking-tight mb-6">
                   Research, plan, build, and ship. No fees. No exceptions.
                 </h3>
                 <p className="text-zinc-400 leading-relaxed text-sm">
@@ -215,7 +219,7 @@ export default function AboutPage() {
                 <p className="text-[10px] font-bold uppercase tracking-[0.25em] text-zinc-500 mb-5">
                   For our consultants
                 </p>
-                <h3 className="text-[clamp(1.75rem,3vw,2.75rem)] font-black text-white leading-[1.0] tracking-tight mb-6">
+                <h3 className="text-xl md:text-2xl font-black text-white leading-snug tracking-tight mb-6">
                   A space to collaborate, build, learn, and grow professionally.
                 </h3>
                 <p className="text-zinc-400 leading-relaxed text-sm">
