@@ -51,7 +51,7 @@ export default function HomePage() {
     if (typeof window === "undefined") return { x: 400, y: 260, sz: 500 };
     const vw = window.innerWidth;
     const vh = window.innerHeight;
-    const sz = Math.min(Math.max(vw * 0.72, 560), 1100);
+    const sz = Math.min(Math.max(vw * 0.88, 700), 1500);
     return { x: vw / 2 - sz / 2, y: vh / 2 - sz / 2, sz };
   });
 
@@ -171,7 +171,7 @@ export default function HomePage() {
                   <span
                     ref={aRef}
                     className="inline-block"
-                    style={{ height: "1.55em", width: "1.55em", marginBottom: "-0.27em", marginRight: "-0.1em" }}
+                    style={{ height: "2.2em", width: "2.2em", marginBottom: "-0.76em", marginRight: "-0.18em" }}
                     aria-hidden="true"
                   />
                   <motion.span className="inline-block" style={{ opacity: venuesOp, x: venuesX }}>

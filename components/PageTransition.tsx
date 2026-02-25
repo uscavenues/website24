@@ -1,56 +1,104 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import { usePathname } from "next/navigation";
+import { useCallback, useEffect, useRef, useState } from "react";
+import { useRouter, usePathname } from "next/navigation";
+import { motion } from "framer-motion";
+
+/**
+ * Two-phase wipe transition:
+ *   Phase 1 "covering"  — wipe grows left→right (scaleX 0→1) BEFORE navigation
+ *   Phase 2 "covered"   — screen is red; router.push fires; new page renders hidden
+ *   Phase 3 "revealing" — wipe retreats right→left (scaleX 1→0) revealing new page
+ *
+ * We intercept anchor clicks in capture phase and call e.preventDefault() so that
+ * Next.js Link (which checks e.defaultPrevented before navigating) does nothing.
+ * We then manually call router.push after the cover completes.
+ */
+
+type Phase = "idle" | "covering" | "covered" | "revealing";
 
 export default function PageTransition({ children }: { children: React.ReactNode }) {
+  const router   = useRouter();
   const pathname = usePathname();
-  const [wipeId, setWipeId] = useState(0);
-  const lastPath = useRef(pathname);
 
+  const [phase, setPhase] = useState<Phase>("idle");
+  const pending    = useRef<string | null>(null);
+  const activePath = useRef(pathname);
+
+  // ── Step 1: intercept clicks before Next.js sees them ──────────────────
   useEffect(() => {
-    if (pathname !== lastPath.current) {
-      lastPath.current = pathname;
-      setWipeId((n) => n + 1);
-    }
-  }, [pathname]);
+    const handler = (e: MouseEvent) => {
+      if (phase !== "idle") return;
 
+      const anchor = (e.target as Element).closest("a");
+      if (!anchor) return;
+
+      const href = anchor.getAttribute("href") ?? "";
+      if (!href) return;
+
+      // Skip external, hash, protocol links and new-tab targets
+      if (/^(https?:|\/\/|mailto:|tel:|#)/.test(href)) return;
+      if (anchor.getAttribute("target") === "_blank") return;
+
+      // Skip same-page navigation
+      try {
+        const target = new URL(href, window.location.href).pathname;
+        if (target === activePath.current) return;
+      } catch { return; }
+
+      // Block Next.js Link's built-in navigation (it checks defaultPrevented)
+      e.preventDefault();
+
+      pending.current = href;
+      setPhase("covering");
+    };
+
+    // Capture phase → runs before React's synthetic events
+    document.addEventListener("click", handler, true);
+    return () => document.removeEventListener("click", handler, true);
+  }, [phase]);
+
+  // ── Step 2: once the pathname actually changes, start reveal ────────────
+  useEffect(() => {
+    if (pathname !== activePath.current) {
+      activePath.current = pathname;
+      if (phase === "covered") setPhase("revealing");
+    }
+  }, [pathname, phase]);
+
+  // ── Animation callbacks ─────────────────────────────────────────────────
+  const onAnimComplete = useCallback(() => {
+    if (phase === "covering") {
+      // Screen fully covered — safe to navigate; user sees nothing change
+      setPhase("covered");
+      if (pending.current) {
+        router.push(pending.current);
+        pending.current = null;
+      }
+    } else if (phase === "revealing") {
+      setPhase("idle");
+    }
+  }, [phase, router]);
+
+  // ── Render ──────────────────────────────────────────────────────────────
   return (
     <>
-      {/*
-        Wipe lives at this level — NOT inside any motion.div with opacity/transform.
-        This ensures position:fixed is relative to the viewport, not a stacking context.
-      */}
-      <AnimatePresence>
+      {phase !== "idle" && (
         <motion.div
-          key={wipeId}
           className="fixed inset-0 z-[200] bg-[#eb4c60] pointer-events-none"
-          initial={{ scaleX: 0 }}
-          animate={{ scaleX: [0, 1, 1, 0] }}
-          exit={{ opacity: 0, transition: { duration: 0 } }}
-          transition={{
-            duration: 0.7,
-            times: [0, 0.38, 0.62, 1],
-            ease: [0.4, 0, 0.2, 1],
-          }}
-          style={{ transformOrigin: "left center" }}
           aria-hidden="true"
+          // Cover starts collapsed, reveal starts full
+          initial={{ scaleX: phase === "covering" ? 0 : 1 }}
+          animate={{ scaleX: phase === "revealing" ? 0 : 1 }}
+          transition={{ duration: 0.38, ease: [0.4, 0, 0.2, 1] }}
+          style={{
+            // Grows from left while covering, retreats from right while revealing
+            transformOrigin: phase === "covering" ? "left center" : "right center",
+          }}
+          onAnimationComplete={onAnimComplete}
         />
-      </AnimatePresence>
-
-      {/* Page content — simple crossfade */}
-      <AnimatePresence mode="wait" initial={false}>
-        <motion.div
-          key={pathname}
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-          transition={{ duration: 0.15 }}
-        >
-          {children}
-        </motion.div>
-      </AnimatePresence>
+      )}
+      {children}
     </>
   );
 }
