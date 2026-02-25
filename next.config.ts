@@ -30,10 +30,10 @@ const nextConfig: NextConfig = {
         ],
       },
       {
-        // Next.js image optimization endpoint
+        // Next.js image optimization endpoint — match minimumCacheTTL (1 year)
         source: "/_next/image",
         headers: [
-          { key: "Cache-Control", value: "public, max-age=86400, stale-while-revalidate=604800" },
+          { key: "Cache-Control", value: "public, max-age=31536000, stale-while-revalidate=31536000" },
         ],
       },
       {
