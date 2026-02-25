@@ -171,7 +171,7 @@ export default function HomePage() {
                   <span
                     ref={aRef}
                     className="inline-block"
-                    style={{ height: "2.2em", width: "2.2em", marginBottom: "-0.76em", marginRight: "-0.18em" }}
+                    style={{ height: "2.2em", width: "2.2em", marginBottom: "-0.92em", marginRight: "-0.44em" }}
                     aria-hidden="true"
                   />
                   <motion.span className="inline-block" style={{ opacity: venuesOp, x: venuesX }}>
