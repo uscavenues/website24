@@ -6,7 +6,7 @@ import type { TeamMember } from "@/lib/data";
 export const metadata = {
   title: "About | Avenues Consulting Group",
   description:
-    "Learn about Avenues Consulting Group — founded in 2023 at USC to provide pro-bono strategy, technology, and design consulting.",
+    "Learn about Avenues Consulting Group  -  founded in 2023 at USC to provide pro-bono strategy, technology, and design consulting.",
 };
 
 const LinkedInIcon = () => (
@@ -32,7 +32,7 @@ function MemberCard({
     size === "lg" ? "aspect-[3/4]" : size === "sm" ? "aspect-square" : "aspect-[3/4]";
 
   return (
-    <div className="group flex flex-col border border-white/[0.06] bg-white/[0.02] rounded-sm overflow-hidden hover:border-[#eb4c60]/20 hover:scale-[1.015] transition-all duration-300">
+    <div className="group flex flex-col border border-white/[0.1] bg-white/[0.05] backdrop-blur-sm rounded-sm overflow-hidden shadow-[0_2px_16px_rgba(0,0,0,0.2)] hover:border-[#eb4c60]/30 hover:bg-white/[0.09] hover:shadow-[0_8px_32px_rgba(235,76,96,0.07)] hover:scale-[1.015] transition-all duration-300">
       {/* Photo */}
       <div className={`relative w-full ${imgSize} overflow-hidden bg-white/[0.03]`}>
         <Image
@@ -59,7 +59,7 @@ function MemberCard({
           target="_blank"
           rel="noopener noreferrer"
           aria-label={`${member.name} on LinkedIn`}
-          className="shrink-0 text-zinc-700 hover:text-[#eb4c60] transition-colors duration-200 mt-0.5"
+          className="shrink-0 text-zinc-500 hover:text-[#eb4c60] transition-colors duration-200 mt-0.5"
         >
           <LinkedInIcon />
         </Link>
@@ -72,7 +72,7 @@ export default function AboutPage() {
   return (
     <>
       {/* ─────────────────────────────────────────────
-          1. PAGE HEADER — dark hero with dot-texture
+          1. PAGE HEADER  -  dark hero with dot-texture
       ───────────────────────────────────────────── */}
       <section className="relative overflow-hidden pt-28 pb-16">
         {/* Halftone dot texture */}
@@ -98,14 +98,14 @@ export default function AboutPage() {
 
           {/* Subtitle */}
           <p className="max-w-2xl text-zinc-400 text-lg leading-relaxed">
-            A student organization built from the ground up — on the belief that
+            A student organization built from the ground up  -  on the belief that
             real-world project experience shouldn&apos;t be gated by prestige or access.
           </p>
         </div>
       </section>
 
       {/* ─────────────────────────────────────────────
-          2. OUR BEGINNINGS — two-column editorial
+          2. OUR BEGINNINGS  -  two-column editorial
       ───────────────────────────────────────────── */}
       <section className="mx-auto max-w-7xl px-6 md:px-10 py-24">
         {/* Section label */}
@@ -117,7 +117,7 @@ export default function AboutPage() {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-20 items-center">
-          {/* Left — founding story text */}
+          {/* Left  -  founding story text */}
           <div>
             <h2 className="text-[clamp(2rem,4vw,3.25rem)] font-black text-white leading-[1.05] tracking-tight mb-8">
               Built by students,
@@ -133,8 +133,8 @@ export default function AboutPage() {
               </p>
               <p>
                 Since then, Avenues has grown threefold and acquired{" "}
-                <span className="text-white font-semibold">20+ clients</span> — from
-                Fortune 500 companies and non-profits to early-stage startups — within
+                <span className="text-white font-semibold">20+ clients</span>  -  from
+                Fortune 500 companies and non-profits to early-stage startups  -  within
                 two years of founding.
               </p>
               <p>
@@ -151,7 +151,7 @@ export default function AboutPage() {
               ].map(({ n, label }) => (
                 <div key={label}>
                   <div className="text-2xl font-black text-white tracking-tight">{n}</div>
-                  <div className="text-[10px] text-zinc-700 mt-0.5 tracking-[0.2em] uppercase">
+                  <div className="text-[10px] text-zinc-500 mt-0.5 tracking-[0.2em] uppercase">
                     {label}
                   </div>
                 </div>
@@ -159,7 +159,7 @@ export default function AboutPage() {
             </div>
           </div>
 
-          {/* Right — cohort photo */}
+          {/* Right  -  cohort photo */}
           <div className="relative">
             {/* Accent border offset */}
             <div className="absolute -top-3 -right-3 w-full h-full border border-[#eb4c60]/15 rounded-sm pointer-events-none" />
@@ -182,7 +182,7 @@ export default function AboutPage() {
       </section>
 
       {/* ─────────────────────────────────────────────
-          3. OUR MISSION — two-column with pink divider
+          3. OUR MISSION  -  two-column with pink divider
       ───────────────────────────────────────────── */}
       <section className="relative border-y border-white/[0.05] overflow-hidden">
         <div className="absolute inset-0 dot-texture-subtle opacity-60 pointer-events-none" />
@@ -197,7 +197,7 @@ export default function AboutPage() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-[1fr_1px_1fr] gap-10 md:gap-0">
-            {/* Left column — clients */}
+            {/* Left column  -  clients */}
             <div className="md:pr-16">
               <p className="text-[10px] font-bold uppercase tracking-[0.25em] text-zinc-600 mb-5">
                 For our clients
@@ -205,8 +205,8 @@ export default function AboutPage() {
               <h3 className="text-2xl md:text-3xl font-black text-white leading-tight tracking-tight mb-6">
                 Pro bono project-building across strategy, technology, and design.
               </h3>
-              <p className="text-zinc-500 leading-relaxed text-sm">
-                We work with organizations of every size — from startups finding product-market
+              <p className="text-zinc-400 leading-relaxed text-sm">
+                We work with organizations of every size  -  from startups finding product-market
                 fit to non-profits scaling their impact. No fees, ever. Just rigorous, student-driven work.
               </p>
             </div>
@@ -214,7 +214,7 @@ export default function AboutPage() {
             {/* Pink vertical divider */}
             <div className="hidden md:block w-px bg-[#eb4c60]/30 mx-auto self-stretch" />
 
-            {/* Right column — consultants */}
+            {/* Right column  -  consultants */}
             <div className="md:pl-16">
               <p className="text-[10px] font-bold uppercase tracking-[0.25em] text-zinc-600 mb-5">
                 For our consultants
@@ -222,8 +222,8 @@ export default function AboutPage() {
               <h3 className="text-2xl md:text-3xl font-black text-white leading-tight tracking-tight mb-6">
                 A space to collaborate, build, learn, and grow professionally.
               </h3>
-              <p className="text-zinc-500 leading-relaxed text-sm">
-                Regardless of your goals — consulting, tech, design, or beyond — Avenues is a
+              <p className="text-zinc-400 leading-relaxed text-sm">
+                Regardless of your goals  -  consulting, tech, design, or beyond  -  Avenues is a
                 place to do real work alongside people who take it seriously. No experience required.
               </p>
             </div>
@@ -245,7 +245,7 @@ export default function AboutPage() {
 
         {/* ── EXECUTIVE ── */}
         <div className="mb-20">
-          <p className="text-[9px] font-black uppercase tracking-[0.35em] text-zinc-700 mb-8">
+          <p className="text-[9px] font-black uppercase tracking-[0.35em] text-zinc-500 mb-8">
             Executive
           </p>
           <div className="flex justify-center">
@@ -262,7 +262,7 @@ export default function AboutPage() {
 
         {/* ── DIRECTORS ── */}
         <div className="mb-20">
-          <p className="text-[9px] font-black uppercase tracking-[0.35em] text-zinc-700 mb-8">
+          <p className="text-[9px] font-black uppercase tracking-[0.35em] text-zinc-500 mb-8">
             Directors
           </p>
           <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
@@ -277,7 +277,7 @@ export default function AboutPage() {
 
         {/* ── ASSOCIATES ── */}
         <div>
-          <p className="text-[9px] font-black uppercase tracking-[0.35em] text-zinc-700 mb-8">
+          <p className="text-[9px] font-black uppercase tracking-[0.35em] text-zinc-500 mb-8">
             Associates
           </p>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
@@ -295,7 +295,7 @@ export default function AboutPage() {
         <div className="absolute inset-0 dot-texture opacity-25 pointer-events-none" />
         <div className="relative mx-auto max-w-7xl px-6 md:px-10 py-20 flex flex-col md:flex-row items-start md:items-center justify-between gap-8">
           <div>
-            <p className="text-[10px] uppercase tracking-[0.25em] text-zinc-700 mb-3">
+            <p className="text-[10px] uppercase tracking-[0.25em] text-zinc-500 mb-3">
               Get involved
             </p>
             <h2 className="text-3xl md:text-4xl font-black text-white tracking-tight leading-tight">

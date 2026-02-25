@@ -17,7 +17,7 @@ const photos = [
 ];
 
 export default function CommunityPage() {
-  // Duplicate for seamless marquee loop — stable IDs avoid index-as-key
+  // Duplicate for seamless marquee loop  -  stable IDs avoid index-as-key
   const allPhotos = [
     ...photos.map((p, n) => ({ ...p, id: `a${n}` })),
     ...photos.map((p, n) => ({ ...p, id: `b${n}` })),
@@ -85,7 +85,7 @@ export default function CommunityPage() {
       </section>
 
       {/* ══════════════════════════════════════════════════
-          3. OUR MEMBERS — stats + major tags
+          3. OUR MEMBERS  -  stats + major tags
       ══════════════════════════════════════════════════ */}
       <section className="mx-auto max-w-7xl px-6 md:px-10 py-24">
         {/* Section header */}
@@ -97,7 +97,7 @@ export default function CommunityPage() {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-20 items-start">
-          {/* Left — stat numbers */}
+          {/* Left  -  stat numbers */}
           <div className="space-y-10">
             {[
               { value: "24", label: "Majors Represented" },
@@ -116,16 +116,16 @@ export default function CommunityPage() {
             ))}
           </div>
 
-          {/* Right — major pills */}
+          {/* Right  -  major pills */}
           <div>
-            <p className="text-xs text-zinc-600 uppercase tracking-[0.2em] mb-5">
+            <p className="text-xs text-zinc-400 uppercase tracking-[0.2em] mb-5">
               Fields of Study
             </p>
             <div className="flex flex-wrap gap-2">
               {majors.map((major) => (
                 <span
                   key={major}
-                  className="border border-white/[0.08] bg-white/[0.02] px-3 py-1 text-xs text-zinc-400 rounded-sm hover:border-[#eb4c60]/30 hover:text-zinc-200 hover:bg-white/[0.04] transition-all duration-200 cursor-default"
+                  className="border border-white/[0.12] bg-white/[0.05] backdrop-blur-sm px-3 py-1 text-xs text-zinc-300 rounded-sm hover:border-[#eb4c60]/40 hover:text-white hover:bg-white/[0.08] transition-all duration-200 cursor-default"
                 >
                   {major}
                 </span>
@@ -136,7 +136,7 @@ export default function CommunityPage() {
       </section>
 
       {/* ══════════════════════════════════════════════════
-          4. WHAT WE DO — 8-item grid
+          4. WHAT WE DO  -  8-item grid
       ══════════════════════════════════════════════════ */}
       <section className="relative border-t border-white/[0.04]">
         {/* Subtle dot texture band */}
@@ -155,12 +155,12 @@ export default function CommunityPage() {
             {whatWeDo.map(({ title, desc }, idx) => (
               <div
                 key={title}
-                className="group relative border border-white/[0.06] bg-white/[0.02] rounded-sm p-6 overflow-hidden hover:border-[#eb4c60]/20 hover:bg-white/[0.03] transition-all duration-300"
+                className="group relative border border-white/[0.1] bg-white/[0.05] backdrop-blur-sm rounded-sm p-6 overflow-hidden shadow-[0_2px_16px_rgba(0,0,0,0.2)] hover:border-[#eb4c60]/30 hover:bg-white/[0.09] hover:shadow-[0_8px_32px_rgba(235,76,96,0.06)] transition-all duration-300"
               >
                 {/* Pink accent mark */}
                 <div className="absolute top-5 left-5 w-4 h-px bg-[#eb4c60] group-hover:w-6 transition-all duration-300" />
                 {/* Index number */}
-                <div className="absolute top-4 right-5 text-[10px] font-mono text-zinc-800 group-hover:text-[#eb4c60]/30 transition-colors duration-300">
+                <div className="absolute top-4 right-5 text-[10px] font-mono text-zinc-400 group-hover:text-[#eb4c60]/30 transition-colors duration-300">
                   {String(idx + 1).padStart(2, "0")}
                 </div>
                 <div className="mt-7">
@@ -178,7 +178,7 @@ export default function CommunityPage() {
       </section>
 
       {/* ══════════════════════════════════════════════════
-          5. OUR MENTORS — logo strip
+          5. OUR MENTORS  -  logo strip
       ══════════════════════════════════════════════════ */}
       <section className="border-t border-white/[0.04]">
         <div className="mx-auto max-w-7xl px-6 md:px-10 py-20">
@@ -203,7 +203,7 @@ export default function CommunityPage() {
                   alt={name}
                   width={100}
                   height={32}
-                  className="object-contain max-h-8 w-auto grayscale opacity-40 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-300"
+                  className="object-contain max-h-8 w-auto grayscale opacity-60 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-300"
                 />
               </div>
             ))}
@@ -238,7 +238,7 @@ export default function CommunityPage() {
             {alumni.map(({ company, logo, positions }) => (
               <div
                 key={company}
-                className="group relative border border-white/[0.06] bg-white/[0.02] rounded-sm p-5 overflow-hidden hover:border-[#eb4c60]/20 hover:bg-white/[0.03] transition-all duration-300"
+                className="group relative border border-white/[0.1] bg-white/[0.05] backdrop-blur-sm rounded-sm p-5 overflow-hidden shadow-[0_2px_16px_rgba(0,0,0,0.2)] hover:border-[#eb4c60]/30 hover:bg-white/[0.09] hover:shadow-[0_8px_32px_rgba(235,76,96,0.07)] transition-all duration-300"
               >
                 {/* Logo */}
                 <div className="flex items-center justify-center h-10 mb-4">
@@ -247,7 +247,7 @@ export default function CommunityPage() {
                     alt={company}
                     width={80}
                     height={80}
-                    className="object-contain max-h-9 w-auto grayscale opacity-50 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-300"
+                    className="object-contain max-h-9 w-auto grayscale opacity-65 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-300"
                   />
                 </div>
 
@@ -256,7 +256,7 @@ export default function CommunityPage() {
                   {company}
                 </p>
 
-                {/* Positions — always visible, pink accent */}
+                {/* Positions  -  always visible, pink accent */}
                 <div className="space-y-0.5">
                   {positions.map((pos) => (
                     <p
@@ -282,7 +282,7 @@ export default function CommunityPage() {
       <section className="border-t border-white/[0.05]">
         <div className="mx-auto max-w-7xl px-6 md:px-10 py-20 flex flex-col md:flex-row items-start md:items-center justify-between gap-8">
           <div>
-            <p className="text-[10px] uppercase tracking-[0.25em] text-zinc-700 mb-3">
+            <p className="text-[10px] uppercase tracking-[0.25em] text-zinc-500 mb-3">
               Join Us
             </p>
             <h2 className="text-3xl md:text-4xl font-black text-white tracking-tight leading-tight">

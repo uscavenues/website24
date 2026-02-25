@@ -22,9 +22,9 @@ const PROJECT_TABS: { key: ProjectTab; label: string; data: Project[] }[] = [
 
 function ProjectCard({ project, index }: { project: Project; index: number }) {
   return (
-    <div className="group border border-white/[0.06] bg-white/[0.02] rounded-sm p-6 hover:border-[#eb4c60]/20 hover:bg-white/[0.03] transition-all duration-300">
+    <div className="group border border-white/[0.1] bg-white/[0.05] backdrop-blur-sm rounded-sm p-6 shadow-[0_2px_16px_rgba(0,0,0,0.2)] hover:border-[#eb4c60]/30 hover:bg-white/[0.09] hover:shadow-[0_8px_32px_rgba(235,76,96,0.07)] transition-all duration-300">
       <div className="flex items-start justify-between gap-4 mb-4">
-        <div className="text-[10px] font-mono text-zinc-800 group-hover:text-[#eb4c60]/40 transition-colors">
+        <div className="text-[10px] font-mono text-zinc-600 group-hover:text-[#eb4c60]/40 transition-colors">
           {String(index + 1).padStart(2, "0")}
         </div>
         <div className="w-3 h-px bg-[#eb4c60] mt-2 shrink-0 group-hover:w-5 transition-all duration-300" />
@@ -32,7 +32,7 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
       <h3 className="text-sm font-bold text-white mb-2 leading-snug">
         {project.title}
       </h3>
-      <p className="text-xs text-zinc-500 leading-relaxed mb-4">
+      <p className="text-xs text-zinc-400 leading-relaxed mb-4">
         {project.desc}
       </p>
       <span className="inline-block text-[10px] font-semibold uppercase tracking-[0.15em] text-[#eb4c60]/80">
@@ -68,7 +68,7 @@ export default function PortfolioPage() {
             FOLIO
           </h1>
           <p className="mt-6 max-w-lg text-zinc-500 text-sm leading-relaxed">
-            Pro-bono engagements across strategy, technology, and design —
+            Pro-bono engagements across strategy, technology, and design  - 
             delivered with the rigor of a top-tier consulting firm.
           </p>
         </div>
@@ -81,7 +81,7 @@ export default function PortfolioPage() {
             Our Clients
           </span>
           <div className="h-px flex-1 bg-white/[0.05]" />
-          <span className="text-[10px] text-zinc-800">
+          <span className="text-[10px] text-zinc-600">
             {clientCards.length} engagements
           </span>
         </div>
@@ -90,7 +90,7 @@ export default function PortfolioPage() {
           {clientCards.map((client) => (
             <div
               key={client.name}
-              className="group border border-white/[0.06] bg-white/[0.02] rounded-sm p-5 flex flex-col items-center text-center hover:border-[#eb4c60]/25 hover:bg-white/[0.04] hover:scale-[1.02] transition-all duration-300"
+              className="group border border-white/[0.1] bg-white/[0.05] backdrop-blur-sm rounded-sm p-5 flex flex-col items-center text-center shadow-[0_2px_16px_rgba(0,0,0,0.2)] hover:border-[#eb4c60]/35 hover:bg-white/[0.09] hover:shadow-[0_8px_32px_rgba(235,76,96,0.08)] hover:scale-[1.02] transition-all duration-300"
             >
               {/* Logo */}
               <div className="w-20 h-20 flex items-center justify-center mb-3 relative">
@@ -99,12 +99,12 @@ export default function PortfolioPage() {
                   alt={client.name}
                   width={80}
                   height={80}
-                  className="object-contain opacity-60 group-hover:opacity-90 transition-opacity duration-300 max-h-[80px]"
+                  className="object-contain opacity-75 group-hover:opacity-100 transition-opacity duration-300 max-h-[80px]"
                 />
               </div>
 
               {/* Client name */}
-              <p className="text-xs text-zinc-500 font-medium mb-2.5 leading-tight">
+              <p className="text-xs text-zinc-300 font-medium mb-2.5 leading-tight">
                 {client.name}
               </p>
 
@@ -143,7 +143,7 @@ export default function PortfolioPage() {
                 <br />
                 <span className="text-[#eb4c60]">Work</span>
               </h2>
-              <p className="text-xs text-zinc-600 leading-relaxed mb-10">
+              <p className="text-xs text-zinc-400 leading-relaxed mb-10">
                 A selection of projects across all three practice areas from
                 recent semesters.
               </p>
@@ -157,7 +157,7 @@ export default function PortfolioPage() {
                     className={`relative group flex items-center justify-between px-4 py-3 rounded-sm text-xs font-semibold uppercase tracking-[0.15em] transition-all duration-200 ${
                       activeTab === key
                         ? "text-[#eb4c60] bg-[#eb4c60]/[0.06]"
-                        : "text-zinc-600 hover:text-zinc-400"
+                        : "text-zinc-400 hover:text-zinc-200"
                     }`}
                   >
                     <span className="flex items-center gap-2">
@@ -168,7 +168,7 @@ export default function PortfolioPage() {
                     </span>
                     <span
                       className={`text-[9px] font-bold tabular-nums transition-colors ${
-                        activeTab === key ? "text-[#eb4c60]/60" : "text-zinc-800"
+                        activeTab === key ? "text-[#eb4c60]/60" : "text-zinc-600"
                       }`}
                     >
                       {data.length}
@@ -195,7 +195,7 @@ export default function PortfolioPage() {
         <div className="absolute inset-0 dot-texture opacity-25 pointer-events-none" />
         <div className="relative mx-auto max-w-7xl px-6 md:px-10 py-16 flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
           <div>
-            <p className="text-[10px] uppercase tracking-[0.25em] text-zinc-700 mb-2">
+            <p className="text-[10px] uppercase tracking-[0.25em] text-zinc-500 mb-2">
               Partner with us
             </p>
             <h2 className="text-2xl md:text-3xl font-black text-white tracking-tight">

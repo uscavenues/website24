@@ -78,7 +78,7 @@ export default function ApplyClient() {
             APPLY
           </h1>
           <p className="mt-6 max-w-lg text-zinc-500 text-sm leading-relaxed">
-            We recruit the most driven students at USC — regardless of major or
+            We recruit the most driven students at USC  -  regardless of major or
             background. One application. Three tracks. Unlimited impact.
           </p>
         </div>
@@ -86,7 +86,7 @@ export default function ApplyClient() {
 
       {/* ── STATUS BANNER ────────────────────────────────────────────────── */}
       <section className="mx-auto max-w-7xl px-6 md:px-10 pb-16">
-        <div className="relative overflow-hidden rounded-sm border border-[#eb4c60]/20 bg-white/[0.02] p-8 md:p-10">
+        <div className="relative overflow-hidden rounded-sm border border-[#eb4c60]/25 bg-white/[0.05] backdrop-blur-sm shadow-[0_4px_32px_rgba(235,76,96,0.08)] p-8 md:p-10">
           {/* Subtle red glow in corner */}
           <div className="absolute -top-20 -right-20 w-64 h-64 rounded-full bg-[#eb4c60]/8 blur-[80px] pointer-events-none" />
 
@@ -172,12 +172,12 @@ export default function ApplyClient() {
             {
               n: "03",
               title: "Collaboration",
-              desc: "You make everyone around you sharper — not just yourself.",
+              desc: "You make everyone around you sharper  -  not just yourself.",
             },
             {
               n: "04",
               title: "Any Major",
-              desc: "CS, pre-med, architecture, business — diversity of thought is our edge.",
+              desc: "CS, pre-med, architecture, business  -  diversity of thought is our edge.",
             },
             {
               n: "05",
@@ -187,17 +187,17 @@ export default function ApplyClient() {
             {
               n: "06",
               title: "Ambition",
-              desc: "You're here to build something real — not pad a resume.",
+              desc: "You're here to build something real  -  not pad a resume.",
             },
           ].map(({ n, title, desc }) => (
             <div
               key={n}
-              className="border border-white/[0.06] bg-white/[0.02] rounded-sm p-6 hover:border-[#eb4c60]/20 hover:bg-white/[0.03] transition-all duration-300"
+              className="border border-white/[0.1] bg-white/[0.05] backdrop-blur-sm rounded-sm p-6 shadow-[0_2px_16px_rgba(0,0,0,0.2)] hover:border-[#eb4c60]/30 hover:bg-white/[0.09] hover:shadow-[0_8px_32px_rgba(235,76,96,0.07)] transition-all duration-300"
             >
-              <div className="text-[10px] font-mono text-zinc-800 mb-4">{n}</div>
+              <div className="text-[10px] font-mono text-zinc-600 mb-4">{n}</div>
               <div className="w-4 h-px bg-[#eb4c60] mb-4" />
               <h3 className="text-sm font-bold text-white mb-2">{title}</h3>
-              <p className="text-xs text-zinc-600 leading-relaxed">{desc}</p>
+              <p className="text-xs text-zinc-400 leading-relaxed">{desc}</p>
             </div>
           ))}
         </div>
@@ -241,7 +241,7 @@ export default function ApplyClient() {
                     className={`relative text-left px-4 py-3 text-xs font-semibold uppercase tracking-[0.15em] rounded-sm transition-all duration-200 ${
                       activeTab === key
                         ? "text-[#eb4c60] bg-[#eb4c60]/[0.06]"
-                        : "text-zinc-600 hover:text-zinc-400"
+                        : "text-zinc-400 hover:text-zinc-200"
                     }`}
                   >
                     {activeTab === key && (

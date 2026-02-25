@@ -54,7 +54,7 @@ export default function ContactPage() {
             <p className="text-sm text-zinc-500 leading-relaxed mb-6">
               Avenues is dedicated to finding solutions through the combined
               lens of strategy, technology, and design. We can help you plan,
-              build, and communicate — entirely pro-bono. No invoices. No
+              build, and communicate  -  entirely pro-bono. No invoices. No
               catch.
             </p>
 
@@ -66,7 +66,7 @@ export default function ContactPage() {
               >
                 uscavenues@gmail.com
               </a>{" "}
-              or use the form — we typically respond within 48 hours.
+              or use the form  -  we typically respond within 48 hours.
             </p>
 
             {/* Client packet download */}
@@ -97,7 +97,7 @@ export default function ContactPage() {
                   Client Packet
                 </p>
                 <p className="text-[10px] text-zinc-700 mt-0.5">
-                  Download PDF — Services overview
+                  Download PDF  -  Services overview
                 </p>
               </div>
               <svg
