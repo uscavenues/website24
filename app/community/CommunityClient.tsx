@@ -72,18 +72,19 @@ export default function CommunityClient() {
     <>
 
       {/* ══════════════════════════════════════════════════
-          1. PAGE HEADER
+          1. PAGE HEADER — cinematic full-screen entrance
       ══════════════════════════════════════════════════ */}
-      <section className="relative overflow-hidden pt-28 pb-16">
-        {/* Halftone texture */}
-        <div className="absolute inset-0 dot-texture opacity-40 pointer-events-none" />
-        {/* Pink glow bloom */}
-        <div className="absolute -top-32 left-1/2 -translate-x-1/2 w-[800px] h-[500px] rounded-full bg-[#eb4c60]/10 blur-[160px] pointer-events-none" />
-        {/* Bottom fade to solid bg */}
-        <div className="absolute bottom-0 inset-x-0 h-32 bg-gradient-to-b from-transparent to-[#08080f] pointer-events-none" />
+      <section className="relative min-h-screen flex items-end overflow-hidden">
+        {/* Full-bleed cinematic photo */}
+        <div className="absolute inset-0">
+          <Image src="/assets/photos/home.jpg" alt="" fill className="object-cover opacity-50" priority sizes="100vw" />
+        </div>
+        {/* Gradient overlays */}
+        <div className="absolute inset-0 bg-gradient-to-t from-[#08080f] via-[#08080f]/30 to-[#08080f]/10 pointer-events-none" />
+        <div className="absolute inset-0 bg-gradient-to-r from-[#08080f]/60 to-transparent pointer-events-none" />
+        <div className="absolute inset-0 dot-texture opacity-20 pointer-events-none" />
 
-        <div className="relative z-10 mx-auto max-w-7xl px-6 md:px-10">
-          {/* Section label */}
+        <div className="relative z-10 mx-auto max-w-7xl px-6 md:px-10 pb-20 w-full">
           <div className="mb-6 flex items-center gap-4">
             <span className="h-px w-8 bg-[#eb4c60]" />
             <span className="text-[10px] font-bold uppercase tracking-[0.3em] text-[#eb4c60]">
@@ -91,13 +92,13 @@ export default function CommunityClient() {
             </span>
           </div>
 
-          <h1 className="text-[clamp(3rem,11vw,8.5rem)] font-black leading-[0.88] tracking-tighter text-white mb-8">
+          <h1 className="text-[clamp(4rem,14vw,12rem)] font-black leading-[0.86] tracking-tighter text-white mb-8">
             OUR
             <br />
             <span className="text-[#eb4c60]">COMMUNITY</span>
           </h1>
 
-          <p className="max-w-2xl text-zinc-400 text-base md:text-lg leading-relaxed">
+          <p className="max-w-xl text-zinc-300 text-base md:text-lg leading-relaxed">
             We celebrate the diversity of majors, perspectives, and paths that make up Avenues. No matter where your interests lie, there&apos;s a place here for you.
           </p>
         </div>
@@ -152,15 +153,20 @@ export default function CommunityClient() {
 
       <section id="majors">
       {/* Section header — constrained */}
-      <div className="mx-auto max-w-7xl px-6 md:px-10 py-14 pb-8">
-        <div className="mb-8 flex items-center gap-4">
+      <div className="mx-auto max-w-7xl px-6 md:px-10 py-20 pb-10">
+        <div className="mb-6 flex items-center gap-4">
           <span className="text-[10px] font-bold uppercase tracking-[0.25em] text-zinc-500">
             Our Members
           </span>
           <div className="h-px flex-1 bg-white/[0.05]" />
         </div>
-        <p className="text-xs text-zinc-400 uppercase tracking-[0.2em]">
-          Fields of Study — 24 majors across strategy, technology &amp; design
+        <h2 className="text-[clamp(2.5rem,7vw,6.5rem)] font-black text-white tracking-tighter leading-[0.88] mb-4">
+          24 majors.
+          <br />
+          <span className="text-[#eb4c60]">One team.</span>
+        </h2>
+        <p className="text-sm text-zinc-500 max-w-md mt-6">
+          From computer science to pre-law, every perspective makes us sharper.
         </p>
       </div>
 
@@ -211,15 +217,20 @@ export default function CommunityClient() {
         <div className="absolute inset-0 dot-texture-subtle opacity-60 pointer-events-none" />
 
         <div className="relative mx-auto max-w-7xl px-6 md:px-10 py-24">
-          <div className="mb-14 flex items-center gap-4">
+          <div className="mb-10 flex items-center gap-4">
             <span className="text-[10px] font-bold uppercase tracking-[0.25em] text-zinc-400">
               How We Work Together
             </span>
             <div className="h-px flex-1 bg-white/[0.05]" />
           </div>
 
-          <p className="text-sm text-zinc-400 leading-relaxed max-w-2xl -mt-6 mb-14">
-            Avenues runs on collaboration between students who think differently. Every engagement is cross-disciplinary &mdash; strategists work alongside engineers and designers from day one.
+          <h2 className="text-[clamp(2.5rem,6vw,5.5rem)] font-black text-white tracking-tighter leading-[0.9] mb-6">
+            Cross-disciplinary
+            <br />
+            <span className="text-[#eb4c60]">from day one.</span>
+          </h2>
+          <p className="text-sm text-zinc-500 leading-relaxed max-w-2xl mb-14">
+            Avenues runs on collaboration between students who think differently. Strategists work alongside engineers and designers from day one.
           </p>
 
           <div className="divide-y divide-white/[0.05]">
@@ -284,55 +295,39 @@ export default function CommunityClient() {
       ══════════════════════════════════════════════════ */}
       <section id="mentors" className="border-t border-white/[0.04]">
         {/* Section header — constrained */}
-        <div className="mx-auto max-w-7xl px-6 md:px-10 py-16 pb-8">
-          <div className="mb-8 flex items-center gap-4">
+        <div className="mx-auto max-w-7xl px-6 md:px-10 py-20 pb-10">
+          <div className="mb-6 flex items-center gap-4">
             <span className="text-[10px] font-bold uppercase tracking-[0.25em] text-zinc-500">
               Our Mentors
             </span>
             <div className="h-px flex-1 bg-white/[0.05]" />
           </div>
-          <p className="text-zinc-600 text-sm max-w-lg">
-            Professionals from these organizations advise our members, conduct
-            workshops, and share industry expertise.
+          <h2 className="text-[clamp(2.5rem,7vw,6.5rem)] font-black text-white tracking-tighter leading-[0.88] mb-4">
+            Guided by
+            <br />
+            <span className="text-[#eb4c60]">the best.</span>
+          </h2>
+          <p className="text-sm text-zinc-500 max-w-md mt-6">
+            Professionals from these organizations advise our members, run workshops, and open doors.
           </p>
         </div>
 
-        {/* Full-bleed dual marquee */}
-        <div className="overflow-hidden space-y-4 pb-20 marquee-hover-pause">
-          {/* Row 1 — left */}
+        {/* Full-bleed single marquee — white-filtered logos */}
+        <div className="overflow-hidden pb-20 marquee-hover-pause">
           <div className="marquee-track">
             {[...mentors, ...mentors].map((mentor, i) => (
               <div
-                key={`r1-${i}`}
-                className="shrink-0 mr-8 flex items-center justify-center glass-card-deep rounded-sm px-8 py-4 min-w-[160px]"
+                key={`m-${i}`}
+                className="shrink-0 mr-20 flex items-center justify-center"
               >
-                <div className="relative h-8 w-32">
+                <div className="relative h-7 w-28 opacity-30 hover:opacity-60 transition-opacity duration-300">
                   <Image
                     src={mentor.logo}
                     alt={mentor.name}
                     fill
-                    className="object-contain opacity-70 hover:opacity-100 transition-opacity duration-300"
-                    sizes="128px"
-                  />
-                </div>
-              </div>
-            ))}
-          </div>
-
-          {/* Row 2 — right (reversed order, more muted) */}
-          <div className="marquee-track-reverse">
-            {[...mentors, ...mentors].reverse().map((mentor, i) => (
-              <div
-                key={`r2-${i}`}
-                className="shrink-0 mr-8 flex items-center justify-center glass-card-deep rounded-sm px-8 py-4 min-w-[160px]"
-              >
-                <div className="relative h-8 w-32">
-                  <Image
-                    src={mentor.logo}
-                    alt={mentor.name}
-                    fill
-                    className="object-contain opacity-60 hover:opacity-90 transition-opacity duration-300"
-                    sizes="128px"
+                    className="object-contain"
+                    sizes="112px"
+                    style={{ filter: "brightness(0) invert(1)" }}
                   />
                 </div>
               </div>
@@ -356,9 +351,9 @@ export default function CommunityClient() {
           </div>
 
           <div className="mb-10 flex flex-col sm:flex-row sm:items-end gap-4">
-            <h2 className="text-[clamp(1.8rem,4vw,3rem)] font-black text-zinc-900 tracking-tight leading-tight">
-              Our alumni have placed at<br />
-              <span className="text-[#c73d51]">top firms globally.</span>
+            <h2 className="text-[clamp(2.5rem,6vw,5.5rem)] font-black text-zinc-900 tracking-tighter leading-[0.9]">
+              Our alumni.<br />
+              <span className="text-[#c73d51]">Top firms.</span>
             </h2>
           </div>
 
@@ -433,7 +428,7 @@ export default function CommunityClient() {
             <p className="text-[10px] uppercase tracking-[0.25em] text-zinc-500 mb-3">
               Join Us
             </p>
-            <h2 className="text-3xl md:text-4xl font-black text-white tracking-tight leading-tight">
+            <h2 className="text-[clamp(2.5rem,5vw,4.5rem)] font-black text-white tracking-tighter leading-[0.9]">
               Find your people
               <br />
               <span className="text-[#eb4c60]">at Avenues.</span>

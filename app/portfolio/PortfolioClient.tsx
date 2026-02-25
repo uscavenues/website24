@@ -64,23 +64,25 @@ export default function PortfolioClient() {
   return (
     <>
       {/* ── PAGE HEADER ──────────────────────────────────────────────────── */}
-      <section className="relative overflow-hidden pt-24 pb-16">
-        <div className="absolute -bottom-20 -left-20 w-[600px] h-[500px] rounded-full bg-[#eb4c60]/8 blur-[130px] pointer-events-none" aria-hidden="true" />
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-[#08080f] pointer-events-none" aria-hidden="true" />
+      <section className="relative min-h-[85vh] flex items-end overflow-hidden">
+        <div className="absolute inset-0 dot-texture opacity-30 pointer-events-none" aria-hidden="true" />
+        <div className="absolute -bottom-10 -left-20 w-[800px] h-[600px] rounded-full bg-[#eb4c60]/10 blur-[160px] pointer-events-none" aria-hidden="true" />
+        <div className="absolute top-10 right-0 w-[500px] h-[400px] rounded-full bg-[#eb4c60]/[0.04] blur-[130px] pointer-events-none" aria-hidden="true" />
+        <div className="absolute inset-0 bg-gradient-to-b from-[#08080f]/60 via-transparent to-[#08080f] pointer-events-none" aria-hidden="true" />
 
-        <div className="relative z-10 mx-auto max-w-7xl px-6 md:px-10">
+        <div className="relative z-10 mx-auto max-w-7xl px-6 md:px-10 pb-16 w-full">
           <div className="mb-6">
             <span className="inline-block text-[10px] font-bold uppercase tracking-[0.3em] text-[#eb4c60]">
               Our Work
             </span>
           </div>
-          <h1 className="text-[clamp(3rem,12vw,10rem)] font-black leading-[0.85] tracking-tighter text-white">
+          <h1 className="text-[clamp(4rem,14vw,12rem)] font-black leading-[0.82] tracking-tighter text-white">
             <span className="md:hidden">PORTFOLIO</span>
             <span className="hidden md:block">PORT<br />FOLIO</span>
           </h1>
-          <p className="mt-6 max-w-lg text-zinc-500 text-sm leading-relaxed">
-            Pro bono engagements across strategy, technology, and design,
-            delivered with the rigor of a top-tier consulting firm.
+          <p className="mt-8 max-w-lg text-zinc-400 text-sm leading-relaxed">
+            Real work for real organizations. Delivered with the rigor of a
+            top-tier firm. No fees, ever.
           </p>
         </div>
       </section>
@@ -90,7 +92,7 @@ export default function PortfolioClient() {
         {/* Gradient transition from dark to light */}
         <div className="h-8 bg-gradient-to-b from-[#08080f] to-[#f4f4f0]" />
         <div className="mx-auto max-w-7xl px-6 md:px-10 mb-12">
-          <div className="mb-4 flex items-center gap-4">
+          <div className="mb-6 flex items-center gap-4">
             <span className="text-[10px] font-bold uppercase tracking-[0.25em] text-zinc-500">
               Our Clients
             </span>
@@ -99,6 +101,11 @@ export default function PortfolioClient() {
               20+ projects delivered
             </span>
           </div>
+          <h2 className="text-[clamp(2.5rem,6vw,5.5rem)] font-black text-zinc-900 tracking-tighter leading-[0.9]">
+            20+ clients.
+            <br />
+            <span className="text-[#c73d51]">All pro bono.</span>
+          </h2>
         </div>
 
         {/* Full-bleed dual-direction marquee */}
@@ -170,7 +177,7 @@ export default function PortfolioClient() {
           <div className="grid grid-cols-1 lg:grid-cols-[260px_1fr] gap-12 lg:gap-20">
             {/* Left: heading + tab switcher */}
             <div className="lg:sticky lg:top-28 lg:self-start">
-              <h2 className="text-3xl font-black font-display text-white tracking-tight leading-tight mb-2">
+              <h2 className="text-[clamp(2.5rem,5vw,4.5rem)] font-black font-display text-white tracking-tighter leading-[0.9] mb-2">
                 Selected
                 <br />
                 <span className="text-[#eb4c60]">Projects</span>
@@ -255,33 +262,23 @@ export default function PortfolioClient() {
       {/* ── CTA STRIP ────────────────────────────────────────────────────── */}
       <section className="relative overflow-hidden border-t border-white/[0.05] mb-0">
         <div className="absolute inset-0 dot-texture opacity-25 pointer-events-none" aria-hidden="true" />
-        <div className="relative mx-auto max-w-7xl px-6 md:px-10 py-16 flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
-          <div>
-            <p className="text-[10px] uppercase tracking-[0.25em] text-zinc-500 mb-2">
-              Partner with us
-            </p>
-            <h2 className="text-2xl md:text-3xl font-black text-white tracking-tight">
-              Ready to start an{" "}
-              <span className="text-[#eb4c60]">engagement?</span>
-            </h2>
-          </div>
+        <div className="absolute right-0 top-0 bottom-0 w-[50%] pointer-events-none">
+          <div className="absolute inset-0 bg-gradient-to-r from-[#08080f] to-transparent" />
+        </div>
+        <div className="relative mx-auto max-w-7xl px-6 md:px-10 py-24">
+          <p className="text-[10px] uppercase tracking-[0.3em] text-zinc-600 mb-4">
+            Partner with us
+          </p>
+          <h2 className="text-[clamp(2rem,6vw,5rem)] font-black text-white tracking-tighter leading-[0.9] mb-8">
+            Your problem.<br /><span className="text-[#eb4c60]">Our team.</span><br />Zero cost.
+          </h2>
           <Link
             href="/contact"
-            className="shrink-0 inline-flex items-center gap-2 bg-[#eb4c60] text-white px-6 py-3 text-xs font-bold uppercase tracking-[0.15em] rounded-sm hover:bg-[#d43d50] transition-colors duration-200"
+            className="inline-flex items-center gap-2 bg-[#eb4c60] text-white px-8 py-4 text-xs font-bold uppercase tracking-[0.15em] rounded-sm hover:bg-[#d43d50] transition-colors duration-200"
           >
-            Work with us
-            <svg
-              className="w-3.5 h-3.5"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2.5}
-                d="M17 8l4 4m0 0l-4 4m4-4H3"
-              />
+            Start a conversation
+            <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M17 8l4 4m0 0l-4 4m4-4H3" />
             </svg>
           </Link>
         </div>

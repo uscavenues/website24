@@ -3,7 +3,14 @@ import Link from "next/link";
 
 export default function Footer() {
   return (
-    <footer className="border-t border-white/[0.06] bg-[#06060c]">
+    <footer className="border-t border-white/[0.06] bg-[#06060c] overflow-hidden">
+      {/* Ghost display text — visual bookend */}
+      <div className="pt-10 pb-0 select-none" aria-hidden="true">
+        <p className="text-[clamp(4rem,14vw,12rem)] font-black text-white/[0.04] tracking-tighter leading-none px-6 md:px-10 max-w-7xl mx-auto">
+          AVENUES
+        </p>
+      </div>
+
       {/* Main footer content */}
       <div className="mx-auto max-w-7xl px-6 md:px-10 py-14 grid grid-cols-1 md:grid-cols-[1fr_auto_auto] gap-10 md:gap-16">
         {/* Brand column */}

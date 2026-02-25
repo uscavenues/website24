@@ -11,25 +11,25 @@ export default function ContactPage() {
   return (
     <>
       {/* ── PAGE HEADER ──────────────────────────────────────────────────── */}
-      <section className="relative overflow-hidden pt-32 pb-20">
+      <section className="relative min-h-screen flex items-end overflow-hidden">
         <div className="absolute inset-0 dot-texture opacity-35 pointer-events-none" aria-hidden="true" />
-        <div className="absolute -top-32 left-1/4 w-[600px] h-[400px] rounded-full bg-[#eb4c60]/10 blur-[130px] pointer-events-none" aria-hidden="true" />
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-[#08080f] pointer-events-none" aria-hidden="true" />
+        <div className="absolute top-0 left-1/4 w-[800px] h-[600px] rounded-full bg-[#eb4c60]/10 blur-[160px] pointer-events-none" aria-hidden="true" />
+        <div className="absolute inset-0 bg-gradient-to-b from-[#08080f]/50 via-transparent to-[#08080f] pointer-events-none" aria-hidden="true" />
 
-        <div className="relative z-10 mx-auto max-w-7xl px-6 md:px-10">
+        <div className="relative z-10 mx-auto max-w-7xl px-6 md:px-10 pb-16 w-full">
           <div className="mb-6">
             <span className="inline-block text-[10px] font-bold uppercase tracking-[0.3em] text-[#eb4c60]">
               Get In Touch
             </span>
           </div>
-          <h1 className="text-[clamp(3rem,11vw,8.5rem)] font-black leading-[0.88] tracking-tighter text-white">
+          <h1 className="text-[clamp(3.5rem,12vw,10rem)] font-black leading-[0.85] tracking-tighter text-white">
             LET&apos;S
             <br />
             <span className="text-[#eb4c60]">WORK</span>
             <br />
             TOGETHER
           </h1>
-          <p className="mt-6 max-w-lg text-zinc-500 text-sm leading-relaxed">
+          <p className="mt-8 max-w-lg text-zinc-400 text-sm leading-relaxed">
             We are always looking for organizations ready to build something
             meaningful. Reach out and let&apos;s talk.
           </p>
@@ -44,8 +44,8 @@ export default function ContactPage() {
             {/* Divider line */}
             <div className="w-8 h-px bg-[#eb4c60] mb-8" />
 
-            <h2 className="text-xl font-bold font-display italic text-white tracking-tight mb-5 leading-snug">
-              Strategy, technology, and design —
+            <h2 className="text-[clamp(1.75rem,3.5vw,3rem)] font-black font-display italic text-white tracking-tighter leading-[0.95] mb-5">
+              Strategy, technology, and design:
               <br />
               <span className="text-zinc-500 font-normal">
                 combined to solve real problems.
@@ -55,7 +55,7 @@ export default function ContactPage() {
             <p className="text-sm text-zinc-500 leading-relaxed mb-6">
               Avenues brings together students across strategy, technology, and
               design to tackle real organizational challenges. We can help you
-              research, plan, build, and ship — entirely pro bono. No invoices.
+              research, plan, build, and ship. Entirely pro bono. No invoices.
               No strings.
             </p>
 

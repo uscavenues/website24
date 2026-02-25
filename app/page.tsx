@@ -195,7 +195,7 @@ export default function HomePage() {
               {/* Tagline + CTAs — appear right after GROUP */}
               <motion.div style={{ opacity: contentOp, y: contentY }}>
                 <p className="mt-8 max-w-lg text-zinc-400 text-base md:text-xl leading-relaxed font-display italic">
-                  USC&apos;s student-run consulting group spanning strategy, technology, and design — pro bono,
+                  USC&apos;s student-run consulting group spanning strategy, technology, and design. Pro bono,
                   and built for impact.
                 </p>
                 <div className="flex flex-wrap gap-3 mt-8">
@@ -270,6 +270,10 @@ export default function HomePage() {
                   className="absolute bottom-0 left-0 right-0 h-px bg-[#eb4c60] origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-500"
                   style={{ transformOrigin: i === 1 ? "right" : "left" }}
                 />
+                {/* Ghost architectural number — dimensional depth */}
+                <span className="absolute right-4 top-1/2 -translate-y-1/2 text-[clamp(5rem,16vw,14rem)] font-black font-mono text-white/[0.025] group-hover:text-[#eb4c60]/[0.07] transition-colors duration-700 leading-none select-none pointer-events-none" aria-hidden="true">
+                  {tag}
+                </span>
 
                 {/* Index */}
                 <span className="shrink-0 text-[10px] font-mono text-zinc-600 group-hover:text-[#eb4c60]/50 transition-colors duration-300 w-6">{tag}</span>
@@ -280,7 +284,7 @@ export default function HomePage() {
                 </span>
 
                 {/* Title — grows to fill */}
-                <h3 className="flex-1 text-2xl md:text-[clamp(2rem,4vw,3.5rem)] font-black tracking-tight text-white group-hover:text-[#eb4c60] transition-colors duration-300 leading-none">
+                <h3 className="flex-1 text-2xl md:text-[clamp(2.5rem,5vw,4.5rem)] font-black tracking-tighter text-white group-hover:text-[#eb4c60] transition-colors duration-300 leading-none">
                   {title}
                 </h3>
 
@@ -363,8 +367,10 @@ export default function HomePage() {
       {/* ══════════════════════ CTA BAND ═══════════════════════════════════════ */}
       <section className="relative overflow-hidden">
         <div className="absolute inset-0 dot-texture opacity-25 pointer-events-none" />
-        <div className="absolute right-0 top-1/2 -translate-y-1/2 w-[500px] h-[500px] opacity-[0.025] pointer-events-none">
-          <Image src="/assets/icons/avenues-logo.png" alt="" fill className="object-contain invert" aria-hidden />
+        {/* Cinematic cohort photo — right side, faint */}
+        <div className="absolute right-0 top-0 bottom-0 w-[60%] pointer-events-none">
+          <Image src="/assets/photos/home.jpg" alt="" fill className="object-cover object-center opacity-[0.11]" sizes="60vw" />
+          <div className="absolute inset-0 bg-gradient-to-r from-[#08080f] via-[#08080f]/60 to-[#08080f]/10" />
         </div>
         <div className="relative mx-auto max-w-7xl px-6 md:px-10 py-28">
           <ScrollReveal>
@@ -384,10 +390,9 @@ export default function HomePage() {
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M17 8l4 4m0 0l-4 4m4-4H3" />
               </svg>
             </Link>
-            <Link href="/apply" className="inline-flex items-center gap-2 border border-white/[0.12] bg-white/[0.03] text-zinc-300 px-8 py-4 text-xs font-bold uppercase tracking-[0.15em] rounded-sm hover:border-white/25 hover:text-white hover:bg-white/[0.07] transition-colors">
-              Apply to join
+            <Link href="/portfolio" className="inline-flex items-center gap-2 border border-white/[0.12] bg-white/[0.03] text-zinc-300 px-8 py-4 text-xs font-bold uppercase tracking-[0.15em] rounded-sm hover:border-white/25 hover:text-white hover:bg-white/[0.07] transition-colors">
+              See our work
             </Link>
-
           </ScrollReveal>
         </div>
       </section>

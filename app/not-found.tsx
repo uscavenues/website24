@@ -1,7 +1,7 @@
 import Link from "next/link";
 
 export const metadata = {
-  title: "404 — Page Not Found | Avenues",
+  title: "404: Page Not Found | Avenues",
 };
 
 export default function NotFound() {

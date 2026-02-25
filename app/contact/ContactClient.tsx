@@ -134,11 +134,11 @@ export default function ContactClient() {
             defaultValue=""
           >
             <option value="" disabled className="bg-[#08080f] text-zinc-500">Select a practice area...</option>
-            <option value="strategy" className="bg-[#08080f]">Strategy — Go-to-market, research, planning</option>
-            <option value="technology" className="bg-[#08080f]">Technology — Web dev, data, product</option>
-            <option value="design" className="bg-[#08080f]">Design — Brand, UI/UX, visual identity</option>
-            <option value="multiple" className="bg-[#08080f]">Multiple areas — Comprehensive engagement</option>
-            <option value="unsure" className="bg-[#08080f]">Not sure yet — Let&apos;s figure it out together</option>
+            <option value="strategy" className="bg-[#08080f]">Strategy: Go-to-market, research, planning</option>
+            <option value="technology" className="bg-[#08080f]">Technology: Web dev, data, product</option>
+            <option value="design" className="bg-[#08080f]">Design: Brand, UI/UX, visual identity</option>
+            <option value="multiple" className="bg-[#08080f]">Multiple areas: Comprehensive engagement</option>
+            <option value="unsure" className="bg-[#08080f]">Not sure yet: Let&apos;s figure it out together</option>
           </select>
           <span className="pointer-events-none absolute right-0 bottom-3 text-zinc-500">
             <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">

@@ -75,7 +75,7 @@ export default function ApplyClient() {
   return (
     <>
       {/* ── PAGE HEADER ──────────────────────────────────────────────────── */}
-      <section className="relative overflow-hidden pt-28 pb-20">
+      <section className="relative min-h-screen flex items-end overflow-hidden">
         {/* Dot texture */}
         <div className="absolute inset-0 dot-texture opacity-40 pointer-events-none" />
         {/* Pink glow */}
@@ -83,7 +83,7 @@ export default function ApplyClient() {
         {/* Bottom fade */}
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-[#08080f] pointer-events-none" />
 
-        <div className="relative z-10 mx-auto max-w-7xl px-6 md:px-10">
+        <div className="relative z-10 mx-auto max-w-7xl px-6 md:px-10 pb-20 w-full">
           <div className="mb-6">
             <span className="inline-block text-[10px] font-bold uppercase tracking-[0.3em] text-[#eb4c60]">
               Recruitment
@@ -93,8 +93,8 @@ export default function ApplyClient() {
             APPLY
           </h1>
           <p className="mt-6 max-w-lg text-zinc-500 text-sm leading-relaxed">
-            We recruit the most driven students at USC — regardless of major or
-            background. One application. Three tracks — Strategy, Technology, or Design. Unlimited impact.
+            We recruit the most driven students at USC, regardless of major or
+            background. One application. Three tracks: Strategy, Technology, or Design. Unlimited impact.
           </p>
         </div>
       </section>
@@ -305,6 +305,23 @@ export default function ApplyClient() {
         </div>
       </section>
 
+      {/* ── MANIFESTO BREAK ──────────────────────────────────────────────────── */}
+      <section className="relative min-h-[80vh] flex items-center border-y border-white/[0.05] overflow-hidden">
+        <div className="absolute inset-0 dot-texture opacity-30 pointer-events-none" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[900px] h-[500px] rounded-full bg-[#eb4c60]/[0.04] blur-[140px] pointer-events-none" />
+        <div className="relative mx-auto max-w-7xl px-6 md:px-10">
+          <p className="text-[1.75rem] sm:text-[clamp(2.5rem,7.5vw,7rem)] font-black text-white tracking-tighter leading-[0.9]">
+            We&apos;re not looking
+            <br className="hidden sm:block" />
+            for the <span className="text-[#eb4c60]">resume.</span>
+            <br className="hidden sm:block" />
+            We&apos;re looking for
+            <br className="hidden sm:block" />
+            the <span className="text-[#eb4c60]">person.</span>
+          </p>
+        </div>
+      </section>
+
       {/* ── WHAT YOU'LL GET ──────────────────────────────────────────────────── */}
       <section className="border-t border-white/[0.05] pb-20">
         <div className="mx-auto max-w-7xl px-6 md:px-10 pt-16">
@@ -314,19 +331,25 @@ export default function ApplyClient() {
             </span>
             <div className="h-px flex-1 bg-white/[0.05]" />
           </div>
-          <h2 className="text-2xl font-black text-white tracking-tight mb-8">What you&apos;ll get</h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <h2 className="text-[clamp(2.5rem,6vw,5rem)] font-black text-white tracking-tighter leading-[0.9] mb-12">
+            What you&apos;ll<br /><span className="text-[#eb4c60]">get.</span>
+          </h2>
+          <div className="divide-y divide-white/[0.05]">
             {[
-              { title: "Real client work", desc: "Work on actual engagements with non-profits and startups — not case studies or simulations." },
-              { title: "Cross-disciplinary peers", desc: "Collaborate with students across every major — engineering, business, design, pre-med, and beyond." },
-              { title: "Professional development", desc: "Weekly curriculum nights, mentorship from industry professionals, and structured learning tracks." },
-              { title: "A portfolio of work", desc: "Leave with deliverables you can show — strategy decks, built products, and design systems." },
-              { title: "Leadership opportunities", desc: "Directors and execs are chosen from within — early members get early access to leadership tracks." },
-              { title: "A lasting network", desc: "Our alumni are at top firms globally. Avenues opens doors beyond USC." },
-            ].map(({ title, desc }) => (
-              <div key={title} className="border border-white/[0.07] bg-white/[0.02] rounded-sm p-5 hover:border-[#eb4c60]/20 hover:bg-white/[0.04] transition-all duration-200">
-                <h3 className="text-sm font-bold text-white mb-2">{title}</h3>
-                <p className="text-xs text-zinc-500 leading-relaxed">{desc}</p>
+              { n: "01", title: "Real client work", desc: "Actual engagements with nonprofits and startups. No case studies or simulations." },
+              { n: "02", title: "Cross-disciplinary peers", desc: "Collaborate with students across every major: engineering, business, design, pre-med, and beyond." },
+              { n: "03", title: "Professional development", desc: "Weekly curriculum nights, mentorship from industry professionals, and structured learning tracks." },
+              { n: "04", title: "A portfolio of work", desc: "Leave with deliverables you can show: strategy decks, built products, and design systems." },
+              { n: "05", title: "Leadership opportunities", desc: "Directors and execs are chosen from within. Early members get first access to leadership tracks." },
+              { n: "06", title: "A lasting network", desc: "Our alumni are at top firms globally. Avenues opens doors beyond USC." },
+            ].map(({ n, title, desc }) => (
+              <div key={n} className="group relative flex items-start gap-8 py-8 overflow-hidden cursor-default">
+                <div className="absolute bottom-0 left-0 right-0 h-px bg-[#eb4c60] scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-500 pointer-events-none" />
+                <span className="shrink-0 text-[10px] font-mono text-zinc-700 group-hover:text-[#eb4c60]/50 transition-colors duration-300 w-6 mt-1">{n}</span>
+                <div className="flex-1">
+                  <h3 className="text-lg font-black text-white group-hover:text-[#eb4c60] transition-colors duration-300 mb-2 tracking-tight">{title}</h3>
+                  <p className="text-sm text-zinc-500 leading-relaxed group-hover:text-zinc-300 transition-colors duration-300">{desc}</p>
+                </div>
               </div>
             ))}
           </div>
@@ -349,7 +372,7 @@ export default function ApplyClient() {
           <div className="grid grid-cols-1 lg:grid-cols-[280px_1fr] gap-12 lg:gap-20">
             {/* Left: heading */}
             <div className="lg:sticky lg:top-28 lg:self-start">
-              <h2 className="text-3xl font-black text-white tracking-tight leading-tight mb-2">
+              <h2 className="text-[clamp(2.5rem,5vw,4.5rem)] font-black text-white tracking-tighter leading-[0.9] mb-3">
                 Common
                 <br />
                 <span className="text-[#eb4c60]">Questions</span>

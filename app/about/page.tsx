@@ -4,7 +4,7 @@ import AboutClient from "./AboutClient";
 export const metadata: Metadata = {
   title: "About | Avenues Consulting Group",
   description:
-    "Learn about Avenues Consulting Group — USC's premier student-run consulting org. Our story, mission, and the team behind our pro bono work.",
+    "Learn about Avenues Consulting Group at USC. Our story, mission, and the team behind our pro bono work.",
   openGraph: {
     title: "About Avenues Consulting Group",
     description:

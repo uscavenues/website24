@@ -272,7 +272,7 @@ export default function MembersPage() {
                 </div>
                 {members.map((m) => (
                   <div key={m} className="flex items-baseline gap-2">
-                    <span className="text-[9px] text-zinc-800 w-8 shrink-0">—</span>
+                    <span className="text-[9px] text-zinc-800 w-8 shrink-0">·</span>
                     <span className="text-[11px] text-zinc-500">{m}</span>
                   </div>
                 ))}

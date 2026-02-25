@@ -34,7 +34,7 @@ export const metadata: Metadata = {
         url: "/assets/photos/home.jpg",
         width: 1920,
         height: 1080,
-        alt: "Avenues Consulting Group — Spring '26 Cohort",
+        alt: "Avenues Consulting Group, Spring '26 Cohort",
       },
     ],
   },
@@ -75,7 +75,7 @@ export default function RootLayout({
               "name": "Avenues Consulting Group",
               "url": "https://avenues-ten.vercel.app",
               "logo": "https://avenues-ten.vercel.app/assets/icons/avenues-logo.png",
-              "description": "USC's student-run consulting group spanning strategy, technology, and design — pro bono.",
+              "description": "USC's student-run consulting group spanning strategy, technology, and design. Pro bono.",
               "foundingDate": "2023",
               "areaServed": "United States",
               "memberOf": {
