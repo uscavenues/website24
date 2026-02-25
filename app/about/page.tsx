@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { team } from "@/lib/data";
 import type { TeamMember } from "@/lib/data";
+import ScrollReveal from "@/components/ScrollReveal";
 
 export const metadata = {
   title: "About | Avenues Consulting Group",
@@ -74,7 +75,7 @@ export default function AboutPage() {
       {/* ─────────────────────────────────────────────
           1. PAGE HEADER  -  dark hero with dot-texture
       ───────────────────────────────────────────── */}
-      <section className="relative overflow-hidden pt-28 pb-16">
+      <section className="relative overflow-hidden pt-32 pb-20">
         {/* Halftone dot texture */}
         <div className="absolute inset-0 dot-texture opacity-40 pointer-events-none" />
         {/* Top-left glow */}
@@ -84,7 +85,7 @@ export default function AboutPage() {
 
         <div className="relative z-10 mx-auto max-w-7xl px-6 md:px-10">
           {/* Eyebrow */}
-          <p className="text-[10px] font-bold uppercase tracking-[0.3em] text-zinc-600 mb-6">
+          <p className="text-[10px] font-bold uppercase tracking-[0.3em] text-zinc-500 mb-6">
             Avenues Consulting Group · USC
           </p>
 
@@ -101,6 +102,17 @@ export default function AboutPage() {
             A student organization built from the ground up  -  on the belief that
             real-world project experience shouldn&apos;t be gated by prestige or access.
           </p>
+
+          {/* EST. badge */}
+          <div className="inline-flex items-center gap-2 mt-10 border border-[#eb4c60]/30 px-4 py-2 rounded-sm">
+            <span className="text-[#eb4c60] text-[10px] font-black uppercase tracking-[0.4em]">
+              EST. MMXXIII
+            </span>
+            <span className="w-px h-3 bg-[#eb4c60]/40" />
+            <span className="text-zinc-500 text-[10px] uppercase tracking-[0.25em]">
+              University of Southern California
+            </span>
+          </div>
         </div>
       </section>
 
@@ -118,6 +130,7 @@ export default function AboutPage() {
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-20 items-center">
           {/* Left  -  founding story text */}
+          <ScrollReveal className="reveal-up">
           <div>
             <h2 className="text-[clamp(2rem,4vw,3.25rem)] font-black text-white leading-[1.05] tracking-tight mb-8">
               Built by students,
@@ -158,6 +171,7 @@ export default function AboutPage() {
               ))}
             </div>
           </div>
+          </ScrollReveal>
 
           {/* Right  -  cohort photo */}
           <div className="relative">
@@ -174,7 +188,7 @@ export default function AboutPage() {
               <div className="absolute inset-0 bg-gradient-to-t from-[#08080f]/40 via-transparent to-transparent" />
             </div>
             {/* Caption */}
-            <p className="mt-3 text-[10px] uppercase tracking-[0.2em] text-zinc-700">
+            <p className="mt-3 text-[10px] uppercase tracking-[0.2em] text-zinc-500">
               Spring &apos;26 Cohort · USC
             </p>
           </div>
@@ -198,8 +212,9 @@ export default function AboutPage() {
 
           <div className="grid grid-cols-1 md:grid-cols-[1fr_1px_1fr] gap-10 md:gap-0">
             {/* Left column  -  clients */}
+            <ScrollReveal className="reveal-left">
             <div className="md:pr-16">
-              <p className="text-[10px] font-bold uppercase tracking-[0.25em] text-zinc-600 mb-5">
+              <p className="text-[10px] font-bold uppercase tracking-[0.25em] text-zinc-500 mb-5">
                 For our clients
               </p>
               <h3 className="text-2xl md:text-3xl font-black text-white leading-tight tracking-tight mb-6">
@@ -210,13 +225,15 @@ export default function AboutPage() {
                 fit to non-profits scaling their impact. No fees, ever. Just rigorous, student-driven work.
               </p>
             </div>
+            </ScrollReveal>
 
             {/* Pink vertical divider */}
             <div className="hidden md:block w-px bg-[#eb4c60]/30 mx-auto self-stretch" />
 
             {/* Right column  -  consultants */}
+            <ScrollReveal className="reveal-right">
             <div className="md:pl-16">
-              <p className="text-[10px] font-bold uppercase tracking-[0.25em] text-zinc-600 mb-5">
+              <p className="text-[10px] font-bold uppercase tracking-[0.25em] text-zinc-500 mb-5">
                 For our consultants
               </p>
               <h3 className="text-2xl md:text-3xl font-black text-white leading-tight tracking-tight mb-6">
@@ -227,6 +244,7 @@ export default function AboutPage() {
                 place to do real work alongside people who take it seriously. No experience required.
               </p>
             </div>
+            </ScrollReveal>
           </div>
         </div>
       </section>
@@ -245,7 +263,7 @@ export default function AboutPage() {
 
         {/* ── EXECUTIVE ── */}
         <div className="mb-20">
-          <p className="text-[9px] font-black uppercase tracking-[0.35em] text-zinc-500 mb-8">
+          <p className="text-[11px] font-black uppercase tracking-[0.35em] text-zinc-400 mb-8">
             Executive
           </p>
           <div className="flex justify-center">
@@ -262,7 +280,7 @@ export default function AboutPage() {
 
         {/* ── DIRECTORS ── */}
         <div className="mb-20">
-          <p className="text-[9px] font-black uppercase tracking-[0.35em] text-zinc-500 mb-8">
+          <p className="text-[11px] font-black uppercase tracking-[0.35em] text-zinc-400 mb-8">
             Directors
           </p>
           <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
@@ -277,7 +295,7 @@ export default function AboutPage() {
 
         {/* ── ASSOCIATES ── */}
         <div>
-          <p className="text-[9px] font-black uppercase tracking-[0.35em] text-zinc-500 mb-8">
+          <p className="text-[11px] font-black uppercase tracking-[0.35em] text-zinc-400 mb-8">
             Associates
           </p>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-3">

@@ -90,7 +90,7 @@ export default function CommunityPage() {
       <section className="mx-auto max-w-7xl px-6 md:px-10 py-24">
         {/* Section header */}
         <div className="mb-14 flex items-center gap-4">
-          <span className="text-[10px] font-bold uppercase tracking-[0.25em] text-zinc-700">
+          <span className="text-[10px] font-bold uppercase tracking-[0.25em] text-zinc-500">
             Our Members
           </span>
           <div className="h-px flex-1 bg-white/[0.05]" />
@@ -145,7 +145,7 @@ export default function CommunityPage() {
         <div className="relative mx-auto max-w-7xl px-6 md:px-10 py-24">
           {/* Section header */}
           <div className="mb-14 flex items-center gap-4">
-            <span className="text-[10px] font-bold uppercase tracking-[0.25em] text-zinc-700">
+            <span className="text-[10px] font-bold uppercase tracking-[0.25em] text-zinc-500">
               What We Do
             </span>
             <div className="h-px flex-1 bg-white/[0.05]" />
@@ -184,7 +184,7 @@ export default function CommunityPage() {
         <div className="mx-auto max-w-7xl px-6 md:px-10 py-20">
           {/* Section header */}
           <div className="mb-12 flex items-center gap-4">
-            <span className="text-[10px] font-bold uppercase tracking-[0.25em] text-zinc-700">
+            <span className="text-[10px] font-bold uppercase tracking-[0.25em] text-zinc-500">
               Our Mentors
             </span>
             <div className="h-px flex-1 bg-white/[0.05]" />
@@ -203,7 +203,7 @@ export default function CommunityPage() {
                   alt={name}
                   width={100}
                   height={32}
-                  className="object-contain max-h-8 w-auto grayscale opacity-60 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-300"
+                  className="object-contain max-h-8 w-auto brightness-0 invert opacity-30 group-hover:opacity-70 transition-all duration-300"
                 />
               </div>
             ))}
@@ -220,7 +220,7 @@ export default function CommunityPage() {
         <div className="relative mx-auto max-w-7xl px-6 md:px-10 py-24">
           {/* Section header */}
           <div className="mb-4 flex items-center gap-4">
-            <span className="text-[10px] font-bold uppercase tracking-[0.25em] text-zinc-700">
+            <span className="text-[10px] font-bold uppercase tracking-[0.25em] text-zinc-500">
               Alumni Placements
             </span>
             <div className="h-px flex-1 bg-white/[0.05]" />
@@ -247,7 +247,7 @@ export default function CommunityPage() {
                     alt={company}
                     width={80}
                     height={80}
-                    className="object-contain max-h-9 w-auto grayscale opacity-65 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-300"
+                    className="object-contain max-h-9 w-auto brightness-0 invert opacity-35 group-hover:opacity-80 transition-all duration-300"
                   />
                 </div>
 

@@ -30,7 +30,7 @@ function FAQAccordion({ items }: { items: FAQItem[] }) {
                 className={`shrink-0 w-6 h-6 rounded-full border flex items-center justify-center text-sm font-bold transition-all duration-200 ${
                   isOpen
                     ? "border-[#eb4c60] text-[#eb4c60] rotate-0"
-                    : "border-white/[0.12] text-zinc-600 group-hover:border-white/25 group-hover:text-zinc-400"
+                    : "border-white/[0.12] text-zinc-500 group-hover:border-white/25 group-hover:text-zinc-300"
                 }`}
               >
                 {isOpen ? "−" : "+"}
@@ -103,11 +103,12 @@ export default function ApplyClient() {
             </div>
 
             <div className="flex-1">
-              <p className="text-lg font-bold text-white mb-2 tracking-tight">
-                Applications are currently closed.
+              <p className="text-2xl font-black text-white mb-2 tracking-tight leading-tight">
+                Applications are currently{" "}
+                <span className="text-[#eb4c60]">closed.</span>
               </p>
-              <p className="text-sm text-zinc-500 leading-relaxed">
-                Follow us{" "}
+              <p className="text-sm text-zinc-400 leading-relaxed">
+                Recruitment opens each semester. Follow us{" "}
                 <a
                   href="https://www.instagram.com/uscavenues/"
                   target="_blank"
@@ -123,7 +124,7 @@ export default function ApplyClient() {
                 >
                   uscavenues@gmail.com
                 </a>{" "}
-                for updates on the next recruitment cycle.
+                to get notified when the next cycle opens.
               </p>
             </div>
 
@@ -151,7 +152,7 @@ export default function ApplyClient() {
       {/* ── WHAT WE LOOK FOR ─────────────────────────────────────────────── */}
       <section className="mx-auto max-w-7xl px-6 md:px-10 pb-24">
         <div className="mb-10 flex items-center gap-4">
-          <span className="text-[10px] font-bold uppercase tracking-[0.25em] text-zinc-700">
+          <span className="text-[10px] font-bold uppercase tracking-[0.25em] text-zinc-500">
             What We Look For
           </span>
           <div className="h-px flex-1 bg-white/[0.05]" />
@@ -194,7 +195,7 @@ export default function ApplyClient() {
               key={n}
               className="border border-white/[0.1] bg-white/[0.05] backdrop-blur-sm rounded-sm p-6 shadow-[0_2px_16px_rgba(0,0,0,0.2)] hover:border-[#eb4c60]/30 hover:bg-white/[0.09] hover:shadow-[0_8px_32px_rgba(235,76,96,0.07)] transition-all duration-300"
             >
-              <div className="text-[10px] font-mono text-zinc-600 mb-4">{n}</div>
+              <div className="text-[10px] font-mono text-zinc-500 mb-4">{n}</div>
               <div className="w-4 h-px bg-[#eb4c60] mb-4" />
               <h3 className="text-sm font-bold text-white mb-2">{title}</h3>
               <p className="text-xs text-zinc-400 leading-relaxed">{desc}</p>
@@ -208,7 +209,7 @@ export default function ApplyClient() {
         <div className="mx-auto max-w-7xl px-6 md:px-10 pt-20">
           {/* Section label */}
           <div className="mb-12 flex items-center gap-4">
-            <span className="text-[10px] font-bold uppercase tracking-[0.25em] text-zinc-700">
+            <span className="text-[10px] font-bold uppercase tracking-[0.25em] text-zinc-500">
               FAQ
             </span>
             <div className="h-px flex-1 bg-white/[0.05]" />
@@ -222,7 +223,7 @@ export default function ApplyClient() {
                 <br />
                 <span className="text-[#eb4c60]">Questions</span>
               </h2>
-              <p className="text-xs text-zinc-600 leading-relaxed mb-10">
+              <p className="text-xs text-zinc-400 leading-relaxed mb-10">
                 Everything you need to know about applying and working with
                 Avenues.
               </p>

@@ -10,7 +10,7 @@ export default function ContactPage() {
   return (
     <>
       {/* ── PAGE HEADER ──────────────────────────────────────────────────── */}
-      <section className="relative overflow-hidden pt-28 pb-20">
+      <section className="relative overflow-hidden pt-32 pb-20">
         <div className="absolute inset-0 dot-texture opacity-35 pointer-events-none" />
         <div className="absolute -top-32 left-1/4 w-[600px] h-[400px] rounded-full bg-[#eb4c60]/10 blur-[130px] pointer-events-none" />
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-[#08080f] pointer-events-none" />
@@ -21,12 +21,12 @@ export default function ContactPage() {
               Get In Touch
             </span>
           </div>
-          <h1 className="text-[clamp(2.2rem,10vw,8rem)] font-black leading-[0.85] tracking-tighter text-white">
-            WORK
+          <h1 className="text-[clamp(3rem,11vw,8.5rem)] font-black leading-[0.88] tracking-tighter text-white">
+            LET&apos;S
             <br />
-            <span className="text-[#eb4c60]">WITH</span>
+            <span className="text-[#eb4c60]">WORK</span>
             <br />
-            US
+            TOGETHER
           </h1>
           <p className="mt-6 max-w-lg text-zinc-500 text-sm leading-relaxed">
             We are always looking for organizations ready to build something
@@ -96,12 +96,12 @@ export default function ContactPage() {
                 <p className="text-xs font-semibold text-white group-hover:text-[#eb4c60] transition-colors duration-200 tracking-tight">
                   Client Packet
                 </p>
-                <p className="text-[10px] text-zinc-700 mt-0.5">
+                <p className="text-[10px] text-zinc-500 mt-0.5">
                   Download PDF  -  Services overview
                 </p>
               </div>
               <svg
-                className="w-3.5 h-3.5 text-zinc-700 group-hover:text-[#eb4c60] ml-auto transition-colors"
+                className="w-3.5 h-3.5 text-zinc-500 group-hover:text-[#eb4c60] ml-auto transition-colors"
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
@@ -117,7 +117,7 @@ export default function ContactPage() {
 
             {/* Social links */}
             <div className="mt-12 pt-8 border-t border-white/[0.05]">
-              <p className="text-[10px] uppercase tracking-[0.2em] text-zinc-700 mb-4">
+              <p className="text-[10px] uppercase tracking-[0.2em] text-zinc-500 mb-4">
                 Follow along
               </p>
               <div className="flex items-center gap-4">
@@ -125,7 +125,7 @@ export default function ContactPage() {
                   href="https://www.instagram.com/uscavenues/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center gap-2 text-zinc-600 hover:text-white transition-colors duration-200"
+                  className="flex items-center gap-2 text-zinc-400 hover:text-white transition-colors duration-200"
                 >
                   <svg
                     className="w-4 h-4"
@@ -141,7 +141,7 @@ export default function ContactPage() {
                   href="https://www.linkedin.com/company/avenues-consulting-group-usc/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center gap-2 text-zinc-600 hover:text-white transition-colors duration-200"
+                  className="flex items-center gap-2 text-zinc-400 hover:text-white transition-colors duration-200"
                 >
                   <svg
                     className="w-4 h-4"
@@ -186,7 +186,7 @@ export default function ContactPage() {
 
               {/* Form label */}
               <div className="mb-8">
-                <p className="text-[10px] uppercase tracking-[0.25em] text-zinc-700 mb-1">
+                <p className="text-[10px] uppercase tracking-[0.25em] text-zinc-500 mb-1">
                   Contact Form
                 </p>
                 <div className="h-px bg-white/[0.05]" />
@@ -196,7 +196,7 @@ export default function ContactPage() {
               <div className="pb-1">
                 <label
                   htmlFor="name"
-                  className="block text-[10px] uppercase tracking-[0.2em] text-zinc-700 mb-3"
+                  className="block text-[10px] uppercase tracking-[0.2em] text-zinc-500 mb-3"
                 >
                   Your Name
                 </label>
@@ -206,7 +206,7 @@ export default function ContactPage() {
                   name="name"
                   required
                   placeholder="Jane Smith"
-                  className="bg-transparent border-b border-white/[0.12] hover:border-[#eb4c60]/50 focus:border-[#eb4c60] outline-none text-white placeholder:text-zinc-700 py-3 text-sm w-full transition-colors duration-200"
+                  className="bg-transparent border-b border-white/[0.12] hover:border-[#eb4c60]/50 focus:border-[#eb4c60] outline-none text-white placeholder:text-zinc-500 py-3 text-sm w-full transition-colors duration-200"
                 />
               </div>
 
@@ -216,7 +216,7 @@ export default function ContactPage() {
               <div className="pb-1">
                 <label
                   htmlFor="email"
-                  className="block text-[10px] uppercase tracking-[0.2em] text-zinc-700 mb-3"
+                  className="block text-[10px] uppercase tracking-[0.2em] text-zinc-500 mb-3"
                 >
                   Your Email
                 </label>
@@ -226,7 +226,7 @@ export default function ContactPage() {
                   name="email"
                   required
                   placeholder="jane@company.com"
-                  className="bg-transparent border-b border-white/[0.12] hover:border-[#eb4c60]/50 focus:border-[#eb4c60] outline-none text-white placeholder:text-zinc-700 py-3 text-sm w-full transition-colors duration-200"
+                  className="bg-transparent border-b border-white/[0.12] hover:border-[#eb4c60]/50 focus:border-[#eb4c60] outline-none text-white placeholder:text-zinc-500 py-3 text-sm w-full transition-colors duration-200"
                 />
               </div>
 
@@ -236,7 +236,7 @@ export default function ContactPage() {
               <div className="pb-1">
                 <label
                   htmlFor="company"
-                  className="block text-[10px] uppercase tracking-[0.2em] text-zinc-700 mb-3"
+                  className="block text-[10px] uppercase tracking-[0.2em] text-zinc-500 mb-3"
                 >
                   Company / Organization
                 </label>
@@ -245,7 +245,7 @@ export default function ContactPage() {
                   type="text"
                   name="company"
                   placeholder="Acme Corp"
-                  className="bg-transparent border-b border-white/[0.12] hover:border-[#eb4c60]/50 focus:border-[#eb4c60] outline-none text-white placeholder:text-zinc-700 py-3 text-sm w-full transition-colors duration-200"
+                  className="bg-transparent border-b border-white/[0.12] hover:border-[#eb4c60]/50 focus:border-[#eb4c60] outline-none text-white placeholder:text-zinc-500 py-3 text-sm w-full transition-colors duration-200"
                 />
               </div>
 
@@ -255,7 +255,7 @@ export default function ContactPage() {
               <div className="pb-1">
                 <label
                   htmlFor="message"
-                  className="block text-[10px] uppercase tracking-[0.2em] text-zinc-700 mb-3"
+                  className="block text-[10px] uppercase tracking-[0.2em] text-zinc-500 mb-3"
                 >
                   Message
                 </label>
@@ -265,7 +265,7 @@ export default function ContactPage() {
                   required
                   rows={5}
                   placeholder="Tell us about your organization and what you're looking to accomplish..."
-                  className="bg-transparent border-b border-white/[0.12] hover:border-[#eb4c60]/50 focus:border-[#eb4c60] outline-none text-white placeholder:text-zinc-700 py-3 text-sm w-full transition-colors duration-200 resize-none"
+                  className="bg-transparent border-b border-white/[0.12] hover:border-[#eb4c60]/50 focus:border-[#eb4c60] outline-none text-white placeholder:text-zinc-500 py-3 text-sm w-full transition-colors duration-200 resize-none"
                 />
               </div>
 
@@ -292,7 +292,7 @@ export default function ContactPage() {
                 </svg>
               </button>
 
-              <p className="mt-4 text-[10px] text-zinc-800">
+              <p className="mt-4 text-[10px] text-zinc-600">
                 We typically respond within 48 hours.
               </p>
             </form>
@@ -322,7 +322,7 @@ export default function ContactPage() {
               },
             ].map(({ label, value, href }) => (
               <div key={label}>
-                <p className="text-[10px] uppercase tracking-[0.2em] text-zinc-700 mb-1.5">
+                <p className="text-[10px] uppercase tracking-[0.2em] text-zinc-500 mb-1.5">
                   {label}
                 </p>
                 {href ? (

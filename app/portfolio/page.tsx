@@ -76,8 +76,8 @@ export default function PortfolioPage() {
 
       {/* ── OUR CLIENTS ──────────────────────────────────────────────────── */}
       <section className="mx-auto max-w-7xl px-6 md:px-10 pb-24">
-        <div className="mb-10 flex items-center gap-4">
-          <span className="text-[10px] font-bold uppercase tracking-[0.25em] text-zinc-700">
+        <div className="mb-12 flex items-center gap-4">
+          <span className="text-[10px] font-bold uppercase tracking-[0.25em] text-zinc-500">
             Our Clients
           </span>
           <div className="h-px flex-1 bg-white/[0.05]" />
@@ -86,39 +86,31 @@ export default function PortfolioPage() {
           </span>
         </div>
 
-        <div className="grid grid-cols-2 md:grid-cols-5 gap-3">
-          {clientCards.map((client) => (
+        {/* Editorial logo wall */}
+        <div className="border border-white/[0.08] grid grid-cols-2 sm:grid-cols-5">
+          {clientCards.map((client, i) => (
             <div
               key={client.name}
-              className="group border border-white/[0.1] bg-white/[0.05] backdrop-blur-sm rounded-sm p-5 flex flex-col items-center text-center shadow-[0_2px_16px_rgba(0,0,0,0.2)] hover:border-[#eb4c60]/35 hover:bg-white/[0.09] hover:shadow-[0_8px_32px_rgba(235,76,96,0.08)] hover:scale-[1.02] transition-all duration-300"
+              className="group relative flex flex-col items-center justify-center gap-3 p-8 border-b border-r border-white/[0.08] hover:bg-white/[0.04] transition-all duration-300 last:border-r-0 [&:nth-child(5n)]:border-r-0 [&:nth-last-child(-n+5)]:border-b-0"
             >
-              {/* Logo */}
-              <div className="w-20 h-20 flex items-center justify-center mb-3 relative">
+              {/* Pink top-line on hover */}
+              <div className="absolute top-0 left-0 right-0 h-px bg-[#eb4c60] scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
+
+              {/* Logo — monochrome white silhouette */}
+              <div className="relative h-8 w-full">
                 <Image
                   src={client.logo}
                   alt={client.name}
-                  width={80}
-                  height={80}
-                  className="object-contain opacity-75 group-hover:opacity-100 transition-opacity duration-300 max-h-[80px]"
+                  fill
+                  className="object-contain brightness-0 invert opacity-30 group-hover:opacity-70 transition-all duration-300"
+                  sizes="160px"
                 />
               </div>
 
-              {/* Client name */}
-              <p className="text-xs text-zinc-300 font-medium mb-2.5 leading-tight">
+              {/* Name */}
+              <p className="text-[10px] font-semibold uppercase tracking-[0.15em] text-zinc-700 group-hover:text-zinc-400 transition-colors duration-300 text-center">
                 {client.name}
               </p>
-
-              {/* Service pills */}
-              <div className="flex flex-wrap gap-1 justify-center">
-                {client.services.map((s) => (
-                  <span
-                    key={s}
-                    className="text-[9px] font-semibold uppercase tracking-[0.12em] text-[#eb4c60]/70 border border-[#eb4c60]/20 rounded-full px-1.5 py-0.5"
-                  >
-                    {s}
-                  </span>
-                ))}
-              </div>
             </div>
           ))}
         </div>
