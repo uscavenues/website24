@@ -87,7 +87,7 @@ export default function CommunityPage() {
       {/* ══════════════════════════════════════════════════
           3. OUR MEMBERS  -  stats + major tags
       ══════════════════════════════════════════════════ */}
-      <section className="mx-auto max-w-7xl px-6 md:px-10 py-24">
+      <section className="mx-auto max-w-7xl px-6 md:px-10 py-14">
         {/* Section header */}
         <div className="mb-14 flex items-center gap-4">
           <span className="text-[10px] font-bold uppercase tracking-[0.25em] text-zinc-500">
@@ -96,22 +96,22 @@ export default function CommunityPage() {
           <div className="h-px flex-1 bg-white/[0.05]" />
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-20 items-start">
-          {/* Left  -  stat numbers */}
-          <div className="space-y-10">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16 items-start">
+          {/* Left  -  stat numbers compact row */}
+          <div className="flex flex-row flex-wrap gap-10">
             {[
-              { value: "24", label: "Majors Represented" },
+              { value: "24", label: "Majors" },
               { value: "3",  label: "Disciplines" },
-              { value: "Est. 2023", label: "Founded at USC" },
+              { value: "F'23", label: "Founded" },
             ].map(({ value, label }) => (
               <div key={label} className="group">
-                <div className="text-[clamp(3rem,8vw,5.5rem)] font-black leading-none tracking-tighter text-white group-hover:text-[#eb4c60] transition-colors duration-300">
+                <div className="text-[2.8rem] font-black leading-none tracking-tighter text-white group-hover:text-[#eb4c60] transition-colors duration-300">
                   {value}
                 </div>
-                <div className="mt-2 text-xs font-semibold uppercase tracking-[0.2em] text-zinc-600">
+                <div className="mt-1.5 text-[10px] font-semibold uppercase tracking-[0.2em] text-zinc-600">
                   {label}
                 </div>
-                <div className="mt-3 h-px w-12 bg-white/[0.06] group-hover:bg-[#eb4c60]/40 transition-colors duration-300" />
+                <div className="mt-2 h-px w-8 bg-white/[0.06] group-hover:bg-[#eb4c60]/40 transition-colors duration-300" />
               </div>
             ))}
           </div>
@@ -203,7 +203,7 @@ export default function CommunityPage() {
                   alt={name}
                   width={100}
                   height={32}
-                  className="object-contain max-h-8 w-auto brightness-0 invert opacity-30 group-hover:opacity-70 transition-all duration-300"
+                  className="object-contain max-h-8 w-auto grayscale invert opacity-40 group-hover:opacity-80 transition-all duration-300"
                 />
               </div>
             ))}
@@ -215,61 +215,51 @@ export default function CommunityPage() {
           6. ALUMNI PLACEMENTS
       ══════════════════════════════════════════════════ */}
       <section className="relative border-t border-white/[0.04]">
-        <div className="absolute inset-0 dot-texture opacity-20 pointer-events-none" />
-
-        <div className="relative mx-auto max-w-7xl px-6 md:px-10 py-24">
-          {/* Section header */}
-          <div className="mb-4 flex items-center gap-4">
+        <div className="mx-auto max-w-7xl px-6 md:px-10 py-20">
+          <div className="mb-6 flex items-center gap-4">
             <span className="text-[10px] font-bold uppercase tracking-[0.25em] text-zinc-500">
               Alumni Placements
             </span>
             <div className="h-px flex-1 bg-white/[0.05]" />
           </div>
 
-          <h2 className="text-2xl md:text-3xl font-black text-white tracking-tight mb-2">
-            Since Fall 2023, our alumni have placed at:
-          </h2>
-          <p className="text-zinc-600 text-sm mb-12 max-w-xl">
-            Avenues members go on to top firms across consulting, technology,
-            finance, and beyond.
-          </p>
+          <div className="mb-10 flex flex-col sm:flex-row sm:items-end gap-4">
+            <h2 className="text-[clamp(1.8rem,4vw,3rem)] font-black text-white tracking-tight leading-tight">
+              Our alumni have placed at<br />
+              <span className="text-[#eb4c60]">top firms globally.</span>
+            </h2>
+          </div>
 
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3">
-            {alumni.map(({ company, logo, positions }) => (
+          <div className="border border-white/[0.08]">
+            {alumni.map(({ company, logo, positions }, i) => (
               <div
                 key={company}
-                className="group relative border border-white/[0.1] bg-white/[0.05] backdrop-blur-sm rounded-sm p-5 overflow-hidden shadow-[0_2px_16px_rgba(0,0,0,0.2)] hover:border-[#eb4c60]/30 hover:bg-white/[0.09] hover:shadow-[0_8px_32px_rgba(235,76,96,0.07)] transition-all duration-300"
+                className="group flex flex-col sm:flex-row sm:items-center gap-4 px-6 py-5 border-b border-white/[0.05] last:border-b-0 hover:bg-white/[0.025] transition-all duration-200"
               >
-                {/* Logo */}
-                <div className="flex items-center justify-center h-10 mb-4">
+                <div className="relative h-5 w-28 shrink-0">
                   <Image
                     src={logo}
                     alt={company}
-                    width={80}
-                    height={80}
-                    className="object-contain max-h-9 w-auto brightness-0 invert opacity-35 group-hover:opacity-80 transition-all duration-300"
+                    fill
+                    className="object-contain object-left grayscale invert opacity-40 group-hover:opacity-70 transition-all duration-300"
+                    sizes="112px"
                   />
                 </div>
-
-                {/* Company name */}
-                <p className="text-[11px] font-semibold text-zinc-300 text-center mb-2 leading-tight">
-                  {company}
-                </p>
-
-                {/* Positions  -  always visible, pink accent */}
-                <div className="space-y-0.5">
+                <div className="flex-1 min-w-0">
+                  <p className="text-[11px] font-semibold text-zinc-400 group-hover:text-zinc-200 transition-colors">
+                    {company}
+                  </p>
+                </div>
+                <div className="flex flex-wrap gap-1.5">
                   {positions.map((pos) => (
-                    <p
+                    <span
                       key={pos}
-                      className="text-[10px] text-[#eb4c60]/70 group-hover:text-[#eb4c60] text-center leading-tight transition-colors duration-200"
+                      className="text-[10px] text-zinc-600 border border-white/[0.06] px-2 py-0.5 rounded-sm group-hover:border-[#eb4c60]/20 group-hover:text-zinc-400 transition-all duration-200"
                     >
                       {pos}
-                    </p>
+                    </span>
                   ))}
                 </div>
-
-                {/* Top-left accent line */}
-                <div className="absolute top-0 left-0 w-0 h-px bg-[#eb4c60] group-hover:w-full transition-all duration-500" />
               </div>
             ))}
           </div>

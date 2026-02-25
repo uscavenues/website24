@@ -102,7 +102,7 @@ export default function PortfolioPage() {
                   src={client.logo}
                   alt={client.name}
                   fill
-                  className="object-contain brightness-0 invert opacity-30 group-hover:opacity-70 transition-all duration-300"
+                  className="object-contain grayscale invert opacity-40 group-hover:opacity-75 transition-all duration-300"
                   sizes="160px"
                 />
               </div>

@@ -29,12 +29,15 @@ export default function HomePage() {
   // Scroll indicator fades out quickly
   const scrollIndicatorOpacity = useTransform(scrollYProgress, [0, 0.12], [1, 0]);
 
+  // Black overlay: page starts pure black, fades to reveal textures as VENUES appears
+  const blackOverlay = useTransform(scrollYProgress, [0, 0.32, 0.6], [1, 1, 0]);
+
   return (
     <>
       {/* ── HERO: 250vh for scroll animation space ── */}
       <div ref={heroRef} className="relative h-[250vh]">
         <div className="sticky top-0 h-screen overflow-hidden">
-          {/* Backgrounds */}
+          {/* Texture / atmospheric backgrounds — sit behind black overlay */}
           <div className="absolute inset-0 dot-texture opacity-40 pointer-events-none" />
           <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[900px] h-[600px] rounded-full bg-[#eb4c60]/[0.06] blur-[160px] pointer-events-none" />
           <div className="absolute inset-0">
@@ -49,17 +52,23 @@ export default function HomePage() {
           </div>
           <div className="absolute inset-0 bg-gradient-to-b from-[#08080f]/60 via-transparent to-[#08080f] pointer-events-none" />
 
-          {/* Phase 1: Big centered logo only */}
+          {/* Black overlay — covers textures on load, fades as VENUES reveals */}
           <motion.div
-            className="absolute inset-0 flex items-center justify-center z-20 pointer-events-none"
-            style={{ opacity: bigLogoOpacity }}
+            className="absolute inset-0 bg-black pointer-events-none"
+            style={{ opacity: blackOverlay, zIndex: 5 }}
+          />
+
+          {/* Phase 1: Big centered logo — above black overlay */}
+          <motion.div
+            className="absolute inset-0 flex items-center justify-center pointer-events-none"
+            style={{ opacity: bigLogoOpacity, zIndex: 20 }}
           >
             <motion.div
               className="relative"
               style={{
                 scale: bigLogoScale,
-                width: "clamp(140px, 28vmin, 240px)",
-                height: "clamp(140px, 28vmin, 240px)",
+                width: "clamp(160px, 32vmin, 280px)",
+                height: "clamp(160px, 32vmin, 280px)",
               }}
             >
               <Image
@@ -72,26 +81,17 @@ export default function HomePage() {
             </motion.div>
           </motion.div>
 
-          {/* Phase 2 + 3: Full hero content */}
-          <div className="absolute inset-0 flex flex-col">
-            <div className="relative z-10 mx-auto max-w-7xl px-6 md:px-10 w-full flex-1 flex flex-col justify-center pt-16">
+          {/* Phase 2 + 3: Full hero content — above black overlay */}
+          <div className="absolute inset-0 flex flex-col" style={{ zIndex: 10 }}>
+            <div className="relative mx-auto max-w-7xl px-6 md:px-10 w-full flex-1 flex flex-col justify-center pt-16">
 
               {/* Title */}
               <motion.div style={{ opacity: titleOpacity, y: titleY }}>
-                <div className="mb-7">
-                  <div className="inline-flex items-center gap-2 rounded-full border border-white/[0.1] bg-white/[0.04] backdrop-blur-md px-4 py-1.5">
-                    <span className="h-1.5 w-1.5 rounded-full bg-[#eb4c60] animate-pulse" />
-                    <span className="text-[11px] font-medium tracking-[0.2em] uppercase text-zinc-400">
-                      Spring &apos;26 · Active Engagements
-                    </span>
-                  </div>
-                </div>
-
                 <h1 className="text-[clamp(4rem,12vw,10rem)] font-black leading-[0.88] tracking-tighter text-white">
                   <span className="inline-flex items-end" style={{ gap: "0.03em" }}>
                     <span
                       className="relative inline-block"
-                      style={{ height: "0.73em", width: "0.73em", marginBottom: "0.01em" }}
+                      style={{ height: "0.83em", width: "0.83em", marginBottom: "0.01em" }}
                     >
                       <Image
                         src="/assets/icons/avenues-logo.png"
@@ -139,7 +139,7 @@ export default function HomePage() {
                   {[
                     { n: "20+", label: "Clients Served" },
                     { n: "3", label: "Disciplines" },
-                    { n: "F’23", label: "Established" },
+                    { n: "F'23", label: "Established" },
                     { n: "Pro Bono", label: "Always Free" },
                   ].map(({ n, label }) => (
                     <div key={label}>
@@ -152,13 +152,12 @@ export default function HomePage() {
             </div>
           </div>
 
-          {/* Scroll cue */}
+          {/* Scroll cue — just the line, no text */}
           <motion.div
-            className="absolute bottom-10 left-1/2 -translate-x-1/2 z-30 flex flex-col items-center gap-2 pointer-events-none"
+            className="absolute bottom-10 left-1/2 -translate-x-1/2 z-30 flex flex-col items-center gap-0 pointer-events-none"
             style={{ opacity: scrollIndicatorOpacity }}
           >
-            <span className="text-[9px] text-zinc-600 uppercase tracking-widest">Scroll</span>
-            <div className="w-px h-8 bg-gradient-to-b from-zinc-600 to-transparent" />
+            <div className="w-px h-10 bg-gradient-to-b from-zinc-600 to-transparent" />
           </motion.div>
         </div>
       </div>
@@ -221,7 +220,7 @@ export default function HomePage() {
         <div className="relative rounded-sm overflow-hidden aspect-[16/7]">
           <Image
             src="/assets/photos/home.jpg"
-            alt="Avenues Spring 26 cohort"
+            alt="Avenues cohort"
             fill
             className="object-cover"
             sizes="100vw"
