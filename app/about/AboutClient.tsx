@@ -158,6 +158,7 @@ export default function AboutPage() {
         <div className="absolute inset-0 dot-texture opacity-20 pointer-events-none" />
         <div className="absolute top-1/2 left-0 -translate-y-1/2 w-[900px] h-[600px] rounded-full bg-[#eb4c60]/[0.03] blur-[160px] pointer-events-none" />
         <div className="relative mx-auto max-w-7xl px-6 md:px-10 py-24 w-full">
+          <ScrollReveal>
           <blockquote>
             <p className="font-display italic text-[1.75rem] sm:text-[clamp(2.5rem,8vw,8rem)] text-white leading-[0.9] tracking-tighter">
               &ldquo;No barriers between
@@ -170,6 +171,7 @@ export default function AboutPage() {
             </p>
             <footer className="mt-12 text-[10px] uppercase tracking-[0.3em] text-zinc-600">Avenues Leadership</footer>
           </blockquote>
+          </ScrollReveal>
         </div>
       </section>
 
@@ -241,12 +243,14 @@ export default function AboutPage() {
             { value: "24",    label: "Majors represented", sub: "From CS to pre-law" },
             { value: "2 yrs", label: "In operation",       sub: "Est. Fall 2023" },
             { value: "$0",    label: "Billed. Ever.",       sub: "To any client, ever" },
-          ].map(({ value, label, sub }) => (
-            <div key={label} className="px-6 md:px-8 py-6 text-center first:pl-0 last:pr-0">
+          ].map(({ value, label, sub }, i) => (
+            <ScrollReveal key={label} delay={`delay-${i + 1}`}>
+            <div className="px-6 md:px-8 py-6 text-center first:pl-0 last:pr-0">
               <dt className="text-[clamp(2rem,4vw,3.5rem)] font-black text-white mb-1 leading-none tracking-tighter">{value}</dt>
               <dd className="text-[10px] font-semibold uppercase tracking-[0.15em] text-[#eb4c60] mb-1">{label}</dd>
               <p className="text-[10px] text-zinc-600">{sub}</p>
             </div>
+            </ScrollReveal>
           ))}
         </dl>
         </div>
@@ -270,8 +274,9 @@ export default function AboutPage() {
             Executive Leadership
           </p>
           <div className="grid grid-cols-2 gap-4 max-w-3xl">
-            {team.executive.map((member) => (
-              <a key={member.name} href={member.linkedin} target="_blank" rel="noopener noreferrer" className="group relative overflow-hidden rounded-sm block">
+            {team.executive.map((member, i) => (
+              <ScrollReveal key={member.name} scale delay={`delay-${i + 1}`}>
+              <a href={member.linkedin} target="_blank" rel="noopener noreferrer" className="group relative overflow-hidden rounded-sm block">
                 {/* Photo */}
                 <div className="relative aspect-[3/4] bg-white/[0.03]">
                   <Image
@@ -296,6 +301,7 @@ export default function AboutPage() {
                   </p>
                 </div>
               </a>
+              </ScrollReveal>
             ))}
           </div>
         </div>
@@ -308,9 +314,9 @@ export default function AboutPage() {
           </p>
 
           <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-3">
-            {team.directors.map((member) => (
+            {team.directors.map((member, i) => (
+              <ScrollReveal key={member.name} delay={`delay-${(i % 5) + 1}`}>
               <a
-                key={member.name}
                 href={member.linkedin}
                 target="_blank"
                 rel="noopener noreferrer"
@@ -333,6 +339,7 @@ export default function AboutPage() {
                   <p className="text-[10px] text-zinc-500 group-hover:text-[#eb4c60]/70 transition-colors duration-300 mt-0.5 uppercase tracking-[0.12em]">{member.role}</p>
                 </div>
               </a>
+              </ScrollReveal>
             ))}
           </div>
         </div>
@@ -347,9 +354,9 @@ export default function AboutPage() {
           </div>
 
           <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 gap-2.5">
-            {team.associates.map((member) => (
+            {team.associates.map((member, i) => (
+              <ScrollReveal key={member.name} delay={`delay-${(i % 6) + 1}`}>
               <a
-                key={member.name}
                 href={member.linkedin}
                 target="_blank"
                 rel="noopener noreferrer"
@@ -372,6 +379,7 @@ export default function AboutPage() {
                   <p className="text-zinc-600 text-[9px] truncate">{member.role}</p>
                 </div>
               </a>
+              </ScrollReveal>
             ))}
           </div>
         </div>

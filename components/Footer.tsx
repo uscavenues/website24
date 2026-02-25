@@ -5,7 +5,7 @@ export default function Footer() {
   return (
     <footer className="border-t border-white/[0.06] bg-[#06060c] overflow-hidden">
       {/* Main footer content */}
-      <div className="mx-auto max-w-7xl px-6 md:px-10 py-8 grid grid-cols-1 md:grid-cols-[1fr_auto_auto] gap-8 md:gap-16">
+      <div className="mx-auto max-w-7xl px-6 sm:px-10 py-5 grid grid-cols-1 sm:grid-cols-[1fr_auto_auto] gap-6 sm:gap-12">
         {/* Brand column */}
         <div>
           <Link href="/" className="flex items-center mb-3">

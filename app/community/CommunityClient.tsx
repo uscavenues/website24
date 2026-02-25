@@ -3,6 +3,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { JSX } from "react";
+import ScrollReveal from "@/components/ScrollReveal";
 import { whatWeDo, majors, mentors, alumni } from "@/lib/data";
 
 // ─── Photo strip data (actual filenames on disk) ───────────────────────────────
@@ -235,8 +236,8 @@ export default function CommunityClient() {
 
           <div className="divide-y divide-white/[0.05]">
             {whatWeDo.map(({ title, desc, icon: iconKey }, idx) => (
+              <ScrollReveal key={title} delay={`delay-${(idx % 6) + 1}`}>
               <div
-                key={title}
                 className="group relative flex items-center gap-6 md:gap-12 py-8 md:py-10 overflow-hidden cursor-default"
               >
                 {/* Unique per-item hover accents */}
@@ -285,6 +286,7 @@ export default function CommunityClient() {
                   </p>
                 </div>
               </div>
+              </ScrollReveal>
             ))}
           </div>
         </div>
@@ -340,7 +342,7 @@ export default function CommunityClient() {
       ══════════════════════════════════════════════════ */}
       <section id="alumni" className="relative bg-[#f4f4f0]">
         {/* Gradient transition from dark to light */}
-        <div className="h-32 bg-gradient-to-b from-[#08080f] to-[#f4f4f0]" />
+        <div className="h-48 bg-gradient-to-b from-[#08080f] to-[#f4f4f0]" />
         <div className="mx-auto max-w-7xl px-6 md:px-10 py-20">
           <div className="mb-6 flex items-center gap-4">
             <span className="text-[10px] font-bold uppercase tracking-[0.25em] text-zinc-500">
@@ -359,8 +361,8 @@ export default function CommunityClient() {
           {/* Editorial placement record — alternating rows */}
           <div className="divide-y divide-zinc-200">
             {alumni.map(({ company, logo, positions }, idx) => (
+              <ScrollReveal key={company} delay={`delay-${(idx % 6) + 1}`}>
               <div
-                key={company}
                 className="group relative flex flex-col sm:flex-row sm:items-center gap-4 sm:gap-8 py-6 overflow-hidden transition-opacity duration-500"
               >
                 {/* Unique hover effect — alternating sweep direction */}
@@ -395,11 +397,12 @@ export default function CommunityClient() {
                   ))}
                 </div>
               </div>
+              </ScrollReveal>
             ))}
           </div>
         </div>
         {/* Gradient transition from light back to dark */}
-        <div className="h-32 bg-gradient-to-b from-[#f4f4f0] to-[#08080f]" />
+        <div className="h-48 bg-gradient-to-b from-[#f4f4f0] to-[#08080f]" />
       </section>
 
       {/* ══════════════════════════════════════════════════

@@ -171,7 +171,7 @@ export default function HomePage() {
                   <span
                     ref={aRef}
                     className="inline-block"
-                    style={{ height: "0.82em", width: "0.82em", marginBottom: "-0.04em", marginRight: "-0.08em" }}
+                    style={{ height: "1.05em", width: "1.05em", marginBottom: "-0.08em", marginRight: "-0.06em" }}
                     aria-hidden="true"
                   />
                   <motion.span className="inline-block" style={{ opacity: venuesOp, x: venuesX }}>
@@ -224,16 +224,14 @@ export default function HomePage() {
           <div className="h-px flex-1 bg-white/[0.05]" />
         </ScrollReveal>
 
-        <div className="flex flex-col divide-y divide-white/[0.06]">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-px bg-white/[0.05] rounded-sm overflow-hidden">
           {[
             {
               tag: "01",
               title: "Strategy",
               desc: "Market research, growth plans, subscription models, and comprehensive business strategy for any industry.",
-              href: "/portfolio",
-              accent: "Strategy",
               icon: (
-                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
                 </svg>
               ),
@@ -242,10 +240,8 @@ export default function HomePage() {
               tag: "02",
               title: "Technology",
               desc: "Full-stack web development, data analysis, and modern tech solutions built from scratch or on proven platforms.",
-              href: "/portfolio",
-              accent: "Technology",
               icon: (
-                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
                 </svg>
               ),
@@ -254,43 +250,46 @@ export default function HomePage() {
               tag: "03",
               title: "Design",
               desc: "Brand identity, UI/UX design, and visual storytelling that elevates your organization's presence and reach.",
-              href: "/portfolio",
-              accent: "Design",
               icon: (
-                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
                 </svg>
               ),
             },
-          ].map(({ tag, title, desc, href, icon }, i) => (
+          ].map(({ tag, title, desc, icon }, i) => (
             <ScrollReveal key={title} delay={`delay-${i + 1}`}>
-              <Link href="/portfolio" className="group flex items-center gap-8 md:gap-16 py-10 md:py-12 relative overflow-hidden block">
-                {/* Red sweep line on hover — different origin per item */}
-                <div
-                  className="absolute bottom-0 left-0 right-0 h-px bg-[#eb4c60] origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-500"
-                  style={{ transformOrigin: i === 1 ? "right" : "left" }}
-                />
-                {/* Index */}
-                <span className="shrink-0 text-[10px] font-mono text-zinc-600 group-hover:text-[#eb4c60]/50 transition-colors duration-300 w-6">{tag}</span>
+              <Link href="/portfolio" className="group relative flex flex-col gap-6 p-8 md:p-10 bg-[#08080f] hover:bg-[#eb4c60]/[0.05] transition-colors duration-500 overflow-hidden h-full cursor-pointer">
+                {/* Top accent line animates in on hover */}
+                <div className="absolute top-0 left-0 right-0 h-px bg-[#eb4c60] scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-500" />
+
+                {/* Ghost number — background depth */}
+                <span className="absolute bottom-4 right-6 text-[7rem] font-black font-mono text-white/[0.03] group-hover:text-[#eb4c60]/[0.07] transition-colors duration-700 leading-none select-none pointer-events-none" aria-hidden="true">{tag.replace("0","")}</span>
+
+                {/* Tag row */}
+                <div className="flex items-center gap-3">
+                  <span className="text-[10px] font-mono text-zinc-700 group-hover:text-[#eb4c60]/60 transition-colors duration-300">{tag}</span>
+                  <span className="h-px flex-1 bg-white/[0.04] group-hover:bg-[#eb4c60]/20 transition-colors duration-500" />
+                </div>
 
                 {/* Icon */}
-                <span className="shrink-0 text-zinc-600 group-hover:text-[#eb4c60] transition-colors duration-300">
+                <span className="text-zinc-600 group-hover:text-[#eb4c60] transition-colors duration-300 mt-4">
                   {icon}
                 </span>
 
-                {/* Title — grows to fill */}
-                <h3 className="flex-1 text-2xl md:text-[clamp(2.5rem,5vw,4.5rem)] font-black tracking-tighter text-white group-hover:text-[#eb4c60] transition-colors duration-300 leading-none">
+                {/* Title */}
+                <h3 className="text-[clamp(2rem,4vw,3.5rem)] font-black tracking-tighter text-white group-hover:text-[#eb4c60] transition-colors duration-300 leading-[0.9]">
                   {title}
                 </h3>
 
-                {/* Description — hidden on small, shown on md+ */}
-                <p className="hidden md:block max-w-sm text-sm text-zinc-500 leading-relaxed group-hover:text-zinc-300 transition-colors duration-300 flex-shrink-0">
+                {/* Desc */}
+                <p className="text-sm text-zinc-500 leading-relaxed group-hover:text-zinc-300 transition-colors duration-300 mt-auto">
                   {desc}
                 </p>
 
-                {/* Arrow */}
-                <div className="shrink-0 w-10 h-10 rounded-full border border-white/[0.08] flex items-center justify-center group-hover:border-[#eb4c60]/50 group-hover:bg-[#eb4c60]/[0.06] transition-all duration-300">
-                  <svg className="w-3.5 h-3.5 text-zinc-500 group-hover:text-[#eb4c60] group-hover:translate-x-0.5 transition-all duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                {/* CTA */}
+                <div className="flex items-center gap-2 text-[10px] uppercase tracking-[0.15em] font-semibold text-zinc-600 group-hover:text-[#eb4c60] transition-colors duration-300 mt-2">
+                  See work
+                  <svg className="w-3 h-3 group-hover:translate-x-0.5 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
                   </svg>
                 </div>

@@ -106,6 +106,7 @@ export default function ApplyClient() {
 
       {/* ── STATUS BANNER ────────────────────────────────────────────────── */}
       <section className="mx-auto max-w-7xl px-6 md:px-10 pb-16">
+        <ScrollReveal scale>
         <div className="relative overflow-hidden rounded-sm border border-[#eb4c60]/25 bg-white/[0.05] backdrop-blur-sm shadow-[0_4px_32px_rgba(235,76,96,0.08)] p-8 md:p-10">
           {/* Subtle red glow in corner */}
           <div className="absolute -top-20 -right-20 w-64 h-64 rounded-full bg-[#eb4c60]/8 blur-[80px] pointer-events-none" />
@@ -205,6 +206,7 @@ export default function ApplyClient() {
             </a>
           </div>
         </div>
+        </ScrollReveal>
       </section>
 
       {/* ── WHAT WE LOOK FOR ─────────────────────────────────────────────── */}
@@ -272,9 +274,9 @@ export default function ApplyClient() {
               barOrigin: "origin-right",
               barPos: "bottom-0",
             },
-          ].map(({ n, title, desc, icon, hoverClass, barOrigin, barPos }) => (
+          ].map(({ n, title, desc, icon, hoverClass, barOrigin, barPos }, i) => (
+            <ScrollReveal key={n} delay={`delay-${(i % 6) + 1}`}>
             <div
-              key={n}
               className="group relative flex flex-col md:flex-row md:items-center gap-2 md:gap-12 py-8 cursor-default overflow-hidden"
             >
               {/* Unique hover bar (alternating top/bottom, alternating direction) */}
@@ -306,6 +308,7 @@ export default function ApplyClient() {
                 {desc}
               </p>
             </div>
+            </ScrollReveal>
           ))}
         </div>
       </section>
@@ -315,6 +318,7 @@ export default function ApplyClient() {
         <div className="absolute inset-0 dot-texture opacity-30 pointer-events-none" />
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[900px] h-[500px] rounded-full bg-[#eb4c60]/[0.04] blur-[140px] pointer-events-none" />
         <div className="relative mx-auto max-w-7xl px-6 md:px-10">
+          <ScrollReveal>
           <p className="text-[1.75rem] sm:text-[clamp(2.5rem,7.5vw,7rem)] font-black text-white tracking-tighter leading-[0.9]">
             We&apos;re not looking
             <br className="hidden sm:block" />
@@ -324,6 +328,7 @@ export default function ApplyClient() {
             <br className="hidden sm:block" />
             the <span className="text-[#eb4c60]">person.</span>
           </p>
+          </ScrollReveal>
         </div>
       </section>
 
@@ -347,8 +352,9 @@ export default function ApplyClient() {
               { n: "04", title: "A portfolio of work", desc: "Leave with deliverables you can show: strategy decks, built products, and design systems." },
               { n: "05", title: "Leadership opportunities", desc: "Directors and execs are chosen from within. Early members get first access to leadership tracks." },
               { n: "06", title: "A lasting network", desc: "Our alumni are at top firms globally. Avenues opens doors beyond USC." },
-            ].map(({ n, title, desc }) => (
-              <div key={n} className="group relative flex items-start gap-8 py-8 overflow-hidden cursor-default">
+            ].map(({ n, title, desc }, i) => (
+              <ScrollReveal key={n} delay={`delay-${(i % 6) + 1}`}>
+              <div className="group relative flex items-start gap-8 py-8 overflow-hidden cursor-default">
                 <div className="absolute bottom-0 left-0 right-0 h-px bg-[#eb4c60] scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-500 pointer-events-none" />
                 <span className="shrink-0 text-[10px] font-mono text-zinc-700 group-hover:text-[#eb4c60]/50 transition-colors duration-300 w-6 mt-1">{n}</span>
                 <div className="flex-1">
@@ -356,6 +362,7 @@ export default function ApplyClient() {
                   <p className="text-sm text-zinc-500 leading-relaxed group-hover:text-zinc-300 transition-colors duration-300">{desc}</p>
                 </div>
               </div>
+              </ScrollReveal>
             ))}
           </div>
         </div>
