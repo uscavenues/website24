@@ -96,42 +96,18 @@ export default function CommunityPage() {
           <div className="h-px flex-1 bg-white/[0.05]" />
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16 items-start">
-          {/* Left  -  stat numbers compact row */}
-          <div className="flex flex-row flex-wrap gap-10">
-            {[
-              { value: "24", label: "Majors" },
-              { value: "3",  label: "Disciplines" },
-              { value: "F'23", label: "Founded" },
-            ].map(({ value, label }) => (
-              <div key={label} className="group">
-                <div className="text-[2.8rem] font-black leading-none tracking-tighter text-white group-hover:text-[#eb4c60] transition-colors duration-300">
-                  {value}
-                </div>
-                <div className="mt-1.5 text-[10px] font-semibold uppercase tracking-[0.2em] text-zinc-600">
-                  {label}
-                </div>
-                <div className="mt-2 h-px w-8 bg-white/[0.06] group-hover:bg-[#eb4c60]/40 transition-colors duration-300" />
-              </div>
-            ))}
-          </div>
-
-          {/* Right  -  major pills */}
-          <div>
-            <p className="text-xs text-zinc-400 uppercase tracking-[0.2em] mb-5">
-              Fields of Study
-            </p>
-            <div className="flex flex-wrap gap-2">
-              {majors.map((major) => (
-                <span
-                  key={major}
-                  className="border border-white/[0.12] bg-white/[0.05] backdrop-blur-sm px-3 py-1 text-xs text-zinc-300 rounded-sm hover:border-[#eb4c60]/40 hover:text-white hover:bg-white/[0.08] transition-all duration-200 cursor-default"
-                >
-                  {major}
-                </span>
-              ))}
-            </div>
-          </div>
+        <p className="text-xs text-zinc-400 uppercase tracking-[0.2em] mb-5">
+          Fields of Study — 24 majors across strategy, technology &amp; design
+        </p>
+        <div className="flex flex-wrap gap-2">
+          {majors.map((major) => (
+            <span
+              key={major}
+              className="border border-white/[0.12] bg-white/[0.05] backdrop-blur-sm px-3 py-1 text-xs text-zinc-300 rounded-sm hover:border-[#eb4c60]/40 hover:text-white hover:bg-white/[0.08] transition-all duration-200 cursor-default"
+            >
+              {major}
+            </span>
+          ))}
         </div>
       </section>
 

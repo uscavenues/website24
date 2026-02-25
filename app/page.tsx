@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useLayoutEffect } from "react";
+import { useRef, useState, useLayoutEffect } from "react";
 import {
   motion,
   useScroll,
@@ -16,10 +16,19 @@ export default function HomePage() {
   // Invisible A-placeholder in h1 — the logo physically flies TO this element
   const aRef = useRef<HTMLSpanElement>(null);
 
+  // ── Initialize start bounds synchronously from window so there's no teleport ──
+  const [initStart] = useState(() => {
+    if (typeof window === "undefined") return { x: 500, y: 300, sz: 280 };
+    const vw = window.innerWidth;
+    const vh = window.innerHeight;
+    const sz = Math.min(Math.max(vw * 0.32, 200), 340);
+    return { x: vw / 2 - sz / 2, y: vh / 2 - sz / 2, sz };
+  });
+
   // ── Bounds stored as MotionValues so useTransform re-fires when they update ──
-  const startX  = useMotionValue(500);
-  const startY  = useMotionValue(300);
-  const startSz = useMotionValue(240);
+  const startX  = useMotionValue(initStart.x);
+  const startY  = useMotionValue(initStart.y);
+  const startSz = useMotionValue(initStart.sz);
   const endX    = useMotionValue(80);
   const endY    = useMotionValue(240);
   const endSz   = useMotionValue(60);
@@ -36,7 +45,7 @@ export default function HomePage() {
       const rect = aRef.current.getBoundingClientRect();
       const vw   = window.innerWidth;
       const vh   = window.innerHeight;
-      const sz   = Math.min(Math.max(vw * 0.28, 160), 280);
+      const sz   = Math.min(Math.max(vw * 0.32, 200), 340);
       startX.set(vw / 2 - sz / 2);
       startY.set(vh / 2 - sz / 2);
       startSz.set(sz);
@@ -210,19 +219,6 @@ export default function HomePage() {
                   </Link>
                 </div>
 
-                <div className="flex flex-wrap items-center gap-10 md:gap-16 mt-14 pt-8 border-t border-white/[0.1]">
-                  {[
-                    { n: "20+",      label: "Clients Served" },
-                    { n: "3",        label: "Disciplines" },
-                    { n: "F'23",     label: "Established" },
-                    { n: "Pro Bono", label: "Always Free" },
-                  ].map(({ n, label }) => (
-                    <div key={label}>
-                      <div className="text-2xl font-black text-white tracking-tight">{n}</div>
-                      <div className="text-sm font-medium text-zinc-300 mt-1 tracking-wide uppercase">{label}</div>
-                    </div>
-                  ))}
-                </div>
               </motion.div>
 
             </div>

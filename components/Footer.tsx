@@ -16,11 +16,8 @@ export default function Footer() {
       <div className="mx-auto max-w-7xl px-6 md:px-10 h-11 flex items-center justify-between gap-4">
 
         {/* Logo: logo image replaces the "A" in "AVENUES" */}
-        <Link href="/" className="flex items-end gap-0 shrink-0 leading-none" style={{ fontSize: "11px" }}>
-          <span
-            className="relative inline-block shrink-0"
-            style={{ width: "0.9em", height: "0.9em", marginBottom: "0.05em" }}
-          >
+        <Link href="/" className="flex items-center gap-1.5 shrink-0">
+          <span className="relative inline-block shrink-0 w-[18px] h-[18px]">
             <Image
               src="/assets/icons/avenues-logo.png"
               alt="A"
@@ -28,7 +25,7 @@ export default function Footer() {
               className="object-contain invert opacity-40"
             />
           </span>
-          <span className="font-bold tracking-[0.22em] uppercase text-zinc-700 hidden sm:block">VENUES · USC</span>
+          <span className="font-bold tracking-[0.22em] uppercase text-zinc-700 text-[11px] hidden sm:block">VENUES · USC</span>
         </Link>
 
         {/* Nav links — hidden on small screens */}

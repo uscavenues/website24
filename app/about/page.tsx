@@ -155,21 +155,6 @@ export default function AboutPage() {
               </p>
             </div>
 
-            {/* Stats strip */}
-            <div className="flex items-center gap-10 mt-12 pt-8 border-t border-white/[0.05]">
-              {[
-                { n: "2023", label: "Founded" },
-                { n: "20+", label: "Clients" },
-                { n: "3×", label: "Growth" },
-              ].map(({ n, label }) => (
-                <div key={label}>
-                  <div className="text-2xl font-black text-white tracking-tight">{n}</div>
-                  <div className="text-[10px] text-zinc-500 mt-0.5 tracking-[0.2em] uppercase">
-                    {label}
-                  </div>
-                </div>
-              ))}
-            </div>
           </div>
           </ScrollReveal>
 
