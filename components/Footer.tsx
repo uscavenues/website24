@@ -9,10 +9,10 @@ export default function Footer() {
         {/* Brand column */}
         <div>
           <Link href="/" className="flex items-center mb-3">
-            <span className="relative inline-block shrink-0 w-[26px] h-[26px]">
+            <span className="relative inline-block shrink-0 w-[20px] h-[20px]">
               <Image src="/assets/icons/avenues-logo.png" alt="A" fill className="object-contain invert opacity-60" />
             </span>
-            <span className="font-bold tracking-[0.22em] uppercase text-zinc-500 text-[11px]" style={{ marginLeft: "-2px" }}>VENUES · USC</span>
+            <span className="font-bold tracking-[0.13em] uppercase text-zinc-500 text-[11px]" style={{ marginLeft: "-4px" }}>VENUES · USC</span>
           </Link>
           <p className="text-[11px] text-zinc-600 leading-relaxed max-w-[220px] mb-4">
             USC's premier student-run consulting group. Pro bono strategy, technology, and design.

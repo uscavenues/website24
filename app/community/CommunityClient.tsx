@@ -312,22 +312,21 @@ export default function CommunityClient() {
           </p>
         </div>
 
-        {/* Full-bleed single marquee — white-filtered logos */}
+        {/* Full-bleed single marquee — logos in color on white cards */}
         <div className="overflow-hidden pb-20 marquee-hover-pause">
           <div className="marquee-track">
             {[...mentors, ...mentors].map((mentor, i) => (
               <div
                 key={`m-${i}`}
-                className="shrink-0 mr-20 flex items-center justify-center"
+                className="shrink-0 mr-4 flex items-center justify-center px-8 py-4 bg-white/95 rounded-sm hover:bg-white transition-colors duration-300 group"
               >
-                <div className="relative h-7 w-28 opacity-30 hover:opacity-60 transition-opacity duration-300">
+                <div className="relative h-7 w-28 opacity-80 group-hover:opacity-100 transition-opacity duration-300">
                   <Image
                     src={mentor.logo}
                     alt={mentor.name}
                     fill
                     className="object-contain"
                     sizes="112px"
-                    style={{ filter: "brightness(0) invert(1)" }}
                   />
                 </div>
               </div>
@@ -339,7 +338,7 @@ export default function CommunityClient() {
       {/* ══════════════════════════════════════════════════
           6. ALUMNI PLACEMENTS
       ══════════════════════════════════════════════════ */}
-      <section id="alumni" className="relative bg-[#f4f4f0] border-t border-zinc-200">
+      <section id="alumni" className="relative bg-[#f4f4f0]">
         {/* Gradient transition from dark to light */}
         <div className="h-32 bg-gradient-to-b from-[#08080f] to-[#f4f4f0]" />
         <div className="mx-auto max-w-7xl px-6 md:px-10 py-20">

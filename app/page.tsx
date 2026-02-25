@@ -51,7 +51,7 @@ export default function HomePage() {
     if (typeof window === "undefined") return { x: 400, y: 260, sz: 500 };
     const vw = window.innerWidth;
     const vh = window.innerHeight;
-    const sz = Math.min(Math.max(vw * 0.44, 300), 520);
+    const sz = Math.min(Math.max(vw * 0.54, 380), 700);
     return { x: vw / 2 - sz / 2, y: vh / 2 - sz / 2, sz };
   });
 
@@ -270,11 +270,6 @@ export default function HomePage() {
                   className="absolute bottom-0 left-0 right-0 h-px bg-[#eb4c60] origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-500"
                   style={{ transformOrigin: i === 1 ? "right" : "left" }}
                 />
-                {/* Ghost architectural number — dimensional depth */}
-                <span className="absolute right-4 top-1/2 -translate-y-1/2 text-[clamp(5rem,16vw,14rem)] font-black font-mono text-white/[0.025] group-hover:text-[#eb4c60]/[0.07] transition-colors duration-700 leading-none select-none pointer-events-none" aria-hidden="true">
-                  {tag}
-                </span>
-
                 {/* Index */}
                 <span className="shrink-0 text-[10px] font-mono text-zinc-600 group-hover:text-[#eb4c60]/50 transition-colors duration-300 w-6">{tag}</span>
 
@@ -312,7 +307,6 @@ export default function HomePage() {
             <Image src="/assets/photos/home.jpg" alt="Avenues Consulting Group cohort, USC" fill className="object-cover" sizes="(max-width: 768px) calc(100vw - 3rem), (max-width: 1280px) calc(100vw - 5rem), 1240px" />
             <div className="absolute inset-0 bg-gradient-to-t from-[#08080f] via-[#08080f]/20 to-transparent" />
             <div className="absolute bottom-8 left-8">
-              <p className="text-[10px] uppercase tracking-[0.2em] text-zinc-500 mb-1">Spring &apos;26 Cohort</p>
               <p className="text-sm text-zinc-300">Avenues Consulting Group &middot; USC</p>
             </div>
           </div>

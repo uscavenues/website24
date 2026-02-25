@@ -87,7 +87,7 @@ export default function PortfolioClient() {
       </section>
 
       {/* ── OUR CLIENTS ──────────────────────────────────────────────────── */}
-      <section id="clients" className="pb-24 bg-[#f4f4f0]">
+      <section id="clients" className="bg-[#f4f4f0]">
         {/* Gradient transition from dark to light */}
         <div className="h-32 bg-gradient-to-b from-[#08080f] to-[#f4f4f0]" />
         <div className="mx-auto max-w-7xl px-6 md:px-10 mb-12">

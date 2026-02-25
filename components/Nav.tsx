@@ -54,7 +54,7 @@ export default function Nav() {
         <nav className="mx-auto max-w-7xl px-6 md:px-10 h-16 flex items-center justify-between">
           {/* Logo wordmark */}
           <Link href="/" className="flex items-center shrink-0">
-            <span className="relative inline-block shrink-0 w-[28px] h-[28px]">
+            <span className="relative inline-block shrink-0 w-[20px] h-[20px]">
               <Image
                 src="/assets/icons/avenues-logo.png"
                 alt="A"
@@ -62,7 +62,7 @@ export default function Nav() {
                 className="object-contain invert opacity-90"
               />
             </span>
-            <span className="font-semibold tracking-[0.2em] uppercase text-zinc-300 text-[11px] hidden sm:block" style={{ marginLeft: "-3px" }}>VENUES</span>
+            <span className="font-semibold tracking-[0.13em] uppercase text-zinc-300 text-[11px] hidden sm:block" style={{ marginLeft: "-4px" }}>VENUES</span>
           </Link>
 
           <div className="hidden md:flex items-center gap-0.5">
