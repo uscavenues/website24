@@ -105,6 +105,25 @@ body {
   transform: translateY(0) scale(1);
 }
 
+/* ── Glass card — reusable across all pages ──────────────────────────────── */
+.glass-card {
+  background: rgba(255, 255, 255, 0.055);
+  backdrop-filter: blur(24px) saturate(1.4);
+  -webkit-backdrop-filter: blur(24px) saturate(1.4);
+  border: 1px solid rgba(255, 255, 255, 0.13);
+  box-shadow:
+    0 4px 32px rgba(0, 0, 0, 0.28),
+    inset 0 1px 0 rgba(255, 255, 255, 0.07);
+  transition: background 0.25s, border-color 0.25s, box-shadow 0.25s;
+}
+.glass-card:hover {
+  background: rgba(255, 255, 255, 0.09);
+  border-color: rgba(235, 76, 96, 0.3);
+  box-shadow:
+    0 8px 48px rgba(235, 76, 96, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.10);
+}
+
 /* Member page password shake animation */
 @keyframes memberShake {
   0%, 100% { transform: translateX(0); }

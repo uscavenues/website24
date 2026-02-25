@@ -16,8 +16,8 @@ export default function Footer() {
       <div className="mx-auto max-w-7xl px-6 md:px-10 h-11 flex items-center justify-between gap-4">
 
         {/* Logo: logo image replaces the "A" in "AVENUES" */}
-        <Link href="/" className="flex items-center gap-1.5 shrink-0">
-          <span className="relative inline-block shrink-0 w-[18px] h-[18px]">
+        <Link href="/" className="flex items-center gap-0.5 shrink-0">
+          <span className="relative inline-block shrink-0 w-[22px] h-[22px]">
             <Image
               src="/assets/icons/avenues-logo.png"
               alt="A"

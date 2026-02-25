@@ -22,7 +22,7 @@ const PROJECT_TABS: { key: ProjectTab; label: string; data: Project[] }[] = [
 
 function ProjectCard({ project, index }: { project: Project; index: number }) {
   return (
-    <div className="group border border-white/[0.1] bg-white/[0.05] backdrop-blur-sm rounded-sm p-6 shadow-[0_2px_16px_rgba(0,0,0,0.2)] hover:border-[#eb4c60]/30 hover:bg-white/[0.09] hover:shadow-[0_8px_32px_rgba(235,76,96,0.07)] transition-all duration-300">
+    <div className="glass-card group rounded-sm p-6 transition-all duration-300">
       <div className="flex items-start justify-between gap-4 mb-4">
         <div className="text-[10px] font-mono text-zinc-600 group-hover:text-[#eb4c60]/40 transition-colors">
           {String(index + 1).padStart(2, "0")}

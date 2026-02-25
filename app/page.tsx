@@ -21,7 +21,7 @@ export default function HomePage() {
     if (typeof window === "undefined") return { x: 500, y: 300, sz: 280 };
     const vw = window.innerWidth;
     const vh = window.innerHeight;
-    const sz = Math.min(Math.max(vw * 0.32, 200), 340);
+    const sz = Math.min(Math.max(vw * 0.44, 300), 520);
     return { x: vw / 2 - sz / 2, y: vh / 2 - sz / 2, sz };
   });
 
@@ -45,7 +45,7 @@ export default function HomePage() {
       const rect = aRef.current.getBoundingClientRect();
       const vw   = window.innerWidth;
       const vh   = window.innerHeight;
-      const sz   = Math.min(Math.max(vw * 0.32, 200), 340);
+      const sz   = Math.min(Math.max(vw * 0.44, 300), 520);
       startX.set(vw / 2 - sz / 2);
       startY.set(vh / 2 - sz / 2);
       startSz.set(sz);
@@ -61,11 +61,12 @@ export default function HomePage() {
   // ── Logo: single element, multi-MotionValue transform (correct pattern) ──────
   // Using the array-of-MotionValues overload so it recalculates whenever
   // any bound changes (i.e., when useLayoutEffect fires after mount).
+  // Logo travels center → A slot between 0.10 and 0.38 (arrives before VENUES)
   const logoLeft = useTransform(
     [scrollYProgress, startX, endX],
     (v) => {
       const [p, sx, ex] = v as number[];
-      const t = Math.max(0, Math.min(1, (p - 0.15) / 0.35));
+      const t = Math.max(0, Math.min(1, (p - 0.10) / 0.28));
       return sx + (ex - sx) * t;
     }
   );
@@ -73,7 +74,7 @@ export default function HomePage() {
     [scrollYProgress, startY, endY],
     (v) => {
       const [p, sy, ey] = v as number[];
-      const t = Math.max(0, Math.min(1, (p - 0.15) / 0.35));
+      const t = Math.max(0, Math.min(1, (p - 0.10) / 0.28));
       return sy + (ey - sy) * t;
     }
   );
@@ -81,29 +82,32 @@ export default function HomePage() {
     [scrollYProgress, startSz, endSz],
     (v) => {
       const [p, ss, es] = v as number[];
-      const t = Math.max(0, Math.min(1, (p - 0.15) / 0.35));
+      const t = Math.max(0, Math.min(1, (p - 0.10) / 0.28));
       return ss + (es - ss) * t;
     }
   );
 
-  // ── Text: each line staggers in independently ─────────────────────────────────
-  const venuesOp  = useTransform(scrollYProgress, [0.46, 0.59], [0, 1]);
-  const venuesX   = useTransform(scrollYProgress, [0.46, 0.59], [32, 0]);
-  const consultOp = useTransform(scrollYProgress, [0.54, 0.67], [0, 1]);
-  const consultY  = useTransform(scrollYProgress, [0.54, 0.67], [40, 0]);
-  const groupOp   = useTransform(scrollYProgress, [0.61, 0.73], [0, 1]);
-  const groupY    = useTransform(scrollYProgress, [0.61, 0.73], [28, 0]);
-  const contentOp = useTransform(scrollYProgress, [0.69, 0.82], [0, 1]);
-  const contentY  = useTransform(scrollYProgress, [0.69, 0.82], [32, 0]);
+  // ── Text: each line staggers in ───────────────────────────────────────────────
+  // Sequence: logo arrives → VENUES → CONSULTING → GROUP → [freeze / hold] →
+  //           background reveals from black → content (tagline + buttons) appears
+  const venuesOp  = useTransform(scrollYProgress, [0.35, 0.47], [0, 1]);
+  const venuesX   = useTransform(scrollYProgress, [0.35, 0.47], [36, 0]);
+  const consultOp = useTransform(scrollYProgress, [0.43, 0.54], [0, 1]);
+  const consultY  = useTransform(scrollYProgress, [0.43, 0.54], [44, 0]);
+  const groupOp   = useTransform(scrollYProgress, [0.50, 0.61], [0, 1]);
+  const groupY    = useTransform(scrollYProgress, [0.50, 0.61], [32, 0]);
 
-  // Black overlay — pure black on load, fades as background textures reveal
-  const blackOp     = useTransform(scrollYProgress, [0, 0.28, 0.56], [1, 1, 0]);
-  const scrollCueOp = useTransform(scrollYProgress, [0, 0.12], [1, 0]);
+  // ── [FREEZE ZONE: 0.61 – 0.76] nothing changes, all text visible, bg black ──
+  // ── Then: black fades, background image reveals, THEN content appears ─────────
+  const blackOp   = useTransform(scrollYProgress, [0, 0.28, 0.76, 0.91], [1, 1, 1, 0]);
+  const contentOp = useTransform(scrollYProgress, [0.78, 0.90], [0, 1]);
+  const contentY  = useTransform(scrollYProgress, [0.78, 0.90], [36, 0]);
+  const scrollCueOp = useTransform(scrollYProgress, [0, 0.09], [1, 0]);
 
   return (
     <>
-      {/* ══════════════════════ HERO (280vh scroll canvas) ═══════════════════ */}
-      <div ref={heroRef} className="relative h-[280vh]">
+      {/* ══════════════════════ HERO (320vh — extra length for freeze beat) ══ */}
+      <div ref={heroRef} className="relative h-[320vh]">
         <div className="sticky top-0 h-screen overflow-hidden">
 
           {/* Background layers (revealed as black overlay fades out) */}
@@ -114,7 +118,7 @@ export default function HomePage() {
               src="/assets/photos/home.jpg"
               alt=""
               fill
-              className="object-cover opacity-[0.07]"
+              className="object-cover opacity-[0.14]"
               priority
               sizes="100vw"
             />
@@ -156,13 +160,12 @@ export default function HomePage() {
               <h1 className="text-[clamp(4rem,12vw,10rem)] font-black leading-[0.88] tracking-tighter text-white">
 
                 {/* Line 1: [invisible A placeholder] + VENUES */}
-                <span className="inline-flex items-end" style={{ gap: "0.03em" }}>
-                  {/* This invisible span holds the exact space the logo occupies.
-                      getBoundingClientRect() on this tells us where to fly the logo. */}
+                <span className="inline-flex items-end" style={{ gap: "0" }}>
+                  {/* Invisible placeholder — the logo flies to this exact position/size */}
                   <span
                     ref={aRef}
                     className="inline-block"
-                    style={{ height: "0.83em", width: "0.83em", marginBottom: "0.01em" }}
+                    style={{ height: "1.05em", width: "1.05em", marginBottom: "-0.03em" }}
                     aria-hidden="true"
                   />
                   <motion.span
@@ -251,7 +254,7 @@ export default function HomePage() {
             <ScrollReveal key={title} delay={`delay-${i + 1}`} scale>
               <Link
                 href={href}
-                className="group relative border border-white/[0.1] bg-white/[0.04] backdrop-blur-sm rounded-sm p-8 overflow-hidden block shadow-[0_2px_16px_rgba(0,0,0,0.2)] hover:border-[#eb4c60]/30 hover:bg-white/[0.08] hover:shadow-[0_8px_32px_rgba(235,76,96,0.08)] transition-all duration-300"
+                className="glass-card group relative rounded-sm p-8 overflow-hidden block transition-all duration-300"
               >
                 <div className="absolute top-5 right-5 text-[10px] font-mono text-zinc-600 group-hover:text-[#eb4c60]/40 transition-colors">{tag}</div>
                 <div className="w-5 h-px bg-[#eb4c60] mb-6 group-hover:w-8 transition-all duration-300" />

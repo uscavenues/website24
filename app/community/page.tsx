@@ -131,7 +131,7 @@ export default function CommunityPage() {
             {whatWeDo.map(({ title, desc }, idx) => (
               <div
                 key={title}
-                className="group relative border border-white/[0.1] bg-white/[0.05] backdrop-blur-sm rounded-sm p-6 overflow-hidden shadow-[0_2px_16px_rgba(0,0,0,0.2)] hover:border-[#eb4c60]/30 hover:bg-white/[0.09] hover:shadow-[0_8px_32px_rgba(235,76,96,0.06)] transition-all duration-300"
+                className="glass-card group relative rounded-sm p-6 overflow-hidden transition-all duration-300"
               >
                 {/* Pink accent mark */}
                 <div className="absolute top-5 left-5 w-4 h-px bg-[#eb4c60] group-hover:w-6 transition-all duration-300" />

@@ -47,11 +47,11 @@ export default function Nav() {
       className="fixed top-0 inset-x-0 z-50 transition-transform duration-300 ease-[cubic-bezier(0.4,0,0.2,1)]"
       style={{ transform: isHidden ? "translateY(-110%)" : "translateY(0)" }}
     >
-      <div className="bg-[#08080f]/90 backdrop-blur-md border-b border-white/[0.06]">
+      <div className="bg-[#08080f]/55 backdrop-blur-2xl border-b border-white/[0.09]" style={{ backdropFilter: "blur(40px) saturate(1.5)" }}>
         <nav className="mx-auto max-w-7xl px-6 md:px-10 h-16 flex items-center justify-between">
           {/* Logo wordmark */}
-          <Link href="/" className="flex items-center gap-1.5 shrink-0">
-            <span className="relative inline-block shrink-0 w-[22px] h-[22px]">
+          <Link href="/" className="flex items-center gap-0.5 shrink-0">
+            <span className="relative inline-block shrink-0 w-[28px] h-[28px]">
               <Image
                 src="/assets/icons/avenues-logo.png"
                 alt="A"

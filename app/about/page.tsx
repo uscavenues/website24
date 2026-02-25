@@ -33,7 +33,7 @@ function MemberCard({
     size === "lg" ? "aspect-[3/4]" : size === "sm" ? "aspect-square" : "aspect-[3/4]";
 
   return (
-    <div className="group flex flex-col border border-white/[0.1] bg-white/[0.05] backdrop-blur-sm rounded-sm overflow-hidden shadow-[0_2px_16px_rgba(0,0,0,0.2)] hover:border-[#eb4c60]/30 hover:bg-white/[0.09] hover:shadow-[0_8px_32px_rgba(235,76,96,0.07)] hover:scale-[1.015] transition-all duration-300">
+    <div className="glass-card group flex flex-col rounded-sm overflow-hidden hover:scale-[1.015] transition-all duration-300">
       {/* Photo */}
       <div className={`relative w-full ${imgSize} overflow-hidden bg-white/[0.03]`}>
         <Image
