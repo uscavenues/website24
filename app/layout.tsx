@@ -22,6 +22,7 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://avenues-ten.vercel.app"),
   title: "Avenues Consulting Group | USC",
   description:
     "USC's premier student-run consulting group specializing in strategy, technology, and design. Pro-bono project building for non-profits, startups, and corporations.",

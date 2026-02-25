@@ -50,7 +50,7 @@ export default function Nav() {
         opacity: isHidden ? 0 : 1,
       }}
     >
-      <div className="bg-[#08080f]/55 backdrop-blur-2xl border-b border-white/[0.09]" style={{ backdropFilter: "blur(40px) saturate(1.5)" }}>
+      <div className="bg-[#08080f]/55 backdrop-blur-2xl border-b border-white/[0.09]">
         <nav className="mx-auto max-w-7xl px-6 md:px-10 h-16 flex items-center justify-between">
           {/* Logo wordmark */}
           <Link href="/" className="flex items-center shrink-0">
@@ -88,7 +88,7 @@ export default function Nav() {
             Members
           </Link>
 
-          <button className="md:hidden text-zinc-400 hover:text-white p-1 transition-colors" onClick={() => setOpen(!open)} aria-label="Toggle menu" aria-expanded={open}>
+          <button className="md:hidden text-zinc-400 hover:text-white p-2.5 -mr-2.5 transition-colors" onClick={() => setOpen(!open)} aria-label="Toggle menu" aria-expanded={open}>
             <div className="w-5 space-y-[5px]">
               <span className={`block h-px bg-current transition-all duration-300 ${open ? "translate-y-[6px] rotate-45 w-5" : "w-5"}`} />
               <span className={`block h-px bg-current transition-all duration-300 ${open ? "opacity-0 w-0" : "w-3"}`} />

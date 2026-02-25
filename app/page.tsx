@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useState, useLayoutEffect } from "react";
+import { useRef, useState, useEffect, useLayoutEffect } from "react";
 import { motion, useScroll, useTransform, useMotionValue, MotionValue } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
@@ -13,7 +13,7 @@ function CountUp({ end, suffix = "", duration = 1.5 }: { end: number; suffix?: s
   const ref = useRef<HTMLSpanElement>(null);
   const started = useRef(false);
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     const el = ref.current;
     if (!el) return;
     const observer = new IntersectionObserver(
@@ -175,7 +175,7 @@ export default function HomePage() {
 
               {/* Tagline + CTAs — appear right after GROUP */}
               <motion.div style={{ opacity: contentOp, y: contentY }}>
-                <p className="mt-8 max-w-lg text-zinc-400 text-xl leading-relaxed font-display italic">
+                <p className="mt-8 max-w-lg text-zinc-400 text-base md:text-xl leading-relaxed font-display italic">
                   USC&apos;s premier student-run consulting group — pro bono,
                   multidisciplinary, and built for impact.
                 </p>
@@ -245,7 +245,7 @@ export default function HomePage() {
             },
           ].map(({ tag, title, desc, href, icon }, i) => (
             <ScrollReveal key={title} delay={`delay-${i + 1}`}>
-              <div className="group flex items-center gap-8 md:gap-16 py-10 md:py-12 relative overflow-hidden">
+              <Link href="/portfolio" className="group flex items-center gap-8 md:gap-16 py-10 md:py-12 relative overflow-hidden block">
                 {/* Red sweep line on hover — different origin per item */}
                 <div
                   className="absolute bottom-0 left-0 right-0 h-px bg-[#eb4c60] origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-500"
@@ -266,7 +266,7 @@ export default function HomePage() {
                 </h3>
 
                 {/* Description — hidden on small, shown on md+ */}
-                <p className="block max-w-sm text-sm text-zinc-500 leading-relaxed group-hover:text-zinc-300 transition-colors duration-300 flex-shrink-0">
+                <p className="hidden md:block max-w-sm text-sm text-zinc-500 leading-relaxed group-hover:text-zinc-300 transition-colors duration-300 flex-shrink-0">
                   {desc}
                 </p>
 
@@ -276,7 +276,7 @@ export default function HomePage() {
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
                   </svg>
                 </div>
-              </div>
+              </Link>
             </ScrollReveal>
           ))}
         </div>
@@ -305,9 +305,9 @@ export default function HomePage() {
         <div className="relative grid grid-cols-2 md:grid-cols-4 divide-x divide-white/[0.05]">
           {[
             { end: 20, suffix: "+", label: "Client engagements",   sub: "Since Fall 2023",             hoverStyle: "translate-y" },
-            { end: 24, suffix: "",  label: "Majors represented",   sub: "Across all disciplines",       hoverStyle: "scale" },
-            { end: 3,  suffix: "",  label: "Practice areas",       sub: "Across 3 disciplines",          hoverStyle: "color" },
-            { end: 100, suffix: "%", label: "Pro bono",             sub: "Always free for clients",       hoverStyle: "glow" },
+            { end: 24, suffix: "",  label: "Majors represented",   sub: "From CS to pre-law",       hoverStyle: "scale" },
+            { end: 3,  suffix: "",  label: "Practice areas",       sub: "Strategy · Tech · Design",          hoverStyle: "color" },
+            { end: 100, suffix: "%", label: "Pro bono",             sub: "Always free for partners",       hoverStyle: "glow" },
           ].map(({ end, suffix, label, sub, hoverStyle }) => (
             <ScrollReveal key={label}>
               <div className={`group relative flex flex-col justify-center px-8 md:px-12 py-16 overflow-hidden`}>
@@ -368,12 +368,7 @@ export default function HomePage() {
             <Link href="/apply" className="inline-flex items-center gap-2 border border-white/[0.12] bg-white/[0.03] text-zinc-300 px-8 py-4 text-xs font-bold uppercase tracking-[0.15em] rounded-sm hover:border-white/25 hover:text-white hover:bg-white/[0.07] transition-colors">
               Apply to join
             </Link>
-            <Link href="/portfolio" className="inline-flex items-center gap-2 text-zinc-500 hover:text-white px-4 py-4 text-xs font-bold uppercase tracking-[0.15em] transition-colors">
-              See our work
-              <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-              </svg>
-            </Link>
+
           </ScrollReveal>
         </div>
       </section>

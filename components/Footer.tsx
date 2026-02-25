@@ -64,7 +64,13 @@ export default function Footer() {
       {/* Bottom bar */}
       <div className="border-t border-white/[0.04] mx-auto max-w-7xl px-6 md:px-10 h-10 flex items-center justify-between">
         <span className="text-[10px] text-zinc-600" suppressHydrationWarning>© {new Date().getFullYear()} Avenues Consulting Group · USC · Est. 2023</span>
-        <span className="text-[10px] text-zinc-600">Spring 2026</span>
+        <span className="text-[10px] text-zinc-600" suppressHydrationWarning>
+          {(() => {
+            const m = new Date().getMonth();
+            const y = new Date().getFullYear();
+            return m < 5 ? `Spring ${y}` : m < 8 ? `Summer ${y}` : `Fall ${y}`;
+          })()}
+        </span>
       </div>
     </footer>
   );

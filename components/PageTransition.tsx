@@ -12,6 +12,7 @@ export default function PageTransition({ children }: { children: React.ReactNode
         {/* Crimson wipe — sweeps in from left, holds, sweeps out to right */}
         <motion.div
           className="fixed inset-0 z-[200] bg-[#eb4c60] origin-left pointer-events-none"
+          aria-hidden={true}
           initial={{ scaleX: 0 }}
           animate={{ scaleX: [0, 1, 1, 0] }}
           transition={{

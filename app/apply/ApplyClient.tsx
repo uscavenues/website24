@@ -17,6 +17,8 @@ function FAQAccordion({ items }: { items: FAQItem[] }) {
               onClick={() => setOpenIndex(isOpen ? null : i)}
               className="w-full flex items-start justify-between gap-6 py-6 text-left"
               aria-expanded={isOpen}
+              aria-controls={`faq-answer-${i}`}
+              id={`faq-question-${i}`}
             >
               <span
                 className={`text-sm font-semibold tracking-tight transition-colors duration-200 ${
@@ -48,8 +50,11 @@ function FAQAccordion({ items }: { items: FAQItem[] }) {
 
             {/* Smooth max-h accordion */}
             <div
+              id={`faq-answer-${i}`}
+              role="region"
+              aria-labelledby={`faq-question-${i}`}
               className={`overflow-hidden transition-all duration-300 ease-in-out ${
-                isOpen ? "max-h-[600px] opacity-100" : "max-h-0 opacity-0"
+                isOpen ? "max-h-[800px] opacity-100" : "max-h-0 opacity-0"
               }`}
             >
               <p className="pb-6 pr-12 text-sm text-zinc-400 leading-relaxed">
@@ -64,6 +69,8 @@ function FAQAccordion({ items }: { items: FAQItem[] }) {
 }
 
 export default function ApplyClient() {
+  const [notified, setNotified] = useState(false);
+
   return (
     <>
       {/* ── PAGE HEADER ──────────────────────────────────────────────────── */}
@@ -132,42 +139,45 @@ export default function ApplyClient() {
                 </a>{" "}
                 to get notified when the next cycle opens.
               </p>
-              <p className="text-xs text-zinc-500 mt-2">Applications reopen at the start of each semester. Follow <a href="https://www.instagram.com/uscavenues/" className="text-[#eb4c60] hover:underline">@uscavenues</a> for announcements.</p>
               {/* Email capture — only show when applications are closed */}
-              <div className="mt-6 flex flex-col sm:flex-row gap-2 max-w-sm">
-                <input
-                  type="email"
-                  placeholder="your@email.com"
-                  className="flex-1 bg-transparent border-b border-white/[0.12] focus:border-[#eb4c60] outline-none text-white placeholder:text-zinc-600 py-2 text-xs transition-colors duration-200"
-                  onKeyDown={(e) => {
-                    if (e.key === 'Enter') {
-                      const input = e.currentTarget;
-                      const email = input.value.trim();
-                      if (email && email.includes('@')) {
-                        input.value = '';
-                        input.placeholder = "You're on the list!";
-                        input.disabled = true;
+              {notified ? (
+                <div className="mt-6 flex items-center gap-2 text-xs text-emerald-400">
+                  <svg className="w-4 h-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                  </svg>
+                  We&apos;ll notify you when Fall 2026 applications open.
+                </div>
+              ) : (
+                <div className="mt-6 flex flex-col sm:flex-row gap-2 max-w-sm">
+                  <input
+                    type="email"
+                    placeholder="your@email.com"
+                    className="flex-1 bg-transparent border-b border-white/[0.12] focus:border-[#eb4c60] outline-none text-white placeholder:text-zinc-600 py-2 text-xs transition-colors duration-200"
+                    onKeyDown={(e) => {
+                      if (e.key === 'Enter') {
+                        const input = e.currentTarget;
+                        const email = input.value.trim();
+                        if (email && email.includes('@')) {
+                          setNotified(true);
+                        }
                       }
-                    }
-                  }}
-                />
-                <button
-                  type="button"
-                  className="shrink-0 text-[10px] uppercase tracking-[0.15em] font-semibold text-[#eb4c60] hover:text-white transition-colors duration-200"
-                  onClick={(e) => {
-                    const input = (e.currentTarget.previousElementSibling as HTMLInputElement);
-                    const email = input?.value.trim();
-                    if (email && email.includes('@')) {
-                      input.value = '';
-                      input.placeholder = "You're on the list!";
-                      input.disabled = true;
-                    }
-                  }}
-                >
-                  Notify me →
-                </button>
-              </div>
-              <p className="text-[10px] text-zinc-700 mt-2">Get notified when Fall 2026 applications open.</p>
+                    }}
+                  />
+                  <button
+                    type="button"
+                    className="shrink-0 text-[10px] uppercase tracking-[0.15em] font-semibold border border-[#eb4c60]/40 text-[#eb4c60] hover:bg-[#eb4c60] hover:text-white px-3 py-1.5 rounded-sm transition-all duration-200"
+                    onClick={(e) => {
+                      const input = (e.currentTarget.previousElementSibling as HTMLInputElement);
+                      const email = input?.value.trim();
+                      if (email && email.includes('@')) {
+                        setNotified(true);
+                      }
+                    }}
+                  >
+                    Notify me →
+                  </button>
+                </div>
+              )}
             </div>
 
             {/* IG CTA */}
@@ -313,7 +323,7 @@ export default function ApplyClient() {
               { title: "Leadership opportunities", desc: "Directors and execs are chosen from within — early members get early access to leadership tracks." },
               { title: "A lasting network", desc: "Our alumni are at top firms globally. Avenues opens doors beyond USC." },
             ].map(({ title, desc }) => (
-              <div key={title} className="border-t border-white/[0.06] pt-4">
+              <div key={title} className="border border-white/[0.07] bg-white/[0.02] rounded-sm p-5 hover:border-[#eb4c60]/20 hover:bg-white/[0.04] transition-all duration-200">
                 <h3 className="text-sm font-bold text-white mb-2">{title}</h3>
                 <p className="text-xs text-zinc-500 leading-relaxed">{desc}</p>
               </div>
@@ -376,8 +386,8 @@ export default function ApplyClient() {
             className="shrink-0 inline-flex items-center gap-2 bg-white text-[#eb4c60] px-6 py-3 text-xs font-bold uppercase tracking-[0.15em] rounded-sm hover:bg-white/90 transition-colors duration-200"
           >
             Follow @uscavenues
-            <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+            <svg className="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
             </svg>
           </a>
         </div>

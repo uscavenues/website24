@@ -95,7 +95,7 @@ export default function AboutPage() {
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-20 items-center">
           {/* Left  -  founding story text */}
-          <ScrollReveal className="reveal-up">
+          <ScrollReveal>
             <div>
               <h2 className="text-[clamp(2rem,4vw,3.25rem)] font-black text-white leading-[1.05] tracking-tight mb-8">
                 Built by students,
@@ -142,7 +142,7 @@ export default function AboutPage() {
             </motion.div>
             {/* Caption */}
             <p className="mt-3 text-[10px] uppercase tracking-[0.2em] text-zinc-500">
-              Spring &apos;26 Cohort · USC
+              Founding Cohort · USC
             </p>
           </div>
         </div>
@@ -216,19 +216,21 @@ export default function AboutPage() {
 
       {/* ── CREDIBILITY BAR ──────────────────────────────────────────────── */}
       <div className="border-y border-white/[0.05] py-10 mb-20">
-        <div className="grid grid-cols-2 md:grid-cols-4 divide-x divide-white/[0.05]">
+        <div className="mx-auto max-w-7xl px-6 md:px-10">
+        <dl className="grid grid-cols-2 md:grid-cols-4 divide-x divide-white/[0.05]">
           {[
             { value: "20+", label: "Clients served", sub: "Nonprofits, startups & corps" },
-            { value: "2", label: "Semesters", sub: "Since Fall 2023" },
+            { value: "4+", label: "Semesters", sub: "Fall '23 — present" },
             { value: "3", label: "Practice areas", sub: "Strategy, Tech & Design" },
             { value: "100%", label: "Pro bono", sub: "Zero cost to clients" },
           ].map(({ value, label, sub }) => (
             <div key={label} className="px-6 md:px-8 py-4 text-center first:pl-0 last:pr-0">
-              <div className="text-2xl md:text-3xl font-black text-white mb-1">{value}</div>
-              <div className="text-[10px] font-semibold uppercase tracking-[0.15em] text-[#eb4c60] mb-1">{label}</div>
-              <div className="text-[10px] text-zinc-600">{sub}</div>
+              <dt className="text-2xl md:text-3xl font-black text-white mb-1">{value}</dt>
+              <dd className="text-[10px] font-semibold uppercase tracking-[0.15em] text-[#eb4c60] mb-1">{label}</dd>
+              <p className="text-[10px] text-zinc-600">{sub}</p>
             </div>
           ))}
+        </dl>
         </div>
       </div>
 
@@ -251,7 +253,7 @@ export default function AboutPage() {
           </p>
           <div className="grid grid-cols-2 gap-4 max-w-3xl">
             {team.executive.map((member) => (
-              <div key={member.name} className="group relative overflow-hidden rounded-sm cursor-pointer">
+              <a key={member.name} href={member.linkedin} target="_blank" rel="noopener noreferrer" className="group relative overflow-hidden rounded-sm block">
                 {/* Photo */}
                 <div className="relative aspect-[3/4] bg-white/[0.03]">
                   <Image
@@ -270,20 +272,9 @@ export default function AboutPage() {
                 <div className="absolute bottom-0 left-0 right-0 p-5">
                   <p className="text-white font-black text-xl leading-tight tracking-tight">{member.name}</p>
                   <p className="text-[#eb4c60] text-[10px] font-bold uppercase tracking-[0.25em] mt-1">{member.role}</p>
-                  <Link
-                    href={member.linkedin}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    onClick={(e) => e.stopPropagation()}
-                    className="mt-3 inline-flex items-center gap-1.5 text-[10px] text-zinc-400 hover:text-white transition-colors"
-                  >
-                    <svg width="10" height="10" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                      <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
-                    </svg>
-                    LinkedIn ↗
-                  </Link>
+
                 </div>
-              </div>
+              </a>
             ))}
           </div>
         </div>
@@ -291,11 +282,9 @@ export default function AboutPage() {
         {/* ── CHANGE 3b: DIRECTORS — horizontal editorial list ── */}
         <div className="mb-28">
           <div className="h-px bg-white/[0.04] mb-12" />
-          <div className="border-l-2 border-[#eb4c60]/30 pl-4">
-          <p className="text-[11px] font-black uppercase tracking-[0.35em] text-zinc-400 mb-10">
+          <p className="text-[11px] font-black uppercase tracking-[0.35em] text-zinc-400 mb-10 pl-4 border-l-2 border-[#eb4c60]/30">
             Directors
           </p>
-          </div>
 
           <div className="divide-y divide-white/[0.05]">
             {team.directors.map((member, idx) => (
@@ -384,7 +373,7 @@ export default function AboutPage() {
                   href={member.linkedin}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="shrink-0 text-zinc-700 hover:text-[#eb4c60] transition-colors duration-200 opacity-0 group-hover:opacity-100"
+                  className="shrink-0 text-zinc-700 hover:text-[#eb4c60] transition-colors duration-200 opacity-40 group-hover:opacity-100"
                   aria-label={`${member.name} on LinkedIn (opens in new tab)`}
                 >
                   <svg width="10" height="10" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
@@ -430,18 +419,7 @@ export default function AboutPage() {
           </div>
         </div>
       </section>
-    
-      <div className="mx-auto max-w-7xl px-6 md:px-10 pb-16 flex justify-end">
-        <button
-          onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-          className="text-[10px] uppercase tracking-[0.2em] text-zinc-600 hover:text-[#eb4c60] transition-colors duration-200 flex items-center gap-2"
-        >
-          <svg className="w-3 h-3 rotate-[-90deg]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-          </svg>
-          Back to top
-        </button>
-      </div>
+
     </>
   );
 }

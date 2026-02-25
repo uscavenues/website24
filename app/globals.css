@@ -83,6 +83,7 @@ body {
   display: flex;
   width: max-content;
   animation: marquee 45s linear infinite;
+  will-change: transform;
 }
 
 @keyframes marquee {
@@ -184,6 +185,7 @@ body {
   display: flex;
   width: max-content;
   animation: marquee-reverse 50s linear infinite;
+  will-change: transform;
 }
 
 @keyframes marquee-reverse {

@@ -11,8 +11,14 @@ export default function ContactClient() {
     setSubmitting(true);
     setError("");
     const form = e.currentTarget;
+    const emailValue = (new FormData(form)).get("email") as string;
+    if (!emailValue || !emailValue.includes("@") || !emailValue.includes(".")) {
+      setError("Please enter a valid email address.");
+      setSubmitting(false);
+      return;
+    }
     const data = new FormData(form);
-    data.append("access_key", "112ef749-545a-4476-9b70-3fccfea07740");
+    data.append("access_key", process.env.NEXT_PUBLIC_WEB3FORMS_KEY ?? "112ef749-545a-4476-9b70-3fccfea07740");
     try {
       const res = await fetch("https://api.web3forms.com/submit", {
         method: "POST",
@@ -35,7 +41,7 @@ export default function ContactClient() {
     return (
       <div className="flex flex-col items-start justify-center py-16 gap-4">
         <div className="w-8 h-px bg-[#eb4c60] mb-4" />
-        <h3 className="text-2xl font-black text-white tracking-tight">Message received.</h3>
+        <h3 className="text-2xl font-black text-white tracking-tight">We&apos;ll be in touch.</h3>
         <p className="text-sm text-zinc-400 leading-relaxed max-w-sm">
           We&apos;ll be in touch within 48 hours. In the meantime, check out our{" "}
           <a href="/portfolio" className="text-[#eb4c60] hover:underline">
@@ -69,6 +75,7 @@ export default function ContactClient() {
           name="name"
           required
           placeholder="Your name"
+          autoComplete="name"
           className="bg-transparent border-b border-white/[0.12] hover:border-[#eb4c60]/50 focus:border-[#eb4c60] outline-none text-white placeholder:text-zinc-600 py-3 text-sm w-full transition-colors duration-200"
         />
       </div>
@@ -85,6 +92,7 @@ export default function ContactClient() {
           name="email"
           required
           placeholder="your@email.com"
+          autoComplete="email"
           className="bg-transparent border-b border-white/[0.12] hover:border-[#eb4c60]/50 focus:border-[#eb4c60] outline-none text-white placeholder:text-zinc-600 py-3 text-sm w-full transition-colors duration-200"
         />
       </div>
@@ -100,6 +108,7 @@ export default function ContactClient() {
           type="text"
           name="company"
           placeholder="Organization or startup"
+          autoComplete="organization"
           className="bg-transparent border-b border-white/[0.12] hover:border-[#eb4c60]/50 focus:border-[#eb4c60] outline-none text-white placeholder:text-zinc-600 py-3 text-sm w-full transition-colors duration-200"
         />
       </div>
@@ -108,21 +117,28 @@ export default function ContactClient() {
       {/* Engagement type */}
       <div className="pb-1">
         <label htmlFor="engagement_type" className="block text-[10px] uppercase tracking-[0.2em] text-zinc-500 mb-3">
-          How can we help?
+          Practice Area
         </label>
-        <select
-          id="engagement_type"
-          name="engagement_type"
-          className="bg-transparent border-b border-white/[0.12] hover:border-[#eb4c60]/50 focus:border-[#eb4c60] outline-none text-white py-3 text-sm w-full transition-colors duration-200 appearance-none cursor-pointer"
-          defaultValue=""
-        >
-          <option value="" disabled className="bg-[#08080f] text-zinc-500">Select a practice area...</option>
-          <option value="strategy" className="bg-[#08080f]">Strategy — Go-to-market, research, planning</option>
-          <option value="technology" className="bg-[#08080f]">Technology — Web dev, data, product</option>
-          <option value="design" className="bg-[#08080f]">Design — Brand, UI/UX, visual identity</option>
-          <option value="multiple" className="bg-[#08080f]">Multiple areas — Comprehensive engagement</option>
-          <option value="unsure" className="bg-[#08080f]">Not sure yet — Let&apos;s figure it out together</option>
-        </select>
+        <div className="relative">
+          <select
+            id="engagement_type"
+            name="engagement_type"
+            className="bg-transparent border-b border-white/[0.12] hover:border-[#eb4c60]/50 focus:border-[#eb4c60] outline-none text-white py-3 text-sm w-full transition-colors duration-200 appearance-none cursor-pointer pr-8"
+            defaultValue=""
+          >
+            <option value="" disabled className="bg-[#08080f] text-zinc-500">Select a practice area...</option>
+            <option value="strategy" className="bg-[#08080f]">Strategy — Go-to-market, research, planning</option>
+            <option value="technology" className="bg-[#08080f]">Technology — Web dev, data, product</option>
+            <option value="design" className="bg-[#08080f]">Design — Brand, UI/UX, visual identity</option>
+            <option value="multiple" className="bg-[#08080f]">Multiple areas — Comprehensive engagement</option>
+            <option value="unsure" className="bg-[#08080f]">Not sure yet — Let&apos;s figure it out together</option>
+          </select>
+          <span className="pointer-events-none absolute right-0 bottom-3 text-zinc-500">
+            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+            </svg>
+          </span>
+        </div>
       </div>
       <div className="h-6" />
 
