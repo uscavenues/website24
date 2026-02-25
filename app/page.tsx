@@ -118,7 +118,7 @@ export default function HomePage() {
                   <span
                     ref={aRef}
                     className="inline-block"
-                    style={{ height: "1.8em", width: "1.8em", marginBottom: "-0.3em", marginRight: "-0.55em" }}
+                    style={{ height: "2.3em", width: "2.3em", marginBottom: "-1.1em", marginRight: "-0.35em" }}
                     aria-hidden="true"
                   />
                   <motion.span className="inline-block" style={{ opacity: venuesOp, x: venuesX }}>
@@ -142,7 +142,7 @@ export default function HomePage() {
               {/* Tagline + CTAs — appear right after GROUP */}
               <motion.div style={{ opacity: contentOp, y: contentY }}>
                 <p className="mt-8 max-w-lg text-zinc-400 text-lg leading-relaxed">
-                  USC&apos;s premier student-run consulting group — pro-bono,
+                  USC&apos;s premier student-run consulting group, pro-bono,
                   multidisciplinary, and built for impact.
                 </p>
                 <div className="flex flex-wrap gap-3 mt-8">
@@ -166,25 +166,79 @@ export default function HomePage() {
 
       {/* ══════════════════════ THREE PILLARS ══════════════════════════════════ */}
       <section className="mx-auto max-w-7xl px-6 md:px-10 py-24">
-        <ScrollReveal className="mb-10 flex items-center gap-4">
+        <ScrollReveal className="mb-16 flex items-center gap-4">
           <span className="text-[10px] font-bold uppercase tracking-[0.25em] text-zinc-500">What We Do</span>
           <div className="h-px flex-1 bg-white/[0.05]" />
         </ScrollReveal>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
+
+        <div className="flex flex-col divide-y divide-white/[0.06]">
           {[
-            { tag: "01", title: "Strategy",   desc: "Market research, growth plans, subscription models, and comprehensive business strategy for any industry.",   href: "/portfolio" },
-            { tag: "02", title: "Technology", desc: "Full-stack web development, data analysis, and modern tech solutions built from scratch or on proven platforms.", href: "/portfolio" },
-            { tag: "03", title: "Design",     desc: "Brand identity, UI/UX design, and visual storytelling that elevates your organization's presence and reach.",   href: "/portfolio" },
-          ].map(({ tag, title, desc, href }, i) => (
-            <ScrollReveal key={title} delay={`delay-${i + 1}`} scale>
-              <Link href={href} className="glass-card group relative rounded-sm p-8 overflow-hidden block transition-all duration-300">
-                <div className="absolute top-5 right-5 text-[10px] font-mono text-zinc-600 group-hover:text-[#eb4c60]/40 transition-colors">{tag}</div>
-                <div className="w-5 h-px bg-[#eb4c60] mb-6 group-hover:w-8 transition-all duration-300" />
-                <h3 className="text-base font-bold text-white mb-3 tracking-tight">{title}</h3>
-                <p className="text-sm text-zinc-400 leading-relaxed">{desc}</p>
-                <div className="mt-6 flex items-center gap-1.5 text-[11px] text-zinc-600 group-hover:text-[#eb4c60]/70 transition-colors">
-                  <span className="font-semibold tracking-[0.1em] uppercase">View work</span>
-                  <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            {
+              tag: "01",
+              title: "Strategy",
+              desc: "Market research, growth plans, subscription models, and comprehensive business strategy for any industry.",
+              href: "/portfolio",
+              accent: "Strategy",
+              icon: (
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+                </svg>
+              ),
+            },
+            {
+              tag: "02",
+              title: "Technology",
+              desc: "Full-stack web development, data analysis, and modern tech solutions built from scratch or on proven platforms.",
+              href: "/portfolio",
+              accent: "Technology",
+              icon: (
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+                </svg>
+              ),
+            },
+            {
+              tag: "03",
+              title: "Design",
+              desc: "Brand identity, UI/UX design, and visual storytelling that elevates your organization's presence and reach.",
+              href: "/portfolio",
+              accent: "Design",
+              icon: (
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                </svg>
+              ),
+            },
+          ].map(({ tag, title, desc, href, icon }, i) => (
+            <ScrollReveal key={title} delay={`delay-${i + 1}`}>
+              <Link href={href} className="group flex items-center gap-8 md:gap-16 py-10 md:py-12 relative overflow-hidden">
+                {/* Red sweep line on hover — different origin per item */}
+                <div
+                  className="absolute bottom-0 left-0 right-0 h-px bg-[#eb4c60] origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-500"
+                  style={{ transformOrigin: i === 1 ? "right" : "left" }}
+                />
+
+                {/* Index */}
+                <span className="shrink-0 text-[10px] font-mono text-zinc-600 group-hover:text-[#eb4c60]/50 transition-colors duration-300 w-6">{tag}</span>
+
+                {/* Icon */}
+                <span className="shrink-0 text-zinc-600 group-hover:text-[#eb4c60] transition-colors duration-300">
+                  {icon}
+                </span>
+
+                {/* Title — grows to fill */}
+                <h3 className="flex-1 text-2xl md:text-[clamp(2rem,4vw,3.5rem)] font-black tracking-tight text-white group-hover:text-[#eb4c60] transition-colors duration-300 leading-none">
+                  {title}
+                </h3>
+
+                {/* Description — hidden on small, shown on md+ */}
+                <p className="hidden md:block max-w-sm text-sm text-zinc-500 leading-relaxed group-hover:text-zinc-300 transition-colors duration-300 flex-shrink-0">
+                  {desc}
+                </p>
+
+                {/* Arrow */}
+                <div className="shrink-0 w-8 h-8 rounded-full border border-white/[0.08] flex items-center justify-center group-hover:border-[#eb4c60]/50 group-hover:bg-[#eb4c60]/[0.06] transition-all duration-300">
+                  <svg className="w-3.5 h-3.5 text-zinc-500 group-hover:text-[#eb4c60] group-hover:translate-x-0.5 transition-all duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
                   </svg>
                 </div>
@@ -209,24 +263,45 @@ export default function HomePage() {
       {/* ══════════════════════ STATS BAND ═════════════════════════════════════ */}
       <section className="relative overflow-hidden border-y border-white/[0.05]">
         <div className="absolute inset-0 dot-texture-subtle opacity-50 pointer-events-none" />
-        <div className="relative mx-auto max-w-7xl px-6 md:px-10 py-20">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12">
-            {[
-              { value: "20+",  label: "Client engagements delivered", sub: "Since Fall 2023" },
-              { value: "24",   label: "Majors represented",           sub: "Across all disciplines" },
-              { value: "3",    label: "Practice areas",               sub: "Strategy, Tech, Design" },
-              { value: "100%", label: "Pro-bono",                     sub: "Always free for clients" },
-            ].map(({ value, label, sub }, i) => (
-              <ScrollReveal key={label} delay={`delay-${i + 1}`}>
-                <div className="group">
-                  <div className="text-[clamp(2.5rem,5vw,4rem)] font-black leading-none tracking-tighter text-white group-hover:text-[#eb4c60] transition-colors duration-300">{value}</div>
-                  <div className="mt-2 text-xs font-semibold text-zinc-300 leading-snug">{label}</div>
-                  <div className="mt-1 text-[10px] text-zinc-600 uppercase tracking-[0.15em]">{sub}</div>
-                  <div className="mt-3 h-px w-8 bg-white/[0.06] group-hover:bg-[#eb4c60]/40 transition-colors duration-300" />
+        {/* Pink radial bloom */}
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[400px] rounded-full bg-[#eb4c60]/[0.05] blur-[120px] pointer-events-none" />
+
+        <div className="relative grid grid-cols-2 md:grid-cols-4 divide-x divide-white/[0.05]">
+          {[
+            { value: "20+",  label: "Client engagements",   sub: "Since Fall 2023",             hoverStyle: "translate-y" },
+            { value: "24",   label: "Majors represented",   sub: "Across all disciplines",       hoverStyle: "scale" },
+            { value: "3",    label: "Practice areas",       sub: "Strategy · Tech · Design",     hoverStyle: "color" },
+            { value: "100%", label: "Pro-bono",             sub: "Always free for clients",       hoverStyle: "glow" },
+          ].map(({ value, label, sub, hoverStyle }) => (
+            <ScrollReveal key={label}>
+              <div className={`group relative flex flex-col justify-center px-8 md:px-12 py-16 overflow-hidden`}>
+                {/* Per-stat unique hover effect */}
+                {hoverStyle === "glow" && (
+                  <div className="absolute inset-0 bg-[#eb4c60]/[0] group-hover:bg-[#eb4c60]/[0.04] transition-all duration-500 pointer-events-none" />
+                )}
+                {hoverStyle === "translate-y" && (
+                  <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-[#eb4c60] scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-500 pointer-events-none" />
+                )}
+                {hoverStyle === "scale" && (
+                  <div className="absolute top-0 left-0 right-0 h-0.5 bg-[#eb4c60] scale-x-0 group-hover:scale-x-100 origin-right transition-transform duration-500 pointer-events-none" />
+                )}
+                {hoverStyle === "color" && (
+                  <div className="absolute inset-0 border border-[#eb4c60]/0 group-hover:border-[#eb4c60]/15 transition-all duration-500 pointer-events-none" />
+                )}
+
+                <div className={`text-[clamp(3rem,6vw,5rem)] font-black leading-none tracking-tighter text-white transition-all duration-300 ${
+                  hoverStyle === "translate-y" ? "group-hover:-translate-y-1 group-hover:text-[#eb4c60]" :
+                  hoverStyle === "scale"       ? "group-hover:scale-105 group-hover:text-zinc-100 origin-left" :
+                  hoverStyle === "color"       ? "group-hover:text-[#eb4c60]" :
+                  "group-hover:text-[#eb4c60]"
+                }`}>
+                  {value}
                 </div>
-              </ScrollReveal>
-            ))}
-          </div>
+                <div className="mt-3 text-xs font-semibold text-zinc-400 leading-snug">{label}</div>
+                <div className="mt-1 text-[10px] text-zinc-600 uppercase tracking-[0.15em]">{sub}</div>
+              </div>
+            </ScrollReveal>
+          ))}
         </div>
       </section>
 

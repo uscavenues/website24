@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { motion } from "framer-motion";
 import Link from "next/link";
 import Image from "next/image";
 import {
@@ -68,51 +69,79 @@ export default function PortfolioPage() {
             FOLIO
           </h1>
           <p className="mt-6 max-w-lg text-zinc-500 text-sm leading-relaxed">
-            Pro-bono engagements across strategy, technology, and design —
+            Pro-bono engagements across strategy, technology, and design,
             delivered with the rigor of a top-tier consulting firm.
           </p>
         </div>
       </section>
 
       {/* ── OUR CLIENTS ──────────────────────────────────────────────────── */}
-      <section className="mx-auto max-w-7xl px-6 md:px-10 pb-24">
-        <div className="mb-12 flex items-center gap-4">
-          <span className="text-[10px] font-bold uppercase tracking-[0.25em] text-zinc-500">
-            Our Clients
-          </span>
-          <div className="h-px flex-1 bg-white/[0.05]" />
-          <span className="text-[10px] text-zinc-600">
-            {clientCards.length} engagements
-          </span>
+      <section className="pb-24">
+        <div className="mx-auto max-w-7xl px-6 md:px-10 mb-12">
+          <div className="mb-4 flex items-center gap-4">
+            <span className="text-[10px] font-bold uppercase tracking-[0.25em] text-zinc-500">
+              Our Clients
+            </span>
+            <div className="h-px flex-1 bg-white/[0.05]" />
+            <span className="text-[10px] text-zinc-600">
+              {clientCards.length} engagements
+            </span>
+          </div>
+          <p className="text-xs text-zinc-600 max-w-lg">
+            Pro-bono engagements delivered with the rigor of a top-tier firm.
+          </p>
         </div>
 
-        {/* Editorial logo wall */}
-        <div className="border border-white/[0.08] grid grid-cols-2 sm:grid-cols-5">
-          {clientCards.map((client, i) => (
-            <div
-              key={client.name}
-              className="group relative flex flex-col items-center justify-center gap-3 p-8 border-b border-r border-white/[0.08] hover:bg-white/[0.04] transition-all duration-300 last:border-r-0 [&:nth-child(5n)]:border-r-0 [&:nth-last-child(-n+5)]:border-b-0"
-            >
-              {/* Pink top-line on hover */}
-              <div className="absolute top-0 left-0 right-0 h-px bg-[#eb4c60] scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
-
-              {/* Logo — monochrome white silhouette */}
-              <div className="relative h-8 w-full">
-                <Image
-                  src={client.logo}
-                  alt={client.name}
-                  fill
-                  className="object-contain opacity-60 group-hover:opacity-100 transition-all duration-300"
-                  sizes="160px"
-                />
+        {/* Full-bleed dual-direction marquee */}
+        <div className="overflow-hidden space-y-3">
+          {/* Row 1 — scrolls left */}
+          <div className="marquee-track">
+            {[...clientCards, ...clientCards].map((client, i) => (
+              <div
+                key={`row1-${i}`}
+                className="group relative shrink-0 mr-4 flex flex-col items-center justify-center gap-3 px-10 py-6 min-w-[200px] border border-white/[0.08] bg-white/[0.02] hover:bg-white/[0.05] hover:border-[#eb4c60]/25 transition-all duration-300 rounded-sm"
+              >
+                {/* Pink top-line on hover */}
+                <div className="absolute top-0 left-0 right-0 h-px bg-[#eb4c60] scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
+                <div className="relative h-8 w-28">
+                  <Image
+                    src={client.logo}
+                    alt={client.name}
+                    fill
+                    className="object-contain opacity-50 group-hover:opacity-100 transition-all duration-300"
+                    sizes="112px"
+                  />
+                </div>
+                <p className="text-[9px] font-semibold uppercase tracking-[0.15em] text-zinc-700 group-hover:text-zinc-400 transition-colors duration-300 whitespace-nowrap">
+                  {client.name}
+                </p>
               </div>
-
-              {/* Name */}
-              <p className="text-[10px] font-semibold uppercase tracking-[0.15em] text-zinc-700 group-hover:text-zinc-400 transition-colors duration-300 text-center">
-                {client.name}
-              </p>
-            </div>
-          ))}
+            ))}
+          </div>
+          {/* Row 2 — scrolls right */}
+          <div className="marquee-track-reverse">
+            {[...clientCards, ...clientCards].reverse().map((client, i) => (
+              <div
+                key={`row2-${i}`}
+                className="group relative shrink-0 mr-4 flex flex-col items-center justify-center gap-3 px-10 py-6 min-w-[200px] border border-white/[0.05] bg-white/[0.01] hover:bg-white/[0.04] hover:border-[#eb4c60]/20 transition-all duration-300 rounded-sm opacity-70 hover:opacity-100"
+              >
+                {/* Pink bottom-line on hover (different from row 1) */}
+                <div className="absolute bottom-0 left-0 right-0 h-px bg-[#eb4c60] scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-right" />
+                <div className="relative h-8 w-28">
+                  <Image
+                    src={client.logo}
+                    alt={client.name}
+                    fill
+                    className="object-contain opacity-40 group-hover:opacity-90 transition-all duration-300"
+                    sizes="112px"
+                  />
+                </div>
+                <p className="text-[9px] font-semibold uppercase tracking-[0.15em] text-zinc-700 group-hover:text-zinc-400 transition-colors duration-300 whitespace-nowrap">
+                  {client.name}
+                </p>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 
@@ -154,7 +183,11 @@ export default function PortfolioPage() {
                   >
                     <span className="flex items-center gap-2">
                       {activeTab === key && (
-                        <span className="w-px h-3.5 bg-[#eb4c60] rounded-full" />
+                        <motion.span
+                          layoutId="tab-indicator"
+                          className="w-px h-3.5 bg-[#eb4c60] rounded-full"
+                          transition={{ type: "spring", stiffness: 400, damping: 30 }}
+                        />
                       )}
                       {label}
                     </span>

@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { motion } from "framer-motion";
 import { faqApplication, faqOrg, type FAQItem } from "@/lib/data";
 
 type Tab = "application" | "org";
@@ -26,14 +27,24 @@ function FAQAccordion({ items }: { items: FAQItem[] }) {
               >
                 {item.q}
               </span>
+              {/* + → × morph (same technique as hamburger → X) */}
               <span
-                className={`shrink-0 w-6 h-6 rounded-full border flex items-center justify-center text-sm font-bold transition-all duration-200 ${
+                className={`shrink-0 w-6 h-6 rounded-full border flex items-center justify-center transition-all duration-200 ${
                   isOpen
-                    ? "border-[#eb4c60] text-[#eb4c60] rotate-0"
-                    : "border-white/[0.12] text-zinc-500 group-hover:border-white/25 group-hover:text-zinc-300"
+                    ? "border-[#eb4c60]"
+                    : "border-white/[0.12] group-hover:border-white/25"
                 }`}
               >
-                {isOpen ? "−" : "+"}
+                <span className="relative w-2.5 h-2.5 block">
+                  {/* Horizontal bar — rotates to 45° */}
+                  <span className={`absolute top-1/2 left-0 right-0 h-px -translate-y-1/2 transition-all duration-300 ${
+                    isOpen ? "bg-[#eb4c60] rotate-45" : "bg-zinc-500 group-hover:bg-zinc-300 rotate-0"
+                  }`} />
+                  {/* Vertical bar — rotates to -45° (forms ×) */}
+                  <span className={`absolute left-1/2 top-0 bottom-0 w-px -translate-x-1/2 transition-all duration-300 ${
+                    isOpen ? "bg-[#eb4c60] -rotate-45" : "bg-zinc-500 group-hover:bg-zinc-300 rotate-0"
+                  }`} />
+                </span>
               </span>
             </button>
 
@@ -152,53 +163,99 @@ export default function ApplyClient() {
       {/* ── WHAT WE LOOK FOR ─────────────────────────────────────────────── */}
       <section className="mx-auto max-w-7xl px-6 md:px-10 pb-24">
         <div className="mb-10 flex items-center gap-4">
-          <span className="text-[10px] font-bold uppercase tracking-[0.25em] text-zinc-500">
-            What We Look For
-          </span>
+          <span className="text-[10px] font-bold uppercase tracking-[0.25em] text-zinc-500">What We Look For</span>
           <div className="h-px flex-1 bg-white/[0.05]" />
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
+        <div className="divide-y divide-white/[0.05]">
           {[
             {
               n: "01",
               title: "Curiosity",
               desc: "You ask hard questions and don't settle for surface-level answers.",
+              icon: <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>,
+              hoverClass: "group-hover:text-[#eb4c60]",
+              barOrigin: "origin-left",
+              barPos: "bottom-0",
             },
             {
               n: "02",
               title: "Ownership",
               desc: "You ship. You follow through. You don't wait to be told what to do.",
+              icon: <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>,
+              hoverClass: "group-hover:text-zinc-100 group-hover:scale-x-[1.01]",
+              barOrigin: "origin-right",
+              barPos: "bottom-0",
             },
             {
               n: "03",
               title: "Collaboration",
-              desc: "You make everyone around you sharper — not just yourself.",
+              desc: "You make everyone around you sharper, not just yourself.",
+              icon: <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" /></svg>,
+              hoverClass: "group-hover:text-[#eb4c60]",
+              barOrigin: "origin-left",
+              barPos: "top-0",
             },
             {
               n: "04",
               title: "Any Major",
-              desc: "CS, pre-med, architecture, business — diversity of thought is our edge.",
+              desc: "CS, pre-med, architecture, business. Diversity of thought is our edge.",
+              icon: <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" /></svg>,
+              hoverClass: "group-hover:text-zinc-100",
+              barOrigin: "origin-right",
+              barPos: "top-0",
             },
             {
               n: "05",
               title: "No Experience Required",
               desc: "We'll teach you everything you need. You just have to show up.",
+              icon: <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>,
+              hoverClass: "group-hover:text-[#eb4c60]",
+              barOrigin: "origin-left",
+              barPos: "bottom-0",
             },
             {
               n: "06",
               title: "Ambition",
-              desc: "You're here to build something real — not pad a resume.",
+              desc: "You're here to build something real, not pad a resume.",
+              icon: <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" /></svg>,
+              hoverClass: "group-hover:text-[#eb4c60] group-hover:-translate-y-0.5",
+              barOrigin: "origin-right",
+              barPos: "bottom-0",
             },
-          ].map(({ n, title, desc }) => (
+          ].map(({ n, title, desc, icon, hoverClass, barOrigin, barPos }) => (
             <div
               key={n}
-              className="border border-white/[0.1] bg-white/[0.05] backdrop-blur-sm rounded-sm p-6 shadow-[0_2px_16px_rgba(0,0,0,0.2)] hover:border-[#eb4c60]/30 hover:bg-white/[0.09] hover:shadow-[0_8px_32px_rgba(235,76,96,0.07)] transition-all duration-300"
+              className="group relative flex flex-col md:flex-row md:items-center gap-2 md:gap-12 py-8 cursor-default overflow-hidden"
             >
-              <div className="text-[10px] font-mono text-zinc-500 mb-4">{n}</div>
-              <div className="w-4 h-px bg-[#eb4c60] mb-4" />
-              <h3 className="text-sm font-bold text-white mb-2">{title}</h3>
-              <p className="text-xs text-zinc-400 leading-relaxed">{desc}</p>
+              {/* Unique hover bar (alternating top/bottom, alternating direction) */}
+              <div className={`absolute ${barPos} left-0 right-0 h-px bg-[#eb4c60] scale-x-0 group-hover:scale-x-100 ${barOrigin} transition-transform duration-500 pointer-events-none`} />
+
+              {/* Top row on mobile, full row on desktop */}
+              <div className="flex items-center gap-6 md:gap-12 flex-1">
+                {/* Number */}
+                <span className="shrink-0 text-[10px] font-mono text-zinc-600 group-hover:text-[#eb4c60]/60 transition-colors duration-300 w-6">{n}</span>
+
+                {/* Icon */}
+                <span className={`shrink-0 text-zinc-600 transition-all duration-300 ${hoverClass}`}>
+                  {icon}
+                </span>
+
+                {/* Title */}
+                <h3 className={`flex-none text-xl md:text-2xl font-black tracking-tight text-white transition-all duration-300 md:min-w-[220px] ${hoverClass}`}>
+                  {title}
+                </h3>
+
+                {/* Description — right aligned, desktop only */}
+                <p className="hidden md:block flex-1 text-sm text-zinc-500 leading-relaxed group-hover:text-zinc-300 transition-colors duration-300">
+                  {desc}
+                </p>
+              </div>
+
+              {/* Mobile description below */}
+              <p className="md:hidden text-xs text-zinc-500 leading-relaxed pl-12 group-hover:text-zinc-300 transition-colors duration-300">
+                {desc}
+              </p>
             </div>
           ))}
         </div>
@@ -246,7 +303,11 @@ export default function ApplyClient() {
                     }`}
                   >
                     {activeTab === key && (
-                      <span className="absolute left-0 top-1/2 -translate-y-1/2 w-px h-4 bg-[#eb4c60] rounded-full" />
+                      <motion.span
+                        layoutId="faq-tab-indicator"
+                        className="absolute left-0 top-1/2 -translate-y-1/2 w-px h-4 bg-[#eb4c60] rounded-full"
+                        transition={{ type: "spring", stiffness: 400, damping: 30 }}
+                      />
                     )}
                     {label}
                   </button>

@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import Image from "next/image";
+import { JSX } from "react";
 import { whatWeDo, majors, mentors, alumni } from "@/lib/data";
 
 // ─── Photo strip data (actual filenames on disk) ───────────────────────────────
@@ -16,8 +17,52 @@ const photos = [
   { src: "/assets/photos/tabling.jpg",      alt: "Tabling at USC" },
 ];
 
+// SVG icons mapped to whatWeDo icon keys
+const whatWeDoIcons: Record<string, JSX.Element> = {
+  "01": (
+    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z" />
+    </svg>
+  ),
+  "02": (
+    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+    </svg>
+  ),
+  "03": (
+    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M13 10V3L4 14h7v7l9-11h-7z" />
+    </svg>
+  ),
+  "04": (
+    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+    </svg>
+  ),
+  "05": (
+    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
+    </svg>
+  ),
+  "06": (
+    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+    </svg>
+  ),
+  "07": (
+    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" />
+    </svg>
+  ),
+  "08": (
+    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+    </svg>
+  ),
+};
+
 export default function CommunityPage() {
-  // Duplicate for seamless marquee loop  -  stable IDs avoid index-as-key
+  // Duplicate for seamless marquee loop — stable IDs avoid index-as-key
   const allPhotos = [
     ...photos.map((p, n) => ({ ...p, id: `a${n}` })),
     ...photos.map((p, n) => ({ ...p, id: `b${n}` })),
@@ -46,13 +91,13 @@ export default function CommunityPage() {
             </span>
           </div>
 
-          <h1 className="text-[clamp(3rem,11vw,8.5rem)] font-black leading-[0.88] tracking-tighter text-white mb-8 reveal-up">
+          <h1 className="text-[clamp(3rem,11vw,8.5rem)] font-black leading-[0.88] tracking-tighter text-white mb-8">
             OUR
             <br />
             <span className="text-[#eb4c60]">COMMUNITY</span>
           </h1>
 
-          <p className="max-w-2xl text-zinc-400 text-base md:text-lg leading-relaxed reveal-up delay-2">
+          <p className="max-w-2xl text-zinc-400 text-base md:text-lg leading-relaxed">
             We cherish the unique blend of majors, industries, and bright futures
             that make up Avenues. No matter where your interests lie, we invite
             you to join us.
@@ -61,9 +106,10 @@ export default function CommunityPage() {
       </section>
 
       {/* ══════════════════════════════════════════════════
-          2. PHOTO MARQUEE
+          2. PHOTO MARQUEE — dual opposing rows
       ══════════════════════════════════════════════════ */}
-      <section className="overflow-hidden border-y border-white/[0.05] py-0">
+      <section className="overflow-hidden border-y border-white/[0.05] py-4 space-y-3">
+        {/* Row 1 — scrolls left */}
         <div className="marquee-track">
           {allPhotos.map((photo) => (
             <div
@@ -75,51 +121,96 @@ export default function CommunityPage() {
                 alt={photo.alt}
                 fill
                 className="object-cover"
-                sizes="(max-width: 768px) 320px, 320px"
+                sizes="320px"
               />
-              {/* Subtle vignette */}
               <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black/30 pointer-events-none" />
+            </div>
+          ))}
+        </div>
+
+        {/* Row 2 — scrolls right (reversed order, slightly smaller + dimmed) */}
+        <div className="marquee-track-reverse">
+          {[...allPhotos].reverse().map((photo) => (
+            <div
+              key={`rev-${photo.id}`}
+              className="relative h-48 w-72 shrink-0 mr-3 overflow-hidden rounded-sm opacity-75"
+            >
+              <Image
+                src={photo.src}
+                alt={photo.alt}
+                fill
+                className="object-cover"
+                sizes="288px"
+              />
+              <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black/40 pointer-events-none" />
             </div>
           ))}
         </div>
       </section>
 
       {/* ══════════════════════════════════════════════════
-          3. OUR MEMBERS  -  stats + major tags
+          3. OUR MEMBERS — 3-row opposing marquee
       ══════════════════════════════════════════════════ */}
-      <section className="mx-auto max-w-7xl px-6 md:px-10 py-14">
-        {/* Section header */}
-        <div className="mb-14 flex items-center gap-4">
+
+      {/* Section header — constrained */}
+      <div className="mx-auto max-w-7xl px-6 md:px-10 py-14 pb-8">
+        <div className="mb-8 flex items-center gap-4">
           <span className="text-[10px] font-bold uppercase tracking-[0.25em] text-zinc-500">
             Our Members
           </span>
           <div className="h-px flex-1 bg-white/[0.05]" />
         </div>
-
-        <p className="text-xs text-zinc-400 uppercase tracking-[0.2em] mb-5">
+        <p className="text-xs text-zinc-400 uppercase tracking-[0.2em]">
           Fields of Study — 24 majors across strategy, technology &amp; design
         </p>
-        <div className="flex flex-wrap gap-2">
-          {majors.map((major) => (
+      </div>
+
+      {/* Majors marquee — full bleed */}
+      <div className="overflow-hidden space-y-2 pb-14">
+        {/* Row 1 — left */}
+        <div className="marquee-track">
+          {[...majors.slice(0, 8), ...majors.slice(0, 8)].map((major, i) => (
             <span
-              key={major}
-              className="border border-white/[0.12] bg-white/[0.05] backdrop-blur-sm px-3 py-1 text-xs text-zinc-300 rounded-sm hover:border-[#eb4c60]/40 hover:text-white hover:bg-white/[0.08] transition-all duration-200 cursor-default"
+              key={`m1-${i}`}
+              className="shrink-0 mr-3 border border-white/[0.12] bg-white/[0.04] backdrop-blur-sm px-4 py-2 text-xs text-zinc-300 rounded-sm hover:border-[#eb4c60]/40 hover:text-white hover:bg-white/[0.08] transition-all duration-200 cursor-default whitespace-nowrap"
             >
               {major}
             </span>
           ))}
         </div>
-      </section>
+
+        {/* Row 2 — right (reversed, crimson tint) */}
+        <div className="marquee-track-reverse">
+          {[...majors.slice(8, 16), ...majors.slice(8, 16)].map((major, i) => (
+            <span
+              key={`m2-${i}`}
+              className="shrink-0 mr-3 border border-[#eb4c60]/20 bg-[#eb4c60]/[0.04] backdrop-blur-sm px-4 py-2 text-xs text-zinc-300 rounded-sm hover:border-[#eb4c60]/50 hover:text-white hover:bg-[#eb4c60]/[0.08] transition-all duration-200 cursor-default whitespace-nowrap"
+            >
+              {major}
+            </span>
+          ))}
+        </div>
+
+        {/* Row 3 — left (muted) */}
+        <div className="marquee-track">
+          {[...majors.slice(16, 24), ...majors.slice(16, 24)].map((major, i) => (
+            <span
+              key={`m3-${i}`}
+              className="shrink-0 mr-3 border border-white/[0.08] bg-white/[0.02] backdrop-blur-sm px-4 py-2 text-xs text-zinc-400 rounded-sm hover:border-[#eb4c60]/30 hover:text-zinc-200 transition-all duration-200 cursor-default whitespace-nowrap"
+            >
+              {major}
+            </span>
+          ))}
+        </div>
+      </div>
 
       {/* ══════════════════════════════════════════════════
-          4. WHAT WE DO  -  8-item grid
+          4. WHAT WE DO — editorial alternating list
       ══════════════════════════════════════════════════ */}
       <section className="relative border-t border-white/[0.04]">
-        {/* Subtle dot texture band */}
         <div className="absolute inset-0 dot-texture-subtle opacity-60 pointer-events-none" />
 
         <div className="relative mx-auto max-w-7xl px-6 md:px-10 py-24">
-          {/* Section header */}
           <div className="mb-14 flex items-center gap-4">
             <span className="text-[10px] font-bold uppercase tracking-[0.25em] text-zinc-500">
               What We Do
@@ -127,23 +218,57 @@ export default function CommunityPage() {
             <div className="h-px flex-1 bg-white/[0.05]" />
           </div>
 
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
-            {whatWeDo.map(({ title, desc }, idx) => (
+          <div className="divide-y divide-white/[0.05]">
+            {whatWeDo.map(({ title, desc, icon: iconKey }, idx) => (
               <div
                 key={title}
-                className="glass-card group relative rounded-sm p-6 overflow-hidden transition-all duration-300"
+                className="group relative flex items-center gap-6 md:gap-12 py-8 md:py-10 overflow-hidden cursor-default"
               >
-                {/* Pink accent mark */}
-                <div className="absolute top-5 left-5 w-4 h-px bg-[#eb4c60] group-hover:w-6 transition-all duration-300" />
-                {/* Index number */}
-                <div className="absolute top-4 right-5 text-[10px] font-mono text-zinc-400 group-hover:text-[#eb4c60]/30 transition-colors duration-300">
+                {/* Unique per-item hover accents */}
+                {idx === 0 && (
+                  <div className="absolute bottom-0 left-0 right-0 h-px bg-[#eb4c60] scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-500 pointer-events-none" />
+                )}
+                {idx === 1 && (
+                  <div className="absolute inset-0 bg-[#eb4c60]/[0] group-hover:bg-[#eb4c60]/[0.03] transition-all duration-500 pointer-events-none" />
+                )}
+                {idx === 2 && (
+                  <div className="absolute top-0 left-0 right-0 h-px bg-[#eb4c60] scale-x-0 group-hover:scale-x-100 origin-right transition-transform duration-500 pointer-events-none" />
+                )}
+                {idx === 3 && (
+                  <div className="absolute bottom-0 left-0 right-0 h-px bg-[#eb4c60] scale-x-0 group-hover:scale-x-100 origin-right transition-transform duration-500 pointer-events-none" />
+                )}
+                {idx === 4 && (
+                  <div className="absolute inset-y-0 left-0 w-px bg-[#eb4c60] scale-y-0 group-hover:scale-y-100 origin-top transition-transform duration-500 pointer-events-none" />
+                )}
+                {idx === 5 && (
+                  <div className="absolute inset-y-0 right-0 w-px bg-[#eb4c60] scale-y-0 group-hover:scale-y-100 origin-bottom transition-transform duration-500 pointer-events-none" />
+                )}
+                {idx === 6 && (
+                  <div className="absolute top-0 left-0 right-0 h-px bg-[#eb4c60] scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-500 pointer-events-none" />
+                )}
+                {idx === 7 && (
+                  <div className="absolute inset-0 bg-[#eb4c60]/[0] group-hover:bg-[#eb4c60]/[0.02] transition-all duration-700 pointer-events-none" />
+                )}
+
+                {/* Large faded index number */}
+                <span className="shrink-0 text-[clamp(2rem,4vw,3.5rem)] font-black font-mono text-zinc-800 group-hover:text-[#eb4c60]/30 transition-colors duration-300 leading-none w-16 md:w-20 text-right select-none">
                   {String(idx + 1).padStart(2, "0")}
-                </div>
-                <div className="mt-7">
-                  <h3 className="text-sm font-bold text-white mb-2.5 leading-snug tracking-tight">
+                </span>
+
+                {/* SVG icon */}
+                <span className="shrink-0 text-zinc-600 group-hover:text-[#eb4c60] transition-colors duration-300 hidden md:block">
+                  {whatWeDoIcons[iconKey] ?? null}
+                </span>
+
+                {/* Content */}
+                <div className="flex-1 min-w-0">
+                  <p className="text-[10px] font-mono text-zinc-600 group-hover:text-[#eb4c60]/60 transition-colors duration-300 mb-2 uppercase tracking-widest">
+                    {iconKey}
+                  </p>
+                  <h3 className="text-base md:text-lg font-bold text-white group-hover:text-[#eb4c60] transition-colors duration-300 mb-2 tracking-tight">
                     {title}
                   </h3>
-                  <p className="text-xs text-zinc-500 leading-relaxed">
+                  <p className="text-xs text-zinc-500 leading-relaxed group-hover:text-zinc-400 transition-colors duration-300 max-w-lg">
                     {desc}
                   </p>
                 </div>
@@ -154,33 +279,61 @@ export default function CommunityPage() {
       </section>
 
       {/* ══════════════════════════════════════════════════
-          5. OUR MENTORS  -  logo strip
+          5. OUR MENTORS — dual opposing marquee
       ══════════════════════════════════════════════════ */}
       <section className="border-t border-white/[0.04]">
-        <div className="mx-auto max-w-7xl px-6 md:px-10 py-20">
-          {/* Section header */}
-          <div className="mb-12 flex items-center gap-4">
+        {/* Section header — constrained */}
+        <div className="mx-auto max-w-7xl px-6 md:px-10 py-16 pb-8">
+          <div className="mb-8 flex items-center gap-4">
             <span className="text-[10px] font-bold uppercase tracking-[0.25em] text-zinc-500">
               Our Mentors
             </span>
             <div className="h-px flex-1 bg-white/[0.05]" />
           </div>
-
-          <p className="text-zinc-600 text-sm mb-10 max-w-lg">
+          <p className="text-zinc-600 text-sm max-w-lg">
             Professionals from these organizations advise our members, conduct
             workshops, and share industry expertise.
           </p>
+        </div>
 
-          <div className="flex flex-wrap justify-start items-center gap-x-10 gap-y-8">
-            {mentors.map(({ name, logo }) => (
-              <div key={name} className="group relative">
-                <Image
-                  src={logo}
-                  alt={name}
-                  width={100}
-                  height={32}
-                  className="object-contain max-h-8 w-auto opacity-50 group-hover:opacity-90 transition-all duration-300"
-                />
+        {/* Full-bleed dual marquee */}
+        <div className="overflow-hidden space-y-4 pb-20">
+          {/* Row 1 — left */}
+          <div className="marquee-track">
+            {[...mentors, ...mentors].map((mentor, i) => (
+              <div
+                key={`r1-${i}`}
+                className="shrink-0 mr-8 flex items-center justify-center glass-card-deep rounded-sm px-8 py-4 min-w-[160px]"
+              >
+                <div className="relative h-7 w-28">
+                  <Image
+                    src={mentor.logo}
+                    alt={mentor.name}
+                    fill
+                    className="object-contain opacity-60 hover:opacity-100 transition-opacity duration-300"
+                    sizes="112px"
+                  />
+                </div>
+              </div>
+            ))}
+          </div>
+
+          {/* Row 2 — right (reversed order, more muted) */}
+          <div className="marquee-track-reverse">
+            {[...mentors, ...mentors].reverse().map((mentor, i) => (
+              <div
+                key={`r2-${i}`}
+                className="shrink-0 mr-8 flex items-center justify-center glass-card-deep rounded-sm px-8 py-4 min-w-[160px]"
+              >
+                <div className="relative h-7 w-28">
+                  <Image
+                    src={mentor.logo}
+                    alt={mentor.name}
+                    fill
+                    className="object-contain opacity-40 hover:opacity-80 transition-opacity duration-300"
+                    sizes="112px"
+                  />
+                </div>
               </div>
             ))}
           </div>

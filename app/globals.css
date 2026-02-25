@@ -134,3 +134,68 @@ body {
   75%       { transform: translateX(-4px); }
   90%       { transform: translateX(3px); }
 }
+
+/* Reverse marquee (right-scrolling) */
+.marquee-track-reverse {
+  display: flex;
+  width: max-content;
+  animation: marquee-reverse 50s linear infinite;
+}
+
+@keyframes marquee-reverse {
+  from { transform: translateX(-50%); }
+  to   { transform: translateX(0); }
+}
+
+/* DM Serif Display utility */
+.font-display {
+  font-family: var(--font-display);
+}
+
+/* Scroll-triggered counter animation base */
+.stat-revealed .stat-number {
+  animation: statReveal 0.8s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+@keyframes statReveal {
+  from { opacity: 0; transform: translateY(20px) scale(0.95); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+/* Glass card deep — more intense glassmorphism */
+.glass-card-deep {
+  background: rgba(255, 255, 255, 0.04);
+  backdrop-filter: blur(40px) saturate(1.8);
+  -webkit-backdrop-filter: blur(40px) saturate(1.8);
+  border: 1px solid rgba(255, 255, 255, 0.10);
+  box-shadow:
+    0 8px 48px rgba(0, 0, 0, 0.40),
+    inset 0 1px 0 rgba(255, 255, 255, 0.06),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.2);
+}
+.glass-card-deep:hover {
+  background: rgba(255, 255, 255, 0.07);
+  border-color: rgba(235, 76, 96, 0.25);
+  box-shadow:
+    0 16px 64px rgba(235, 76, 96, 0.10),
+    0 4px 24px rgba(0, 0, 0, 0.40),
+    inset 0 1px 0 rgba(255, 255, 255, 0.09);
+}
+
+/* Hover underline sweep */
+.hover-sweep {
+  position: relative;
+}
+.hover-sweep::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background: #eb4c60;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.hover-sweep:hover::after { transform: scaleX(1); }

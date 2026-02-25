@@ -7,7 +7,7 @@ import ScrollReveal from "@/components/ScrollReveal";
 export const metadata = {
   title: "About | Avenues Consulting Group",
   description:
-    "Learn about Avenues Consulting Group  -  founded in 2023 at USC to provide pro-bono strategy, technology, and design consulting.",
+    "Learn about Avenues Consulting Group, founded in 2023 at USC to provide pro-bono strategy, technology, and design consulting.",
 };
 
 const LinkedInIcon = () => (
@@ -99,7 +99,7 @@ export default function AboutPage() {
 
           {/* Subtitle */}
           <p className="max-w-2xl text-zinc-400 text-lg leading-relaxed">
-            A student organization built from the ground up — on the belief that
+            A student organization built from the ground up, on the belief that
             real-world project experience shouldn&apos;t be gated by prestige or access.
           </p>
 

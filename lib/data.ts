@@ -358,7 +358,7 @@ export const clientCards = clients;
 export const whatWeDo: WhatWeDoItem[] = [
   {
     title: "Client Reveal",
-    desc: "Members are grouped into client teams based on their individual interests and skill sets each semester  -  your first real taste of live consulting.",
+    desc: "Members are grouped into client teams based on their individual interests and skill sets each semester: your first real taste of live consulting.",
     icon: "01",
   },
   {
@@ -388,12 +388,12 @@ export const whatWeDo: WhatWeDoItem[] = [
   },
   {
     title: "Case Competitions",
-    desc: "Semesterly strategy competitions  -  plan, pitch, and present a full consulting deliverable in one hour. High pressure, high reward.",
+    desc: "Semesterly strategy competitions: plan, pitch, and present a full consulting deliverable in one hour. High pressure, high reward.",
     icon: "07",
   },
   {
     title: "Social Events",
-    desc: "Beach hangouts, retreats, study sessions, and team dinners. We work hard and play harder  -  community is the foundation of Avenues.",
+    desc: "Beach hangouts, retreats, study sessions, and team dinners. We work hard and play harder. Community is the foundation of Avenues.",
     icon: "08",
   },
 ];
@@ -464,12 +464,12 @@ export const strategyProjects: ProjectType[] = [
 export const techProjects: ProjectType[] = [
   {
     title: "Website Creation (Custom)",
-    desc: "Fully custom-coded websites and web applications built from scratch using modern frameworks  -  tailored precisely to each client's brand and functionality needs.",
+    desc: "Fully custom-coded websites and web applications built from scratch using modern frameworks, tailored precisely to each client's brand and functionality needs.",
     clients: "AANC, Network of Care, Captis Intelligence",
   },
   {
     title: "Website Creation (No-Code)",
-    desc: "Fast, polished, and fully manageable websites built on no-code platforms  -  ideal for organizations that need a great web presence without ongoing dev overhead.",
+    desc: "Fast, polished, and fully manageable websites built on no-code platforms, ideal for organizations that need a great web presence without ongoing dev overhead.",
     clients: "Wheel & Tire Connection, XP League",
   },
   {
@@ -482,7 +482,7 @@ export const techProjects: ProjectType[] = [
 export const designProjects: ProjectType[] = [
   {
     title: "Complete Brand Creation",
-    desc: "Full brand identity systems built from the ground up  -  logo, color palette, typography, visual language, and brand guidelines for new or rebranding organizations.",
+    desc: "Full brand identity systems built from the ground up: logo, color palette, typography, visual language, and brand guidelines for new or rebranding organizations.",
     clients: "GALLA Beauty, AANC",
   },
   {
@@ -508,7 +508,7 @@ export const faqApplication: FAQItem[] = [
   },
   {
     q: "Is prior consulting or business experience required?",
-    a: "Not at all. We welcome students from all majors and backgrounds. What we look for is curiosity, a collaborative mindset, and a genuine desire to learn  -  not a polished resume.",
+    a: "Not at all. We welcome students from all majors and backgrounds. What we look for is curiosity, a collaborative mindset, and a genuine desire to learn, not a polished resume.",
   },
   {
     q: "What does the application process look like?",
@@ -520,7 +520,7 @@ export const faqApplication: FAQItem[] = [
   },
   {
     q: "Can first-year and transfer students apply?",
-    a: "Yes  -  absolutely. We actively encourage first-years and transfers to apply. Many of our current leaders joined in their first semester at USC.",
+    a: "Yes, absolutely. We actively encourage first-years and transfers to apply. Many of our current leaders joined in their first semester at USC.",
   },
   {
     q: "What happens if I'm not accepted?",

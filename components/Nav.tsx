@@ -25,8 +25,8 @@ export default function Nav() {
       const docHeight = document.documentElement.scrollHeight;
       const windowHeight = window.innerHeight;
       const footerThreshold = docHeight - windowHeight - 180;
-      // On home page, wait until "CONSULTING GROUP" is visible (~2× viewport height into the 280vh hero)
-      const topThreshold = pathname === "/" ? Math.round(windowHeight * 2.0) : 60;
+      // On home page, wait until "What We Do" is near the top (after the full 320vh hero)
+      const topThreshold = pathname === "/" ? Math.round(windowHeight * 3.4) : 60;
       if (scrollY < topThreshold) {
         setIsHidden(true);
       } else if (scrollY > footerThreshold) {
