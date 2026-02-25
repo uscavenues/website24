@@ -1,175 +1,195 @@
 "use client";
 
-import { useRef, useState, useLayoutEffect } from "react";
-import { motion, useScroll, useTransform } from "framer-motion";
+import { useRef, useLayoutEffect } from "react";
+import {
+  motion,
+  useScroll,
+  useTransform,
+  useMotionValue,
+} from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 import ScrollReveal from "@/components/ScrollReveal";
 
-interface LogoPos {
-  startX: number;
-  startY: number;
-  startSize: number;
-  endX: number;
-  endY: number;
-  endSize: number;
-}
-
 export default function HomePage() {
   const heroRef = useRef<HTMLDivElement>(null);
-  // Ref on the invisible A-placeholder inside h1 — we fly the logo TO this spot
+  // Invisible A-placeholder in h1 — the logo physically flies TO this element
   const aRef = useRef<HTMLSpanElement>(null);
 
-  // Reasonable defaults so the first paint never flashes top-left
-  const [pos, setPos] = useState<LogoPos>({
-    startX: 400, startY: 260, startSize: 200,
-    endX: 80,  endY: 260,  endSize: 53,
-  });
+  // ── Bounds stored as MotionValues so useTransform re-fires when they update ──
+  const startX  = useMotionValue(500);
+  const startY  = useMotionValue(300);
+  const startSz = useMotionValue(240);
+  const endX    = useMotionValue(80);
+  const endY    = useMotionValue(240);
+  const endSz   = useMotionValue(60);
 
   const { scrollYProgress } = useScroll({
     target: heroRef,
     offset: ["start start", "end start"],
   });
 
-  // Measure real positions synchronously before paint
+  // Measure A-slot position before first paint — runs synchronously, no flash
   useLayoutEffect(() => {
     const calc = () => {
       if (!aRef.current) return;
       const rect = aRef.current.getBoundingClientRect();
-      const vw = window.innerWidth;
-      const vh = window.innerHeight;
-      const startSize = Math.min(Math.max(vw * 0.28, 160), 280);
-      setPos({
-        startX: vw / 2 - startSize / 2,
-        startY: vh / 2 - startSize / 2,
-        startSize,
-        endX: rect.left,
-        endY: rect.top,
-        endSize: rect.width,
-      });
+      const vw   = window.innerWidth;
+      const vh   = window.innerHeight;
+      const sz   = Math.min(Math.max(vw * 0.28, 160), 280);
+      startX.set(vw / 2 - sz / 2);
+      startY.set(vh / 2 - sz / 2);
+      startSz.set(sz);
+      endX.set(rect.left);
+      endY.set(rect.top);
+      endSz.set(rect.width);
     };
     calc();
     window.addEventListener("resize", calc);
     return () => window.removeEventListener("resize", calc);
-  }, []);
+  }, [startX, startY, startSz, endX, endY, endSz]);
 
-  // ── LOGO: single element that travels from center → A position ─────────────
-  const logoLeft = useTransform(scrollYProgress, [0.15, 0.50], [pos.startX, pos.endX]);
-  const logoTop  = useTransform(scrollYProgress, [0.15, 0.50], [pos.startY, pos.endY]);
-  const logoSize = useTransform(scrollYProgress, [0.15, 0.50], [pos.startSize, pos.endSize]);
+  // ── Logo: single element, multi-MotionValue transform (correct pattern) ──────
+  // Using the array-of-MotionValues overload so it recalculates whenever
+  // any bound changes (i.e., when useLayoutEffect fires after mount).
+  const logoLeft = useTransform(
+    [scrollYProgress, startX, endX],
+    (v) => {
+      const [p, sx, ex] = v as number[];
+      const t = Math.max(0, Math.min(1, (p - 0.15) / 0.35));
+      return sx + (ex - sx) * t;
+    }
+  );
+  const logoTop = useTransform(
+    [scrollYProgress, startY, endY],
+    (v) => {
+      const [p, sy, ey] = v as number[];
+      const t = Math.max(0, Math.min(1, (p - 0.15) / 0.35));
+      return sy + (ey - sy) * t;
+    }
+  );
+  const logoSize = useTransform(
+    [scrollYProgress, startSz, endSz],
+    (v) => {
+      const [p, ss, es] = v as number[];
+      const t = Math.max(0, Math.min(1, (p - 0.15) / 0.35));
+      return ss + (es - ss) * t;
+    }
+  );
 
-  // ── TEXT: each line staggers in independently ──────────────────────────────
-  // "VENUES" slides in from the right after logo arrives
-  const venuesOp = useTransform(scrollYProgress, [0.46, 0.59], [0, 1]);
-  const venuesX  = useTransform(scrollYProgress, [0.46, 0.59], [28, 0]);
-
-  // "CONSULTING" slides up next
+  // ── Text: each line staggers in independently ─────────────────────────────────
+  const venuesOp  = useTransform(scrollYProgress, [0.46, 0.59], [0, 1]);
+  const venuesX   = useTransform(scrollYProgress, [0.46, 0.59], [32, 0]);
   const consultOp = useTransform(scrollYProgress, [0.54, 0.67], [0, 1]);
-  const consultY  = useTransform(scrollYProgress, [0.54, 0.67], [34, 0]);
+  const consultY  = useTransform(scrollYProgress, [0.54, 0.67], [40, 0]);
+  const groupOp   = useTransform(scrollYProgress, [0.61, 0.73], [0, 1]);
+  const groupY    = useTransform(scrollYProgress, [0.61, 0.73], [28, 0]);
+  const contentOp = useTransform(scrollYProgress, [0.69, 0.82], [0, 1]);
+  const contentY  = useTransform(scrollYProgress, [0.69, 0.82], [32, 0]);
 
-  // "GROUP" slides up last
-  const groupOp = useTransform(scrollYProgress, [0.61, 0.73], [0, 1]);
-  const groupY  = useTransform(scrollYProgress, [0.61, 0.73], [24, 0]);
-
-  // Tagline / CTAs / stats
-  const contentOp = useTransform(scrollYProgress, [0.71, 0.87], [0, 1]);
-  const contentY  = useTransform(scrollYProgress, [0.71, 0.87], [30, 0]);
-
-  // Black page starts pure black, reveals textures as VENUES appears
-  const blackOp = useTransform(scrollYProgress, [0, 0.30, 0.58], [1, 1, 0]);
-
-  // Scroll cue line
-  const scrollCueOp = useTransform(scrollYProgress, [0, 0.11], [1, 0]);
+  // Black overlay — pure black on load, fades as background textures reveal
+  const blackOp     = useTransform(scrollYProgress, [0, 0.28, 0.56], [1, 1, 0]);
+  const scrollCueOp = useTransform(scrollYProgress, [0, 0.12], [1, 0]);
 
   return (
     <>
-      {/* ── HERO: 280vh gives comfortable scroll room ── */}
+      {/* ══════════════════════ HERO (280vh scroll canvas) ═══════════════════ */}
       <div ref={heroRef} className="relative h-[280vh]">
         <div className="sticky top-0 h-screen overflow-hidden">
 
-          {/* Atmospheric backgrounds (revealed as black overlay fades) */}
+          {/* Background layers (revealed as black overlay fades out) */}
           <div className="absolute inset-0 dot-texture opacity-40 pointer-events-none" />
-          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[900px] h-[600px] rounded-full bg-[#eb4c60]/[0.06] blur-[160px] pointer-events-none" />
+          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[900px] h-[600px] rounded-full bg-[#eb4c60]/[0.07] blur-[160px] pointer-events-none" />
           <div className="absolute inset-0">
             <Image
               src="/assets/photos/home.jpg"
               alt=""
               fill
-              className="object-cover opacity-[0.06]"
+              className="object-cover opacity-[0.07]"
               priority
               sizes="100vw"
             />
           </div>
           <div className="absolute inset-0 bg-gradient-to-b from-[#08080f]/60 via-transparent to-[#08080f] pointer-events-none" />
 
-          {/* ── Black overlay — pure black on load, fades as VENUES reveals ── */}
+          {/* Black overlay — sits above background, below logo */}
           <motion.div
             className="absolute inset-0 bg-black pointer-events-none"
             style={{ opacity: blackOp, zIndex: 5 }}
           />
 
-          {/* ── THE ONE LOGO — travels from screen center to A slot in h1 ── */}
+          {/* ── THE ONE LOGO — travels from screen center → A slot ── */}
+          {/* zIndex 20: always above the black overlay (5) and text layer (10) */}
           <motion.div
             className="pointer-events-none"
             style={{
               position: "absolute",
               left: logoLeft,
-              top: logoTop,
-              width: logoSize,
+              top:  logoTop,
+              width:  logoSize,
               height: logoSize,
               zIndex: 20,
             }}
           >
             <Image
               src="/assets/icons/avenues-logo.png"
-              alt="Avenues"
+              alt="Avenues logo"
               fill
               className="object-contain invert"
               priority
             />
           </motion.div>
 
-          {/* ── Hero text ── */}
+          {/* ── Hero text — zIndex 10 (below logo so logo overlaps A slot) ── */}
           <div className="absolute inset-0 flex flex-col" style={{ zIndex: 10 }}>
             <div className="relative mx-auto max-w-7xl px-6 md:px-10 w-full flex-1 flex flex-col justify-center pt-16">
 
               <h1 className="text-[clamp(4rem,12vw,10rem)] font-black leading-[0.88] tracking-tighter text-white">
-                {/* First line: invisible placeholder (holds A-width space) + VENUES */}
+
+                {/* Line 1: [invisible A placeholder] + VENUES */}
                 <span className="inline-flex items-end" style={{ gap: "0.03em" }}>
-                  {/* Logo target — invisible span; logo flies here then stays */}
+                  {/* This invisible span holds the exact space the logo occupies.
+                      getBoundingClientRect() on this tells us where to fly the logo. */}
                   <span
                     ref={aRef}
                     className="inline-block"
                     style={{ height: "0.83em", width: "0.83em", marginBottom: "0.01em" }}
-                    aria-hidden
+                    aria-hidden="true"
                   />
-                  {/* VENUES slides in from the right */}
-                  <motion.span style={{ opacity: venuesOp, x: venuesX }}>
+                  <motion.span
+                    className="inline-block overflow-hidden"
+                    style={{ opacity: venuesOp, x: venuesX }}
+                  >
                     VENUES
                   </motion.span>
                 </span>
 
                 <br />
 
-                {/* CONSULTING slides up */}
-                <motion.span style={{ opacity: consultOp, y: consultY }}>
+                {/* Line 2: CONSULTING */}
+                <motion.span
+                  className="inline-block"
+                  style={{ opacity: consultOp, y: consultY }}
+                >
                   <span className="text-[#eb4c60]">CONSULTING</span>
                 </motion.span>
 
                 <br />
 
-                {/* GROUP slides up last */}
-                <motion.span style={{ opacity: groupOp, y: groupY }}>
+                {/* Line 3: GROUP */}
+                <motion.span
+                  className="inline-block"
+                  style={{ opacity: groupOp, y: groupY }}
+                >
                   GROUP
                 </motion.span>
               </h1>
 
-              {/* Tagline + CTAs + Stats */}
+              {/* Tagline + CTAs + mini stats */}
               <motion.div style={{ opacity: contentOp, y: contentY }}>
                 <p className="mt-8 max-w-lg text-zinc-400 text-lg leading-relaxed">
-                  USC&apos;s premier student-run consulting group. Pro-bono,
-                  multidisciplinary project-building across strategy, technology,
-                  and design.
+                  USC&apos;s premier student-run consulting group — pro-bono,
+                  multidisciplinary, and built for impact.
                 </p>
 
                 <div className="flex flex-wrap gap-3 mt-8">
@@ -184,22 +204,22 @@ export default function HomePage() {
                   </Link>
                   <Link
                     href="/apply"
-                    className="inline-flex items-center gap-2 border border-white/[0.12] bg-white/[0.03] backdrop-blur-sm text-white px-7 py-3.5 text-xs font-bold tracking-[0.15em] uppercase rounded-sm hover:border-white/30 hover:bg-white/[0.07] transition-colors duration-200"
+                    className="inline-flex items-center gap-2 border border-white/[0.14] bg-white/[0.03] text-white px-7 py-3.5 text-xs font-bold tracking-[0.15em] uppercase rounded-sm hover:border-white/30 hover:bg-white/[0.07] transition-colors duration-200"
                   >
                     Apply to join
                   </Link>
                 </div>
 
-                <div className="flex flex-wrap items-center gap-8 md:gap-14 mt-14 pt-8 border-t border-white/[0.08]">
+                <div className="flex flex-wrap items-center gap-10 md:gap-16 mt-14 pt-8 border-t border-white/[0.1]">
                   {[
-                    { n: "20+", label: "Clients Served" },
-                    { n: "3",   label: "Disciplines" },
-                    { n: "F'23", label: "Established" },
+                    { n: "20+",      label: "Clients Served" },
+                    { n: "3",        label: "Disciplines" },
+                    { n: "F'23",     label: "Established" },
                     { n: "Pro Bono", label: "Always Free" },
                   ].map(({ n, label }) => (
                     <div key={label}>
                       <div className="text-2xl font-black text-white tracking-tight">{n}</div>
-                      <div className="text-xs text-zinc-400 mt-1 tracking-[0.15em] uppercase">{label}</div>
+                      <div className="text-sm font-medium text-zinc-300 mt-1 tracking-wide uppercase">{label}</div>
                     </div>
                   ))}
                 </div>
@@ -208,7 +228,7 @@ export default function HomePage() {
             </div>
           </div>
 
-          {/* Scroll cue — just the line */}
+          {/* Scroll cue */}
           <motion.div
             className="absolute bottom-10 left-1/2 -translate-x-1/2 z-30 flex flex-col items-center pointer-events-none"
             style={{ opacity: scrollCueOp }}
@@ -219,12 +239,10 @@ export default function HomePage() {
         </div>
       </div>
 
-      {/* ── THREE PILLARS ── */}
+      {/* ══════════════════════ THREE PILLARS ══════════════════════════════════ */}
       <section className="mx-auto max-w-7xl px-6 md:px-10 py-24">
         <ScrollReveal className="mb-10 flex items-center gap-4">
-          <span className="text-[10px] font-bold uppercase tracking-[0.25em] text-zinc-500">
-            What We Do
-          </span>
+          <span className="text-[10px] font-bold uppercase tracking-[0.25em] text-zinc-500">What We Do</span>
           <div className="h-px flex-1 bg-white/[0.05]" />
         </ScrollReveal>
 
@@ -255,7 +273,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ── COHORT PHOTO ── */}
+      {/* ══════════════════════ COHORT PHOTO ═══════════════════════════════════ */}
       <ScrollReveal className="mx-auto max-w-7xl px-6 md:px-10 pb-24">
         <div className="relative rounded-sm overflow-hidden aspect-[16/7]">
           <Image src="/assets/photos/home.jpg" alt="Avenues cohort" fill className="object-cover" sizes="100vw" />
@@ -267,7 +285,7 @@ export default function HomePage() {
         </div>
       </ScrollReveal>
 
-      {/* ── STATS BAND ── */}
+      {/* ══════════════════════ STATS BAND ═════════════════════════════════════ */}
       <section className="relative overflow-hidden border-y border-white/[0.05]">
         <div className="absolute inset-0 dot-texture-subtle opacity-50 pointer-events-none" />
         <div className="relative mx-auto max-w-7xl px-6 md:px-10 py-20">
@@ -291,11 +309,11 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ── CTA BAND ── */}
+      {/* ══════════════════════ CTA BAND ═══════════════════════════════════════ */}
       <section className="relative overflow-hidden">
         <div className="absolute inset-0 dot-texture opacity-25 pointer-events-none" />
         <div className="absolute right-0 top-1/2 -translate-y-1/2 w-[500px] h-[500px] opacity-[0.025] pointer-events-none">
-          <Image src="/assets/icons/avenues-logo.png" alt="" fill className="object-contain invert" aria-hidden="true" />
+          <Image src="/assets/icons/avenues-logo.png" alt="" fill className="object-contain invert" aria-hidden />
         </div>
         <div className="relative mx-auto max-w-7xl px-6 md:px-10 py-28">
           <ScrollReveal>
@@ -315,7 +333,7 @@ export default function HomePage() {
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M17 8l4 4m0 0l-4 4m4-4H3" />
               </svg>
             </Link>
-            <Link href="/apply" className="inline-flex items-center gap-2 border border-white/[0.12] bg-white/[0.03] backdrop-blur-sm text-zinc-300 px-8 py-4 text-xs font-bold uppercase tracking-[0.15em] rounded-sm hover:border-white/25 hover:text-white hover:bg-white/[0.07] transition-colors">
+            <Link href="/apply" className="inline-flex items-center gap-2 border border-white/[0.12] bg-white/[0.03] text-zinc-300 px-8 py-4 text-xs font-bold uppercase tracking-[0.15em] rounded-sm hover:border-white/25 hover:text-white hover:bg-white/[0.07] transition-colors">
               Apply to join
             </Link>
             <Link href="/portfolio" className="inline-flex items-center gap-2 text-zinc-500 hover:text-white px-4 py-4 text-xs font-bold uppercase tracking-[0.15em] transition-colors">
