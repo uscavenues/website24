@@ -1,9 +1,10 @@
 import Link from "next/link";
+import ContactClient from "./ContactClient";
 
 export const metadata = {
   title: "Work With Us | Avenues Consulting Group",
   description:
-    "Partner with Avenues Consulting Group for pro-bono strategy, technology, and design consulting. Contact us to get started.",
+    "Partner with Avenues Consulting Group for pro bono strategy, technology, and design consulting. Contact us to get started.",
 };
 
 export default function ContactPage() {
@@ -54,7 +55,7 @@ export default function ContactPage() {
             <p className="text-sm text-zinc-500 leading-relaxed mb-6">
               Avenues is dedicated to finding solutions through the combined
               lens of strategy, technology, and design. We can help you plan,
-              build, and communicate — entirely pro-bono. No invoices. No
+              build, and communicate — entirely pro bono. No invoices. No
               catch.
             </p>
 
@@ -159,143 +160,7 @@ export default function ContactPage() {
 
           {/* ── RIGHT: contact form ─────────────────────────────────────── */}
           <div>
-            <form
-              action="https://api.web3forms.com/submit"
-              method="POST"
-              className="space-y-0"
-            >
-              {/* Web3Forms access key */}
-              <input
-                type="hidden"
-                name="access_key"
-                value="112ef749-545a-4476-9b70-3fccfea07740"
-              />
-              {/* Redirect after submit */}
-              <input
-                type="hidden"
-                name="redirect"
-                value="https://web3forms.com/success"
-              />
-              {/* Honeypot */}
-              <input
-                type="checkbox"
-                name="botcheck"
-                className="hidden"
-                style={{ display: "none" }}
-              />
-
-              {/* Form label */}
-              <div className="mb-8">
-                <p className="text-[10px] uppercase tracking-[0.25em] text-zinc-500 mb-1">
-                  Contact Form
-                </p>
-                <div className="h-px bg-white/[0.05]" />
-              </div>
-
-              {/* Name */}
-              <div className="pb-1">
-                <label
-                  htmlFor="name"
-                  className="block text-[10px] uppercase tracking-[0.2em] text-zinc-500 mb-3"
-                >
-                  Your Name
-                </label>
-                <input
-                  id="name"
-                  type="text"
-                  name="name"
-                  required
-                  placeholder="Jane Smith"
-                  className="bg-transparent border-b border-white/[0.12] hover:border-[#eb4c60]/50 focus:border-[#eb4c60] outline-none text-white placeholder:text-zinc-500 py-3 text-sm w-full transition-colors duration-200"
-                />
-              </div>
-
-              <div className="h-6" />
-
-              {/* Email */}
-              <div className="pb-1">
-                <label
-                  htmlFor="email"
-                  className="block text-[10px] uppercase tracking-[0.2em] text-zinc-500 mb-3"
-                >
-                  Your Email
-                </label>
-                <input
-                  id="email"
-                  type="email"
-                  name="email"
-                  required
-                  placeholder="jane@company.com"
-                  className="bg-transparent border-b border-white/[0.12] hover:border-[#eb4c60]/50 focus:border-[#eb4c60] outline-none text-white placeholder:text-zinc-500 py-3 text-sm w-full transition-colors duration-200"
-                />
-              </div>
-
-              <div className="h-6" />
-
-              {/* Company */}
-              <div className="pb-1">
-                <label
-                  htmlFor="company"
-                  className="block text-[10px] uppercase tracking-[0.2em] text-zinc-500 mb-3"
-                >
-                  Company / Organization
-                </label>
-                <input
-                  id="company"
-                  type="text"
-                  name="company"
-                  placeholder="Acme Corp"
-                  className="bg-transparent border-b border-white/[0.12] hover:border-[#eb4c60]/50 focus:border-[#eb4c60] outline-none text-white placeholder:text-zinc-500 py-3 text-sm w-full transition-colors duration-200"
-                />
-              </div>
-
-              <div className="h-6" />
-
-              {/* Message */}
-              <div className="pb-1">
-                <label
-                  htmlFor="message"
-                  className="block text-[10px] uppercase tracking-[0.2em] text-zinc-500 mb-3"
-                >
-                  Message
-                </label>
-                <textarea
-                  id="message"
-                  name="message"
-                  required
-                  rows={5}
-                  placeholder="Tell us about your organization and what you're looking to accomplish..."
-                  className="bg-transparent border-b border-white/[0.12] hover:border-[#eb4c60]/50 focus:border-[#eb4c60] outline-none text-white placeholder:text-zinc-500 py-3 text-sm w-full transition-colors duration-200 resize-none"
-                />
-              </div>
-
-              <div className="h-10" />
-
-              {/* Submit */}
-              <button
-                type="submit"
-                className="group inline-flex items-center gap-3 bg-[#eb4c60] hover:bg-[#d43d50] text-white px-8 py-4 text-xs font-bold uppercase tracking-[0.2em] rounded-sm transition-colors duration-200"
-              >
-                Send Message
-                <svg
-                  className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform duration-200"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2.5}
-                    d="M17 8l4 4m0 0l-4 4m4-4H3"
-                  />
-                </svg>
-              </button>
-
-              <p className="mt-4 text-[10px] text-zinc-600">
-                We typically respond within 48 hours.
-              </p>
-            </form>
+            <ContactClient />
           </div>
         </div>
       </section>

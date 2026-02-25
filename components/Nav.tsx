@@ -44,8 +44,11 @@ export default function Nav() {
 
   return (
     <header
-      className="fixed top-0 inset-x-0 z-50 transition-transform duration-300 ease-[cubic-bezier(0.4,0,0.2,1)]"
-      style={{ transform: isHidden ? "translateY(-110%)" : "translateY(0)" }}
+      className="fixed top-0 inset-x-0 z-50 transition-[transform,opacity] duration-300 ease-[cubic-bezier(0.4,0,0.2,1)]"
+      style={{
+        transform: isHidden ? "translateY(-110%)" : "translateY(0)",
+        opacity: isHidden ? 0 : 1,
+      }}
     >
       <div className="bg-[#08080f]/55 backdrop-blur-2xl border-b border-white/[0.09]" style={{ backdropFilter: "blur(40px) saturate(1.5)" }}>
         <nav className="mx-auto max-w-7xl px-6 md:px-10 h-16 flex items-center justify-between">
@@ -96,13 +99,20 @@ export default function Nav() {
       </div>
       <div className={`md:hidden border-b border-white/[0.06] bg-[#08080f]/95 backdrop-blur-md overflow-hidden transition-all duration-300 ${open ? "max-h-96 py-4 px-6" : "max-h-0"}`}>
         <div className="space-y-0.5">
-          {links.map(({ href, label }) => (
+          {links.map(({ href, label }, i) => (
             <Link key={href} href={href} onClick={() => setOpen(false)}
-              className={`block py-2.5 text-xs font-medium tracking-[0.15em] uppercase transition-colors ${pathname === href ? "text-[#eb4c60]" : "text-zinc-400 hover:text-white"}`}>
+              className={`block py-2.5 text-xs font-medium tracking-[0.15em] uppercase transition-all duration-300 ${open ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-2'} ${pathname === href ? "text-[#eb4c60]" : "text-zinc-400 hover:text-white"}`}
+              style={{ transitionDelay: open ? `${i * 50}ms` : '0ms' }}
+            >
               {label}
             </Link>
           ))}
-          <Link href="/members" onClick={() => setOpen(false)} className={`block py-2.5 text-xs font-medium tracking-[0.15em] uppercase transition-colors ${pathname === "/members" ? "text-[#eb4c60]" : "text-zinc-500 hover:text-white"}`}>
+          <Link
+            href="/members"
+            onClick={() => setOpen(false)}
+            className={`block py-2.5 text-xs font-medium tracking-[0.15em] uppercase transition-all duration-300 ${open ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-2'} ${pathname === "/members" ? "text-[#eb4c60]" : "text-zinc-500 hover:text-white"}`}
+            style={{ transitionDelay: open ? `${links.length * 50}ms` : '0ms' }}
+          >
             Members
           </Link>
         </div>

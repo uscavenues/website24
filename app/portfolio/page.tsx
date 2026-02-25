@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
 import Image from "next/image";
 import {
@@ -57,43 +57,42 @@ export default function PortfolioPage() {
   return (
     <>
       {/* ── PAGE HEADER ──────────────────────────────────────────────────── */}
-      <section className="relative overflow-hidden pt-28 pb-20">
-        <div className="absolute inset-0 dot-texture opacity-35 pointer-events-none" />
-        <div className="absolute -top-40 right-0 w-[600px] h-[500px] rounded-full bg-[#eb4c60]/8 blur-[130px] pointer-events-none" />
+      <section className="relative overflow-hidden pt-24 pb-16 bg-[#09090f]">
+        <div className="absolute -bottom-20 -left-20 w-[600px] h-[500px] rounded-full bg-[#eb4c60]/8 blur-[130px] pointer-events-none" />
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-[#08080f] pointer-events-none" />
 
         <div className="relative z-10 mx-auto max-w-7xl px-6 md:px-10">
+          <span className="absolute right-4 md:right-10 top-20 text-[clamp(8rem,20vw,18rem)] font-black text-white/[0.02] leading-none pointer-events-none select-none">04</span>
           <div className="mb-6">
             <span className="inline-block text-[10px] font-bold uppercase tracking-[0.3em] text-[#eb4c60]">
               Our Work
             </span>
           </div>
           <h1 className="text-[clamp(3rem,12vw,10rem)] font-black leading-[0.85] tracking-tighter text-white">
-            PORT
-            <br />
-            FOLIO
+            <span className="md:hidden">PORTFOLIO</span>
+            <span className="hidden md:block">PORT<br />FOLIO</span>
           </h1>
           <p className="mt-6 max-w-lg text-zinc-500 text-sm leading-relaxed">
-            Pro-bono engagements across strategy, technology, and design,
+            Pro bono engagements across strategy, technology, and design,
             delivered with the rigor of a top-tier consulting firm.
           </p>
         </div>
       </section>
 
       {/* ── OUR CLIENTS ──────────────────────────────────────────────────── */}
-      <section className="pb-24">
+      <section id="clients" className="pb-24 bg-[#f4f4f0]">
         <div className="mx-auto max-w-7xl px-6 md:px-10 mb-12">
           <div className="mb-4 flex items-center gap-4">
             <span className="text-[10px] font-bold uppercase tracking-[0.25em] text-zinc-500">
               Our Clients
             </span>
             <div className="h-px flex-1 bg-white/[0.05]" />
-            <span className="text-[10px] text-zinc-600">
+            <span className="text-[10px] text-zinc-500">
               {clientCards.length} engagements
             </span>
           </div>
-          <p className="text-xs text-zinc-600 max-w-lg">
-            Pro-bono engagements delivered with the rigor of a top-tier firm.
+          <p className="text-xs text-zinc-500 max-w-lg">
+            Pro bono engagements delivered with the rigor of a top-tier firm.
           </p>
         </div>
 
@@ -104,7 +103,7 @@ export default function PortfolioPage() {
             {[...clientCards, ...clientCards].map((client, i) => (
               <div
                 key={`row1-${i}`}
-                className="group relative shrink-0 mr-4 flex flex-col items-center justify-center gap-3 px-10 py-6 min-w-[200px] border border-white/[0.08] bg-white/[0.02] hover:bg-white/[0.05] hover:border-[#eb4c60]/25 transition-all duration-300 rounded-sm"
+                className="group relative shrink-0 mr-4 flex flex-col items-center justify-center gap-3 px-10 py-6 min-w-[200px] border border-zinc-200 bg-white hover:bg-zinc-50 hover:border-[#eb4c60]/30 transition-all duration-300 rounded-sm"
               >
                 {/* Pink top-line on hover */}
                 <div className="absolute top-0 left-0 right-0 h-px bg-[#eb4c60] scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
@@ -113,11 +112,11 @@ export default function PortfolioPage() {
                     src={client.logo}
                     alt={client.name}
                     fill
-                    className="object-contain opacity-50 group-hover:opacity-100 transition-all duration-300"
+                    className="object-contain opacity-70 group-hover:opacity-100 transition-all duration-300"
                     sizes="112px"
                   />
                 </div>
-                <p className="text-[9px] font-semibold uppercase tracking-[0.15em] text-zinc-700 group-hover:text-zinc-400 transition-colors duration-300 whitespace-nowrap">
+                <p className="text-[9px] font-semibold uppercase tracking-[0.15em] text-zinc-500 group-hover:text-zinc-700 transition-colors duration-300 whitespace-nowrap">
                   {client.name}
                 </p>
               </div>
@@ -128,7 +127,7 @@ export default function PortfolioPage() {
             {[...clientCards, ...clientCards].reverse().map((client, i) => (
               <div
                 key={`row2-${i}`}
-                className="group relative shrink-0 mr-4 flex flex-col items-center justify-center gap-3 px-10 py-6 min-w-[200px] border border-white/[0.05] bg-white/[0.01] hover:bg-white/[0.04] hover:border-[#eb4c60]/20 transition-all duration-300 rounded-sm opacity-70 hover:opacity-100"
+                className="group relative shrink-0 mr-4 flex flex-col items-center justify-center gap-3 px-10 py-6 min-w-[200px] border border-zinc-200 bg-zinc-50 hover:bg-zinc-50 hover:border-[#eb4c60]/30 transition-all duration-300 rounded-sm"
               >
                 {/* Pink bottom-line on hover (different from row 1) */}
                 <div className="absolute bottom-0 left-0 right-0 h-px bg-[#eb4c60] scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-right" />
@@ -137,11 +136,11 @@ export default function PortfolioPage() {
                     src={client.logo}
                     alt={client.name}
                     fill
-                    className="object-contain opacity-40 group-hover:opacity-90 transition-all duration-300"
+                    className="object-contain opacity-70 group-hover:opacity-100 transition-all duration-300"
                     sizes="112px"
                   />
                 </div>
-                <p className="text-[9px] font-semibold uppercase tracking-[0.15em] text-zinc-700 group-hover:text-zinc-400 transition-colors duration-300 whitespace-nowrap">
+                <p className="text-[9px] font-semibold uppercase tracking-[0.15em] text-zinc-500 group-hover:text-zinc-700 transition-colors duration-300 whitespace-nowrap">
                   {client.name}
                 </p>
               </div>
@@ -151,7 +150,7 @@ export default function PortfolioPage() {
       </section>
 
       {/* ── PAST PROJECTS ────────────────────────────────────────────────── */}
-      <section className="relative border-t border-white/[0.05] pb-32">
+      <section id="projects" className="relative border-t border-white/[0.05] pb-32">
         <div className="mx-auto max-w-7xl px-6 md:px-10 pt-20">
           {/* Section header */}
           <div className="mb-12 flex items-center gap-4">
@@ -210,11 +209,19 @@ export default function PortfolioPage() {
 
             {/* Right: project rows */}
             <div>
-              <div>
-                {activeProjects.map((project, i) => (
-                  <ProjectRow key={project.title} project={project} index={i} />
-                ))}
-              </div>
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={activeTab}
+                  initial={{ opacity: 0, y: 12 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -8 }}
+                  transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1] }}
+                >
+                  {activeProjects.map((project, i) => (
+                    <ProjectRow key={project.title} project={project} index={i} />
+                  ))}
+                </motion.div>
+              </AnimatePresence>
             </div>
           </div>
         </div>

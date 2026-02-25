@@ -23,7 +23,7 @@ interface MentorCompany {
 interface AlumniPlacement {
   company: string;
   logo: string;
-  positions: string[]; // prefix: "(FT)" = full-time, "(I)" = internship
+  positions: string[]; // prefix: "(Full-Time)" or "(Intern)"
 }
 
 interface ClientEngagement {
@@ -221,73 +221,73 @@ export const mentors: MentorCompany[] = [
 
 // ─────────────────────────────────────────────────────────────────────────────
 //  Alumni Placements
-//  (FT) = Full-Time  |  (I) = Internship
+//  (Full-Time) or (Intern) prefix
 // ─────────────────────────────────────────────────────────────────────────────
 
 export const alumni: AlumniPlacement[] = [
   {
     company: "Bank of America",
     logo: "/assets/logos/bank-of-america-emblem.png",
-    positions: ["(FT) PM"],
+    positions: ["(Full-Time) PM"],
   },
   {
     company: "EY",
     logo: "/assets/logos/ey.png",
-    positions: ["(I) Process & Controls"],
+    positions: ["(Intern) Process & Controls"],
   },
   {
     company: "JP Morgan",
     logo: "/assets/logos/jp.png",
-    positions: ["(I) IB", "(I) Analyst"],
+    positions: ["(Intern) IB", "(Intern) Analyst"],
   },
   {
     company: "PwC",
     logo: "/assets/logos/pwc.png",
     positions: [
-      "(I) Cyber Defense & Eng.",
-      "(I) Cyber Risk & Reg.",
-      "(I) Tech Consultant",
+      "(Intern) Cyber Defense & Eng.",
+      "(Intern) Cyber Risk & Reg.",
+      "(Intern) Tech Consultant",
     ],
   },
   {
     company: "Northrop Grumman",
     logo: "/assets/logos/northrop.png",
-    positions: ["(I) Cyber Info Assurance"],
+    positions: ["(Intern) Cyber Info Assurance"],
   },
   {
     company: "Deloitte",
     logo: "/assets/logos/deloitte.png",
-    positions: ["(I) Management Consulting"],
+    positions: ["(Intern) Management Consulting"],
   },
   {
     company: "Disney",
     logo: "/assets/logos/disney.jpg",
-    positions: ["(I) Corp. Enterprise Risk Mgmt."],
+    positions: ["(Intern) Corp. Enterprise Risk Mgmt."],
   },
   {
     company: "KPMG",
     logo: "/assets/logos/kpmg.png",
-    positions: ["(I) Consultant"],
+    positions: ["(Intern) Consultant"],
   },
   {
     company: "General Dynamics",
     logo: "/assets/logos/general_dynamics.jpg",
-    positions: ["(I) Software Eng."],
+    positions: ["(Intern) Software Eng."],
   },
   {
     company: "DrFirst",
     logo: "/assets/logos/drfirst.png",
-    positions: ["(I) Software Eng."],
+    positions: ["(Intern) Software Eng."],
   },
   {
     company: "US Bank",
     logo: "/assets/logos/usbank.png",
-    positions: ["(I) PM"],
+    positions: ["(Intern) PM"],
   },
   {
     company: "Accenture",
     logo: "/assets/logos/accenture.png",
-    positions: ["(I) Consulting Analyst"],
+    positions: ["(Intern) Consulting Analyst"],
   },
 ];
 
@@ -492,7 +492,7 @@ export const designProjects: ProjectType[] = [
   },
   {
     title: "Web & Mobile UI/UX Design",
-    desc: "User research, wireframing, prototyping, and high-fidelity UI design for web and mobile products  -  delivered as Figma handoffs or fully implemented.",
+    desc: "User research, wireframing, prototyping, and high-fidelity UI design for web and mobile products, delivered as Figma handoffs or fully implemented.",
     clients: "Network of Care, Captis Intelligence, AANC",
   },
 ];
@@ -512,7 +512,7 @@ export const faqApplication: FAQItem[] = [
   },
   {
     q: "What does the application process look like?",
-    a: "The process typically includes a written application followed by a brief interview. We want to learn about you, your interests, and how you think  -  not just your credentials.",
+    a: "The process typically includes a written application followed by a brief interview. We want to learn about you, your interests, and how you think, not just your credentials.",
   },
   {
     q: "How much time does membership require?",
@@ -535,15 +535,15 @@ export const faqApplication: FAQItem[] = [
 export const faqOrg: FAQItem[] = [
   {
     q: "What makes Avenues different from other consulting clubs?",
-    a: "We work on real, live engagements with actual clients  -  not case studies. Every member contributes to a deliverable that a real organization will act on. We also span three disciplines (strategy, tech, and design) under one roof, which makes our project teams genuinely multidisciplinary.",
+    a: "We work on real, live engagements with actual clients, not case studies. Every member contributes to a deliverable that a real organization will act on. We also span three disciplines (strategy, tech, and design) under one roof, which makes our project teams genuinely multidisciplinary.",
   },
   {
     q: "What kinds of clients does Avenues work with?",
-    a: "We partner with non-profits, early-stage startups, and established companies across a wide range of industries. All of our work is pro-bono  -  our clients pay nothing, and our members build real skills in return.",
+    a: "We partner with non-profits, early-stage startups, and established companies across a wide range of industries. All of our work is pro bono — our clients pay nothing, and our members build real skills in return.",
   },
   {
     q: "How are members placed on client teams?",
-    a: "At the start of each semester we hold a Client Reveal  -  members are matched to client teams based on their stated interests, skillsets, and availability. We aim to give everyone a placement that both challenges and excites them.",
+    a: "At the start of each semester we hold a Client Reveal: members are matched to client teams based on their stated interests, skillsets, and availability. We aim to give everyone a placement that both challenges and excites them.",
   },
   {
     q: "Does Avenues help with recruiting?",

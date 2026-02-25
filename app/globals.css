@@ -13,6 +13,13 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+/* Keyboard navigation focus styles */
+:focus-visible {
+  outline: 2px solid #eb4c60;
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
 /* Halftone dot textures */
 .dot-texture {
   background-image: radial-gradient(circle, rgba(235, 76, 96, 0.22) 1px, transparent 1px);
@@ -46,6 +53,11 @@ body {
   }
 }
 
+@media (prefers-reduced-motion: reduce) {
+  /* Tell Framer Motion consumers to disable animations */
+  :root { --reduce-motion: 1; }
+}
+
 /* Stagger delays for scroll-reveal (transition-delay) */
 .reveal.delay-1, .reveal-scale.delay-1 { transition-delay: 80ms; }
 .reveal.delay-2, .reveal-scale.delay-2 { transition-delay: 160ms; }
@@ -54,6 +66,14 @@ body {
 .reveal.delay-5, .reveal-scale.delay-5 { transition-delay: 400ms; }
 .reveal.delay-6, .reveal-scale.delay-6 { transition-delay: 480ms; }
 .reveal.delay-7, .reveal-scale.delay-7 { transition-delay: 560ms; }
+.reveal-left.delay-1, .reveal-right.delay-1 { transition-delay: 80ms; }
+.reveal-left.delay-2, .reveal-right.delay-2 { transition-delay: 160ms; }
+.reveal-left.delay-3, .reveal-right.delay-3 { transition-delay: 240ms; }
+.reveal-left.delay-4, .reveal-right.delay-4 { transition-delay: 320ms; }
+.reveal-left.delay-5, .reveal-right.delay-5 { transition-delay: 400ms; }
+.reveal.delay-8, .reveal-scale.delay-8, .reveal-left.delay-8, .reveal-right.delay-8 { transition-delay: 640ms; }
+.reveal.delay-9, .reveal-scale.delay-9, .reveal-left.delay-9, .reveal-right.delay-9 { transition-delay: 720ms; }
+.reveal.delay-10, .reveal-scale.delay-10, .reveal-left.delay-10, .reveal-right.delay-10 { transition-delay: 800ms; }
 
 /* Anchor offset for fixed nav */
 [id] { scroll-margin-top: 80px; }
@@ -105,6 +125,30 @@ body {
   transform: translateY(0) scale(1);
 }
 
+.reveal-left {
+  opacity: 0;
+  transform: translateX(-32px);
+  transition:
+    opacity 0.75s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.75s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.reveal-left.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.reveal-right {
+  opacity: 0;
+  transform: translateX(32px);
+  transition:
+    opacity 0.75s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.75s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.reveal-right.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
 /* ── Glass card — reusable across all pages ──────────────────────────────── */
 .glass-card {
   background: rgba(255, 255, 255, 0.055);
@@ -145,6 +189,12 @@ body {
 @keyframes marquee-reverse {
   from { transform: translateX(-50%); }
   to   { transform: translateX(0); }
+}
+
+/* Pause marquee on hover — wrap marquees in a div with .marquee-hover-pause */
+.marquee-hover-pause:hover .marquee-track,
+.marquee-hover-pause:hover .marquee-track-reverse {
+  animation-play-state: paused;
 }
 
 /* DM Serif Display utility */
@@ -199,3 +249,24 @@ body {
   transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
 }
 .hover-sweep:hover::after { transform: scaleX(1); }
+
+/* Grain overlay for texture depth */
+.grain-overlay::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+  pointer-events: none;
+  opacity: 0.35;
+  mix-blend-mode: overlay;
+  z-index: 1;
+}
+
+/* Light section — alternating background for visual rhythm */
+.light-section {
+  background-color: #f4f4f0;
+  color: #1a1a1a;
+}
+.light-section .section-label {
+  color: #9a9a9a;
+}

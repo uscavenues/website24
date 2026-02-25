@@ -141,8 +141,8 @@ export default function HomePage() {
 
               {/* Tagline + CTAs — appear right after GROUP */}
               <motion.div style={{ opacity: contentOp, y: contentY }}>
-                <p className="mt-8 max-w-lg text-zinc-400 text-lg leading-relaxed">
-                  USC&apos;s premier student-run consulting group, pro-bono,
+                <p className="mt-8 max-w-lg text-zinc-400 text-xl leading-relaxed font-display italic">
+                  USC&apos;s premier student-run consulting group — pro bono,
                   multidisciplinary, and built for impact.
                 </p>
                 <div className="flex flex-wrap gap-3 mt-8">
@@ -165,7 +165,7 @@ export default function HomePage() {
       </div>
 
       {/* ══════════════════════ THREE PILLARS ══════════════════════════════════ */}
-      <section className="mx-auto max-w-7xl px-6 md:px-10 py-24">
+      <section id="what-we-do" className="mx-auto max-w-7xl px-6 md:px-10 py-24">
         <ScrollReveal className="mb-16 flex items-center gap-4">
           <span className="text-[10px] font-bold uppercase tracking-[0.25em] text-zinc-500">What We Do</span>
           <div className="h-px flex-1 bg-white/[0.05]" />
@@ -232,12 +232,15 @@ export default function HomePage() {
                 </h3>
 
                 {/* Description — hidden on small, shown on md+ */}
-                <p className="hidden md:block max-w-sm text-sm text-zinc-500 leading-relaxed group-hover:text-zinc-300 transition-colors duration-300 flex-shrink-0">
+                <p className="block max-w-sm text-sm text-zinc-500 leading-relaxed group-hover:text-zinc-300 transition-colors duration-300 flex-shrink-0">
                   {desc}
                 </p>
 
+                {/* See our work link */}
+                <Link href="/portfolio" onClick={(e) => e.stopPropagation()} className="text-[9px] uppercase tracking-[0.15em] text-[#eb4c60]/60 hover:text-[#eb4c60] transition-colors duration-200 shrink-0">See our work →</Link>
+
                 {/* Arrow */}
-                <div className="shrink-0 w-8 h-8 rounded-full border border-white/[0.08] flex items-center justify-center group-hover:border-[#eb4c60]/50 group-hover:bg-[#eb4c60]/[0.06] transition-all duration-300">
+                <div className="shrink-0 w-10 h-10 rounded-full border border-white/[0.08] flex items-center justify-center group-hover:border-[#eb4c60]/50 group-hover:bg-[#eb4c60]/[0.06] transition-all duration-300">
                   <svg className="w-3.5 h-3.5 text-zinc-500 group-hover:text-[#eb4c60] group-hover:translate-x-0.5 transition-all duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
                   </svg>
@@ -250,18 +253,21 @@ export default function HomePage() {
 
       {/* ══════════════════════ COHORT PHOTO ═══════════════════════════════════ */}
       <ScrollReveal className="mx-auto max-w-7xl px-6 md:px-10 pb-24">
-        <div className="relative rounded-sm overflow-hidden aspect-[16/7]">
-          <Image src="/assets/photos/home.jpg" alt="Avenues cohort" fill className="object-cover" sizes="100vw" />
-          <div className="absolute inset-0 bg-gradient-to-t from-[#08080f] via-[#08080f]/20 to-transparent" />
-          <div className="absolute bottom-8 left-8">
-            <p className="text-[10px] uppercase tracking-[0.2em] text-zinc-500 mb-1">Spring &apos;26 Cohort</p>
-            <p className="text-sm text-zinc-300">Avenues Consulting Group &middot; USC</p>
+        <div className="relative">
+          <div className="relative rounded-sm overflow-hidden aspect-[16/7]">
+            <Image src="/assets/photos/home.jpg" alt="Avenues cohort" fill className="object-cover" sizes="100vw" />
+            <div className="absolute inset-0 bg-gradient-to-t from-[#08080f] via-[#08080f]/20 to-transparent" />
+            <div className="absolute bottom-8 left-8">
+              <p className="text-[10px] uppercase tracking-[0.2em] text-zinc-500 mb-1">Spring &apos;26 Cohort</p>
+              <p className="text-sm text-zinc-300">Avenues Consulting Group &middot; USC</p>
+            </div>
           </div>
+          <p className="text-[10px] text-zinc-600 uppercase tracking-[0.2em] mt-3 text-center">Spring 2026 Cohort · Los Angeles, CA</p>
         </div>
       </ScrollReveal>
 
       {/* ══════════════════════ STATS BAND ═════════════════════════════════════ */}
-      <section className="relative overflow-hidden border-y border-white/[0.05]">
+      <section id="stats" className="relative overflow-hidden border-y border-white/[0.05]">
         <div className="absolute inset-0 dot-texture-subtle opacity-50 pointer-events-none" />
         {/* Pink radial bloom */}
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[400px] rounded-full bg-[#eb4c60]/[0.05] blur-[120px] pointer-events-none" />
@@ -270,8 +276,8 @@ export default function HomePage() {
           {[
             { value: "20+",  label: "Client engagements",   sub: "Since Fall 2023",             hoverStyle: "translate-y" },
             { value: "24",   label: "Majors represented",   sub: "Across all disciplines",       hoverStyle: "scale" },
-            { value: "3",    label: "Practice areas",       sub: "Strategy · Tech · Design",     hoverStyle: "color" },
-            { value: "100%", label: "Pro-bono",             sub: "Always free for clients",       hoverStyle: "glow" },
+            { value: "3",    label: "Practice areas",       sub: "Across 3 disciplines",          hoverStyle: "color" },
+            { value: "100%", label: "Pro bono",              sub: "Always free for clients",       hoverStyle: "glow" },
           ].map(({ value, label, sub, hoverStyle }) => (
             <ScrollReveal key={label}>
               <div className={`group relative flex flex-col justify-center px-8 md:px-12 py-16 overflow-hidden`}>

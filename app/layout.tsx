@@ -5,6 +5,7 @@ import "./globals.css";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
 import PageTransition from "@/components/PageTransition";
+import ScrollToTop from "@/components/ScrollToTop";
 
 const dmSerif = DM_Serif_Display({
   weight: "400",
@@ -32,6 +33,7 @@ export default function RootLayout({
           <PageTransition>{children}</PageTransition>
         </main>
         <Footer />
+        <ScrollToTop />
       </body>
     </html>
   );

@@ -165,7 +165,7 @@ export default function AboutPage() {
 
           <div className="grid grid-cols-1 md:grid-cols-[1fr_1px_1fr] gap-10 md:gap-0">
             {/* Left column  -  clients */}
-            <ScrollReveal className="reveal-left">
+            <ScrollReveal className="reveal-left delay-1">
               <div className="md:pr-16">
                 <p className="text-[10px] font-bold uppercase tracking-[0.25em] text-zinc-500 mb-5">
                   For our clients
@@ -189,7 +189,7 @@ export default function AboutPage() {
             </div>
 
             {/* Right column  -  consultants */}
-            <ScrollReveal className="reveal-right">
+            <ScrollReveal className="reveal-right delay-2">
               <div className="md:pl-16">
                 <p className="text-[10px] font-bold uppercase tracking-[0.25em] text-zinc-500 mb-5">
                   For our consultants
@@ -222,9 +222,9 @@ export default function AboutPage() {
         {/* ── CHANGE 3a: EXECUTIVE — large portrait cards ── */}
         <div className="mb-28">
           <p className="text-[11px] font-black uppercase tracking-[0.35em] text-zinc-400 mb-12">
-            Executive
+            Executive Leadership
           </p>
-          <div className="grid grid-cols-2 gap-4 max-w-2xl">
+          <div className="grid grid-cols-2 gap-4 max-w-3xl">
             {team.executive.map((member) => (
               <div key={member.name} className="group relative overflow-hidden rounded-sm cursor-pointer">
                 {/* Photo */}
@@ -255,7 +255,7 @@ export default function AboutPage() {
                     <svg width="10" height="10" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                       <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
                     </svg>
-                    LinkedIn
+                    LinkedIn ↗
                   </Link>
                 </div>
               </div>
@@ -266,9 +266,11 @@ export default function AboutPage() {
         {/* ── CHANGE 3b: DIRECTORS — horizontal editorial list ── */}
         <div className="mb-28">
           <div className="h-px bg-white/[0.04] mb-12" />
+          <div className="border-l-2 border-[#eb4c60]/30 pl-4">
           <p className="text-[11px] font-black uppercase tracking-[0.35em] text-zinc-400 mb-10">
             Directors
           </p>
+          </div>
 
           <div className="divide-y divide-white/[0.05]">
             {team.directors.map((member, idx) => (
@@ -306,7 +308,7 @@ export default function AboutPage() {
                   target="_blank"
                   rel="noopener noreferrer"
                   className="shrink-0 text-zinc-700 hover:text-[#eb4c60] transition-colors duration-200"
-                  aria-label={`${member.name} on LinkedIn`}
+                  aria-label={`${member.name} on LinkedIn (opens in new tab)`}
                 >
                   <svg width="12" height="12" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                     <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
@@ -320,13 +322,16 @@ export default function AboutPage() {
         {/* ── CHANGE 3c: ASSOCIATES — compact two-column editorial list ── */}
         <div>
           <div className="h-px bg-white/[0.04] mb-12" />
+          <div className="border-l-2 border-white/[0.05] pl-4">
           <p className="text-[11px] font-black uppercase tracking-[0.35em] text-zinc-400 mb-10">
             Associates
           </p>
+          </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-0 divide-y divide-white/[0.04] md:divide-y-0">
-            {team.associates.map((member) => (
-              <div key={member.name} className="group relative flex items-center gap-5 py-4 border-b border-white/[0.04] overflow-hidden">
+            {team.associates.map((member, i) => (
+              <ScrollReveal key={member.name} className={`reveal delay-${(i % 5) + 1}`}>
+              <div className="group relative flex items-center gap-5 py-4 border-b border-white/[0.04] overflow-hidden">
                 {/* Sweep */}
                 <div className="absolute bottom-0 left-0 right-0 h-px bg-[#eb4c60]/50 scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-[400ms] pointer-events-none" />
 
@@ -355,13 +360,14 @@ export default function AboutPage() {
                   target="_blank"
                   rel="noopener noreferrer"
                   className="shrink-0 text-zinc-700 hover:text-[#eb4c60] transition-colors duration-200 opacity-0 group-hover:opacity-100"
-                  aria-label={`${member.name} on LinkedIn`}
+                  aria-label={`${member.name} on LinkedIn (opens in new tab)`}
                 >
                   <svg width="10" height="10" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                     <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
                   </svg>
                 </Link>
               </div>
+              </ScrollReveal>
             ))}
           </div>
         </div>
@@ -399,6 +405,18 @@ export default function AboutPage() {
           </div>
         </div>
       </section>
+    
+      <div className="mx-auto max-w-7xl px-6 md:px-10 pb-16 flex justify-end">
+        <button
+          onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+          className="text-[10px] uppercase tracking-[0.2em] text-zinc-600 hover:text-[#eb4c60] transition-colors duration-200 flex items-center gap-2"
+        >
+          <svg className="w-3 h-3 rotate-[-90deg]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+          </svg>
+          Back to top
+        </button>
+      </div>
     </>
   );
 }

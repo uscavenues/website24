@@ -153,7 +153,7 @@ export default function CommunityPage() {
       ══════════════════════════════════════════════════ */}
 
       {/* Section header — constrained */}
-      <div className="mx-auto max-w-7xl px-6 md:px-10 py-14 pb-8">
+      <div id="majors" className="mx-auto max-w-7xl px-6 md:px-10 py-14 pb-8">
         <div className="mb-8 flex items-center gap-4">
           <span className="text-[10px] font-bold uppercase tracking-[0.25em] text-zinc-500">
             Our Members
@@ -281,7 +281,7 @@ export default function CommunityPage() {
       {/* ══════════════════════════════════════════════════
           5. OUR MENTORS — dual opposing marquee
       ══════════════════════════════════════════════════ */}
-      <section className="border-t border-white/[0.04]">
+      <section id="mentors" className="border-t border-white/[0.04]">
         {/* Section header — constrained */}
         <div className="mx-auto max-w-7xl px-6 md:px-10 py-16 pb-8">
           <div className="mb-8 flex items-center gap-4">
@@ -305,13 +305,13 @@ export default function CommunityPage() {
                 key={`r1-${i}`}
                 className="shrink-0 mr-8 flex items-center justify-center glass-card-deep rounded-sm px-8 py-4 min-w-[160px]"
               >
-                <div className="relative h-7 w-28">
+                <div className="relative h-8 w-32">
                   <Image
                     src={mentor.logo}
                     alt={mentor.name}
                     fill
-                    className="object-contain opacity-60 hover:opacity-100 transition-opacity duration-300"
-                    sizes="112px"
+                    className="object-contain opacity-70 hover:opacity-100 transition-opacity duration-300"
+                    sizes="128px"
                   />
                 </div>
               </div>
@@ -325,13 +325,13 @@ export default function CommunityPage() {
                 key={`r2-${i}`}
                 className="shrink-0 mr-8 flex items-center justify-center glass-card-deep rounded-sm px-8 py-4 min-w-[160px]"
               >
-                <div className="relative h-7 w-28">
+                <div className="relative h-8 w-32">
                   <Image
                     src={mentor.logo}
                     alt={mentor.name}
                     fill
-                    className="object-contain opacity-40 hover:opacity-80 transition-opacity duration-300"
-                    sizes="112px"
+                    className="object-contain opacity-60 hover:opacity-90 transition-opacity duration-300"
+                    sizes="128px"
                   />
                 </div>
               </div>
@@ -343,55 +343,56 @@ export default function CommunityPage() {
       {/* ══════════════════════════════════════════════════
           6. ALUMNI PLACEMENTS
       ══════════════════════════════════════════════════ */}
-      <section className="relative border-t border-white/[0.04]">
+      <section id="alumni" className="relative bg-[#f4f4f0] border-t border-zinc-200">
         <div className="mx-auto max-w-7xl px-6 md:px-10 py-20">
           <div className="mb-6 flex items-center gap-4">
             <span className="text-[10px] font-bold uppercase tracking-[0.25em] text-zinc-500">
               Alumni Placements
             </span>
-            <div className="h-px flex-1 bg-white/[0.05]" />
+            <div className="h-px flex-1 bg-zinc-200" />
           </div>
 
           <div className="mb-10 flex flex-col sm:flex-row sm:items-end gap-4">
-            <h2 className="text-[clamp(1.8rem,4vw,3rem)] font-black text-white tracking-tight leading-tight">
+            <h2 className="text-[clamp(1.8rem,4vw,3rem)] font-black text-zinc-900 tracking-tight leading-tight">
               Our alumni have placed at<br />
-              <span className="text-[#eb4c60]">top firms globally.</span>
+              <span className="text-[#c73d51]">top firms globally.</span>
             </h2>
           </div>
 
           {/* Editorial placement record — alternating rows */}
-          <div className="divide-y divide-white/[0.05]">
+          <div className="divide-y divide-zinc-200">
             {alumni.map(({ company, logo, positions }, idx) => (
               <div
                 key={company}
-                className="group relative flex flex-col sm:flex-row sm:items-center gap-4 sm:gap-8 py-6 overflow-hidden"
+                className="group relative flex flex-col sm:flex-row sm:items-center gap-4 sm:gap-8 py-6 overflow-hidden transition-opacity duration-500"
+                style={{ animationDelay: `${idx * 40}ms` }}
               >
                 {/* Unique hover effect — alternating sweep direction */}
                 <div className={`absolute bottom-0 left-0 right-0 h-px bg-[#eb4c60] scale-x-0 group-hover:scale-x-100 transition-transform duration-500 pointer-events-none ${idx % 2 === 0 ? "origin-left" : "origin-right"}`} />
 
                 {/* Left: index + logo */}
                 <div className="flex items-center gap-6 shrink-0">
-                  <span className="text-[10px] font-mono text-zinc-700 group-hover:text-[#eb4c60]/60 transition-colors duration-300 w-5">{String(idx + 1).padStart(2, "0")}</span>
-                  <div className="relative h-6 w-24 shrink-0">
+                  <span className="text-[10px] font-mono text-zinc-400 group-hover:text-[#c73d51]/60 transition-colors duration-300 w-5">{String(idx + 1).padStart(2, "0")}</span>
+                  <div className="relative h-7 w-28 shrink-0">
                     <Image
                       src={logo}
                       alt={company}
                       fill
-                      className="object-contain object-left opacity-50 group-hover:opacity-100 transition-all duration-300"
-                      sizes="96px"
+                      className="object-contain object-left opacity-80 group-hover:opacity-100 transition-all duration-300"
+                      sizes="112px"
                     />
                   </div>
                 </div>
 
                 {/* Center: company name — grows to fill */}
-                <p className="flex-1 text-sm font-bold text-zinc-300 group-hover:text-white transition-colors duration-300 tracking-tight">{company}</p>
+                <p className="flex-1 text-sm font-bold text-zinc-700 group-hover:text-zinc-900 transition-colors duration-300 tracking-tight">{company}</p>
 
                 {/* Right: position tags */}
                 <div className="flex flex-wrap gap-1.5 shrink-0">
                   {positions.map((pos) => (
                     <span
                       key={pos}
-                      className="text-[9px] font-medium text-zinc-600 border border-white/[0.06] bg-white/[0.02] px-2 py-0.5 rounded-sm group-hover:border-[#eb4c60]/25 group-hover:text-zinc-400 transition-all duration-200 whitespace-nowrap"
+                      className="text-[9px] font-medium text-[#c73d51] border border-[#c73d51]/30 bg-[#c73d51]/[0.05] px-2 py-0.5 rounded-sm group-hover:border-[#c73d51]/50 group-hover:bg-[#c73d51]/[0.08] transition-all duration-200 whitespace-nowrap"
                     >
                       {pos}
                     </span>
@@ -402,6 +403,19 @@ export default function CommunityPage() {
           </div>
         </div>
       </section>
+
+      {/* ══════════════════════════════════════════════════
+          COMMUNITY CROSS-LINK
+      ══════════════════════════════════════════════════ */}
+      <div className="mx-auto max-w-7xl px-6 md:px-10 py-12 text-center">
+        <p className="text-zinc-500 text-sm mb-4">Want to be part of this community?</p>
+        <Link
+          href="/apply"
+          className="inline-flex items-center gap-2 border border-[#eb4c60]/30 text-[#eb4c60] px-5 py-2.5 text-xs font-semibold uppercase tracking-[0.15em] rounded-sm hover:bg-[#eb4c60]/[0.06] transition-colors duration-200"
+        >
+          Apply Now →
+        </Link>
+      </div>
 
       {/* ══════════════════════════════════════════════════
           BOTTOM CTA

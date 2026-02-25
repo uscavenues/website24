@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { faqApplication, faqOrg, type FAQItem } from "@/lib/data";
+import ScrollReveal from "@/components/ScrollReveal";
 
 type Tab = "application" | "org";
 
@@ -51,7 +52,7 @@ function FAQAccordion({ items }: { items: FAQItem[] }) {
             {/* Smooth max-h accordion */}
             <div
               className={`overflow-hidden transition-all duration-300 ease-in-out ${
-                isOpen ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
+                isOpen ? "max-h-[600px] opacity-100" : "max-h-0 opacity-0"
               }`}
             >
               <p className="pb-6 pr-12 text-sm text-zinc-400 leading-relaxed">
@@ -105,11 +106,10 @@ export default function ApplyClient() {
             {/* Status indicator */}
             <div className="flex items-center gap-3 shrink-0">
               <span className="relative flex h-3 w-3">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#eb4c60] opacity-50" />
-                <span className="relative inline-flex rounded-full h-3 w-3 bg-[#eb4c60]" />
+                <span className="relative inline-flex rounded-full h-3 w-3 bg-amber-400" />
               </span>
-              <span className="text-[10px] font-bold uppercase tracking-[0.25em] text-[#eb4c60]">
-                Status
+              <span className="text-[10px] font-bold uppercase tracking-[0.25em] text-amber-400">
+                Applications Closed
               </span>
             </div>
 
@@ -137,6 +137,7 @@ export default function ApplyClient() {
                 </a>{" "}
                 to get notified when the next cycle opens.
               </p>
+              <p className="text-xs text-zinc-500 mt-2">Applications reopen at the start of each semester. Follow <a href="https://www.instagram.com/uscavenues/" className="text-[#eb4c60] hover:underline">@uscavenues</a> for announcements.</p>
             </div>
 
             {/* IG CTA */}
@@ -161,11 +162,13 @@ export default function ApplyClient() {
       </section>
 
       {/* ── WHAT WE LOOK FOR ─────────────────────────────────────────────── */}
-      <section className="mx-auto max-w-7xl px-6 md:px-10 pb-24">
+      <section id="what-we-look-for" className="mx-auto max-w-7xl px-6 md:px-10 pb-24">
+        <ScrollReveal className="reveal">
         <div className="mb-10 flex items-center gap-4">
           <span className="text-[10px] font-bold uppercase tracking-[0.25em] text-zinc-500">What We Look For</span>
           <div className="h-px flex-1 bg-white/[0.05]" />
         </div>
+        </ScrollReveal>
 
         <div className="divide-y divide-white/[0.05]">
           {[
@@ -247,13 +250,13 @@ export default function ApplyClient() {
                 </h3>
 
                 {/* Description — right aligned, desktop only */}
-                <p className="hidden md:block flex-1 text-sm text-zinc-500 leading-relaxed group-hover:text-zinc-300 transition-colors duration-300">
+                <p className="flex-1 text-sm text-zinc-500 leading-relaxed group-hover:text-zinc-300 transition-colors duration-300">
                   {desc}
                 </p>
               </div>
 
               {/* Mobile description below */}
-              <p className="md:hidden text-xs text-zinc-500 leading-relaxed pl-12 group-hover:text-zinc-300 transition-colors duration-300">
+              <p className="text-xs text-zinc-500 leading-relaxed pl-12 group-hover:text-zinc-300 transition-colors duration-300 md:hidden">
                 {desc}
               </p>
             </div>
@@ -262,15 +265,17 @@ export default function ApplyClient() {
       </section>
 
       {/* ── FAQ SECTION ──────────────────────────────────────────────────── */}
-      <section className="relative border-t border-white/[0.05] pb-32">
+      <section id="faq" className="relative border-t border-white/[0.05] pb-32">
         <div className="mx-auto max-w-7xl px-6 md:px-10 pt-20">
           {/* Section label */}
+          <ScrollReveal className="reveal">
           <div className="mb-12 flex items-center gap-4">
             <span className="text-[10px] font-bold uppercase tracking-[0.25em] text-zinc-500">
               FAQ
             </span>
             <div className="h-px flex-1 bg-white/[0.05]" />
           </div>
+          </ScrollReveal>
 
           <div className="grid grid-cols-1 lg:grid-cols-[280px_1fr] gap-12 lg:gap-20">
             {/* Left: heading + tabs */}
