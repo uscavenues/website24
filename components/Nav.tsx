@@ -70,7 +70,7 @@ export default function Nav() {
               <Link
                 key={href}
                 href={href}
-                className={`px-3.5 py-1.5 text-[11px] font-medium tracking-[0.15em] uppercase rounded-sm transition-colors duration-200 ${pathname === href ? "text-[#eb4c60] border-l border-[#eb4c60] pl-2" : "text-zinc-400 hover:text-white pl-2"}`}
+                className={`px-3.5 py-1.5 text-[11px] font-medium tracking-[0.15em] uppercase rounded-sm transition-colors duration-200 ${pathname === href ? "text-[#eb4c60]" : "text-zinc-400 hover:text-white"}`}
               >
                 {label}
               </Link>
@@ -101,7 +101,7 @@ export default function Nav() {
         <div className="space-y-0.5">
           {links.map(({ href, label }, i) => (
             <Link key={href} href={href} onClick={() => setOpen(false)}
-              className={`block py-2.5 text-xs font-medium tracking-[0.15em] uppercase transition-all duration-300 ${open ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-2'} ${pathname === href ? "text-[#eb4c60] border-l border-[#eb4c60] pl-2" : "text-zinc-400 hover:text-white pl-2"}`}
+              className={`block py-2.5 text-xs font-medium tracking-[0.15em] uppercase transition-all duration-300 ${open ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-2'} ${pathname === href ? "text-[#eb4c60]" : "text-zinc-400 hover:text-white"}`}
               style={{ transitionDelay: open ? `${i * 35}ms` : '0ms' }}
             >
               {label}

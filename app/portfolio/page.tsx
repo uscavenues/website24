@@ -21,13 +21,20 @@ const PROJECT_TABS: { key: ProjectTab; label: string; data: Project[] }[] = [
   { key: "design", label: "Design", data: designProjects },
 ];
 
-function ProjectRow({ project, index }: { project: Project; index: number }) {
+const TAB_ACCENTS: Record<ProjectTab, string> = {
+  strategy: "#3b82f6",   // blue
+  technology: "#10b981", // green
+  design: "#a855f7",     // purple
+};
+
+function ProjectRow({ project, index, accent }: { project: Project; index: number; accent: string }) {
   return (
     <div className="group relative flex flex-col sm:flex-row sm:items-start gap-4 sm:gap-8 py-8 border-b border-white/[0.05] overflow-hidden">
       {/* Sweep line */}
-      <div className="absolute bottom-0 left-0 right-0 h-px bg-[#eb4c60] scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-500 pointer-events-none" aria-hidden="true" />
+      <div className="absolute bottom-0 left-0 right-0 h-px scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-500 pointer-events-none" style={{ background: accent }} aria-hidden="true" />
 
       {/* Index — large, faded */}
+      <span className="shrink-0 w-1 self-stretch rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300" style={{ background: accent }} />
       <span className="shrink-0 text-[clamp(2rem,4vw,3.5rem)] font-black font-mono text-zinc-800 group-hover:text-[#eb4c60]/20 transition-colors duration-300 leading-none w-12 md:w-16">
         {String(index + 1).padStart(2, "0")}
       </span>
@@ -239,7 +246,7 @@ export default function PortfolioPage() {
                   transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1] }}
                 >
                   {activeProjects.map((project, i) => (
-                    <ProjectRow key={project.title} project={project} index={i} />
+                    <ProjectRow key={project.title} project={project} index={i} accent={TAB_ACCENTS[activeTab]} />
                   ))}
                 </motion.div>
               </AnimatePresence>

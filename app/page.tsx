@@ -8,10 +8,43 @@ import ScrollReveal from "@/components/ScrollReveal";
 
 interface Pos { x: number; y: number; sz: number }
 
+function CountUp({ end, suffix = "", duration = 1.5 }: { end: number; suffix?: string; duration?: number }) {
+  const [count, setCount] = useState(0);
+  const ref = useRef<HTMLSpanElement>(null);
+  const started = useRef(false);
+
+  useLayoutEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting && !started.current) {
+          started.current = true;
+          const startTime = performance.now();
+          const tick = (now: number) => {
+            const elapsed = (now - startTime) / 1000;
+            const progress = Math.min(elapsed / duration, 1);
+            const eased = 1 - Math.pow(1 - progress, 3);
+            setCount(Math.floor(eased * end));
+            if (progress < 1) requestAnimationFrame(tick);
+            else setCount(end);
+          };
+          requestAnimationFrame(tick);
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.5 }
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, [end, duration]);
+
+  return <span ref={ref}>{count}{suffix}</span>;
+}
+
 export default function HomePage() {
   const aRef = useRef<HTMLSpanElement>(null);
   const heroRef = useRef<HTMLDivElement>(null);
-  const statsRef = useRef<HTMLDivElement>(null);
 
   // Start: big centered logo — synchronous so it never teleports
   const [start] = useState<Pos>(() => {
@@ -40,23 +73,6 @@ export default function HomePage() {
     window.addEventListener("resize", measure);
     return () => window.removeEventListener("resize", measure);
   }, []); // eslint-disable-line react-hooks/exhaustive-deps
-
-  // Stats count-up reveal via IntersectionObserver
-  useLayoutEffect(() => {
-    const el = statsRef.current;
-    if (!el) return;
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          el.classList.add('stat-revealed');
-          observer.disconnect();
-        }
-      },
-      { threshold: 0.3 }
-    );
-    observer.observe(el);
-    return () => observer.disconnect();
-  }, []);
 
   const { scrollYProgress } = useScroll({ target: heroRef, offset: ["start start", "end end"] });
 
@@ -136,7 +152,7 @@ export default function HomePage() {
                   <span
                     ref={aRef}
                     className="inline-block"
-                    style={{ height: "2.3em", width: "2.3em", marginBottom: "-1.1em", marginRight: "-0.35em" }}
+                    style={{ height: "0.82em", width: "0.82em", marginBottom: "-0.04em", marginRight: "-0.08em" }}
                     aria-hidden="true"
                   />
                   <motion.span className="inline-block" style={{ opacity: venuesOp, x: venuesX }}>
@@ -185,7 +201,7 @@ export default function HomePage() {
       {/* ══════════════════════ THREE PILLARS ══════════════════════════════════ */}
       <section id="what-we-do" className="mx-auto max-w-7xl px-6 md:px-10 py-24">
         <ScrollReveal className="mb-16 flex items-center gap-4">
-          <span className="text-[10px] font-bold uppercase tracking-[0.25em] text-zinc-500">What We Do</span>
+          <span className="text-[10px] font-bold uppercase tracking-[0.25em] bg-clip-text text-transparent bg-gradient-to-r from-white to-zinc-500">What We Do</span>
           <div className="h-px flex-1 bg-white/[0.05]" />
         </ScrollReveal>
 
@@ -254,9 +270,6 @@ export default function HomePage() {
                   {desc}
                 </p>
 
-                {/* See our work link */}
-                <Link href="/portfolio" className="text-[9px] uppercase tracking-[0.15em] text-[#eb4c60]/60 hover:text-[#eb4c60] transition-colors duration-200 shrink-0">See our work →</Link>
-
                 {/* Arrow */}
                 <div className="shrink-0 w-10 h-10 rounded-full border border-white/[0.08] flex items-center justify-center group-hover:border-[#eb4c60]/50 group-hover:bg-[#eb4c60]/[0.06] transition-all duration-300">
                   <svg className="w-3.5 h-3.5 text-zinc-500 group-hover:text-[#eb4c60] group-hover:translate-x-0.5 transition-all duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -280,7 +293,6 @@ export default function HomePage() {
               <p className="text-sm text-zinc-300">Avenues Consulting Group &middot; USC</p>
             </div>
           </div>
-          <p className="text-[10px] text-zinc-600 uppercase tracking-[0.2em] mt-3 text-center">Spring 2026 Cohort · Los Angeles, CA</p>
         </div>
       </ScrollReveal>
 
@@ -290,13 +302,13 @@ export default function HomePage() {
         {/* Pink radial bloom */}
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[400px] rounded-full bg-[#eb4c60]/[0.05] blur-[120px] pointer-events-none" />
 
-        <div ref={statsRef} className="relative grid grid-cols-2 md:grid-cols-4 divide-x divide-white/[0.05]">
+        <div className="relative grid grid-cols-2 md:grid-cols-4 divide-x divide-white/[0.05]">
           {[
-            { value: "20+",  label: "Client engagements",   sub: "Since Fall 2023",             hoverStyle: "translate-y" },
-            { value: "24",   label: "Majors represented",   sub: "Across all disciplines",       hoverStyle: "scale" },
-            { value: "3",    label: "Practice areas",       sub: "Across 3 disciplines",          hoverStyle: "color" },
-            { value: "100%", label: "Pro bono",              sub: "Always free for clients",       hoverStyle: "glow" },
-          ].map(({ value, label, sub, hoverStyle }) => (
+            { end: 20, suffix: "+", label: "Client engagements",   sub: "Since Fall 2023",             hoverStyle: "translate-y" },
+            { end: 24, suffix: "",  label: "Majors represented",   sub: "Across all disciplines",       hoverStyle: "scale" },
+            { end: 3,  suffix: "",  label: "Practice areas",       sub: "Across 3 disciplines",          hoverStyle: "color" },
+            { end: 100, suffix: "%", label: "Pro bono",             sub: "Always free for clients",       hoverStyle: "glow" },
+          ].map(({ end, suffix, label, sub, hoverStyle }) => (
             <ScrollReveal key={label}>
               <div className={`group relative flex flex-col justify-center px-8 md:px-12 py-16 overflow-hidden`}>
                 {/* Per-stat unique hover effect */}
@@ -313,13 +325,13 @@ export default function HomePage() {
                   <div className="absolute inset-0 border border-[#eb4c60]/0 group-hover:border-[#eb4c60]/15 transition-all duration-500 pointer-events-none" />
                 )}
 
-                <div className={`stat-number text-[clamp(3rem,6vw,5rem)] font-black leading-none tracking-tighter text-white transition-all duration-300 ${
+                <div className={`text-[clamp(3rem,6vw,5rem)] font-black leading-none tracking-tighter text-white transition-all duration-300 ${
                   hoverStyle === "translate-y" ? "group-hover:-translate-y-1 group-hover:text-[#eb4c60]" :
                   hoverStyle === "scale"       ? "group-hover:scale-105 group-hover:text-zinc-100 origin-left" :
                   hoverStyle === "color"       ? "group-hover:text-[#eb4c60]" :
                   "group-hover:text-[#eb4c60]"
                 }`}>
-                  {value}
+                  <CountUp end={end} suffix={suffix} />
                 </div>
                 <div className="mt-3 text-xs font-semibold text-zinc-400 leading-snug">{label}</div>
                 <div className="mt-1 text-[10px] text-zinc-600 uppercase tracking-[0.15em]">{sub}</div>

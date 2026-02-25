@@ -37,7 +37,7 @@ export default function Footer() {
               { href: "/community", label: "Community" },
               { href: "/portfolio", label: "Portfolio" },
               { href: "/apply", label: "Apply" },
-              { href: "/contact", label: "Work With Us" },
+              { href: "/contact", label: "Contact" },
               { href: "/members", label: "Members" },
             ].map(({ href, label }) => (
               <Link key={href} href={href} className="text-[11px] text-zinc-600 hover:text-zinc-300 transition-colors duration-200 uppercase tracking-[0.1em]">{label}</Link>

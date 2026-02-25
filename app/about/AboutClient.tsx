@@ -54,7 +54,7 @@ export default function AboutPage() {
           {/* CHANGE 4: Parallax wrapper around heading block */}
           <motion.div style={{ y: headerY, opacity: headerOp }}>
             {/* Giant heading */}
-            <h1 className="text-[clamp(4.5rem,14vw,12rem)] font-black leading-[0.86] tracking-tighter text-white">
+            <h1 className="text-[clamp(4.5rem,14vw,12rem)] font-black leading-[0.86] tracking-tighter bg-clip-text text-transparent bg-gradient-to-b from-white to-zinc-500">
               ABOUT
             </h1>
 
@@ -163,6 +163,13 @@ export default function AboutPage() {
             <div className="h-px flex-1 bg-white/[0.05]" />
           </div>
 
+          <blockquote className="mb-16 md:mb-20">
+            <p className="font-display italic text-[clamp(1.4rem,3.5vw,2.5rem)] text-white/80 leading-snug tracking-tight max-w-3xl">
+              &ldquo;Pro bono doesn&rsquo;t mean second-rate. It means no barriers between great work and the organizations that need it.&rdquo;
+            </p>
+            <footer className="mt-4 text-[10px] uppercase tracking-[0.25em] text-zinc-600">&mdash; Avenues Consulting Group</footer>
+          </blockquote>
+
           <div className="grid grid-cols-1 md:grid-cols-[1fr_1px_1fr] gap-10 md:gap-0">
             {/* Left column  -  clients */}
             <ScrollReveal className="reveal-left delay-1">
@@ -207,7 +214,25 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* ─────────────────────────────────────────────
+      {/* ── CREDIBILITY BAR ──────────────────────────────────────────────── */}
+      <div className="border-y border-white/[0.05] py-10 mb-20">
+        <div className="grid grid-cols-2 md:grid-cols-4 divide-x divide-white/[0.05]">
+          {[
+            { value: "20+", label: "Clients served", sub: "Nonprofits, startups & corps" },
+            { value: "2", label: "Semesters", sub: "Since Fall 2023" },
+            { value: "3", label: "Practice areas", sub: "Strategy, Tech & Design" },
+            { value: "100%", label: "Pro bono", sub: "Zero cost to clients" },
+          ].map(({ value, label, sub }) => (
+            <div key={label} className="px-6 md:px-8 py-4 text-center first:pl-0 last:pr-0">
+              <div className="text-2xl md:text-3xl font-black text-white mb-1">{value}</div>
+              <div className="text-[10px] font-semibold uppercase tracking-[0.15em] text-[#eb4c60] mb-1">{label}</div>
+              <div className="text-[10px] text-zinc-600">{sub}</div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+            {/* ─────────────────────────────────────────────
           4. TEAM SECTION  -  editorial redesign
       ───────────────────────────────────────────── */}
       <section className="mx-auto max-w-7xl px-6 md:px-10 py-28">

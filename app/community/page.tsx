@@ -215,10 +215,14 @@ export default function CommunityPage() {
         <div className="relative mx-auto max-w-7xl px-6 md:px-10 py-24">
           <div className="mb-14 flex items-center gap-4">
             <span className="text-[10px] font-bold uppercase tracking-[0.25em] text-zinc-500">
-              What We Do
+              How We Work Together
             </span>
             <div className="h-px flex-1 bg-white/[0.05]" />
           </div>
+
+          <p className="text-sm text-zinc-400 leading-relaxed max-w-2xl -mt-6 mb-14">
+            Avenues runs on collaboration between students who think differently. Every engagement is cross-disciplinary &mdash; strategists work alongside engineers and designers from day one.
+          </p>
 
           <div className="divide-y divide-white/[0.05]">
             {whatWeDo.map(({ title, desc, icon: iconKey }, idx) => (

@@ -165,50 +165,6 @@ export default function ContactPage() {
         </div>
       </section>
 
-      {/* ── INFO STRIP ───────────────────────────────────────────────────── */}
-      <section className="border-t border-white/[0.05]">
-        <div className="mx-auto max-w-7xl px-6 md:px-10 py-12">
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-8">
-            {[
-              {
-                label: "Email",
-                value: "uscavenues@gmail.com",
-                href: "mailto:uscavenues@gmail.com",
-              },
-              {
-                label: "Instagram",
-                value: "@uscavenues",
-                href: "https://www.instagram.com/uscavenues/",
-              },
-              {
-                label: "Location",
-                value: "University of Southern California",
-                href: null,
-              },
-            ].map(({ label, value, href }) => (
-              <div key={label}>
-                <p className="text-[10px] uppercase tracking-[0.2em] text-zinc-500 mb-1.5">
-                  {label}
-                </p>
-                {href ? (
-                  <a
-                    href={href}
-                    target={href.startsWith("http") ? "_blank" : undefined}
-                    rel={
-                      href.startsWith("http") ? "noopener noreferrer" : undefined
-                    }
-                    className="text-sm text-zinc-400 hover:text-white transition-colors duration-200"
-                  >
-                    {value}
-                  </a>
-                ) : (
-                  <p className="text-sm text-zinc-400">{value}</p>
-                )}
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
     </>
   );
 }

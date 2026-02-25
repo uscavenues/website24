@@ -105,6 +105,27 @@ export default function ContactClient() {
       </div>
       <div className="h-6" />
 
+      {/* Engagement type */}
+      <div className="pb-1">
+        <label htmlFor="engagement_type" className="block text-[10px] uppercase tracking-[0.2em] text-zinc-500 mb-3">
+          How can we help?
+        </label>
+        <select
+          id="engagement_type"
+          name="engagement_type"
+          className="bg-transparent border-b border-white/[0.12] hover:border-[#eb4c60]/50 focus:border-[#eb4c60] outline-none text-white py-3 text-sm w-full transition-colors duration-200 appearance-none cursor-pointer"
+          defaultValue=""
+        >
+          <option value="" disabled className="bg-[#08080f] text-zinc-500">Select a practice area...</option>
+          <option value="strategy" className="bg-[#08080f]">Strategy — Go-to-market, research, planning</option>
+          <option value="technology" className="bg-[#08080f]">Technology — Web dev, data, product</option>
+          <option value="design" className="bg-[#08080f]">Design — Brand, UI/UX, visual identity</option>
+          <option value="multiple" className="bg-[#08080f]">Multiple areas — Comprehensive engagement</option>
+          <option value="unsure" className="bg-[#08080f]">Not sure yet — Let&apos;s figure it out together</option>
+        </select>
+      </div>
+      <div className="h-6" />
+
       {/* Message */}
       <div className="pb-1">
         <label htmlFor="message" className="block text-[10px] uppercase tracking-[0.2em] text-zinc-500 mb-3">

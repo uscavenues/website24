@@ -1,11 +1,8 @@
 "use client";
 
 import { useState } from "react";
-import { motion } from "framer-motion";
-import { faqApplication, faqOrg, type FAQItem } from "@/lib/data";
+import { faqApplication, type FAQItem } from "@/lib/data";
 import ScrollReveal from "@/components/ScrollReveal";
-
-type Tab = "application" | "org";
 
 function FAQAccordion({ items }: { items: FAQItem[] }) {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
@@ -67,8 +64,6 @@ function FAQAccordion({ items }: { items: FAQItem[] }) {
 }
 
 export default function ApplyClient() {
-  const [activeTab, setActiveTab] = useState<Tab>("application");
-
   return (
     <>
       {/* ── PAGE HEADER ──────────────────────────────────────────────────── */}
@@ -138,6 +133,41 @@ export default function ApplyClient() {
                 to get notified when the next cycle opens.
               </p>
               <p className="text-xs text-zinc-500 mt-2">Applications reopen at the start of each semester. Follow <a href="https://www.instagram.com/uscavenues/" className="text-[#eb4c60] hover:underline">@uscavenues</a> for announcements.</p>
+              {/* Email capture — only show when applications are closed */}
+              <div className="mt-6 flex flex-col sm:flex-row gap-2 max-w-sm">
+                <input
+                  type="email"
+                  placeholder="your@email.com"
+                  className="flex-1 bg-transparent border-b border-white/[0.12] focus:border-[#eb4c60] outline-none text-white placeholder:text-zinc-600 py-2 text-xs transition-colors duration-200"
+                  onKeyDown={(e) => {
+                    if (e.key === 'Enter') {
+                      const input = e.currentTarget;
+                      const email = input.value.trim();
+                      if (email && email.includes('@')) {
+                        input.value = '';
+                        input.placeholder = "You're on the list!";
+                        input.disabled = true;
+                      }
+                    }
+                  }}
+                />
+                <button
+                  type="button"
+                  className="shrink-0 text-[10px] uppercase tracking-[0.15em] font-semibold text-[#eb4c60] hover:text-white transition-colors duration-200"
+                  onClick={(e) => {
+                    const input = (e.currentTarget.previousElementSibling as HTMLInputElement);
+                    const email = input?.value.trim();
+                    if (email && email.includes('@')) {
+                      input.value = '';
+                      input.placeholder = "You're on the list!";
+                      input.disabled = true;
+                    }
+                  }}
+                >
+                  Notify me →
+                </button>
+              </div>
+              <p className="text-[10px] text-zinc-700 mt-2">Get notified when Fall 2026 applications open.</p>
             </div>
 
             {/* IG CTA */}
@@ -306,57 +336,50 @@ export default function ApplyClient() {
           </ScrollReveal>
 
           <div className="grid grid-cols-1 lg:grid-cols-[280px_1fr] gap-12 lg:gap-20">
-            {/* Left: heading + tabs */}
+            {/* Left: heading */}
             <div className="lg:sticky lg:top-28 lg:self-start">
               <h2 className="text-3xl font-black text-white tracking-tight leading-tight mb-2">
                 Common
                 <br />
                 <span className="text-[#eb4c60]">Questions</span>
               </h2>
-              <p className="text-xs text-zinc-400 leading-relaxed mb-10">
-                Everything you need to know about applying and working with
-                Avenues.
+              <p className="text-xs text-zinc-400 leading-relaxed">
+                Everything you need to know about applying to Avenues.
               </p>
-
-              {/* Tabs */}
-              <div className="flex flex-col gap-1">
-                {(
-                  [
-                    { key: "application", label: "Application" },
-                    { key: "org", label: "For Clients" },
-                  ] as { key: Tab; label: string }[]
-                ).map(({ key, label }) => (
-                  <button
-                    key={key}
-                    onClick={() => setActiveTab(key)}
-                    className={`relative text-left px-4 py-3 text-xs font-semibold uppercase tracking-[0.15em] rounded-sm transition-all duration-200 ${
-                      activeTab === key
-                        ? "text-[#eb4c60] bg-[#eb4c60]/[0.06]"
-                        : "text-zinc-400 hover:text-zinc-200"
-                    }`}
-                  >
-                    {activeTab === key && (
-                      <motion.span
-                        layoutId="faq-tab-indicator"
-                        className="absolute left-0 top-1/2 -translate-y-1/2 w-px h-4 bg-[#eb4c60] rounded-full"
-                        transition={{ type: "spring", stiffness: 400, damping: 30 }}
-                      />
-                    )}
-                    {label}
-                  </button>
-                ))}
-              </div>
             </div>
 
             {/* Right: FAQ accordion */}
             <div>
-              {activeTab === "application" ? (
-                <FAQAccordion key="application" items={faqApplication} />
-              ) : (
-                <FAQAccordion key="org" items={faqOrg} />
-              )}
+              <FAQAccordion items={faqApplication} />
             </div>
           </div>
+        </div>
+      </section>
+
+      {/* ── CLOSING CTA ──────────────────────────────────────────────────── */}
+      <section className="relative overflow-hidden bg-[#eb4c60]">
+        <div className="absolute inset-0 dot-texture opacity-20 pointer-events-none" aria-hidden="true" />
+        <div className="relative mx-auto max-w-7xl px-6 md:px-10 py-16 flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
+          <div>
+            <p className="text-[10px] uppercase tracking-[0.3em] text-white/60 mb-2">Stay in the loop</p>
+            <h2 className="text-2xl md:text-3xl font-black text-white tracking-tight">
+              Applications open every semester.
+            </h2>
+            <p className="text-sm text-white/70 mt-2 max-w-sm">
+              Follow us on Instagram for announcement dates and open-info-session schedules.
+            </p>
+          </div>
+          <a
+            href="https://www.instagram.com/uscavenues/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="shrink-0 inline-flex items-center gap-2 bg-white text-[#eb4c60] px-6 py-3 text-xs font-bold uppercase tracking-[0.15em] rounded-sm hover:bg-white/90 transition-colors duration-200"
+          >
+            Follow @uscavenues
+            <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+            </svg>
+          </a>
         </div>
       </section>
     </>
