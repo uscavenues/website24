@@ -25,7 +25,9 @@ export default function Nav() {
       const docHeight = document.documentElement.scrollHeight;
       const windowHeight = window.innerHeight;
       const footerThreshold = docHeight - windowHeight - 180;
-      if (scrollY < 60) {
+      // On home page, wait until "CONSULTING GROUP" is visible (~2× viewport height into the 280vh hero)
+      const topThreshold = pathname === "/" ? Math.round(windowHeight * 2.0) : 60;
+      if (scrollY < topThreshold) {
         setIsHidden(true);
       } else if (scrollY > footerThreshold) {
         setIsHidden(true);
@@ -36,7 +38,7 @@ export default function Nav() {
     window.addEventListener("scroll", handleScroll, { passive: true });
     handleScroll();
     return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  }, [pathname]);
 
   useEffect(() => { setOpen(false); }, [pathname]);
 
