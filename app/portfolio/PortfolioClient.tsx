@@ -89,7 +89,7 @@ export default function PortfolioClient() {
       {/* ── OUR CLIENTS ──────────────────────────────────────────────────── */}
       <section id="clients" className="bg-[#f4f4f0]">
         {/* Gradient transition from dark to light */}
-        <div className="h-48 bg-gradient-to-b from-[#08080f] to-[#f4f4f0]" />
+        <div className="h-80" style={{ background: "linear-gradient(to bottom, #08080f 0%, #08080f 8%, #2c2c35 28%, #87878d 55%, #d1d1cd 82%, #f4f4f0 100%)" }} />
         <div className="mx-auto max-w-7xl px-6 md:px-10 mb-12">
           <div className="mb-6 flex items-center gap-4">
             <span className="text-[10px] font-bold uppercase tracking-[0.25em] text-zinc-500">
@@ -159,11 +159,11 @@ export default function PortfolioClient() {
           </div>
         </div>
         {/* Gradient transition from light back to dark */}
-        <div className="h-48 bg-gradient-to-b from-[#f4f4f0] to-[#08080f]" />
+        <div className="h-80" style={{ background: "linear-gradient(to bottom, #f4f4f0 0%, #d1d1cd 18%, #87878d 45%, #2c2c35 72%, #08080f 92%, #08080f 100%)" }} />
       </section>
 
       {/* ── PAST PROJECTS ────────────────────────────────────────────────── */}
-      <section id="projects" className="relative border-t border-white/[0.05] pb-32">
+      <section id="projects" className="relative pb-32">
         <div className="mx-auto max-w-7xl px-6 md:px-10 pt-20">
           {/* Section header */}
           <div className="mb-12 flex items-center gap-4">
