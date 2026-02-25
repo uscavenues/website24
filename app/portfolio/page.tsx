@@ -68,7 +68,7 @@ export default function PortfolioPage() {
             FOLIO
           </h1>
           <p className="mt-6 max-w-lg text-zinc-500 text-sm leading-relaxed">
-            Pro-bono engagements across strategy, technology, and design  - 
+            Pro-bono engagements across strategy, technology, and design —
             delivered with the rigor of a top-tier consulting firm.
           </p>
         </div>
@@ -102,7 +102,7 @@ export default function PortfolioPage() {
                   src={client.logo}
                   alt={client.name}
                   fill
-                  className="object-contain grayscale invert opacity-40 group-hover:opacity-75 transition-all duration-300"
+                  className="object-contain opacity-60 group-hover:opacity-100 transition-all duration-300"
                   sizes="160px"
                 />
               </div>

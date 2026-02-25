@@ -78,7 +78,7 @@ export default function ApplyClient() {
             APPLY
           </h1>
           <p className="mt-6 max-w-lg text-zinc-500 text-sm leading-relaxed">
-            We recruit the most driven students at USC  -  regardless of major or
+            We recruit the most driven students at USC — regardless of major or
             background. One application. Three tracks. Unlimited impact.
           </p>
         </div>
@@ -173,12 +173,12 @@ export default function ApplyClient() {
             {
               n: "03",
               title: "Collaboration",
-              desc: "You make everyone around you sharper  -  not just yourself.",
+              desc: "You make everyone around you sharper — not just yourself.",
             },
             {
               n: "04",
               title: "Any Major",
-              desc: "CS, pre-med, architecture, business  -  diversity of thought is our edge.",
+              desc: "CS, pre-med, architecture, business — diversity of thought is our edge.",
             },
             {
               n: "05",
@@ -188,7 +188,7 @@ export default function ApplyClient() {
             {
               n: "06",
               title: "Ambition",
-              desc: "You're here to build something real  -  not pad a resume.",
+              desc: "You're here to build something real — not pad a resume.",
             },
           ].map(({ n, title, desc }) => (
             <div

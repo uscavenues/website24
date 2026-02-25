@@ -99,7 +99,7 @@ export default function AboutPage() {
 
           {/* Subtitle */}
           <p className="max-w-2xl text-zinc-400 text-lg leading-relaxed">
-            A student organization built from the ground up  -  on the belief that
+            A student organization built from the ground up — on the belief that
             real-world project experience shouldn&apos;t be gated by prestige or access.
           </p>
 
@@ -146,8 +146,8 @@ export default function AboutPage() {
               </p>
               <p>
                 Since then, Avenues has grown threefold and acquired{" "}
-                <span className="text-white font-semibold">20+ clients</span>  -  from
-                Fortune 500 companies and non-profits to early-stage startups  -  within
+                <span className="text-white font-semibold">20+ clients</span> — from
+                Fortune 500 companies and non-profits to early-stage startups — within
                 two years of founding.
               </p>
               <p>
@@ -206,7 +206,7 @@ export default function AboutPage() {
                 Pro bono project-building across strategy, technology, and design.
               </h3>
               <p className="text-zinc-400 leading-relaxed text-sm">
-                We work with organizations of every size  -  from startups finding product-market
+                We work with organizations of every size — from startups finding product-market
                 fit to non-profits scaling their impact. No fees, ever. Just rigorous, student-driven work.
               </p>
             </div>
@@ -225,7 +225,7 @@ export default function AboutPage() {
                 A space to collaborate, build, learn, and grow professionally.
               </h3>
               <p className="text-zinc-400 leading-relaxed text-sm">
-                Regardless of your goals  -  consulting, tech, design, or beyond  -  Avenues is a
+                Regardless of your goals — consulting, tech, design, or beyond — Avenues is a
                 place to do real work alongside people who take it seriously. No experience required.
               </p>
             </div>

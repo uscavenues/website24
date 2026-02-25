@@ -179,7 +179,7 @@ export default function CommunityPage() {
                   alt={name}
                   width={100}
                   height={32}
-                  className="object-contain max-h-8 w-auto grayscale invert opacity-40 group-hover:opacity-80 transition-all duration-300"
+                  className="object-contain max-h-8 w-auto opacity-50 group-hover:opacity-90 transition-all duration-300"
                 />
               </div>
             ))}
@@ -206,36 +206,42 @@ export default function CommunityPage() {
             </h2>
           </div>
 
-          <div className="border border-white/[0.08]">
-            {alumni.map(({ company, logo, positions }, i) => (
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
+            {alumni.map(({ company, logo, positions }) => (
               <div
                 key={company}
-                className="group flex flex-col sm:flex-row sm:items-center gap-4 px-6 py-5 border-b border-white/[0.05] last:border-b-0 hover:bg-white/[0.025] transition-all duration-200"
+                className="glass-card group relative rounded-sm p-5 flex flex-col gap-4 transition-all duration-300"
               >
-                <div className="relative h-5 w-28 shrink-0">
+                {/* Logo */}
+                <div className="relative h-7 w-full">
                   <Image
                     src={logo}
                     alt={company}
                     fill
-                    className="object-contain object-left grayscale invert opacity-40 group-hover:opacity-70 transition-all duration-300"
-                    sizes="112px"
+                    className="object-contain object-left opacity-60 group-hover:opacity-100 transition-all duration-300"
+                    sizes="200px"
                   />
                 </div>
-                <div className="flex-1 min-w-0">
-                  <p className="text-[11px] font-semibold text-zinc-400 group-hover:text-zinc-200 transition-colors">
-                    {company}
-                  </p>
-                </div>
-                <div className="flex flex-wrap gap-1.5">
+
+                {/* Company name */}
+                <p className="text-[11px] font-semibold text-zinc-400 group-hover:text-zinc-200 transition-colors leading-snug">
+                  {company}
+                </p>
+
+                {/* Position tags */}
+                <div className="flex flex-wrap gap-1.5 mt-auto">
                   {positions.map((pos) => (
                     <span
                       key={pos}
-                      className="text-[10px] text-zinc-600 border border-white/[0.06] px-2 py-0.5 rounded-sm group-hover:border-[#eb4c60]/20 group-hover:text-zinc-400 transition-all duration-200"
+                      className="text-[9px] font-medium text-zinc-600 border border-white/[0.07] bg-white/[0.03] px-1.5 py-0.5 rounded-sm group-hover:border-[#eb4c60]/25 group-hover:text-zinc-400 transition-all duration-200"
                     >
                       {pos}
                     </span>
                   ))}
                 </div>
+
+                {/* Pink top-line on hover */}
+                <div className="absolute top-0 left-0 right-0 h-px bg-[#eb4c60] scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left rounded-t-sm" />
               </div>
             ))}
           </div>

@@ -50,7 +50,7 @@ export default function Nav() {
       <div className="bg-[#08080f]/55 backdrop-blur-2xl border-b border-white/[0.09]" style={{ backdropFilter: "blur(40px) saturate(1.5)" }}>
         <nav className="mx-auto max-w-7xl px-6 md:px-10 h-16 flex items-center justify-between">
           {/* Logo wordmark */}
-          <Link href="/" className="flex items-center gap-0.5 shrink-0">
+          <Link href="/" className="flex items-center shrink-0">
             <span className="relative inline-block shrink-0 w-[28px] h-[28px]">
               <Image
                 src="/assets/icons/avenues-logo.png"
@@ -59,7 +59,7 @@ export default function Nav() {
                 className="object-contain invert opacity-90"
               />
             </span>
-            <span className="font-semibold tracking-[0.2em] uppercase text-zinc-300 text-[11px] hidden sm:block">VENUES</span>
+            <span className="font-semibold tracking-[0.2em] uppercase text-zinc-300 text-[11px] hidden sm:block" style={{ marginLeft: "-3px" }}>VENUES</span>
           </Link>
 
           <div className="hidden md:flex items-center gap-0.5">
