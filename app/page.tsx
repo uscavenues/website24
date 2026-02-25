@@ -11,6 +11,7 @@ interface Pos { x: number; y: number; sz: number }
 export default function HomePage() {
   const aRef = useRef<HTMLSpanElement>(null);
   const heroRef = useRef<HTMLDivElement>(null);
+  const statsRef = useRef<HTMLDivElement>(null);
 
   // Start: big centered logo — synchronous so it never teleports
   const [start] = useState<Pos>(() => {
@@ -39,6 +40,23 @@ export default function HomePage() {
     window.addEventListener("resize", measure);
     return () => window.removeEventListener("resize", measure);
   }, []); // eslint-disable-line react-hooks/exhaustive-deps
+
+  // Stats count-up reveal via IntersectionObserver
+  useLayoutEffect(() => {
+    const el = statsRef.current;
+    if (!el) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          el.classList.add('stat-revealed');
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.3 }
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
 
   const { scrollYProgress } = useScroll({ target: heroRef, offset: ["start start", "end end"] });
 
@@ -211,7 +229,7 @@ export default function HomePage() {
             },
           ].map(({ tag, title, desc, href, icon }, i) => (
             <ScrollReveal key={title} delay={`delay-${i + 1}`}>
-              <Link href={href} className="group flex items-center gap-8 md:gap-16 py-10 md:py-12 relative overflow-hidden">
+              <div className="group flex items-center gap-8 md:gap-16 py-10 md:py-12 relative overflow-hidden">
                 {/* Red sweep line on hover — different origin per item */}
                 <div
                   className="absolute bottom-0 left-0 right-0 h-px bg-[#eb4c60] origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-500"
@@ -237,7 +255,7 @@ export default function HomePage() {
                 </p>
 
                 {/* See our work link */}
-                <Link href="/portfolio" onClick={(e) => e.stopPropagation()} className="text-[9px] uppercase tracking-[0.15em] text-[#eb4c60]/60 hover:text-[#eb4c60] transition-colors duration-200 shrink-0">See our work →</Link>
+                <Link href="/portfolio" className="text-[9px] uppercase tracking-[0.15em] text-[#eb4c60]/60 hover:text-[#eb4c60] transition-colors duration-200 shrink-0">See our work →</Link>
 
                 {/* Arrow */}
                 <div className="shrink-0 w-10 h-10 rounded-full border border-white/[0.08] flex items-center justify-center group-hover:border-[#eb4c60]/50 group-hover:bg-[#eb4c60]/[0.06] transition-all duration-300">
@@ -245,7 +263,7 @@ export default function HomePage() {
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
                   </svg>
                 </div>
-              </Link>
+              </div>
             </ScrollReveal>
           ))}
         </div>
@@ -272,7 +290,7 @@ export default function HomePage() {
         {/* Pink radial bloom */}
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[400px] rounded-full bg-[#eb4c60]/[0.05] blur-[120px] pointer-events-none" />
 
-        <div className="relative grid grid-cols-2 md:grid-cols-4 divide-x divide-white/[0.05]">
+        <div ref={statsRef} className="relative grid grid-cols-2 md:grid-cols-4 divide-x divide-white/[0.05]">
           {[
             { value: "20+",  label: "Client engagements",   sub: "Since Fall 2023",             hoverStyle: "translate-y" },
             { value: "24",   label: "Majors represented",   sub: "Across all disciplines",       hoverStyle: "scale" },
@@ -295,7 +313,7 @@ export default function HomePage() {
                   <div className="absolute inset-0 border border-[#eb4c60]/0 group-hover:border-[#eb4c60]/15 transition-all duration-500 pointer-events-none" />
                 )}
 
-                <div className={`text-[clamp(3rem,6vw,5rem)] font-black leading-none tracking-tighter text-white transition-all duration-300 ${
+                <div className={`stat-number text-[clamp(3rem,6vw,5rem)] font-black leading-none tracking-tighter text-white transition-all duration-300 ${
                   hoverStyle === "translate-y" ? "group-hover:-translate-y-1 group-hover:text-[#eb4c60]" :
                   hoverStyle === "scale"       ? "group-hover:scale-105 group-hover:text-zinc-100 origin-left" :
                   hoverStyle === "color"       ? "group-hover:text-[#eb4c60]" :

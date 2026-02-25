@@ -264,6 +264,34 @@ export default function ApplyClient() {
         </div>
       </section>
 
+      {/* ── WHAT YOU'LL GET ──────────────────────────────────────────────────── */}
+      <section className="border-t border-white/[0.05] pb-20">
+        <div className="mx-auto max-w-7xl px-6 md:px-10 pt-16">
+          <div className="mb-10 flex items-center gap-4">
+            <span className="text-[10px] font-bold uppercase tracking-[0.25em] text-zinc-500">
+              Member Benefits
+            </span>
+            <div className="h-px flex-1 bg-white/[0.05]" />
+          </div>
+          <h2 className="text-2xl font-black text-white tracking-tight mb-8">What you&apos;ll get</h2>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {[
+              { title: "Real client work", desc: "Work on actual engagements with non-profits and startups — not case studies or simulations." },
+              { title: "Cross-disciplinary peers", desc: "Collaborate with students across every major — engineering, business, design, pre-med, and beyond." },
+              { title: "Professional development", desc: "Weekly curriculum nights, mentorship from industry professionals, and structured learning tracks." },
+              { title: "A portfolio of work", desc: "Leave with deliverables you can show — strategy decks, built products, and design systems." },
+              { title: "Leadership opportunities", desc: "Directors and execs are chosen from within — early members get early access to leadership tracks." },
+              { title: "A lasting network", desc: "Our alumni are at top firms globally. Avenues opens doors beyond USC." },
+            ].map(({ title, desc }) => (
+              <div key={title} className="border-t border-white/[0.06] pt-4">
+                <h3 className="text-sm font-bold text-white mb-2">{title}</h3>
+                <p className="text-xs text-zinc-500 leading-relaxed">{desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* ── FAQ SECTION ──────────────────────────────────────────────────── */}
       <section id="faq" className="relative border-t border-white/[0.05] pb-32">
         <div className="mx-auto max-w-7xl px-6 md:px-10 pt-20">
@@ -295,7 +323,7 @@ export default function ApplyClient() {
                 {(
                   [
                     { key: "application", label: "Application" },
-                    { key: "org", label: "Organization" },
+                    { key: "org", label: "For Clients" },
                   ] as { key: Tab; label: string }[]
                 ).map(({ key, label }) => (
                   <button

@@ -108,7 +108,7 @@ export default function CommunityPage() {
       {/* ══════════════════════════════════════════════════
           2. PHOTO MARQUEE — dual opposing rows
       ══════════════════════════════════════════════════ */}
-      <section className="overflow-hidden border-y border-white/[0.05] py-4 space-y-3">
+      <section className="overflow-hidden border-y border-white/[0.05] py-4 space-y-3 marquee-hover-pause">
         {/* Row 1 — scrolls left */}
         <div className="marquee-track">
           {allPhotos.map((photo) => (
@@ -152,8 +152,9 @@ export default function CommunityPage() {
           3. OUR MEMBERS — 3-row opposing marquee
       ══════════════════════════════════════════════════ */}
 
+      <section id="majors">
       {/* Section header — constrained */}
-      <div id="majors" className="mx-auto max-w-7xl px-6 md:px-10 py-14 pb-8">
+      <div className="mx-auto max-w-7xl px-6 md:px-10 py-14 pb-8">
         <div className="mb-8 flex items-center gap-4">
           <span className="text-[10px] font-bold uppercase tracking-[0.25em] text-zinc-500">
             Our Members
@@ -166,7 +167,7 @@ export default function CommunityPage() {
       </div>
 
       {/* Majors marquee — full bleed */}
-      <div className="overflow-hidden space-y-2 pb-14">
+      <div className="overflow-hidden space-y-2 pb-14 marquee-hover-pause">
         {/* Row 1 — left */}
         <div className="marquee-track">
           {[...majors.slice(0, 8), ...majors.slice(0, 8)].map((major, i) => (
@@ -203,6 +204,7 @@ export default function CommunityPage() {
           ))}
         </div>
       </div>
+      </section>
 
       {/* ══════════════════════════════════════════════════
           4. WHAT WE DO — editorial alternating list
@@ -297,7 +299,7 @@ export default function CommunityPage() {
         </div>
 
         {/* Full-bleed dual marquee */}
-        <div className="overflow-hidden space-y-4 pb-20">
+        <div className="overflow-hidden space-y-4 pb-20 marquee-hover-pause">
           {/* Row 1 — left */}
           <div className="marquee-track">
             {[...mentors, ...mentors].map((mentor, i) => (
@@ -344,6 +346,8 @@ export default function CommunityPage() {
           6. ALUMNI PLACEMENTS
       ══════════════════════════════════════════════════ */}
       <section id="alumni" className="relative bg-[#f4f4f0] border-t border-zinc-200">
+        {/* Gradient transition from dark to light */}
+        <div className="h-8 bg-gradient-to-b from-[#08080f] to-[#f4f4f0]" />
         <div className="mx-auto max-w-7xl px-6 md:px-10 py-20">
           <div className="mb-6 flex items-center gap-4">
             <span className="text-[10px] font-bold uppercase tracking-[0.25em] text-zinc-500">
@@ -402,6 +406,8 @@ export default function CommunityPage() {
             ))}
           </div>
         </div>
+        {/* Gradient transition from light back to dark */}
+        <div className="h-8 bg-gradient-to-b from-[#f4f4f0] to-[#08080f]" />
       </section>
 
       {/* ══════════════════════════════════════════════════
@@ -448,6 +454,18 @@ export default function CommunityPage() {
           </div>
         </div>
       </section>
+
+      <div className="mx-auto max-w-7xl px-6 md:px-10 pb-8 flex justify-end">
+        <button
+          onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+          className="text-[10px] uppercase tracking-[0.2em] text-zinc-600 hover:text-[#eb4c60] transition-colors duration-200 flex items-center gap-2"
+        >
+          <svg className="w-3 h-3 rotate-[-90deg]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+          </svg>
+          Back to top
+        </button>
+      </div>
 
     </div>
   );

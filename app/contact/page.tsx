@@ -12,9 +12,9 @@ export default function ContactPage() {
     <>
       {/* ── PAGE HEADER ──────────────────────────────────────────────────── */}
       <section className="relative overflow-hidden pt-32 pb-20">
-        <div className="absolute inset-0 dot-texture opacity-35 pointer-events-none" />
-        <div className="absolute -top-32 left-1/4 w-[600px] h-[400px] rounded-full bg-[#eb4c60]/10 blur-[130px] pointer-events-none" />
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-[#08080f] pointer-events-none" />
+        <div className="absolute inset-0 dot-texture opacity-35 pointer-events-none" aria-hidden="true" />
+        <div className="absolute -top-32 left-1/4 w-[600px] h-[400px] rounded-full bg-[#eb4c60]/10 blur-[130px] pointer-events-none" aria-hidden="true" />
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-[#08080f] pointer-events-none" aria-hidden="true" />
 
         <div className="relative z-10 mx-auto max-w-7xl px-6 md:px-10">
           <div className="mb-6">
@@ -44,7 +44,7 @@ export default function ContactPage() {
             {/* Divider line */}
             <div className="w-8 h-px bg-[#eb4c60] mb-8" />
 
-            <h2 className="text-xl font-bold text-white tracking-tight mb-5 leading-snug">
+            <h2 className="text-xl font-bold font-display italic text-white tracking-tight mb-5 leading-snug">
               A multidisciplinary approach
               <br />
               <span className="text-zinc-500 font-normal">

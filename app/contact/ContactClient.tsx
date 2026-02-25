@@ -116,7 +116,7 @@ export default function ContactClient() {
           required
           rows={4}
           placeholder="What are you working on, and how can Avenues help?"
-          className="bg-transparent border-b border-white/[0.12] hover:border-[#eb4c60]/50 focus:border-[#eb4c60] outline-none text-white placeholder:text-zinc-600 py-3 text-sm w-full transition-colors duration-200 resize-none"
+          className="bg-transparent border-b border-white/[0.12] hover:border-[#eb4c60]/50 focus:border-[#eb4c60] outline-none text-white placeholder:text-zinc-600 py-3 text-sm w-full transition-colors duration-200 resize-y"
         />
       </div>
       <div className="h-10" />
@@ -129,16 +129,18 @@ export default function ContactClient() {
         disabled={submitting}
         className="group inline-flex items-center gap-3 bg-[#eb4c60] hover:bg-[#d43d50] disabled:opacity-60 text-white px-8 py-4 text-xs font-bold uppercase tracking-[0.2em] rounded-sm transition-colors duration-200"
       >
-        {submitting ? "Sending..." : "Send Message"}
-        {!submitting && (
-          <svg
-            className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform duration-200"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-          >
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-          </svg>
+        {submitting ? (
+          <>
+            <span className="inline-block w-3.5 h-3.5 border border-white/40 border-t-white rounded-full animate-spin" />
+            Sending...
+          </>
+        ) : (
+          <>
+            Send Message
+            <svg className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+            </svg>
+          </>
         )}
       </button>
     </form>

@@ -25,7 +25,7 @@ function ProjectRow({ project, index }: { project: Project; index: number }) {
   return (
     <div className="group relative flex flex-col sm:flex-row sm:items-start gap-4 sm:gap-8 py-8 border-b border-white/[0.05] overflow-hidden">
       {/* Sweep line */}
-      <div className="absolute bottom-0 left-0 right-0 h-px bg-[#eb4c60] scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-500 pointer-events-none" />
+      <div className="absolute bottom-0 left-0 right-0 h-px bg-[#eb4c60] scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-500 pointer-events-none" aria-hidden="true" />
 
       {/* Index — large, faded */}
       <span className="shrink-0 text-[clamp(2rem,4vw,3.5rem)] font-black font-mono text-zinc-800 group-hover:text-[#eb4c60]/20 transition-colors duration-300 leading-none w-12 md:w-16">
@@ -58,11 +58,11 @@ export default function PortfolioPage() {
     <>
       {/* ── PAGE HEADER ──────────────────────────────────────────────────── */}
       <section className="relative overflow-hidden pt-24 pb-16 bg-[#09090f]">
-        <div className="absolute -bottom-20 -left-20 w-[600px] h-[500px] rounded-full bg-[#eb4c60]/8 blur-[130px] pointer-events-none" />
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-[#08080f] pointer-events-none" />
+        <div className="absolute -bottom-20 -left-20 w-[600px] h-[500px] rounded-full bg-[#eb4c60]/8 blur-[130px] pointer-events-none" aria-hidden="true" />
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-[#08080f] pointer-events-none" aria-hidden="true" />
 
         <div className="relative z-10 mx-auto max-w-7xl px-6 md:px-10">
-          <span className="absolute right-4 md:right-10 top-20 text-[clamp(8rem,20vw,18rem)] font-black text-white/[0.02] leading-none pointer-events-none select-none">04</span>
+          <span className="absolute right-4 md:right-10 top-20 text-[clamp(8rem,20vw,18rem)] font-black text-white/[0.02] leading-none pointer-events-none select-none">05</span>
           <div className="mb-6">
             <span className="inline-block text-[10px] font-bold uppercase tracking-[0.3em] text-[#eb4c60]">
               Our Work
@@ -81,6 +81,8 @@ export default function PortfolioPage() {
 
       {/* ── OUR CLIENTS ──────────────────────────────────────────────────── */}
       <section id="clients" className="pb-24 bg-[#f4f4f0]">
+        {/* Gradient transition from dark to light */}
+        <div className="h-8 bg-gradient-to-b from-[#08080f] to-[#f4f4f0]" />
         <div className="mx-auto max-w-7xl px-6 md:px-10 mb-12">
           <div className="mb-4 flex items-center gap-4">
             <span className="text-[10px] font-bold uppercase tracking-[0.25em] text-zinc-500">
@@ -97,7 +99,7 @@ export default function PortfolioPage() {
         </div>
 
         {/* Full-bleed dual-direction marquee */}
-        <div className="overflow-hidden space-y-3">
+        <div className="overflow-hidden space-y-3 marquee-hover-pause">
           {/* Row 1 — scrolls left */}
           <div className="marquee-track">
             {[...clientCards, ...clientCards].map((client, i) => (
@@ -147,6 +149,8 @@ export default function PortfolioPage() {
             ))}
           </div>
         </div>
+        {/* Gradient transition from light back to dark */}
+        <div className="h-8 bg-gradient-to-b from-[#f4f4f0] to-[#08080f]" />
       </section>
 
       {/* ── PAST PROJECTS ────────────────────────────────────────────────── */}
@@ -163,7 +167,7 @@ export default function PortfolioPage() {
           <div className="grid grid-cols-1 lg:grid-cols-[260px_1fr] gap-12 lg:gap-20">
             {/* Left: heading + tab switcher */}
             <div className="lg:sticky lg:top-28 lg:self-start">
-              <h2 className="text-3xl font-black text-white tracking-tight leading-tight mb-2">
+              <h2 className="text-3xl font-black font-display text-white tracking-tight leading-tight mb-2">
                 Delivered
                 <br />
                 <span className="text-[#eb4c60]">Work</span>
@@ -209,6 +213,23 @@ export default function PortfolioPage() {
 
             {/* Right: project rows */}
             <div>
+              {/* Mobile: show current tab above content */}
+              <div className="lg:hidden mb-6 flex items-center gap-3">
+                <span className="text-[10px] uppercase tracking-[0.2em] text-zinc-500">Viewing:</span>
+                <span className="text-[10px] font-bold uppercase tracking-[0.15em] text-[#eb4c60]">
+                  {activeTab.charAt(0).toUpperCase() + activeTab.slice(1)}
+                </span>
+                <div className="flex gap-1 ml-auto">
+                  {PROJECT_TABS.map(({ key }) => (
+                    <button
+                      key={key}
+                      onClick={() => setActiveTab(key)}
+                      className={`w-2 h-2 rounded-full transition-colors duration-200 ${activeTab === key ? 'bg-[#eb4c60]' : 'bg-zinc-700'}`}
+                      aria-label={key}
+                    />
+                  ))}
+                </div>
+              </div>
               <AnimatePresence mode="wait">
                 <motion.div
                   key={activeTab}
@@ -229,7 +250,7 @@ export default function PortfolioPage() {
 
       {/* ── CTA STRIP ────────────────────────────────────────────────────── */}
       <section className="relative overflow-hidden border-t border-white/[0.05] mb-0">
-        <div className="absolute inset-0 dot-texture opacity-25 pointer-events-none" />
+        <div className="absolute inset-0 dot-texture opacity-25 pointer-events-none" aria-hidden="true" />
         <div className="relative mx-auto max-w-7xl px-6 md:px-10 py-16 flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
           <div>
             <p className="text-[10px] uppercase tracking-[0.25em] text-zinc-500 mb-2">

@@ -11,7 +11,7 @@ const links = [
   { href: "/community", label: "Community" },
   { href: "/apply", label: "Apply" },
   { href: "/portfolio", label: "Portfolio" },
-  { href: "/contact", label: "Work With Us" },
+  { href: "/contact", label: "Contact" },
 ];
 
 export default function Nav() {
@@ -70,7 +70,7 @@ export default function Nav() {
               <Link
                 key={href}
                 href={href}
-                className={`px-3.5 py-1.5 text-[11px] font-medium tracking-[0.15em] uppercase rounded-sm transition-colors duration-200 ${pathname === href ? "text-[#eb4c60]" : "text-zinc-400 hover:text-white"}`}
+                className={`px-3.5 py-1.5 text-[11px] font-medium tracking-[0.15em] uppercase rounded-sm transition-colors duration-200 ${pathname === href ? "text-[#eb4c60] border-l border-[#eb4c60] pl-2" : "text-zinc-400 hover:text-white pl-2"}`}
               >
                 {label}
               </Link>
@@ -88,7 +88,7 @@ export default function Nav() {
             Members
           </Link>
 
-          <button className="md:hidden text-zinc-400 hover:text-white p-1 transition-colors" onClick={() => setOpen(!open)} aria-label="Toggle menu">
+          <button className="md:hidden text-zinc-400 hover:text-white p-1 transition-colors" onClick={() => setOpen(!open)} aria-label="Toggle menu" aria-expanded={open}>
             <div className="w-5 space-y-[5px]">
               <span className={`block h-px bg-current transition-all duration-300 ${open ? "translate-y-[6px] rotate-45 w-5" : "w-5"}`} />
               <span className={`block h-px bg-current transition-all duration-300 ${open ? "opacity-0 w-0" : "w-3"}`} />
@@ -101,8 +101,8 @@ export default function Nav() {
         <div className="space-y-0.5">
           {links.map(({ href, label }, i) => (
             <Link key={href} href={href} onClick={() => setOpen(false)}
-              className={`block py-2.5 text-xs font-medium tracking-[0.15em] uppercase transition-all duration-300 ${open ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-2'} ${pathname === href ? "text-[#eb4c60]" : "text-zinc-400 hover:text-white"}`}
-              style={{ transitionDelay: open ? `${i * 50}ms` : '0ms' }}
+              className={`block py-2.5 text-xs font-medium tracking-[0.15em] uppercase transition-all duration-300 ${open ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-2'} ${pathname === href ? "text-[#eb4c60] border-l border-[#eb4c60] pl-2" : "text-zinc-400 hover:text-white pl-2"}`}
+              style={{ transitionDelay: open ? `${i * 35}ms` : '0ms' }}
             >
               {label}
             </Link>
@@ -111,7 +111,7 @@ export default function Nav() {
             href="/members"
             onClick={() => setOpen(false)}
             className={`block py-2.5 text-xs font-medium tracking-[0.15em] uppercase transition-all duration-300 ${open ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-2'} ${pathname === "/members" ? "text-[#eb4c60]" : "text-zinc-500 hover:text-white"}`}
-            style={{ transitionDelay: open ? `${links.length * 50}ms` : '0ms' }}
+            style={{ transitionDelay: open ? `${links.length * 35}ms` : '0ms' }}
           >
             Members
           </Link>

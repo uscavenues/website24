@@ -32,6 +32,7 @@ export default function Footer() {
           <p className="text-[10px] uppercase tracking-[0.2em] text-zinc-700 mb-4 font-semibold">Pages</p>
           <nav className="flex flex-col gap-2.5">
             {[
+              { href: "/", label: "Home" },
               { href: "/about", label: "About" },
               { href: "/community", label: "Community" },
               { href: "/portfolio", label: "Portfolio" },
@@ -62,8 +63,8 @@ export default function Footer() {
 
       {/* Bottom bar */}
       <div className="border-t border-white/[0.04] mx-auto max-w-7xl px-6 md:px-10 h-10 flex items-center justify-between">
-        <span className="text-[10px] text-zinc-700">© {new Date().getFullYear()} Avenues Consulting Group · USC · Est. 2023</span>
-        <span className="text-[10px] text-zinc-800">Spring 2026</span>
+        <span className="text-[10px] text-zinc-600" suppressHydrationWarning>© {new Date().getFullYear()} Avenues Consulting Group · USC · Est. 2023</span>
+        <span className="text-[10px] text-zinc-600">Spring 2026</span>
       </div>
     </footer>
   );
