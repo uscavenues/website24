@@ -227,7 +227,7 @@ export const mentors: MentorCompany[] = [
 export const alumni: AlumniPlacement[] = [
   {
     company: "Bank of America",
-    logo: "/assets/logos/Bank-of-America-Emblem.png",
+    logo: "/assets/logos/bank-of-america-emblem.png",
     positions: ["(FT) PM"],
   },
   {
@@ -271,7 +271,7 @@ export const alumni: AlumniPlacement[] = [
   },
   {
     company: "General Dynamics",
-    logo: "/assets/logos/General_Dynamics.jpg",
+    logo: "/assets/logos/general_dynamics.jpg",
     positions: ["(I) Software Eng."],
   },
   {
@@ -308,7 +308,7 @@ const clients: ClientEngagement[] = [
   },
   {
     name: "DoorDash",
-    logo: "/assets/logos/DoorDash-logo.png",
+    logo: "/assets/logos/doordash-logo.png",
     services: ["Business Strategy"],
   },
   {
@@ -318,7 +318,7 @@ const clients: ClientEngagement[] = [
   },
   {
     name: "Mountain Dew",
-    logo: "/assets/logos/Mountain_Dew_logo.svg.png",
+    logo: "/assets/logos/mountain_dew_logo.svg.png",
     services: ["Business Strategy", "Design"],
   },
   {

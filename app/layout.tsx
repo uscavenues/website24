@@ -3,6 +3,7 @@ import { GeistSans } from "geist/font/sans";
 import "./globals.css";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
+import PageTransition from "@/components/PageTransition";
 
 export const metadata: Metadata = {
   title: "Avenues Consulting Group | USC",
@@ -19,7 +20,9 @@ export default function RootLayout({
     <html lang="en" className={GeistSans.className}>
       <body className="bg-[#08080f] text-white antialiased">
         <Nav />
-        <main>{children}</main>
+        <main>
+          <PageTransition>{children}</PageTransition>
+        </main>
         <Footer />
       </body>
     </html>

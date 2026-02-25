@@ -31,11 +31,20 @@ body {
 ::-webkit-scrollbar-thumb:hover { background: #eb4c60; }
 
 /* Stagger delays (animation-delay for CSS keyframe animations) */
-.delay-1 { animation-delay: 80ms; }
-.delay-2 { animation-delay: 160ms; }
-.delay-3 { animation-delay: 240ms; }
-.delay-4 { animation-delay: 320ms; }
-.delay-5 { animation-delay: 400ms; }
+.delay-1 { animation-delay: 100ms; }
+.delay-2 { animation-delay: 200ms; }
+.delay-3 { animation-delay: 320ms; }
+.delay-4 { animation-delay: 460ms; }
+.delay-5 { animation-delay: 600ms; }
+
+/* Respect reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *, ::before, ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
 
 /* Stagger delays for scroll-reveal (transition-delay) */
 .reveal.delay-1, .reveal-scale.delay-1 { transition-delay: 80ms; }

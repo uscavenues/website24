@@ -48,7 +48,7 @@ export default function Nav() {
       <div className="bg-[#08080f]/90 backdrop-blur-md border-b border-white/[0.06]">
         <nav className="mx-auto max-w-7xl px-6 md:px-10 h-16 flex items-center justify-between">
           <Link href="/" className="flex items-center gap-2.5 shrink-0">
-            <Image src="/assets/icons/whitelogo.png" alt="Avenues" width={28} height={28} className="opacity-90" />
+            <Image src="/assets/icons/avenues-logo.png" alt="Avenues" width={28} height={28} className="opacity-90" />
             <span className="text-[11px] font-semibold tracking-[0.2em] uppercase text-zinc-300 hidden sm:block">Avenues</span>
           </Link>
           <div className="hidden md:flex items-center gap-0.5">
