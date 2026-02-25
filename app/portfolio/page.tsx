@@ -21,24 +21,29 @@ const PROJECT_TABS: { key: ProjectTab; label: string; data: Project[] }[] = [
   { key: "design", label: "Design", data: designProjects },
 ];
 
-function ProjectCard({ project, index }: { project: Project; index: number }) {
+function ProjectRow({ project, index }: { project: Project; index: number }) {
   return (
-    <div className="glass-card group rounded-sm p-6 transition-all duration-300">
-      <div className="flex items-start justify-between gap-4 mb-4">
-        <div className="text-[10px] font-mono text-zinc-600 group-hover:text-[#eb4c60]/40 transition-colors">
-          {String(index + 1).padStart(2, "0")}
-        </div>
-        <div className="w-3 h-px bg-[#eb4c60] mt-2 shrink-0 group-hover:w-5 transition-all duration-300" />
-      </div>
-      <h3 className="text-sm font-bold text-white mb-2 leading-snug">
-        {project.title}
-      </h3>
-      <p className="text-xs text-zinc-400 leading-relaxed mb-4">
-        {project.desc}
-      </p>
-      <span className="inline-block text-[10px] font-semibold uppercase tracking-[0.15em] text-[#eb4c60]/80">
-        {project.clients}
+    <div className="group relative flex flex-col sm:flex-row sm:items-start gap-4 sm:gap-8 py-8 border-b border-white/[0.05] overflow-hidden">
+      {/* Sweep line */}
+      <div className="absolute bottom-0 left-0 right-0 h-px bg-[#eb4c60] scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-500 pointer-events-none" />
+
+      {/* Index — large, faded */}
+      <span className="shrink-0 text-[clamp(2rem,4vw,3.5rem)] font-black font-mono text-zinc-800 group-hover:text-[#eb4c60]/20 transition-colors duration-300 leading-none w-12 md:w-16">
+        {String(index + 1).padStart(2, "0")}
       </span>
+
+      {/* Content */}
+      <div className="flex-1 min-w-0">
+        <h3 className="text-base font-bold text-white mb-2 leading-snug group-hover:text-[#eb4c60] transition-colors duration-300">{project.title}</h3>
+        <p className="text-sm text-zinc-500 leading-relaxed mb-3 group-hover:text-zinc-300 transition-colors duration-300">{project.desc}</p>
+        <div className="flex flex-wrap gap-1.5">
+          {project.clients.split(", ").map((client) => (
+            <span key={client} className="text-[9px] font-semibold uppercase tracking-[0.15em] text-[#eb4c60]/60 border border-[#eb4c60]/20 px-2 py-0.5 rounded-sm">
+              {client}
+            </span>
+          ))}
+        </div>
+      </div>
     </div>
   );
 }
@@ -203,11 +208,11 @@ export default function PortfolioPage() {
               </div>
             </div>
 
-            {/* Right: project cards */}
+            {/* Right: project rows */}
             <div>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+              <div>
                 {activeProjects.map((project, i) => (
-                  <ProjectCard key={project.title} project={project} index={i} />
+                  <ProjectRow key={project.title} project={project} index={i} />
                 ))}
               </div>
             </div>

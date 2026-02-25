@@ -359,42 +359,44 @@ export default function CommunityPage() {
             </h2>
           </div>
 
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
-            {alumni.map(({ company, logo, positions }) => (
+          {/* Editorial placement record — alternating rows */}
+          <div className="divide-y divide-white/[0.05]">
+            {alumni.map(({ company, logo, positions }, idx) => (
               <div
                 key={company}
-                className="glass-card group relative rounded-sm p-5 flex flex-col gap-4 transition-all duration-300"
+                className="group relative flex flex-col sm:flex-row sm:items-center gap-4 sm:gap-8 py-6 overflow-hidden"
               >
-                {/* Logo */}
-                <div className="relative h-7 w-full">
-                  <Image
-                    src={logo}
-                    alt={company}
-                    fill
-                    className="object-contain object-left opacity-60 group-hover:opacity-100 transition-all duration-300"
-                    sizes="200px"
-                  />
+                {/* Unique hover effect — alternating sweep direction */}
+                <div className={`absolute bottom-0 left-0 right-0 h-px bg-[#eb4c60] scale-x-0 group-hover:scale-x-100 transition-transform duration-500 pointer-events-none ${idx % 2 === 0 ? "origin-left" : "origin-right"}`} />
+
+                {/* Left: index + logo */}
+                <div className="flex items-center gap-6 shrink-0">
+                  <span className="text-[10px] font-mono text-zinc-700 group-hover:text-[#eb4c60]/60 transition-colors duration-300 w-5">{String(idx + 1).padStart(2, "0")}</span>
+                  <div className="relative h-6 w-24 shrink-0">
+                    <Image
+                      src={logo}
+                      alt={company}
+                      fill
+                      className="object-contain object-left opacity-50 group-hover:opacity-100 transition-all duration-300"
+                      sizes="96px"
+                    />
+                  </div>
                 </div>
 
-                {/* Company name */}
-                <p className="text-[11px] font-semibold text-zinc-400 group-hover:text-zinc-200 transition-colors leading-snug">
-                  {company}
-                </p>
+                {/* Center: company name — grows to fill */}
+                <p className="flex-1 text-sm font-bold text-zinc-300 group-hover:text-white transition-colors duration-300 tracking-tight">{company}</p>
 
-                {/* Position tags */}
-                <div className="flex flex-wrap gap-1.5 mt-auto">
+                {/* Right: position tags */}
+                <div className="flex flex-wrap gap-1.5 shrink-0">
                   {positions.map((pos) => (
                     <span
                       key={pos}
-                      className="text-[9px] font-medium text-zinc-600 border border-white/[0.07] bg-white/[0.03] px-1.5 py-0.5 rounded-sm group-hover:border-[#eb4c60]/25 group-hover:text-zinc-400 transition-all duration-200"
+                      className="text-[9px] font-medium text-zinc-600 border border-white/[0.06] bg-white/[0.02] px-2 py-0.5 rounded-sm group-hover:border-[#eb4c60]/25 group-hover:text-zinc-400 transition-all duration-200 whitespace-nowrap"
                     >
                       {pos}
                     </span>
                   ))}
                 </div>
-
-                {/* Pink top-line on hover */}
-                <div className="absolute top-0 left-0 right-0 h-px bg-[#eb4c60] scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left rounded-t-sm" />
               </div>
             ))}
           </div>
