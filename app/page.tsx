@@ -167,11 +167,11 @@ export default function HomePage() {
               <h1 className="text-[clamp(4rem,12vw,10rem)] font-black leading-[0.88] tracking-tighter text-white" aria-label="Avenues Consulting Group">
 
                 {/* Invisible A-placeholder: logo lands here */}
-                <span className="inline-flex items-end" style={{ gap: 0 }}>
+                <span className="inline-flex items-start" style={{ gap: 0 }}>
                   <span
                     ref={aRef}
                     className="inline-block"
-                    style={{ height: "2.2em", width: "2.2em", marginBottom: "-0.92em", marginRight: "-0.44em" }}
+                    style={{ height: "2.2em", width: "2.2em", marginBottom: "-1.12em", marginRight: "-0.44em" }}
                     aria-hidden="true"
                   />
                   <motion.span className="inline-block" style={{ opacity: venuesOp, x: venuesX }}>
@@ -218,7 +218,7 @@ export default function HomePage() {
       </div>
 
       {/* ══════════════════════ THREE PILLARS ══════════════════════════════════ */}
-      <section id="what-we-do" className="mx-auto max-w-7xl px-6 md:px-10 py-24">
+      <section id="what-we-do" className="mx-auto max-w-7xl px-6 md:px-10 py-32">
         <ScrollReveal className="mb-16 flex items-center gap-4">
           <span className="text-[10px] font-bold uppercase tracking-[0.25em] bg-clip-text text-transparent bg-gradient-to-r from-white to-zinc-500">What We Do</span>
           <div className="h-px flex-1 bg-white/[0.05]" />
@@ -258,7 +258,7 @@ export default function HomePage() {
             },
           ].map(({ tag, title, desc, icon }, i) => (
             <ScrollReveal key={title} delay={`delay-${i + 1}`}>
-              <Link href="/portfolio" className="group relative flex flex-col gap-6 p-8 md:p-10 bg-[#08080f] hover:bg-[#eb4c60]/[0.05] transition-colors duration-500 overflow-hidden h-full cursor-pointer">
+              <Link href="/portfolio" className="group relative flex flex-col gap-6 p-10 md:p-14 bg-[#08080f] hover:bg-[#eb4c60]/[0.05] transition-colors duration-500 overflow-hidden h-full cursor-pointer">
                 {/* Top accent line animates in on hover */}
                 <div className="absolute top-0 left-0 right-0 h-px bg-[#eb4c60] scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-500" />
 
@@ -277,7 +277,7 @@ export default function HomePage() {
                 </span>
 
                 {/* Title */}
-                <h3 className="text-[clamp(2rem,4vw,3.5rem)] font-black tracking-tighter text-white group-hover:text-[#eb4c60] transition-colors duration-300 leading-[0.9]">
+                <h3 className="text-[clamp(2.5rem,5vw,4.5rem)] font-black tracking-tighter text-white group-hover:text-[#eb4c60] transition-colors duration-300 leading-[0.9]">
                   {title}
                 </h3>
 

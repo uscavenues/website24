@@ -5,99 +5,106 @@ import { useRouter, usePathname } from "next/navigation";
 import { motion } from "framer-motion";
 
 /**
- * Two-phase wipe transition:
- *   Phase 1 "covering"  — wipe grows left→right (scaleX 0→1) BEFORE navigation
- *   Phase 2 "covered"   — screen is red; router.push fires; new page renders hidden
- *   Phase 3 "revealing" — wipe retreats right→left (scaleX 1→0) revealing new page
+ * Two-phase directional wipe:
+ *   Cover  — scaleX 0→1, origin left  (grows left → right)
+ *   Reveal — scaleX 1→0, origin right (retreats right → left)
  *
- * We intercept anchor clicks in capture phase and call e.preventDefault() so that
- * Next.js Link (which checks e.defaultPrevented before navigating) does nothing.
- * We then manually call router.push after the cover completes.
+ * Cover fires on click (before navigation).
+ * Reveal fires from onCoverComplete (zero state-machine race conditions).
+ *
+ * Previous bug: reveal was triggered by a pathname useEffect, which could
+ * arrive before setCovering(false) committed → stuck on full red screen.
+ * Fix: reveal is always triggered directly from the cover's onAnimationComplete.
  */
-
-type Phase = "idle" | "covering" | "covered" | "revealing";
-
 export default function PageTransition({ children }: { children: React.ReactNode }) {
   const router   = useRouter();
   const pathname = usePathname();
 
-  const [phase, setPhase] = useState<Phase>("idle");
+  const [covering,  setCovering]  = useState(false);
+  const [revealing, setRevealing] = useState(false);
+
   const pending    = useRef<string | null>(null);
   const activePath = useRef(pathname);
+  const inFlight   = useRef(false);
 
-  // ── Step 1: intercept clicks before Next.js sees them ──────────────────
+  // Keep activePath in sync (used for same-page check)
+  useEffect(() => { activePath.current = pathname; }, [pathname]);
+
+  // Intercept internal anchor clicks before Next.js's router
   useEffect(() => {
     const handler = (e: MouseEvent) => {
-      if (phase !== "idle") return;
+      if (inFlight.current) return;
 
       const anchor = (e.target as Element).closest("a");
       if (!anchor) return;
 
       const href = anchor.getAttribute("href") ?? "";
       if (!href) return;
-
-      // Skip external, hash, protocol links and new-tab targets
       if (/^(https?:|\/\/|mailto:|tel:|#)/.test(href)) return;
       if (anchor.getAttribute("target") === "_blank") return;
 
-      // Skip same-page navigation
       try {
-        const target = new URL(href, window.location.href).pathname;
+        const target = new URL(href, location.href).pathname;
         if (target === activePath.current) return;
       } catch { return; }
 
-      // Block Next.js Link's built-in navigation (it checks defaultPrevented)
+      // Block Next.js Link's router.push (it checks e.defaultPrevented)
       e.preventDefault();
 
-      pending.current = href;
-      setPhase("covering");
+      inFlight.current = true;
+      pending.current  = href;
+      setCovering(true);
     };
 
-    // Capture phase → runs before React's synthetic events
-    document.addEventListener("click", handler, true);
+    document.addEventListener("click", handler, true); // capture phase
     return () => document.removeEventListener("click", handler, true);
-  }, [phase]);
+  }, []);
 
-  // ── Step 2: once the pathname actually changes, start reveal ────────────
-  useEffect(() => {
-    if (pathname !== activePath.current) {
-      activePath.current = pathname;
-      if (phase === "covered") setPhase("revealing");
+  // Cover is done → navigate, then immediately start reveal
+  const onCoverComplete = useCallback(() => {
+    setCovering(false);
+    if (pending.current) {
+      router.push(pending.current);
+      pending.current = null;
     }
-  }, [pathname, phase]);
+    // Reveal fires here — not from a pathname useEffect, so no race condition
+    setRevealing(true);
+  }, [router]);
 
-  // ── Animation callbacks ─────────────────────────────────────────────────
-  const onAnimComplete = useCallback(() => {
-    if (phase === "covering") {
-      // Screen fully covered — safe to navigate; user sees nothing change
-      setPhase("covered");
-      if (pending.current) {
-        router.push(pending.current);
-        pending.current = null;
-      }
-    } else if (phase === "revealing") {
-      setPhase("idle");
-    }
-  }, [phase, router]);
+  // Reveal is done → reset
+  const onRevealComplete = useCallback(() => {
+    setRevealing(false);
+    inFlight.current = false;
+  }, []);
 
-  // ── Render ──────────────────────────────────────────────────────────────
   return (
     <>
-      {phase !== "idle" && (
+      {/* Cover: grows from left */}
+      {covering && (
         <motion.div
           className="fixed inset-0 z-[200] bg-[#eb4c60] pointer-events-none"
           aria-hidden="true"
-          // Cover starts collapsed, reveal starts full
-          initial={{ scaleX: phase === "covering" ? 0 : 1 }}
-          animate={{ scaleX: phase === "revealing" ? 0 : 1 }}
-          transition={{ duration: 0.38, ease: [0.4, 0, 0.2, 1] }}
-          style={{
-            // Grows from left while covering, retreats from right while revealing
-            transformOrigin: phase === "covering" ? "left center" : "right center",
-          }}
-          onAnimationComplete={onAnimComplete}
+          initial={{ scaleX: 0 }}
+          animate={{ scaleX: 1 }}
+          transition={{ duration: 0.35, ease: [0.4, 0, 0.2, 1] }}
+          style={{ transformOrigin: "left center" }}
+          onAnimationComplete={onCoverComplete}
         />
       )}
+
+      {/* Reveal: retreats to right */}
+      {revealing && (
+        <motion.div
+          className="fixed inset-0 z-[200] bg-[#eb4c60] pointer-events-none"
+          aria-hidden="true"
+          initial={{ scaleX: 1 }}
+          animate={{ scaleX: 0 }}
+          transition={{ duration: 0.38, ease: [0.4, 0, 0.2, 1] }}
+          style={{ transformOrigin: "right center" }}
+          onAnimationComplete={onRevealComplete}
+        />
+      )}
+
       {children}
     </>
   );
