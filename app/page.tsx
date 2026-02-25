@@ -166,14 +166,16 @@ export default function HomePage() {
 
               <h1 className="text-[clamp(4rem,12vw,10rem)] font-black leading-[0.88] tracking-tighter text-white" aria-label="Avenues Consulting Group">
 
-                {/* Invisible A-placeholder: logo lands here */}
+                {/* A-placeholder: absolute so it never inflates the line-box height */}
                 <span className="inline-flex items-center" style={{ gap: 0 }}>
-                  <span
-                    ref={aRef}
-                    className="inline-block"
-                    style={{ height: "2.2em", width: "2.2em", marginBottom: "-1.12em", marginRight: "-0.44em", position: "relative", top: "-0.33em" }}
-                    aria-hidden="true"
-                  />
+                  <span className="relative inline-block" style={{ width: "2.2em", marginRight: "-0.65em" }}>
+                    <span
+                      ref={aRef}
+                      className="absolute"
+                      style={{ height: "2.2em", width: "2.2em", top: "-0.99em", left: 0 }}
+                      aria-hidden="true"
+                    />
+                  </span>
                   <motion.span className="inline-block" style={{ opacity: venuesOp, x: venuesX }}>
                     VENUES
                   </motion.span>
@@ -277,7 +279,7 @@ export default function HomePage() {
                 </span>
 
                 {/* Title */}
-                <h3 className="text-[clamp(2.5rem,5vw,4.5rem)] font-black tracking-tighter text-white group-hover:text-[#eb4c60] transition-colors duration-300 leading-[0.9]">
+                <h3 className="text-[clamp(2rem,4vw,3.5rem)] font-black tracking-tighter text-white group-hover:text-[#eb4c60] transition-colors duration-300 leading-[0.9]">
                   {title}
                 </h3>
 
