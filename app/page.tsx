@@ -17,7 +17,7 @@ export default function HomePage() {
     if (typeof window === "undefined") return { x: 400, y: 260, sz: 500 };
     const vw = window.innerWidth;
     const vh = window.innerHeight;
-    const sz = Math.min(Math.max(vw * 0.58, 420), 680);
+    const sz = Math.min(Math.max(vw * 0.44, 300), 520);
     return { x: vw / 2 - sz / 2, y: vh / 2 - sz / 2, sz };
   });
 
@@ -43,44 +43,44 @@ export default function HomePage() {
   const { scrollYProgress } = useScroll({ target: heroRef, offset: ["start start", "end end"] });
 
   // ── SEQUENCE (scroll-driven, 320vh hero) ──────────────────────────────
-  //  0.00–0.08  black screen, big logo centred (load moment)
-  //  0.08–0.26  black overlay fades OUT → background photo reveals       ← FIRST
-  //  0.28–0.54  logo flies centre → A slot                               ← AFTER bg
-  //  0.50–0.61  VENUES slides in
-  //  0.57–0.68  CONSULTING rises
-  //  0.64–0.75  GROUP rises
-  //  0.75–0.86  tagline + CTAs fade in (right after GROUP)
-  //  0.86–1.00  buffer before sticky releases
+  //  0.00–0.05  black screen, big logo centred
+  //  0.05–0.32  logo flies centre → A slot              (against black bg)
+  //  0.28–0.39  VENUES slides in
+  //  0.35–0.46  CONSULTING rises
+  //  0.42–0.53  GROUP rises
+  //  0.53–0.64  tagline + CTAs fade in  ← right after GROUP
+  //  0.64–0.80  black overlay fades → background reveals ← LAST
+  //  0.80–1.00  buffer before sticky releases
 
-  // Black overlay
-  const blackOp = useTransform(scrollYProgress, [0, 0.08, 0.26, 0.40], [1, 1, 0, 0]);
+  // Black overlay — stays until AFTER tagline appears, THEN fades
+  const blackOp = useTransform(scrollYProgress, [0, 0.05, 0.64, 0.80], [1, 1, 1, 0]);
 
-  // Logo movement — only after bg reveals
+  // Logo movement — starts immediately on scroll
   const ease = (t: number) => t < 0.5 ? 4*t*t*t : 1 - Math.pow(-2*t+2,3)/2;
   const logoLeft = useTransform(
     [scrollYProgress, startX, endX] as MotionValue[],
-    (v: number[]) => { const [p,sx,ex]=v; const t=Math.max(0,Math.min(1,(p-0.28)/0.26)); return sx+(ex-sx)*ease(t); }
+    (v: number[]) => { const [p,sx,ex]=v; const t=Math.max(0,Math.min(1,(p-0.05)/0.27)); return sx+(ex-sx)*ease(t); }
   );
   const logoTop = useTransform(
     [scrollYProgress, startY, endY] as MotionValue[],
-    (v: number[]) => { const [p,sy,ey]=v; const t=Math.max(0,Math.min(1,(p-0.28)/0.26)); return sy+(ey-sy)*ease(t); }
+    (v: number[]) => { const [p,sy,ey]=v; const t=Math.max(0,Math.min(1,(p-0.05)/0.27)); return sy+(ey-sy)*ease(t); }
   );
   const logoSize = useTransform(
     [scrollYProgress, startSz, endSz] as MotionValue[],
-    (v: number[]) => { const [p,ss,es]=v; const t=Math.max(0,Math.min(1,(p-0.28)/0.26)); return ss+(es-ss)*ease(t); }
+    (v: number[]) => { const [p,ss,es]=v; const t=Math.max(0,Math.min(1,(p-0.05)/0.27)); return ss+(es-ss)*ease(t); }
   );
 
   // Text stagger
-  const venuesOp  = useTransform(scrollYProgress, [0.50, 0.61], [0, 1]);
-  const venuesX   = useTransform(scrollYProgress, [0.50, 0.61], [40, 0]);
-  const consultOp = useTransform(scrollYProgress, [0.57, 0.68], [0, 1]);
-  const consultY  = useTransform(scrollYProgress, [0.57, 0.68], [44, 0]);
-  const groupOp   = useTransform(scrollYProgress, [0.64, 0.75], [0, 1]);
-  const groupY    = useTransform(scrollYProgress, [0.64, 0.75], [32, 0]);
+  const venuesOp  = useTransform(scrollYProgress, [0.28, 0.39], [0, 1]);
+  const venuesX   = useTransform(scrollYProgress, [0.28, 0.39], [40, 0]);
+  const consultOp = useTransform(scrollYProgress, [0.35, 0.46], [0, 1]);
+  const consultY  = useTransform(scrollYProgress, [0.35, 0.46], [44, 0]);
+  const groupOp   = useTransform(scrollYProgress, [0.42, 0.53], [0, 1]);
+  const groupY    = useTransform(scrollYProgress, [0.42, 0.53], [32, 0]);
 
-  // Tagline + CTAs — RIGHT after GROUP finishes (0.75)
-  const contentOp = useTransform(scrollYProgress, [0.75, 0.86], [0, 1]);
-  const contentY  = useTransform(scrollYProgress, [0.75, 0.86], [28, 0]);
+  // Tagline + CTAs — right after GROUP, before bg reveal
+  const contentOp = useTransform(scrollYProgress, [0.53, 0.64], [0, 1]);
+  const contentY  = useTransform(scrollYProgress, [0.53, 0.64], [28, 0]);
 
   return (
     <>
@@ -118,7 +118,7 @@ export default function HomePage() {
                   <span
                     ref={aRef}
                     className="inline-block"
-                    style={{ height: "3.5em", width: "3.5em", marginBottom: "-1.1em", marginRight: "-1.3em" }}
+                    style={{ height: "1.8em", width: "1.8em", marginBottom: "-0.3em", marginRight: "-0.55em" }}
                     aria-hidden="true"
                   />
                   <motion.span className="inline-block" style={{ opacity: venuesOp, x: venuesX }}>
