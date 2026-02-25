@@ -167,7 +167,7 @@ export default function HomePage() {
               <h1 className="text-[clamp(4rem,12vw,10rem)] font-black leading-[0.88] tracking-tighter text-white" aria-label="Avenues Consulting Group">
 
                 {/* Invisible A-placeholder: logo lands here */}
-                <span className="inline-flex items-start" style={{ gap: 0 }}>
+                <span className="inline-flex items-center" style={{ gap: 0 }}>
                   <span
                     ref={aRef}
                     className="inline-block"
