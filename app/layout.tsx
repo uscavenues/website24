@@ -6,6 +6,7 @@ import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
 import PageTransition from "@/components/PageTransition";
 import ScrollToTop from "@/components/ScrollToTop";
+import JsonLd from "@/components/JsonLd";
 
 const dmSerif = DM_Serif_Display({
   weight: "400",
@@ -19,6 +20,30 @@ export const viewport: Viewport = {
   themeColor: [
     { media: "(prefers-color-scheme: dark)", color: "#08080f" },
     { media: "(prefers-color-scheme: light)", color: "#08080f" },
+  ],
+};
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Avenues Consulting Group",
+  "url": "https://avenues-ten.vercel.app",
+  "logo": "https://avenues-ten.vercel.app/assets/icons/avenues-logo.png",
+  "description": "USC's student-run consulting group spanning strategy, technology, and design. Pro bono.",
+  "foundingDate": "2023",
+  "areaServed": "United States",
+  "memberOf": {
+    "@type": "CollegeOrUniversity",
+    "name": "University of Southern California",
+  },
+  "contactPoint": {
+    "@type": "ContactPoint",
+    "email": "uscavenues@gmail.com",
+    "contactType": "general inquiry",
+  },
+  "sameAs": [
+    "https://www.instagram.com/uscavenues/",
+    "https://www.linkedin.com/company/avenues-consulting-group-usc/",
   ],
 };
 
@@ -66,34 +91,7 @@ export default function RootLayout({
         </main>
         <Footer />
         <ScrollToTop />
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "Organization",
-              "name": "Avenues Consulting Group",
-              "url": "https://avenues-ten.vercel.app",
-              "logo": "https://avenues-ten.vercel.app/assets/icons/avenues-logo.png",
-              "description": "USC's student-run consulting group spanning strategy, technology, and design. Pro bono.",
-              "foundingDate": "2023",
-              "areaServed": "United States",
-              "memberOf": {
-                "@type": "CollegeOrUniversity",
-                "name": "University of Southern California"
-              },
-              "contactPoint": {
-                "@type": "ContactPoint",
-                "email": "uscavenues@gmail.com",
-                "contactType": "general inquiry"
-              },
-              "sameAs": [
-                "https://www.instagram.com/uscavenues/",
-                "https://www.linkedin.com/company/avenues-consulting-group-usc/"
-              ]
-            })
-          }}
-        />
+        <JsonLd data={jsonLd} />
       </body>
     </html>
   );

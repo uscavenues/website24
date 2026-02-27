@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { LazyMotion, domAnimation, m, AnimatePresence } from "framer-motion";
 import Link from "next/link";
 import Image from "next/image";
 import {
@@ -62,6 +62,7 @@ export default function PortfolioClient() {
     PROJECT_TABS.find((t) => t.key === activeTab)?.data ?? [];
 
   return (
+    <LazyMotion features={domAnimation}>
     <>
       {/* ── PAGE HEADER ──────────────────────────────────────────────────── */}
       <section className="relative min-h-[85vh] flex items-end overflow-hidden">
@@ -111,9 +112,9 @@ export default function PortfolioClient() {
         <div className="overflow-hidden space-y-3 marquee-hover-pause">
           {/* Row 1 — scrolls left */}
           <div className="marquee-track">
-            {[...clientCards, ...clientCards].map((client, i) => (
+            {[...clientCards.map((c) => ({ ...c, _k: `r1a-${c.name}` })), ...clientCards.map((c) => ({ ...c, _k: `r1b-${c.name}` }))].map((client) => (
               <div
-                key={`row1-${i}`}
+                key={client._k}
                 className="group relative shrink-0 mr-4 flex flex-col items-center justify-center gap-3 px-10 py-6 min-w-[200px] border border-zinc-200 bg-white hover:bg-zinc-50 hover:border-[#eb4c60]/30 transition-all duration-300 rounded-sm"
               >
                 {/* Pink top-line on hover */}
@@ -135,9 +136,9 @@ export default function PortfolioClient() {
           </div>
           {/* Row 2 — scrolls right */}
           <div className="marquee-track-reverse">
-            {[...clientCards, ...clientCards].reverse().map((client, i) => (
+            {[...clientCards.map((c) => ({ ...c, _k: `r2a-${c.name}` })), ...clientCards.map((c) => ({ ...c, _k: `r2b-${c.name}` }))].reverse().map((client) => (
               <div
-                key={`row2-${i}`}
+                key={client._k}
                 className="group relative shrink-0 mr-4 flex flex-col items-center justify-center gap-3 px-10 py-6 min-w-[200px] border border-zinc-200 bg-zinc-50 hover:bg-zinc-50 hover:border-[#eb4c60]/30 transition-all duration-300 rounded-sm"
               >
                 {/* Pink bottom-line on hover (different from row 1) */}
@@ -200,7 +201,7 @@ export default function PortfolioClient() {
                   >
                     <span className="flex items-center gap-2">
                       {activeTab === key && (
-                        <motion.span
+                        <m.span
                           layoutId="tab-indicator"
                           className="w-px h-3.5 bg-[#eb4c60] rounded-full"
                           transition={{ type: "spring", stiffness: 400, damping: 30 }}
@@ -241,7 +242,7 @@ export default function PortfolioClient() {
                 ))}
               </div>
               <AnimatePresence mode="wait">
-                <motion.div
+                <m.div
                   key={activeTab}
                   initial={{ opacity: 0, y: 12 }}
                   animate={{ opacity: 1, y: 0 }}
@@ -251,7 +252,7 @@ export default function PortfolioClient() {
                   {activeProjects.map((project, i) => (
                     <ProjectRow key={project.title} project={project} index={i} accent={TAB_ACCENTS[activeTab]} />
                   ))}
-                </motion.div>
+                </m.div>
               </AnimatePresence>
             </div>
           </div>
@@ -283,5 +284,6 @@ export default function PortfolioClient() {
         </div>
       </section>
     </>
+    </LazyMotion>
   );
 }

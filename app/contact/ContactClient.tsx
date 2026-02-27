@@ -1,5 +1,6 @@
 "use client";
 import { useState } from "react";
+import Link from "next/link";
 
 export default function ContactClient() {
   const [submitted, setSubmitted] = useState(false);
@@ -44,9 +45,9 @@ export default function ContactClient() {
         <h3 className="text-2xl font-black text-white tracking-tight">We&apos;ll be in touch.</h3>
         <p className="text-sm text-zinc-400 leading-relaxed max-w-sm">
           Expect a response within 48 hours. In the meantime, check out our{" "}
-          <a href="/portfolio" className="text-[#eb4c60] hover:underline">
+          <Link href="/portfolio" className="text-[#eb4c60] hover:underline">
             portfolio
-          </a>{" "}
+          </Link>{" "}
           to see examples of our work.
         </p>
         <button

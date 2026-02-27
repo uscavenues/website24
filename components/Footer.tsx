@@ -17,7 +17,7 @@ export default function Footer() {
         {/* Logo wordmark */}
         <Link href="/" className="flex items-center shrink-0">
           <span className="relative inline-block shrink-0 w-[18px] h-[18px]">
-            <Image src="/assets/icons/avenues-logo.png" alt="A" fill className="object-contain invert opacity-50" />
+            <Image src="/assets/icons/avenues-logo.png" alt="A" fill sizes="18px" className="object-contain invert opacity-50" />
           </span>
           <span className="font-bold tracking-[0.13em] uppercase text-zinc-600 text-[10px]" style={{ marginLeft: "-3px" }}>
             VENUES · USC

@@ -2,7 +2,7 @@
 //  Types
 // ─────────────────────────────────────────────────────────────────────────────
 
-export interface TeamMember {
+interface TeamMember {
   name: string;
   role: string;
   photo: string; // absolute path from /public, e.g. "/assets/photos/profiles/armani.jpg"
@@ -528,33 +528,3 @@ export const faqApplication: FAQItem[] = [
   },
 ];
 
-// ─────────────────────────────────────────────────────────────────────────────
-//  FAQ  -  Organization
-// ─────────────────────────────────────────────────────────────────────────────
-
-export const faqOrg: FAQItem[] = [
-  {
-    q: "What makes Avenues different from other consulting clubs?",
-    a: "We work on real, live engagements with actual clients, not case studies. Every member contributes to a deliverable that a real organization will act on. We also span three disciplines (strategy, tech, and design) under one roof, which makes our project teams genuinely multidisciplinary.",
-  },
-  {
-    q: "What kinds of clients does Avenues work with?",
-    a: "We partner with non-profits, early-stage startups, and established companies across a wide range of industries. All of our work is pro bono — our clients pay nothing, and our members build real skills in return.",
-  },
-  {
-    q: "How are members placed on client teams?",
-    a: "At the start of each semester we hold a Client Reveal: members are matched to client teams based on their stated interests, skillsets, and availability. We aim to give everyone a placement that both challenges and excites them.",
-  },
-  {
-    q: "Does Avenues help with recruiting?",
-    a: "Yes. In addition to the skills you build on client projects, we run workshops on resume writing, case interview prep, and networking. We also host industry events with professionals from top consulting, finance, and tech firms.",
-  },
-  {
-    q: "Are there leadership opportunities within the org?",
-    a: "Definitely. As you grow within Avenues, there are opportunities to take on director and associate leadership roles across departments including recruitment, technology, marketing, finance, and more.",
-  },
-  {
-    q: "How does Avenues stay in touch with alumni?",
-    a: "Our Alumni Engagement team maintains an active network of Avenues alumni now working at firms like Deloitte, JP Morgan, EY, Accenture, and more. Alumni mentor current members and participate in events throughout the year.",
-  },
-];

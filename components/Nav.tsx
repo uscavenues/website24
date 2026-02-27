@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useReducer, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
@@ -14,9 +14,63 @@ const links = [
   { href: "/contact", label: "Contact" },
 ];
 
+type NavState = { isHidden: boolean };
+type NavAction = { type: "SET_HIDDEN"; hidden: boolean };
+
+function navReducer(state: NavState, action: NavAction): NavState {
+  switch (action.type) {
+    case "SET_HIDDEN":
+      return { isHidden: action.hidden };
+    default:
+      return state;
+  }
+}
+
+/** Mobile menu extracted into its own component so key={pathname} resets its local open state */
+function MobileMenu({ pathname }: { pathname: string }) {
+  const [open, setOpen] = useReducer((s: boolean) => !s, false);
+
+  return (
+    <>
+      <button
+        className="md:hidden text-zinc-400 hover:text-white p-2.5 -mr-2.5 transition-colors"
+        onClick={setOpen}
+        aria-label="Toggle menu"
+        aria-expanded={open}
+      >
+        <div className="w-5 space-y-[5px]">
+          <span className={`block h-px bg-current transition-all duration-300 ${open ? "translate-y-[6px] rotate-45 w-5" : "w-5"}`} />
+          <span className={`block h-px bg-current transition-all duration-300 ${open ? "opacity-0 w-0" : "w-3"}`} />
+          <span className={`block h-px bg-current transition-all duration-300 ${open ? "-translate-y-[6px] -rotate-45 w-5" : "w-5"}`} />
+        </div>
+      </button>
+      <div className={`md:hidden border-b border-white/[0.06] bg-[#08080f]/95 backdrop-blur-md overflow-hidden transition-all duration-300 absolute top-full inset-x-0 ${open ? "max-h-96 py-4 px-6" : "max-h-0"}`}>
+        <div className="space-y-0.5">
+          {links.map(({ href, label }, i) => (
+            <Link
+              key={href}
+              href={href}
+              className={`block py-2.5 text-xs font-medium tracking-[0.15em] uppercase transition-all duration-300 ${open ? "opacity-100 translate-y-0" : "opacity-0 translate-y-2"} ${pathname === href ? "text-[#eb4c60]" : "text-zinc-400 hover:text-white"}`}
+              style={{ transitionDelay: open ? `${i * 35}ms` : "0ms" }}
+            >
+              {label}
+            </Link>
+          ))}
+          <Link
+            href="/members"
+            className={`block py-2.5 text-xs font-medium tracking-[0.15em] uppercase transition-all duration-300 ${open ? "opacity-100 translate-y-0" : "opacity-0 translate-y-2"} ${pathname === "/members" ? "text-[#eb4c60]" : "text-zinc-500 hover:text-white"}`}
+            style={{ transitionDelay: open ? `${links.length * 35}ms` : "0ms" }}
+          >
+            Members
+          </Link>
+        </div>
+      </div>
+    </>
+  );
+}
+
 export default function Nav() {
-  const [isHidden, setIsHidden] = useState(true);
-  const [open, setOpen] = useState(false);
+  const [{ isHidden }, dispatch] = useReducer(navReducer, { isHidden: true });
   const pathname = usePathname();
 
   useEffect(() => {
@@ -25,22 +79,14 @@ export default function Nav() {
       const docHeight = document.documentElement.scrollHeight;
       const windowHeight = window.innerHeight;
       const footerThreshold = docHeight - windowHeight - 180;
-      // On home page, wait until "What We Do" is near the top (after the full 320vh hero)
       const topThreshold = pathname === "/" ? Math.round(windowHeight * 3.4) : 40;
-      if (scrollY < topThreshold) {
-        setIsHidden(true);
-      } else if (scrollY > footerThreshold) {
-        setIsHidden(true);
-      } else {
-        setIsHidden(false);
-      }
+      const hidden = scrollY < topThreshold || scrollY > footerThreshold;
+      dispatch({ type: "SET_HIDDEN", hidden });
     };
     window.addEventListener("scroll", handleScroll, { passive: true });
     handleScroll();
     return () => window.removeEventListener("scroll", handleScroll);
   }, [pathname]);
-
-  useEffect(() => { setOpen(false); }, [pathname]);
 
   return (
     <header
@@ -59,6 +105,7 @@ export default function Nav() {
                 src="/assets/icons/avenues-logo.png"
                 alt="A"
                 fill
+                sizes="20px"
                 className="object-contain invert opacity-90"
               />
             </span>
@@ -77,7 +124,7 @@ export default function Nav() {
             ))}
           </div>
 
-          {/* Members button — now internal /members route */}
+          {/* Members button */}
           <Link
             href="/members"
             className={`ml-2 inline-flex items-center gap-1.5 border px-3 py-1.5 text-[11px] font-semibold tracking-[0.15em] uppercase rounded-sm transition-colors duration-200 ${pathname === "/members" ? "border-[#eb4c60]/40 text-[#eb4c60] bg-[#eb4c60]/[0.06]" : "border-white/[0.1] bg-white/[0.03] text-zinc-400 hover:text-white hover:border-white/20"}`}
@@ -88,34 +135,9 @@ export default function Nav() {
             Members
           </Link>
 
-          <button className="md:hidden text-zinc-400 hover:text-white p-2.5 -mr-2.5 transition-colors" onClick={() => setOpen(!open)} aria-label="Toggle menu" aria-expanded={open}>
-            <div className="w-5 space-y-[5px]">
-              <span className={`block h-px bg-current transition-all duration-300 ${open ? "translate-y-[6px] rotate-45 w-5" : "w-5"}`} />
-              <span className={`block h-px bg-current transition-all duration-300 ${open ? "opacity-0 w-0" : "w-3"}`} />
-              <span className={`block h-px bg-current transition-all duration-300 ${open ? "-translate-y-[6px] -rotate-45 w-5" : "w-5"}`} />
-            </div>
-          </button>
+          {/* key={pathname} causes MobileMenu to remount on every route change, resetting open state */}
+          <MobileMenu key={pathname} pathname={pathname} />
         </nav>
-      </div>
-      <div className={`md:hidden border-b border-white/[0.06] bg-[#08080f]/95 backdrop-blur-md overflow-hidden transition-all duration-300 ${open ? "max-h-96 py-4 px-6" : "max-h-0"}`}>
-        <div className="space-y-0.5">
-          {links.map(({ href, label }, i) => (
-            <Link key={href} href={href} onClick={() => setOpen(false)}
-              className={`block py-2.5 text-xs font-medium tracking-[0.15em] uppercase transition-all duration-300 ${open ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-2'} ${pathname === href ? "text-[#eb4c60]" : "text-zinc-400 hover:text-white"}`}
-              style={{ transitionDelay: open ? `${i * 35}ms` : '0ms' }}
-            >
-              {label}
-            </Link>
-          ))}
-          <Link
-            href="/members"
-            onClick={() => setOpen(false)}
-            className={`block py-2.5 text-xs font-medium tracking-[0.15em] uppercase transition-all duration-300 ${open ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-2'} ${pathname === "/members" ? "text-[#eb4c60]" : "text-zinc-500 hover:text-white"}`}
-            style={{ transitionDelay: open ? `${links.length * 35}ms` : '0ms' }}
-          >
-            Members
-          </Link>
-        </div>
       </div>
     </header>
   );

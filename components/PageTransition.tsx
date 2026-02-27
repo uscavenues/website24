@@ -2,7 +2,7 @@
 
 import { useCallback, useEffect, useRef, useState } from "react";
 import { useRouter, usePathname } from "next/navigation";
-import { motion } from "framer-motion";
+import { LazyMotion, domAnimation, m } from "framer-motion";
 
 /**
  * Two-phase directional wipe:
@@ -78,10 +78,11 @@ export default function PageTransition({ children }: { children: React.ReactNode
   }, []);
 
   return (
+    <LazyMotion features={domAnimation}>
     <>
       {/* Cover: grows from left */}
       {covering && (
-        <motion.div
+        <m.div
           className="fixed inset-0 z-[200] bg-[#eb4c60] pointer-events-none"
           aria-hidden="true"
           initial={{ scaleX: 0 }}
@@ -94,7 +95,7 @@ export default function PageTransition({ children }: { children: React.ReactNode
 
       {/* Reveal: retreats to right */}
       {revealing && (
-        <motion.div
+        <m.div
           className="fixed inset-0 z-[200] bg-[#eb4c60] pointer-events-none"
           aria-hidden="true"
           initial={{ scaleX: 1 }}
@@ -107,5 +108,6 @@ export default function PageTransition({ children }: { children: React.ReactNode
 
       {children}
     </>
+    </LazyMotion>
   );
 }
