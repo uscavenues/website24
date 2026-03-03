@@ -2,11 +2,14 @@ import type { Metadata, Viewport } from "next";
 import { GeistSans } from "geist/font/sans";
 import { DM_Serif_Display } from "next/font/google";
 import "./globals.css";
+import "./hamburgers.css";
+import "aos/dist/aos.css";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
 import PageTransition from "@/components/PageTransition";
 import ScrollToTop from "@/components/ScrollToTop";
 import JsonLd from "@/components/JsonLd";
+import AOSInit from "@/components/AOSInit";
 
 const dmSerif = DM_Serif_Display({
   weight: "400",
@@ -85,6 +88,7 @@ export default function RootLayout({
         >
           Skip to main content
         </a>
+        <AOSInit />
         <Nav />
         <main id="main-content">
           <PageTransition>{children}</PageTransition>

@@ -33,16 +33,15 @@ function MobileMenu({ pathname }: { pathname: string }) {
   return (
     <>
       <button
-        className="md:hidden text-zinc-400 hover:text-white p-2.5 -mr-2.5 transition-colors"
+        className={`md:hidden hamburger hamburger--squeeze -mr-2${open ? " is-active" : ""}`}
         onClick={setOpen}
         aria-label="Toggle menu"
         aria-expanded={open}
+        type="button"
       >
-        <div className="w-5 space-y-[5px]">
-          <span className={`block h-px bg-current transition-all duration-300 ${open ? "translate-y-[6px] rotate-45 w-5" : "w-5"}`} />
-          <span className={`block h-px bg-current transition-all duration-300 ${open ? "opacity-0 w-0" : "w-3"}`} />
-          <span className={`block h-px bg-current transition-all duration-300 ${open ? "-translate-y-[6px] -rotate-45 w-5" : "w-5"}`} />
-        </div>
+        <span className="hamburger-box">
+          <span className="hamburger-inner" />
+        </span>
       </button>
       <div className={`md:hidden border-b border-white/[0.06] bg-[#08080f]/95 backdrop-blur-md overflow-hidden transition-all duration-300 absolute top-full inset-x-0 ${open ? "max-h-96 py-4 px-6" : "max-h-0"}`}>
         <div className="space-y-0.5">

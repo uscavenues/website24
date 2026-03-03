@@ -5,6 +5,7 @@ import { LazyMotion, domAnimation, m, useScroll, useTransform, useMotionValue, M
 import Image from "next/image";
 import Link from "next/link";
 import ScrollReveal from "@/components/ScrollReveal";
+import TypedHeadline from "@/components/TypedHeadline";
 
 interface Pos { x: number; y: number; sz: number }
 
@@ -198,8 +199,15 @@ export default function HomeClient() {
               {/* Tagline + CTAs — appear right after GROUP */}
               <m.div style={{ opacity: contentOp, y: contentY }}>
                 <p className="mt-8 max-w-lg text-zinc-400 text-base md:text-xl leading-relaxed font-display italic">
-                  USC&apos;s student-run consulting group spanning strategy, technology, and design. Pro bono,
-                  and built for impact.
+                  <TypedHeadline
+                    strings={[
+                      "USC's Premier Consulting Group.",
+                      "Strategy. Technology. Design.",
+                      "Pro bono, and built for impact.",
+                      "Driving real change at USC.",
+                    ]}
+                    className="inline"
+                  />
                 </p>
                 <div className="flex flex-wrap gap-3 mt-8">
                   <Link href="/contact" className="inline-flex items-center gap-2 bg-[#eb4c60] text-white px-7 py-3.5 text-xs font-bold tracking-[0.15em] uppercase rounded-sm hover:bg-[#d43d50] transition-colors duration-200">
@@ -223,8 +231,8 @@ export default function HomeClient() {
       {/* ══════════════════════ THREE PILLARS ══════════════════════════════════ */}
       <section id="what-we-do" className="mx-auto max-w-7xl px-6 md:px-10 py-32">
         <ScrollReveal className="mb-16 flex items-center gap-4">
-          <span className="text-[10px] font-bold uppercase tracking-[0.25em] bg-clip-text text-transparent bg-gradient-to-r from-white to-zinc-500">What We Do</span>
-          <div className="h-px flex-1 bg-white/[0.05]" />
+          <span data-aos="fade-right" data-aos-delay="100" className="text-[10px] font-bold uppercase tracking-[0.25em] bg-clip-text text-transparent bg-gradient-to-r from-white to-zinc-500">What We Do</span>
+          <div data-aos="fade-left" data-aos-delay="200" className="h-px flex-1 bg-white/[0.05]" />
         </ScrollReveal>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-px bg-white/[0.05] rounded-sm overflow-hidden">
@@ -280,12 +288,12 @@ export default function HomeClient() {
                 </span>
 
                 {/* Title */}
-                <h3 className="text-[clamp(2rem,4vw,3.5rem)] font-black tracking-tighter text-white group-hover:text-[#eb4c60] transition-colors duration-300 leading-[0.9]">
+                <h3 data-aos="fade-up" data-aos-delay={`${(i + 1) * 100}`} className="text-[clamp(2rem,4vw,3.5rem)] font-black tracking-tighter text-white group-hover:text-[#eb4c60] transition-colors duration-300 leading-[0.9]">
                   {title}
                 </h3>
 
                 {/* Desc */}
-                <p className="text-sm text-zinc-500 leading-relaxed group-hover:text-zinc-300 transition-colors duration-300 mt-auto">
+                <p data-aos="fade-up" data-aos-delay={`${(i + 1) * 100 + 100}`} className="text-sm text-zinc-500 leading-relaxed group-hover:text-zinc-300 transition-colors duration-300 mt-auto">
                   {desc}
                 </p>
 
@@ -344,7 +352,7 @@ export default function HomeClient() {
                   <div className="absolute inset-0 border border-[#eb4c60]/0 group-hover:border-[#eb4c60]/15 transition-all duration-500 pointer-events-none" />
                 )}
 
-                <div className={`text-[clamp(3rem,6vw,5rem)] font-black leading-none tracking-tighter text-white transition-all duration-300 ${
+                <div data-aos="fade-up" data-aos-delay="100" className={`text-[clamp(3rem,6vw,5rem)] font-black leading-none tracking-tighter text-white transition-all duration-300 ${
                   hoverStyle === "translate-y" ? "group-hover:-translate-y-1 group-hover:text-[#eb4c60]" :
                   hoverStyle === "scale"       ? "group-hover:scale-105 group-hover:text-zinc-100 origin-left" :
                   hoverStyle === "color"       ? "group-hover:text-[#eb4c60]" :
@@ -352,8 +360,8 @@ export default function HomeClient() {
                 }`}>
                   <CountUp end={end} suffix={suffix} />
                 </div>
-                <div className="mt-3 text-xs font-semibold text-zinc-400 leading-snug">{label}</div>
-                <div className="mt-1 text-[10px] text-zinc-600 uppercase tracking-[0.15em]">{sub}</div>
+                <div data-aos="fade-up" data-aos-delay="200" className="mt-3 text-xs font-semibold text-zinc-400 leading-snug">{label}</div>
+                <div data-aos="fade-up" data-aos-delay="300" className="mt-1 text-[10px] text-zinc-600 uppercase tracking-[0.15em]">{sub}</div>
               </div>
             </ScrollReveal>
           ))}
@@ -370,11 +378,11 @@ export default function HomeClient() {
         </div>
         <div className="relative mx-auto max-w-7xl px-6 md:px-10 py-28">
           <ScrollReveal>
-            <p className="text-[10px] uppercase tracking-[0.3em] text-zinc-600 mb-4">Get Involved</p>
-            <h2 className="text-[clamp(2.5rem,7vw,6rem)] font-black text-white tracking-tighter leading-[0.9] mb-6">
+            <p data-aos="fade-up" data-aos-delay="100" className="text-[10px] uppercase tracking-[0.3em] text-zinc-600 mb-4">Get Involved</p>
+            <h2 data-aos="fade-up" data-aos-delay="200" className="text-[clamp(2.5rem,7vw,6rem)] font-black text-white tracking-tighter leading-[0.9] mb-6">
               Ready to build<br /><span className="text-[#eb4c60]">something real?</span>
             </h2>
-            <p className="max-w-md text-zinc-500 text-base leading-relaxed mb-10">
+            <p data-aos="fade-up" data-aos-delay="300" className="max-w-md text-zinc-500 text-base leading-relaxed mb-10">
               Whether you want to join the team or bring us a challenge to solve,
               we&apos;re always looking for ambitious collaborators.
             </p>
