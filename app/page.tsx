@@ -9,7 +9,7 @@ export const metadata: Metadata = {
     title: "Avenues Consulting Group | USC",
     description:
       "USC's student-run consulting group delivering pro bono strategy, technology, and design work for nonprofits, startups, and companies.",
-    url: "https://avenues-ten.vercel.app/",
+    url: "https://www.uscavenues.org/",
   },
 };
 

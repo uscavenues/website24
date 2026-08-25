@@ -30,8 +30,8 @@ const jsonLd = {
   "@context": "https://schema.org",
   "@type": "Organization",
   "name": "Avenues Consulting Group",
-  "url": "https://avenues-ten.vercel.app",
-  "logo": "https://avenues-ten.vercel.app/assets/icons/avenues-logo.png",
+  "url": "https://www.uscavenues.org",
+  "logo": "https://www.uscavenues.org/assets/icons/avenues-logo.png",
   "description": "USC's student-run consulting group spanning strategy, technology, and design. Pro bono.",
   "foundingDate": "2023",
   "areaServed": "United States",
@@ -51,7 +51,7 @@ const jsonLd = {
 };
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://avenues-ten.vercel.app"),
+  metadataBase: new URL("https://www.uscavenues.org"),
   title: "Avenues Consulting Group | USC",
   description:
     "A student-run consulting group at USC delivering pro bono strategy, technology, and design work for nonprofits, startups, and established companies. No fees. Real projects.",

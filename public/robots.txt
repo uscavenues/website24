@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://avenues-ten.vercel.app/sitemap.xml
+Sitemap: https://www.uscavenues.org/sitemap.xml
