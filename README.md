@@ -2,7 +2,7 @@
 ![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=flat-square&logo=typescript&logoColor=white)
 ![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-06B6D4?style=flat-square&logo=tailwindcss&logoColor=white)
 ![Framer Motion](https://img.shields.io/badge/Framer_Motion-0055FF?style=flat-square&logo=framer&logoColor=white)
-![Vercel](https://img.shields.io/badge/Vercel-black?style=flat-square&logo=vercel&logoColor=white)
+![GitHub Pages](https://img.shields.io/badge/GitHub_Pages-222222?style=flat-square&logo=githubpages&logoColor=white)
 
 # Avenues Consulting Group: Website
 
@@ -30,7 +30,7 @@ The official website for **Avenues Consulting Group**, USC's student-run consult
 | Styling | Tailwind CSS |
 | Typography | Geist (Vercel) |
 | Animation | Framer Motion |
-| Deployment | Vercel |
+| Deployment | GitHub Pages (static export) |
 
 ## Getting Started
 
@@ -43,7 +43,7 @@ Open [http://localhost:3000](http://localhost:3000).
 
 ```bash
 npm run build   # Production build
-npm start       # Production server
+npx serve out   # Preview the static export
 npm run lint    # ESLint check
 ```
 
