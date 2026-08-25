@@ -8,7 +8,7 @@
 
 The official website for **Avenues Consulting Group**, USC's student-run consulting organization spanning strategy, technology, and design. The site features a scroll-driven cinematic intro animation, portfolio showcase, member directory, and application flow, built pro bono as a reflection of the organization's standards and identity.
 
-**Live:** [avenues-ten.vercel.app](https://avenues-ten.vercel.app)
+**Live:** [www.uscavenues.org](https://www.uscavenues.org)
 
 > Screenshot
 
