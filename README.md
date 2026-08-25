@@ -43,7 +43,7 @@ Open [http://localhost:3000](http://localhost:3000).
 
 ```bash
 npm run build   # Production build
-npx serve out   # Preview the static export
+npm start       # Preview the static export (serves out/)
 npm run lint    # ESLint check
 ```
 
