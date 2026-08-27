@@ -1,4 +1,5 @@
 import type { NextConfig } from "next";
+import { BASE_PATH } from "./lib/basePath";
 
 const nextConfig: NextConfig = {
   // GitHub Pages serves static files only — no Next.js server.
@@ -9,7 +10,7 @@ const nextConfig: NextConfig = {
   // prefix this automatically. To move back to the domain root: delete
   // basePath, restore public/CNAME (git show 749a970:public/CNAME), and
   // set the custom domain in Settings > Pages.
-  basePath: "/website24",
+  basePath: BASE_PATH,
   poweredByHeader: false,
 
   // No image optimizer on a static host. A custom loader (rather than

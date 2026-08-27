@@ -6,7 +6,9 @@
 // originals for og:image and JSON-LD are kept on disk deliberately —
 // several social scrapers handle WebP poorly — and those tags reference
 // them directly rather than through this loader.
+import { BASE_PATH } from "./basePath";
+
 export default function imageLoader({ src }: { src: string }): string {
   const webp = src.replace(/\.(jpe?g|png)$/i, ".webp");
-  return webp.startsWith("/") ? `/website24${webp}` : webp;
+  return webp.startsWith("/") ? `${BASE_PATH}${webp}` : webp;
 }
