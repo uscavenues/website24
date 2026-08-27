@@ -10,6 +10,7 @@ export const metadata: Metadata = {
     description:
       "The story, mission, and team behind USC's premier student-run consulting organization.",
     url: "https://www.uscavenues.org/about",
+    images: ["/assets/photos/home.jpg"],
   },
 };
 

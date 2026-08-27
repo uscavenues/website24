@@ -7,6 +7,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Portfolio | Avenues Consulting Group",
     description: "20+ pro bono engagements across strategy, technology, and design.",
+    images: ["/assets/photos/home.jpg"],
   },
 };
 

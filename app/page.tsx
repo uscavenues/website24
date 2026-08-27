@@ -10,6 +10,7 @@ export const metadata: Metadata = {
     description:
       "USC's student-run consulting group delivering pro bono strategy, technology, and design work for nonprofits, startups, and companies.",
     url: "https://www.uscavenues.org/",
+    images: ["/assets/photos/home.jpg"],
   },
 };
 

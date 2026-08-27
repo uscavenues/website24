@@ -7,6 +7,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Our Community | Avenues Consulting Group",
     description: "24 majors, industry mentors, and alumni at JP Morgan, Disney, Deloitte, and more.",
+    images: ["/assets/photos/home.jpg"],
   },
 };
 
