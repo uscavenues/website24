@@ -13,7 +13,7 @@ export default function ContactPageClient() {
         {/* Photo background */}
         <div className="absolute inset-0">
           <Image
-            src="/assets/cohort-photo.jpg"
+            src="/assets/photos/home.jpg"
             alt="Avenues Consulting Group team"
             fill
             priority
