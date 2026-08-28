@@ -11,6 +11,10 @@ const nextConfig: NextConfig = {
   // basePath, restore public/CNAME (git show 749a970:public/CNAME), and
   // set the custom domain in Settings > Pages.
   basePath: BASE_PATH,
+
+  // Emit contact/index.html rather than contact.html, so /contact/ resolves
+  // instead of 404ing. GitHub Pages redirects the bare /contact to it.
+  trailingSlash: true,
   poweredByHeader: false,
 
   // No image optimizer on a static host. A custom loader (rather than
