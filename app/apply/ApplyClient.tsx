@@ -69,9 +69,10 @@ function FAQAccordion({ items }: { items: FAQItem[] }) {
   );
 }
 
+const APPLICATION_FORM_URL =
+  "https://docs.google.com/forms/d/e/1FAIpQLSeGS66fNBZpsHZDOsy5rBiL4DSNfZH2ptiZibRGzTj8AyDfew/viewform";
+
 export default function ApplyClient() {
-  const [notified, setNotified] = useState(false);
-  const [email, setEmail] = useState("");
 
   return (
     <>
@@ -115,21 +116,21 @@ export default function ApplyClient() {
             {/* Status indicator */}
             <div className="flex items-center gap-3 shrink-0">
               <span className="relative flex h-3 w-3">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-amber-400 opacity-75" />
-                <span className="relative inline-flex rounded-full h-3 w-3 bg-amber-400" />
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
+                <span className="relative inline-flex rounded-full h-3 w-3 bg-emerald-400" />
               </span>
-              <span className="text-[10px] font-bold uppercase tracking-[0.25em] text-amber-400">
-                Applications Closed
+              <span className="text-[10px] font-bold uppercase tracking-[0.25em] text-emerald-400">
+                Applications Open
               </span>
             </div>
 
             <div className="flex-1">
               <p className="text-2xl font-black text-white mb-2 tracking-tight leading-tight">
-                Applications are currently{" "}
-                <span className="text-[#eb4c60]">closed.</span>
+                Applications are open for{" "}
+                <span className="text-[#eb4c60]">Fall 2026.</span>
               </p>
               <p className="text-sm text-zinc-400 leading-relaxed">
-                Recruitment opens each semester. Follow us{" "}
+                Apply through the form below. Questions? Reach us{" "}
                 <a
                   href="https://www.instagram.com/uscavenues/"
                   target="_blank"
@@ -138,53 +139,26 @@ export default function ApplyClient() {
                 >
                   @uscavenues
                 </a>{" "}
-                on Instagram or email{" "}
+                on Instagram or at{" "}
                 <a
                   href="mailto:uscavenues@gmail.com"
                   className="text-zinc-300 underline underline-offset-2 decoration-white/20 hover:text-[#eb4c60] hover:decoration-[#eb4c60]/40 transition-colors duration-200"
                 >
                   uscavenues@gmail.com
-                </a>{" "}
-                to get notified when the next cycle opens.
+                </a>
+                .
               </p>
-              {/* Email capture — only show when applications are closed */}
-              {notified ? (
-                <div className="mt-6 flex items-center gap-2 text-xs text-emerald-400">
-                  <svg className="w-4 h-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                  </svg>
-                  We&apos;ll notify you when Fall 2026 applications open.
-                </div>
-              ) : (
-                <div className="mt-6 flex flex-col sm:flex-row gap-2 max-w-sm">
-                  <input
-                    type="email"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    placeholder="your@email.com"
-                    className="flex-1 bg-transparent border-b border-white/[0.12] focus:border-[#eb4c60] outline-none text-white placeholder:text-zinc-600 py-2 text-xs transition-colors duration-200"
-                    onKeyDown={(e) => {
-                      if (e.key === 'Enter') {
-                        const val = email.trim();
-                        if (val && val.includes('@')) {
-                          setNotified(true);
-                        }
-                      }
-                    }}
-                  />
-                  <button
-                    type="button"
-                    className="shrink-0 text-[10px] uppercase tracking-[0.15em] font-semibold border border-[#eb4c60]/40 text-[#eb4c60] hover:bg-[#eb4c60] hover:text-white px-3 py-1.5 rounded-sm transition-all duration-200"
-                    onClick={() => {
-                      if (email.trim() && email.includes('@')) {
-                        setNotified(true);
-                      }
-                    }}
-                  >
-                    Notify me →
-                  </button>
-                </div>
-              )}
+              <a
+                href={APPLICATION_FORM_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mt-6 inline-flex items-center gap-2 bg-[#eb4c60] text-white px-7 py-3.5 text-xs font-bold uppercase tracking-[0.15em] rounded-sm hover:bg-[#d43d50] transition-colors duration-200"
+              >
+                Apply for Fall 2026
+                <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                </svg>
+              </a>
             </div>
 
             {/* IG CTA */}
