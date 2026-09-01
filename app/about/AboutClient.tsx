@@ -2,6 +2,7 @@
 import { useRef } from "react";
 import { LazyMotion, domAnimation, m, useScroll, useTransform, MotionValue } from "framer-motion";
 import Image from "next/image";
+import MemberPhoto from "@/components/MemberPhoto";
 import Link from "next/link";
 import { team } from "@/lib/data";
 import ScrollReveal from "@/components/ScrollReveal";
@@ -203,10 +204,9 @@ function TeamSection() {
             <ScrollReveal key={member.name} scale delay={`delay-${i + 1}`}>
             <a href={member.linkedin} target="_blank" rel="noopener noreferrer" className="group relative overflow-hidden rounded-sm block">
               <div className="relative aspect-[3/4] bg-white/[0.03]">
-                <Image
-                  src={member.photo}
-                  alt={member.name}
-                  fill
+                <MemberPhoto
+                  photo={member.photo}
+                  name={member.name}
                   className="object-cover object-top transition-transform duration-700 group-hover:scale-105"
                   sizes="(max-width: 768px) 50vw, 400px"
                 />
@@ -245,10 +245,9 @@ function TeamSection() {
               aria-label={`${member.name} on LinkedIn (opens in new tab)`}
             >
               <div className="relative aspect-[3/4] bg-white/[0.03]">
-                <Image
-                  src={member.photo}
-                  alt={member.name}
-                  fill
+                <MemberPhoto
+                  photo={member.photo}
+                  name={member.name}
                   className="object-cover object-top transition-transform duration-500 group-hover:scale-105"
                   sizes="(max-width: 640px) 50vw, (max-width: 768px) 33vw, 220px"
                 />
@@ -285,10 +284,9 @@ function TeamSection() {
               aria-label={`${member.name} on LinkedIn (opens in new tab)`}
             >
               <div className="relative aspect-[3/4] bg-white/[0.03]">
-                <Image
-                  src={member.photo}
-                  alt={member.name}
-                  fill
+                <MemberPhoto
+                  photo={member.photo}
+                  name={member.name}
                   className="object-cover object-top transition-transform duration-500 group-hover:scale-105"
                   sizes="(max-width: 640px) 33vw, (max-width: 768px) 25vw, 180px"
                 />

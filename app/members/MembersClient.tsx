@@ -2,10 +2,13 @@
 
 import { useState, useEffect } from "react";
 import Image from "next/image";
+import MemberPhoto from "@/components/MemberPhoto";
 import Link from "next/link";
-import { team } from "@/lib/data";
+import { team, settings } from "@/lib/data";
 
-const PASSWORD = "as26";
+// Rotated each semester from the Avenues Content sheet (settings tab).
+// Not a secret: it ships in the client bundle either way.
+const PASSWORD = settings.membersPassword;
 
 /* ── Projects (from avenues-hub) ──────────────────────────────────────── */
 
@@ -349,13 +352,12 @@ export default function MembersClient() {
                   className="group flex items-center gap-4 px-5 py-3 border-b border-white/[0.04] last:border-b-0 hover:bg-white/[0.03] transition-all duration-150"
                 >
                   <div className="relative w-7 h-7 rounded-full overflow-hidden bg-zinc-900 shrink-0">
-                    <Image
-                      src={member.photo}
-                      alt={member.name}
-                      fill
-                      className="object-cover grayscale group-hover:grayscale-0 transition-all duration-300"
-                      sizes="28px"
-                    />
+                    <MemberPhoto
+                  photo={member.photo}
+                  name={member.name}
+                  className="object-cover grayscale group-hover:grayscale-0 transition-all duration-300"
+                  sizes="28px"
+                />
                   </div>
                   <div className="flex-1 min-w-0">
                     <span className="text-sm font-medium text-zinc-400 group-hover:text-white transition-colors">

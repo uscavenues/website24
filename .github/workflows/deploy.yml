@@ -28,6 +28,11 @@ jobs:
 
       - run: npm ci
 
+      # Backstop. The spreadsheet runs these same rules and refuses to publish,
+      # so a failure here means something reached main without going through it.
+      - name: Validate sheet-managed content
+        run: npm run validate:content
+
       - run: npm run build
 
       - uses: actions/configure-pages@v5

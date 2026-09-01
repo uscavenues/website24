@@ -6,7 +6,9 @@
     "dev": "next dev",
     "build": "next build",
     "start": "npx serve out",
-    "lint": "next lint"
+    "lint": "next lint",
+    "validate:content": "node scripts/validate-content.mjs",
+    "test:content": "node scripts/validate-content.test.mjs"
   },
   "dependencies": {
     "aos": "^2.3.4",

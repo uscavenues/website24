@@ -1,0 +1,404 @@
+{
+  "settings": {
+    "applications_open": true,
+    "application_form_url": "https://docs.google.com/forms/d/e/1FAIpQLSeGS66fNBZpsHZDOsy5rBiL4DSNfZH2ptiZibRGzTj8AyDfew/viewform",
+    "members_password": "as26",
+    "application_season": "Fall 2026"
+  },
+  "team": {
+    "executive": [
+      {
+        "name": "Armani C.",
+        "role": "Co-President",
+        "photo": "armani",
+        "linkedin": "https://www.linkedin.com/in/armanichoy/"
+      },
+      {
+        "name": "Calissa W.",
+        "role": "Co-President",
+        "photo": "calissa",
+        "linkedin": "https://www.linkedin.com/in/calissa-welborn-usc/"
+      }
+    ],
+    "directors": [
+      {
+        "name": "Nate B.",
+        "role": "Human Resources",
+        "photo": "nate",
+        "linkedin": "https://www.linkedin.com/in/nathan-brigger-019874304"
+      },
+      {
+        "name": "Varenya S.",
+        "role": "Finance",
+        "photo": "varenya",
+        "linkedin": "https://www.linkedin.com/in/varenya-sharma/"
+      },
+      {
+        "name": "Grace L.",
+        "role": "Recruitment",
+        "photo": "grace",
+        "linkedin": "https://www.linkedin.com/in/gr4lee"
+      },
+      {
+        "name": "Vicky Z.",
+        "role": "Recruitment",
+        "photo": "vicky",
+        "linkedin": "https://www.linkedin.com/in/vicky--zhang/"
+      },
+      {
+        "name": "Sam B.",
+        "role": "External Affairs",
+        "photo": "sam",
+        "linkedin": "https://www.linkedin.com/in/samiddhbiswas/"
+      },
+      {
+        "name": "Mistie Z.",
+        "role": "Internal Affairs",
+        "photo": "mistie",
+        "linkedin": "https://www.linkedin.com/in/mistiezheng/"
+      },
+      {
+        "name": "Katherine Y.",
+        "role": "Media & Marketing",
+        "photo": "katherine",
+        "linkedin": "https://www.linkedin.com/in/27katherineyu/"
+      },
+      {
+        "name": "Ariana A.",
+        "role": "Technology",
+        "photo": "ariana",
+        "linkedin": "https://www.linkedin.com/in/ariana-amiri"
+      },
+      {
+        "name": "Darius M.",
+        "role": "Alumni Engagement",
+        "photo": "darius",
+        "linkedin": "https://www.linkedin.com/in/darius-mahjoob"
+      },
+      {
+        "name": "Anna C.",
+        "role": "Alumni Engagement",
+        "photo": "anna",
+        "linkedin": "https://www.linkedin.com/in/annachi-usc"
+      }
+    ],
+    "associates": [
+      {
+        "name": "Rena J.",
+        "role": "Human Resources",
+        "photo": "rena",
+        "linkedin": "https://www.linkedin.com/in/renajeoung/"
+      },
+      {
+        "name": "Akshay M.",
+        "role": "Finance",
+        "photo": "akhsay",
+        "linkedin": "https://www.linkedin.com/in/akshay-mediwala/"
+      },
+      {
+        "name": "Akash P.",
+        "role": "Recruitment",
+        "photo": "akash",
+        "linkedin": "https://www.linkedin.com/in/akashparikh228/"
+      },
+      {
+        "name": "Samarth R.",
+        "role": "Recruitment",
+        "photo": "samarth",
+        "linkedin": "https://www.linkedin.com/in/samarth-r/"
+      },
+      {
+        "name": "Cici H.",
+        "role": "External Affairs",
+        "photo": "cici",
+        "linkedin": "https://www.linkedin.com/in/xi-li-he"
+      },
+      {
+        "name": "Chetan K.",
+        "role": "External Affairs",
+        "photo": "chethan",
+        "linkedin": "https://www.linkedin.com/in/chetankurkure/"
+      },
+      {
+        "name": "Cherim K.",
+        "role": "Internal Affairs",
+        "photo": "cherim",
+        "linkedin": "https://www.linkedin.com/in/cherimki/"
+      },
+      {
+        "name": "Nishitha P.",
+        "role": "Internal Affairs",
+        "photo": "nishitha",
+        "linkedin": "https://www.linkedin.com/in/nishitha-pammidi"
+      },
+      {
+        "name": "Vani S.",
+        "role": "Media & Marketing",
+        "photo": "vani",
+        "linkedin": "https://www.linkedin.com/in/vani-sharma-926738290/"
+      },
+      {
+        "name": "Cynthia S.",
+        "role": "Media & Marketing",
+        "photo": "cynthia",
+        "linkedin": "https://www.linkedin.com/in/xinqishao/"
+      },
+      {
+        "name": "Allison L.",
+        "role": "Technology",
+        "photo": "allison",
+        "linkedin": "https://www.linkedin.com/in/allisonlin9"
+      }
+    ]
+  },
+  "mentors": [
+    {
+      "name": "Accenture",
+      "logo": "accenture.png"
+    },
+    {
+      "name": "Bain & Company",
+      "logo": "bain.jpg"
+    },
+    {
+      "name": "BCG",
+      "logo": "bcg.png"
+    },
+    {
+      "name": "KPMG",
+      "logo": "kpmg.png"
+    },
+    {
+      "name": "Grata",
+      "logo": "grata.png"
+    },
+    {
+      "name": "EY",
+      "logo": "ey.png"
+    },
+    {
+      "name": "Deloitte",
+      "logo": "deloitte.png"
+    }
+  ],
+  "alumni": [
+    {
+      "company": "Bank of America",
+      "logo": "bank-of-america-emblem.png",
+      "positions": [
+        "Full-Time \u00b7 PM"
+      ]
+    },
+    {
+      "company": "EY",
+      "logo": "ey.png",
+      "positions": [
+        "Intern \u00b7 Process & Controls"
+      ]
+    },
+    {
+      "company": "JP Morgan",
+      "logo": "jp.png",
+      "positions": [
+        "Intern \u00b7 IB",
+        "Intern \u00b7 Analyst"
+      ]
+    },
+    {
+      "company": "PwC",
+      "logo": "pwc.png",
+      "positions": [
+        "Intern \u00b7 Cyber Defense & Eng.",
+        "Intern \u00b7 Cyber Risk & Reg.",
+        "Intern \u00b7 Tech Consultant"
+      ]
+    },
+    {
+      "company": "Northrop Grumman",
+      "logo": "northrop.png",
+      "positions": [
+        "Intern \u00b7 Cyber Info Assurance"
+      ]
+    },
+    {
+      "company": "Deloitte",
+      "logo": "deloitte.png",
+      "positions": [
+        "Intern \u00b7 Management Consulting"
+      ]
+    },
+    {
+      "company": "Disney",
+      "logo": "disney.jpg",
+      "positions": [
+        "Intern \u00b7 Corp. Enterprise Risk Mgmt."
+      ]
+    },
+    {
+      "company": "KPMG",
+      "logo": "kpmg.png",
+      "positions": [
+        "Intern \u00b7 Consultant"
+      ]
+    },
+    {
+      "company": "General Dynamics",
+      "logo": "general_dynamics.jpg",
+      "positions": [
+        "Intern \u00b7 Software Eng."
+      ]
+    },
+    {
+      "company": "DrFirst",
+      "logo": "drfirst.png",
+      "positions": [
+        "Intern \u00b7 Software Eng."
+      ]
+    },
+    {
+      "company": "US Bank",
+      "logo": "usbank.png",
+      "positions": [
+        "Intern \u00b7 PM"
+      ]
+    },
+    {
+      "company": "Accenture",
+      "logo": "accenture.png",
+      "positions": [
+        "Intern \u00b7 Consulting Analyst"
+      ]
+    }
+  ],
+  "clients": [
+    {
+      "name": "LinkedIn",
+      "logo": "linked.svg",
+      "services": [
+        "Business Strategy"
+      ]
+    },
+    {
+      "name": "AANC",
+      "logo": "aanc.png",
+      "services": [
+        "Design",
+        "Technology"
+      ]
+    },
+    {
+      "name": "DoorDash",
+      "logo": "doordash-logo.png",
+      "services": [
+        "Business Strategy"
+      ]
+    },
+    {
+      "name": "GALLA Beauty",
+      "logo": "galla.jpeg",
+      "services": [
+        "Business Strategy"
+      ]
+    },
+    {
+      "name": "Mountain Dew",
+      "logo": "mountain_dew_logo.svg.png",
+      "services": [
+        "Business Strategy",
+        "Design"
+      ]
+    },
+    {
+      "name": "Wheel & Tire Connection",
+      "logo": "wtc.jpeg",
+      "services": [
+        "Business Strategy",
+        "Technology"
+      ]
+    },
+    {
+      "name": "XP League",
+      "logo": "xp.jpg",
+      "services": [
+        "Business Strategy"
+      ]
+    },
+    {
+      "name": "Maryland STEM Festival",
+      "logo": "maryland.jpg",
+      "services": [
+        "Marketing"
+      ]
+    },
+    {
+      "name": "Network of Care",
+      "logo": "noc.png",
+      "services": [
+        "Marketing",
+        "Design",
+        "Technology"
+      ]
+    },
+    {
+      "name": "Captis Intelligence",
+      "logo": "captis.jpeg",
+      "services": [
+        "Marketing",
+        "Design",
+        "Technology"
+      ]
+    }
+  ],
+  "majors": [
+    "Business Admin",
+    "Computer Science",
+    "Economics",
+    "Art History",
+    "Intelligence & Cyber Ops",
+    "Public Policy",
+    "Jazz Studies",
+    "Real Estate",
+    "Design",
+    "BioPharm Marketing",
+    "Financial Math",
+    "Health Promotion",
+    "Architecture",
+    "Data Science",
+    "Quant Bio",
+    "Philosophy Politics & Econ",
+    "Global Health",
+    "Sociology",
+    "Environmental Engineering",
+    "International Relations",
+    "Political Science",
+    "Political Economy",
+    "BioPharm Science",
+    "Tech Design & Business"
+  ],
+  "faq": [
+    {
+      "q": "When can I apply?",
+      "a": "Avenues accepts new members at the start of each semester. Applications open during the first two weeks of the fall and spring semesters. Follow our Instagram @uscavenues for announcements on exact dates."
+    },
+    {
+      "q": "Is prior consulting or business experience required?",
+      "a": "Not at all. We welcome students from all majors and backgrounds. What we look for is curiosity, a collaborative mindset, and a genuine desire to learn, not a polished resume."
+    },
+    {
+      "q": "What does the application process look like?",
+      "a": "The process typically includes a written application followed by a brief interview. We want to learn about you, your interests, and how you think, not just your credentials."
+    },
+    {
+      "q": "How much time does membership require?",
+      "a": "Expect to commit roughly 4\u20136 hours per week across client project work, org events, and curriculum nights. It's designed to be manageable alongside a full course load."
+    },
+    {
+      "q": "Can first-year and transfer students apply?",
+      "a": "Yes, absolutely. We actively encourage first-years and transfers to apply. Many of our current leaders joined in their first semester at USC."
+    },
+    {
+      "q": "What happens if I'm not accepted?",
+      "a": "We encourage you to reapply the following semester. Many members were not accepted on their first try. In the meantime, attend our open events to connect with the org and get a feel for what we do."
+    }
+  ]
+}

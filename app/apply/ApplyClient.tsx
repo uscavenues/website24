@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import Image from "next/image";
-import { faqApplication, type FAQItem } from "@/lib/data";
+import { faqApplication, type FAQItem, settings } from "@/lib/data";
 import ScrollReveal from "@/components/ScrollReveal";
 
 function FAQAccordion({ items }: { items: FAQItem[] }) {
@@ -69,8 +69,6 @@ function FAQAccordion({ items }: { items: FAQItem[] }) {
   );
 }
 
-const APPLICATION_FORM_URL =
-  "https://docs.google.com/forms/d/e/1FAIpQLSeGS66fNBZpsHZDOsy5rBiL4DSNfZH2ptiZibRGzTj8AyDfew/viewform";
 
 export default function ApplyClient() {
 
@@ -116,21 +114,44 @@ export default function ApplyClient() {
             {/* Status indicator */}
             <div className="flex items-center gap-3 shrink-0">
               <span className="relative flex h-3 w-3">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
-                <span className="relative inline-flex rounded-full h-3 w-3 bg-emerald-400" />
+                <span
+                  className={`animate-ping absolute inline-flex h-full w-full rounded-full opacity-75 ${
+                    settings.applicationsOpen ? "bg-emerald-400" : "bg-amber-400"
+                  }`}
+                />
+                <span
+                  className={`relative inline-flex rounded-full h-3 w-3 ${
+                    settings.applicationsOpen ? "bg-emerald-400" : "bg-amber-400"
+                  }`}
+                />
               </span>
-              <span className="text-[10px] font-bold uppercase tracking-[0.25em] text-emerald-400">
-                Applications Open
+              <span
+                className={`text-[10px] font-bold uppercase tracking-[0.25em] ${
+                  settings.applicationsOpen ? "text-emerald-400" : "text-amber-400"
+                }`}
+              >
+                {settings.applicationsOpen ? "Applications Open" : "Applications Closed"}
               </span>
             </div>
 
             <div className="flex-1">
               <p className="text-2xl font-black text-white mb-2 tracking-tight leading-tight">
-                Applications are open for{" "}
-                <span className="text-[#eb4c60]">Fall 2026.</span>
+                {settings.applicationsOpen ? (
+                  <>
+                    Applications are open for{" "}
+                    <span className="text-[#eb4c60]">{settings.applicationSeason}.</span>
+                  </>
+                ) : (
+                  <>
+                    Applications are currently{" "}
+                    <span className="text-[#eb4c60]">closed.</span>
+                  </>
+                )}
               </p>
               <p className="text-sm text-zinc-400 leading-relaxed">
-                Apply through the form below. Questions? Reach us{" "}
+                {settings.applicationsOpen
+                  ? "Apply through the form below. Questions? Reach us "
+                  : "Recruitment opens each semester. To hear when the next cycle opens, follow us "}
                 <a
                   href="https://www.instagram.com/uscavenues/"
                   target="_blank"
@@ -148,17 +169,19 @@ export default function ApplyClient() {
                 </a>
                 .
               </p>
+              {settings.applicationsOpen && (
               <a
-                href={APPLICATION_FORM_URL}
+                href={settings.applicationFormUrl}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="mt-6 inline-flex items-center gap-2 bg-[#eb4c60] text-white px-7 py-3.5 text-xs font-bold uppercase tracking-[0.15em] rounded-sm hover:bg-[#d43d50] transition-colors duration-200"
               >
-                Apply for Fall 2026
+                Apply for {settings.applicationSeason}
                 <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M17 8l4 4m0 0l-4 4m4-4H3" />
                 </svg>
               </a>
+              )}
             </div>
 
             {/* IG CTA */}

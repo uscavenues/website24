@@ -53,304 +53,71 @@ export interface FAQItem {
 export type Project = ProjectType;
 
 // ─────────────────────────────────────────────────────────────────────────────
-//  Team
+//  Sheet-managed content
+//
+//  Everything below comes from lib/content.json, which the Avenues Content
+//  spreadsheet writes on "Publish to site". Do not hand-edit content.json —
+//  the next publish overwrites it. Edit the sheet instead.
+//  Static marketing copy (whatWeDo, project lists) stays in this file.
 // ─────────────────────────────────────────────────────────────────────────────
+import content from "./content.json";
 
-export const team: Team = {
-  executive: [
-    {
-      name: "Armani C.",
-      role: "Co-President",
-      photo: "/assets/photos/profiles/armani.jpg",
-      linkedin: "https://www.linkedin.com/in/armanichoy/",
-    },
-    {
-      name: "Calissa W.",
-      role: "Co-President",
-      photo: "/assets/photos/profiles/calissa.jpg",
-      linkedin: "https://www.linkedin.com/in/calissa-welborn-usc/",
-    },
-  ],
+/** Blank photo slug renders the neutral silhouette instead of a broken image. */
+export const PROFILE_DIR = "/assets/photos/profiles";
+export const LOGO_DIR = "/assets/logos";
 
-  directors: [
-    {
-      name: "Nate B.",
-      role: "Human Resources",
-      photo: "/assets/photos/profiles/nate.jpg",
-      linkedin: "https://www.linkedin.com/in/nathan-brigger-019874304",
-    },
-    {
-      name: "Varenya S.",
-      role: "Finance",
-      photo: "/assets/photos/profiles/varenya.jpg",
-      linkedin: "https://www.linkedin.com/in/varenya-sharma/",
-    },
-    {
-      name: "Grace L.",
-      role: "Recruitment",
-      photo: "/assets/photos/profiles/grace.jpg",
-      linkedin: "https://www.linkedin.com/in/gr4lee",
-    },
-    {
-      name: "Vicky Z.",
-      role: "Recruitment",
-      photo: "/assets/photos/profiles/vicky.jpg",
-      linkedin: "https://www.linkedin.com/in/vicky--zhang/",
-    },
-    {
-      name: "Sam B.",
-      role: "External Affairs",
-      photo: "/assets/photos/profiles/sam.jpg",
-      linkedin: "https://www.linkedin.com/in/samiddhbiswas/",
-    },
-    {
-      name: "Mistie Z.",
-      role: "Internal Affairs",
-      photo: "/assets/photos/profiles/mistie.jpg",
-      linkedin: "https://www.linkedin.com/in/mistiezheng/",
-    },
-    {
-      name: "Katherine Y.",
-      role: "Media & Marketing",
-      photo: "/assets/photos/profiles/katherine.jpg",
-      linkedin: "https://www.linkedin.com/in/27katherineyu/",
-    },
-    {
-      name: "Ariana A.",
-      role: "Technology",
-      photo: "/assets/photos/profiles/ariana.jpg",
-      linkedin: "https://www.linkedin.com/in/ariana-amiri",
-    },
-    {
-      name: "Darius M.",
-      role: "Alumni Engagement",
-      photo: "/assets/photos/profiles/darius.jpg",
-      linkedin: "https://www.linkedin.com/in/darius-mahjoob",
-    },
-    {
-      name: "Anna C.",
-      role: "Alumni Engagement",
-      photo: "/assets/photos/profiles/anna.jpg",
-      linkedin: "https://www.linkedin.com/in/annachi-usc",
-    },
-  ],
+const profilePath = (slug: string): string =>
+  slug ? `${PROFILE_DIR}/${slug}.jpg` : "";
+const logoPath = (file: string): string => (file ? `${LOGO_DIR}/${file}` : "");
 
-  associates: [
-    {
-      name: "Rena J.",
-      role: "Human Resources",
-      photo: "/assets/photos/profiles/rena.jpg",
-      linkedin: "https://www.linkedin.com/in/renajeoung/",
-    },
-    {
-      name: "Akshay M.",
-      role: "Finance",
-      photo: "/assets/photos/profiles/akhsay.jpg",
-      linkedin: "https://www.linkedin.com/in/akshay-mediwala/",
-    },
-    {
-      name: "Akash P.",
-      role: "Recruitment",
-      photo: "/assets/photos/profiles/akash.jpg",
-      linkedin: "https://www.linkedin.com/in/akashparikh228/",
-    },
-    {
-      name: "Samarth R.",
-      role: "Recruitment",
-      photo: "/assets/photos/profiles/samarth.jpg",
-      linkedin: "https://www.linkedin.com/in/samarth-r/",
-    },
-    {
-      name: "Cici H.",
-      role: "External Affairs",
-      photo: "/assets/photos/profiles/cici.jpg",
-      linkedin: "https://www.linkedin.com/in/xi-li-he",
-    },
-    {
-      name: "Chetan K.",
-      role: "External Affairs",
-      photo: "/assets/photos/profiles/chethan.jpg",
-      linkedin: "https://www.linkedin.com/in/chetankurkure/",
-    },
-    {
-      name: "Cherim K.",
-      role: "Internal Affairs",
-      photo: "/assets/photos/profiles/cherim.jpg",
-      linkedin: "https://www.linkedin.com/in/cherimki/",
-    },
-    {
-      name: "Nishitha P.",
-      role: "Internal Affairs",
-      photo: "/assets/photos/profiles/nishitha.jpg",
-      linkedin: "https://www.linkedin.com/in/nishitha-pammidi",
-    },
-    {
-      name: "Vani S.",
-      role: "Media & Marketing",
-      photo: "/assets/photos/profiles/vani.jpg",
-      linkedin: "https://www.linkedin.com/in/vani-sharma-926738290/",
-    },
-    {
-      name: "Cynthia S.",
-      role: "Media & Marketing",
-      photo: "/assets/photos/profiles/cynthia.jpg",
-      linkedin: "https://www.linkedin.com/in/xinqishao/",
-    },
-    {
-      name: "Allison L.",
-      role: "Technology",
-      photo: "/assets/photos/profiles/allison.jpg",
-      linkedin: "https://www.linkedin.com/in/allisonlin9",
-    },
-  ],
+const toMember = (m: {
+  name: string;
+  role: string;
+  photo: string;
+  linkedin: string;
+}): TeamMember => ({ ...m, photo: profilePath(m.photo) });
+
+export interface SiteSettings {
+  applicationsOpen: boolean;
+  applicationFormUrl: string;
+  applicationSeason: string;
+  membersPassword: string;
+}
+
+export const settings: SiteSettings = {
+  applicationsOpen: content.settings.applications_open,
+  applicationFormUrl: content.settings.application_form_url,
+  applicationSeason: content.settings.application_season,
+  membersPassword: content.settings.members_password,
 };
 
-// ─────────────────────────────────────────────────────────────────────────────
-//  Industry Mentors
-// ─────────────────────────────────────────────────────────────────────────────
+export const team: Team = {
+  executive: content.team.executive.map(toMember),
+  directors: content.team.directors.map(toMember),
+  associates: content.team.associates.map(toMember),
+};
 
-export const mentors: MentorCompany[] = [
-  { name: "Accenture",      logo: "/assets/logos/accenture.png" },
-  { name: "Bain & Company", logo: "/assets/logos/bain.jpg" },
-  { name: "BCG",            logo: "/assets/logos/bcg.png" },
-  { name: "KPMG",           logo: "/assets/logos/kpmg.png" },
-  { name: "Grata",          logo: "/assets/logos/grata.png" },
-  { name: "EY",             logo: "/assets/logos/ey.png" },
-  { name: "Deloitte",       logo: "/assets/logos/deloitte.png" },
-];
+export const mentors: MentorCompany[] = content.mentors.map((m) => ({
+  name: m.name,
+  logo: logoPath(m.logo),
+}));
 
-// ─────────────────────────────────────────────────────────────────────────────
-//  Alumni Placements
-//  Full-Time · or Intern · prefix
-// ─────────────────────────────────────────────────────────────────────────────
+export const alumni: AlumniPlacement[] = content.alumni.map((a) => ({
+  company: a.company,
+  logo: logoPath(a.logo),
+  positions: a.positions,
+}));
 
-export const alumni: AlumniPlacement[] = [
-  {
-    company: "Bank of America",
-    logo: "/assets/logos/bank-of-america-emblem.png",
-    positions: ["Full-Time · PM"],
-  },
-  {
-    company: "EY",
-    logo: "/assets/logos/ey.png",
-    positions: ["Intern · Process & Controls"],
-  },
-  {
-    company: "JP Morgan",
-    logo: "/assets/logos/jp.png",
-    positions: ["Intern · IB", "Intern · Analyst"],
-  },
-  {
-    company: "PwC",
-    logo: "/assets/logos/pwc.png",
-    positions: [
-      "Intern · Cyber Defense & Eng.",
-      "Intern · Cyber Risk & Reg.",
-      "Intern · Tech Consultant",
-    ],
-  },
-  {
-    company: "Northrop Grumman",
-    logo: "/assets/logos/northrop.png",
-    positions: ["Intern · Cyber Info Assurance"],
-  },
-  {
-    company: "Deloitte",
-    logo: "/assets/logos/deloitte.png",
-    positions: ["Intern · Management Consulting"],
-  },
-  {
-    company: "Disney",
-    logo: "/assets/logos/disney.jpg",
-    positions: ["Intern · Corp. Enterprise Risk Mgmt."],
-  },
-  {
-    company: "KPMG",
-    logo: "/assets/logos/kpmg.png",
-    positions: ["Intern · Consultant"],
-  },
-  {
-    company: "General Dynamics",
-    logo: "/assets/logos/general_dynamics.jpg",
-    positions: ["Intern · Software Eng."],
-  },
-  {
-    company: "DrFirst",
-    logo: "/assets/logos/drfirst.png",
-    positions: ["Intern · Software Eng."],
-  },
-  {
-    company: "US Bank",
-    logo: "/assets/logos/usbank.png",
-    positions: ["Intern · PM"],
-  },
-  {
-    company: "Accenture",
-    logo: "/assets/logos/accenture.png",
-    positions: ["Intern · Consulting Analyst"],
-  },
-];
-
-// ─────────────────────────────────────────────────────────────────────────────
-//  Client Portfolio
-// ─────────────────────────────────────────────────────────────────────────────
-
-const clients: ClientEngagement[] = [
-  {
-    name: "LinkedIn",
-    logo: "/assets/logos/linked.svg",
-    services: ["Business Strategy"],
-  },
-  {
-    name: "AANC",
-    logo: "/assets/logos/aanc.png",
-    services: ["Design", "Technology"],
-  },
-  {
-    name: "DoorDash",
-    logo: "/assets/logos/doordash-logo.png",
-    services: ["Business Strategy"],
-  },
-  {
-    name: "GALLA Beauty",
-    logo: "/assets/logos/galla.jpeg",
-    services: ["Business Strategy"],
-  },
-  {
-    name: "Mountain Dew",
-    logo: "/assets/logos/mountain_dew_logo.svg.png",
-    services: ["Business Strategy", "Design"],
-  },
-  {
-    name: "Wheel & Tire Connection",
-    logo: "/assets/logos/wtc.jpeg",
-    services: ["Business Strategy", "Technology"],
-  },
-  {
-    name: "XP League",
-    logo: "/assets/logos/xp.jpg",
-    services: ["Business Strategy"],
-  },
-  {
-    name: "Maryland STEM Festival",
-    logo: "/assets/logos/maryland.jpg",
-    services: ["Marketing"],
-  },
-  {
-    name: "Network of Care",
-    logo: "/assets/logos/noc.png",
-    services: ["Marketing", "Design", "Technology"],
-  },
-  {
-    name: "Captis Intelligence",
-    logo: "/assets/logos/captis.jpeg",
-    services: ["Marketing", "Design", "Technology"],
-  },
-];
-
-// Alias for pages that import clientCards
+const clients: ClientEngagement[] = content.clients.map((c) => ({
+  name: c.name,
+  logo: logoPath(c.logo),
+  services: c.services,
+}));
 export const clientCards = clients;
 
+export const majors: string[] = content.majors;
+
+export const faqApplication: FAQItem[] = content.faq;
 // ─────────────────────────────────────────────────────────────────────────────
 //  What We Do
 // ─────────────────────────────────────────────────────────────────────────────
@@ -397,38 +164,6 @@ export const whatWeDo: WhatWeDoItem[] = [
     icon: "08",
   },
 ];
-
-// ─────────────────────────────────────────────────────────────────────────────
-//  Member Majors
-// ─────────────────────────────────────────────────────────────────────────────
-
-export const majors: string[] = [
-  "Business Admin",
-  "Computer Science",
-  "Economics",
-  "Art History",
-  "Intelligence & Cyber Ops",
-  "Public Policy",
-  "Jazz Studies",
-  "Real Estate",
-  "Design",
-  "BioPharm Marketing",
-  "Financial Math",
-  "Health Promotion",
-  "Architecture",
-  "Data Science",
-  "Quant Bio",
-  "Philosophy Politics & Econ",
-  "Global Health",
-  "Sociology",
-  "Environmental Engineering",
-  "International Relations",
-  "Political Science",
-  "Political Economy",
-  "BioPharm Science",
-  "Tech Design & Business",
-];
-
 // ─────────────────────────────────────────────────────────────────────────────
 //  Project Types by Discipline
 // ─────────────────────────────────────────────────────────────────────────────
@@ -496,35 +231,3 @@ export const designProjects: ProjectType[] = [
     clients: "Network of Care, Captis Intelligence, AANC",
   },
 ];
-
-// ─────────────────────────────────────────────────────────────────────────────
-//  FAQ  -  Application
-// ─────────────────────────────────────────────────────────────────────────────
-
-export const faqApplication: FAQItem[] = [
-  {
-    q: "When can I apply?",
-    a: "Avenues accepts new members at the start of each semester. Applications open during the first two weeks of the fall and spring semesters. Follow our Instagram @uscavenues for announcements on exact dates.",
-  },
-  {
-    q: "Is prior consulting or business experience required?",
-    a: "Not at all. We welcome students from all majors and backgrounds. What we look for is curiosity, a collaborative mindset, and a genuine desire to learn, not a polished resume.",
-  },
-  {
-    q: "What does the application process look like?",
-    a: "The process typically includes a written application followed by a brief interview. We want to learn about you, your interests, and how you think, not just your credentials.",
-  },
-  {
-    q: "How much time does membership require?",
-    a: "Expect to commit roughly 4–6 hours per week across client project work, org events, and curriculum nights. It's designed to be manageable alongside a full course load.",
-  },
-  {
-    q: "Can first-year and transfer students apply?",
-    a: "Yes, absolutely. We actively encourage first-years and transfers to apply. Many of our current leaders joined in their first semester at USC.",
-  },
-  {
-    q: "What happens if I'm not accepted?",
-    a: "We encourage you to reapply the following semester. Many members were not accepted on their first try. In the meantime, attend our open events to connect with the org and get a feel for what we do.",
-  },
-];
-
