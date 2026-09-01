@@ -169,12 +169,12 @@ export default function HomeClient() {
               <h1 className="text-[clamp(4rem,12vw,10rem)] font-black leading-[0.88] tracking-tighter text-white" aria-label="Avenues Consulting Group">
 
                 {/* A-placeholder: absolute so it never inflates the line-box height */}
-                <span className="inline-flex items-center" style={{ gap: 0 }}>
+                <span className="inline-flex items-center" style={{ gap: 0, marginLeft: "-0.4em" }}>
                   <span className="relative inline-block" style={{ width: "2.2em", marginRight: "-0.65em" }}>
                     <span
                       ref={aRef}
                       className="absolute"
-                      style={{ height: "2.2em", width: "2.2em", top: "-0.99em", left: 0 }}
+                      style={{ height: "2.2em", width: "2.2em", top: "-1.25em", left: 0 }}
                       aria-hidden="true"
                     />
                   </span>
