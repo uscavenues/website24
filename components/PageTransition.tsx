@@ -64,10 +64,11 @@ export default function PageTransition({ children }: { children: React.ReactNode
         const url = new URL(href, location.href);
         if (url.origin !== location.origin) return;
         const p = url.pathname;
-        routerPath =
-          BASE_PATH && (p === BASE_PATH || p.startsWith(BASE_PATH + "/"))
-            ? p.slice(BASE_PATH.length) || "/"
-            : p;
+        routerPath = BASE_PATH
+          ? (p === BASE_PATH || p.startsWith(BASE_PATH + "/"))
+            ? p.slice((BASE_PATH as string).length) || "/"
+            : p
+          : p;
         if (routerPath === activePath.current) return;
         routerPath += url.search + url.hash;
       } catch { return; }
