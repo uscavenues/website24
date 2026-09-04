@@ -38,6 +38,8 @@ function onOpen() {
     .createMenu('Avenues')
     .addItem('Publish to site', 'publishToSite')
     .addItem('Check for problems (no publish)', 'checkOnly')
+    .addSeparator()
+    .addItem('Set up sheet (first time)', 'setUpSheet')
     .addToUi();
 }
 

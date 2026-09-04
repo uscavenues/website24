@@ -27,6 +27,14 @@ function tabValues(name) {
 }
 
 const TABS = ["settings", "team", "mentors", "alumni", "clients", "majors", "faq"];
+const SETUP_GS = readFileSync(join(ROOT, "apps-script/Setup.gs"), "utf8");
+
+/** The SEED literal Setup.gs writes into a fresh sheet. */
+function setupSeed() {
+  const ctx = createContext({});
+  runInContext(SETUP_GS + "\n;__seed = SEED;", ctx, { filename: "Setup.gs" });
+  return JSON.parse(JSON.stringify(runInContext("__seed", ctx)));
+}
 
 /** Files the repo really has, so checkAssets_ is exercised against reality. */
 const repoFiles = (dir) => readdirSync(join(ROOT, "public", dir));
@@ -107,6 +115,23 @@ check("no validation errors on the seed sheet", () => {
 check("output is byte-identical to lib/content.json", () => {
   assert.equal(
     JSON.stringify(result.content, null, 2) + "\n",
+    JSON.stringify(committed, null, 2) + "\n",
+  );
+});
+
+// ── Setup.gs must seed a sheet that Publish.gs reads back identically ──
+check("Setup.gs SEED matches the seed TSVs tab for tab", () => {
+  const seed = setupSeed();
+  const base = baseline();
+  assert.deepEqual(Object.keys(seed).sort(), Object.keys(base).sort());
+  for (const t of TABS) assert.deepEqual(seed[t], base[t], `tab ${t} differs`);
+});
+
+check("a sheet built by Setup.gs publishes exactly lib/content.json", () => {
+  const r = run(setupSeed());
+  assert.deepEqual(r.errors, [], JSON.stringify(r.errors));
+  assert.equal(
+    JSON.stringify(r.content, null, 2) + "\n",
     JSON.stringify(committed, null, 2) + "\n",
   );
 });

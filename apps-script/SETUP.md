@@ -4,57 +4,45 @@ One-time setup, about 15 minutes. After this, eboard edits the spreadsheet and
 hits **Avenues ▸ Publish to site**; the website updates ~2 minutes later with no
 developer involved.
 
-Three things only a human can do: create the Sheet, create the GitHub token, and
-paste the token into the script. Everything else is already in the repo.
+Only three things need a human: create an empty Sheet, create a GitHub token,
+and paste that token into the script. The script builds the tabs and fills them.
 
 ---
 
 ## 1. Create the spreadsheet
 
-Create a Google Sheet named **Avenues Content**, owned by an account that will
-outlive whoever sets it up (a shared org account beats a personal one — the
+Create an empty Google Sheet named **Avenues Content**, owned by an account that
+will outlive whoever sets it up (a shared org account beats a personal one — the
 handover problem is real).
 
-Create these seven tabs, named exactly, all lowercase:
+That is all you do by hand. The script builds the tabs.
 
-`settings` · `team` · `mentors` · `alumni` · `clients` · `majors` · `faq`
-
-Delete the default "Sheet1".
-
-## 2. Paste the starting data
-
-Each file in `apps-script/seed/` matches one tab. For each:
-
-1. Open the tab, click cell **A1**.
-2. Paste the whole contents of the matching `.tsv` file.
-
-Google Sheets splits tab-separated text into columns automatically. Row 1 is the
-header row — the script reads columns by these names, so **do not rename or
-reorder them**.
-
-This seed data is generated from the live site, so once pasted the sheet is an
-exact mirror of what's currently published.
-
-## 3. Make the sheet hard to break
-
-Worth the five minutes — these prevent the mistakes that would otherwise reach
-the site.
-
-- **Protect every header row.** Select row 1 on each tab ▸ right-click ▸
-  *Protect range* ▸ restrict to yourself.
-- **`team` ▸ `section` dropdown.** Select column A (below the header) ▸ *Data* ▸
-  *Data validation* ▸ Dropdown ▸ `executive`, `directors`, `associates` ▸
-  *Reject the input*. A typo here silently drops someone off the site.
-- **`settings` ▸ `applications_open`.** Set its value cell to a checkbox
-  (*Insert ▸ Tick box*), so nobody types "yes".
-
-## 4. Install the script
+## 2. Install the script
 
 1. **Extensions ▸ Apps Script**.
 2. Delete the placeholder `myFunction`, paste all of `apps-script/Publish.gs`.
-3. Save (disk icon).
+3. **+ ▸ Script** to add a second file, paste all of `apps-script/Setup.gs`.
+4. Save (disk icon), then reload the spreadsheet.
 
-## 5. Create a GitHub token
+## 3. Build the tabs
+
+**Avenues ▸ Set up sheet (first time)**. Google asks for authorisation the first
+time — it is your own script, so approve it.
+
+This creates all seven tabs (`settings`, `team`, `mentors`, `alumni`, `clients`,
+`majors`, `faq`), fills them with exactly what is on the site today, freezes and
+styles the header rows, and adds the dropdowns that stop the two mistakes worth
+stopping: a misspelled `section` (which silently drops someone off the site) and
+an `applications_open` that is not TRUE/FALSE.
+
+Row 1 of each tab is the header row — the script reads columns by these names,
+so **do not rename or reorder them**. Re-running the setup replaces the tab
+contents, so it asks before overwriting.
+
+Optional, worth five minutes: select row 1 on each tab ▸ right-click ▸ *Protect
+range* ▸ restrict to yourself, so a header cannot be edited by accident.
+
+## 4. Create a GitHub token
 
 1. GitHub ▸ *Settings* ▸ *Developer settings* ▸
    **Fine-grained personal access tokens** ▸ *Generate new token*.
@@ -68,7 +56,7 @@ the site.
 > Scope it to this one repo. A classic token with org-wide access would let a
 > spreadsheet write to everything the org owns.
 
-## 6. Give the script the token
+## 5. Give the script the token
 
 In the Apps Script editor: **Project Settings** (gear) ▸ *Script properties* ▸
 *Add script property*:
@@ -79,7 +67,7 @@ In the Apps Script editor: **Project Settings** (gear) ▸ *Script properties* �
 
 Save.
 
-## 7. First run
+## 6. First run
 
 1. Reload the spreadsheet. An **Avenues** menu appears next to Help.
 2. **Avenues ▸ Check for problems**. Google asks for authorisation the first
