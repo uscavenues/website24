@@ -2,8 +2,8 @@
   "settings": {
     "applications_open": true,
     "application_form_url": "https://docs.google.com/forms/d/e/1FAIpQLSeGS66fNBZpsHZDOsy5rBiL4DSNfZH2ptiZibRGzTj8AyDfew/viewform",
-    "members_password": "as26",
-    "application_season": "Fall 2026"
+    "application_season": "Fall 2026",
+    "members_password": "as26"
   },
   "team": {
     "executive": [
@@ -153,186 +153,186 @@
   },
   "mentors": [
     {
-      "name": "Accenture",
-      "logo": "accenture.png"
+      "logo": "accenture.png",
+      "name": "Accenture"
     },
     {
-      "name": "Bain & Company",
-      "logo": "bain.jpg"
+      "logo": "bain.jpg",
+      "name": "Bain & Company"
     },
     {
-      "name": "BCG",
-      "logo": "bcg.png"
+      "logo": "bcg.png",
+      "name": "BCG"
     },
     {
-      "name": "KPMG",
-      "logo": "kpmg.png"
+      "logo": "kpmg.png",
+      "name": "KPMG"
     },
     {
-      "name": "Grata",
-      "logo": "grata.png"
+      "logo": "grata.png",
+      "name": "Grata"
     },
     {
-      "name": "EY",
-      "logo": "ey.png"
+      "logo": "ey.png",
+      "name": "EY"
     },
     {
-      "name": "Deloitte",
-      "logo": "deloitte.png"
+      "logo": "deloitte.png",
+      "name": "Deloitte"
     }
   ],
   "alumni": [
     {
-      "company": "Bank of America",
       "logo": "bank-of-america-emblem.png",
+      "company": "Bank of America",
       "positions": [
-        "Full-Time \u00b7 PM"
+        "Full-Time · PM"
       ]
     },
     {
-      "company": "EY",
       "logo": "ey.png",
+      "company": "EY",
       "positions": [
-        "Intern \u00b7 Process & Controls"
+        "Intern · Process & Controls"
       ]
     },
     {
-      "company": "JP Morgan",
       "logo": "jp.png",
+      "company": "JP Morgan",
       "positions": [
-        "Intern \u00b7 IB",
-        "Intern \u00b7 Analyst"
+        "Intern · IB",
+        "Intern · Analyst"
       ]
     },
     {
-      "company": "PwC",
       "logo": "pwc.png",
+      "company": "PwC",
       "positions": [
-        "Intern \u00b7 Cyber Defense & Eng.",
-        "Intern \u00b7 Cyber Risk & Reg.",
-        "Intern \u00b7 Tech Consultant"
+        "Intern · Cyber Defense & Eng.",
+        "Intern · Cyber Risk & Reg.",
+        "Intern · Tech Consultant"
       ]
     },
     {
-      "company": "Northrop Grumman",
       "logo": "northrop.png",
+      "company": "Northrop Grumman",
       "positions": [
-        "Intern \u00b7 Cyber Info Assurance"
+        "Intern · Cyber Info Assurance"
       ]
     },
     {
-      "company": "Deloitte",
       "logo": "deloitte.png",
+      "company": "Deloitte",
       "positions": [
-        "Intern \u00b7 Management Consulting"
+        "Intern · Management Consulting"
       ]
     },
     {
-      "company": "Disney",
       "logo": "disney.jpg",
+      "company": "Disney",
       "positions": [
-        "Intern \u00b7 Corp. Enterprise Risk Mgmt."
+        "Intern · Corp. Enterprise Risk Mgmt."
       ]
     },
     {
-      "company": "KPMG",
       "logo": "kpmg.png",
+      "company": "KPMG",
       "positions": [
-        "Intern \u00b7 Consultant"
+        "Intern · Consultant"
       ]
     },
     {
-      "company": "General Dynamics",
       "logo": "general_dynamics.jpg",
+      "company": "General Dynamics",
       "positions": [
-        "Intern \u00b7 Software Eng."
+        "Intern · Software Eng."
       ]
     },
     {
-      "company": "DrFirst",
       "logo": "drfirst.png",
+      "company": "DrFirst",
       "positions": [
-        "Intern \u00b7 Software Eng."
+        "Intern · Software Eng."
       ]
     },
     {
-      "company": "US Bank",
       "logo": "usbank.png",
+      "company": "US Bank",
       "positions": [
-        "Intern \u00b7 PM"
+        "Intern · PM"
       ]
     },
     {
-      "company": "Accenture",
       "logo": "accenture.png",
+      "company": "Accenture",
       "positions": [
-        "Intern \u00b7 Consulting Analyst"
+        "Intern · Consulting Analyst"
       ]
     }
   ],
   "clients": [
     {
-      "name": "LinkedIn",
       "logo": "linked.svg",
+      "name": "LinkedIn",
       "services": [
         "Business Strategy"
       ]
     },
     {
-      "name": "AANC",
       "logo": "aanc.png",
+      "name": "AANC",
       "services": [
         "Design",
         "Technology"
       ]
     },
     {
-      "name": "DoorDash",
       "logo": "doordash-logo.png",
+      "name": "DoorDash",
       "services": [
         "Business Strategy"
       ]
     },
     {
-      "name": "GALLA Beauty",
       "logo": "galla.jpeg",
+      "name": "GALLA Beauty",
       "services": [
         "Business Strategy"
       ]
     },
     {
-      "name": "Mountain Dew",
       "logo": "mountain_dew_logo.svg.png",
+      "name": "Mountain Dew",
       "services": [
         "Business Strategy",
         "Design"
       ]
     },
     {
-      "name": "Wheel & Tire Connection",
       "logo": "wtc.jpeg",
+      "name": "Wheel & Tire Connection",
       "services": [
         "Business Strategy",
         "Technology"
       ]
     },
     {
-      "name": "XP League",
       "logo": "xp.jpg",
+      "name": "XP League",
       "services": [
         "Business Strategy"
       ]
     },
     {
-      "name": "Maryland STEM Festival",
       "logo": "maryland.jpg",
+      "name": "Maryland STEM Festival",
       "services": [
         "Marketing"
       ]
     },
     {
-      "name": "Network of Care",
       "logo": "noc.png",
+      "name": "Network of Care",
       "services": [
         "Marketing",
         "Design",
@@ -340,8 +340,8 @@
       ]
     },
     {
-      "name": "Captis Intelligence",
       "logo": "captis.jpeg",
+      "name": "Captis Intelligence",
       "services": [
         "Marketing",
         "Design",
@@ -390,7 +390,7 @@
     },
     {
       "q": "How much time does membership require?",
-      "a": "Expect to commit roughly 4\u20136 hours per week across client project work, org events, and curriculum nights. It's designed to be manageable alongside a full course load."
+      "a": "Expect to commit roughly 4–6 hours per week across client project work, org events, and curriculum nights. It's designed to be manageable alongside a full course load."
     },
     {
       "q": "Can first-year and transfer students apply?",

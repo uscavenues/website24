@@ -8,7 +8,9 @@
     "start": "npx serve out",
     "lint": "next lint",
     "validate:content": "node scripts/validate-content.mjs",
-    "test:content": "node scripts/validate-content.test.mjs"
+    "test:content": "node scripts/validate-content.test.mjs",
+    "test:publish": "node scripts/test-publish-gs.mjs",
+    "test": "npm run test:content && npm run test:publish"
   },
   "dependencies": {
     "aos": "^2.3.4",

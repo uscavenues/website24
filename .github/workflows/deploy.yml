@@ -33,6 +33,11 @@ jobs:
       - name: Validate sheet-managed content
         run: npm run validate:content
 
+      # Runs the real Publish.gs against the seed sheet. Catches the case where
+      # someone edits the Apps Script and its output stops matching content.json.
+      - name: Test the publish script
+        run: npm test
+
       - run: npm run build
 
       - uses: actions/configure-pages@v5
